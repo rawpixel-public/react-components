@@ -1,0 +1,31 @@
+{
+  "name": "@rawpixel1/react-components-storybook",
+  "homepage": "https://rawpixel1.github.io/react-components",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@rawpixel1/react-components": "link:..",
+    "prop-types": "^15.6.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.4.1",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@storybook/addon-actions": "^5.3.12",
+    "@storybook/addon-docs": "^5.3.12",
+    "@storybook/addon-links": "^5.3.12",
+    "@storybook/addons": "^5.3.12",
+    "@storybook/react": "^5.3.12",
+    "@storybook/theming": "^5.3.12",
+    "babel-loader": "^8.0.6",
+    "prettier": "^1.19.1",
+    "react-is": "^16.12.0"
+  },
+  "scripts": {
+    "build": "build-storybook",
+    "start": "start-storybook -p 6006"
+  }
+}

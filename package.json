@@ -1,0 +1,70 @@
+{
+  "name": "@rawpixel1/rawpixel-components",
+  "version": "0.1.0",
+  "description": "RawPixel React component library",
+  "license": "MIT",
+  "repository": "git://github.com/rawpixel1/react-components",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "dist"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "deploy": "gh-pages -d storybook/storybook-static",
+    "prepare": "yarn run build",
+    "predeploy": "cd storybook && yarn install && yarn run build",
+    "prepublish": "yarn run test && rm -rf dist",
+    "lint": "eslint ./src && prettier --check \"src/**/*.js\"",
+    "start": "rollup -c -w",
+    "test": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.5.4",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "styled-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-url": "^4.0.2",
+    "@svgr/rollup": "^2.4.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.4",
+    "eslint": "^5.0.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-react": "^6.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "gh-pages": "^1.2.0",
+    "prettier": "^1.19.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-is": "^16.12.0",
+    "react-scripts": "^1.1.4",
+    "rollup": "^1.31.0",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "styled-components": "^5.0.1",
+    "styled-tools": "^1.7.1"
+  },
+  "files": [
+    "dist"
+  ]
+}

@@ -1,0 +1,25 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import {
+  SidebarTabs,
+  SidebarTab
+} from "@rawpixel1/react-components/dist/sidebar-tabs";
+
+import "../.storybook/global.css";
+
+<Meta title="Sidebar/Tabs" component={SidebarTabs} />
+
+# Sidebar Tabs
+
+<Preview>
+  <Story name="simple">
+    <SidebarTabs>
+      <SidebarTab title="File info">
+        <p>300KB</p>
+        <p>ID: 12345678</p>
+      </SidebarTab>
+      <SidebarTab title="Notes">
+        <p>Add some general notes here</p>
+      </SidebarTab>
+    </SidebarTabs>
+  </Story>
+</Preview>
