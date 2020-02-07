@@ -43,6 +43,7 @@ const SidebarTabs = ({ children, activeTab, onTabChange }) => {
 };
 
 SidebarTabs.propTypes = {
+  activeTab: PropTypes.number,
   children: PropTypes.node,
   onTabChange: PropTypes.func
 };

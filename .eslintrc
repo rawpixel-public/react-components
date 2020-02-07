@@ -2,10 +2,14 @@
   "parser": "babel-eslint",
   "extends": [
     "standard",
-    "standard-react"
+    "standard-react",
+    "prettier"
   ],
   "env": {
-    "es6": true
+    "es6": true,
+    "jest": true,
+    "browser": true,
+    "node": true
   },
   "plugins": [
     "react"

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { ifProp } from "styled-tools";
 
@@ -22,14 +21,16 @@ export const StyledTabButton = styled.button`
 `;
 
 export const StyledTabsContent = styled.div`
-  background: #DADADA;
+  background: #dadada;
   color: ${palette.grayMedium};
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
   padding: 12px;
 
-  p, li, div {
+  p,
+  li,
+  div {
     font-size: 14px;
     line-height: 1.5;
   }
