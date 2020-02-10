@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{1273:function(e,n,t){"use strict";t.r(n);var i=t(91),o=t(1270),w=Object(o.create)({base:"light",brandTitle:"RawPixel",brandUrl:"https://www.rawpixel.com"});i.addons.setConfig({theme:w})},40:function(e,n,t){t(415),t(558),t(1273),t(1271),t(1230),e.exports=t(1261)},477:function(e,n){}},[[40,1,2]]]);
