@@ -1,0 +1,41 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text } from "@storybook/addon-knobs";
+
+import { WidgetAddon, WidgetFilter } from "@rawpixel1/react-components";
+
+import "../.storybook/global.css";
+import fontSvg from "../images/font.svg";
+import starSvg from "../images/star.svg";
+
+<Meta title="Topics/Widgets" decorators={[withKnobs]} />
+
+# Widgets
+
+## Addon
+
+Icon and title as a link.
+
+<Preview>
+  <Story name="addon">
+    <WidgetAddon
+      title={text("title", "Fonts")}
+      icon={fontSvg}
+      href="https://www.rawpixel.com/search/fonts?sort=curated&page=1"
+    />
+  </Story>
+</Preview>
+
+## Filter
+
+Icon and title with `onClick` handler.
+
+<Preview>
+  <Story name="filter">
+    <WidgetFilter
+      title={text("title", "My topics")}
+      icon={starSvg}
+      onClick={action("widget-filter-click")}
+    />
+  </Story>
+</Preview>
