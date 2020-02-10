@@ -91,11 +91,17 @@ const Example = () => (
 
 ### Package
 
-Ensure you have configured your development environment to [publish to GitHub packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#publishing-a-package),
-then run this command.
+Ensure you have configured your development environment to [publish to GitHub packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#publishing-a-package).
+
+Then increment version and publish (example below).
 
 ```bash
-npm publish
+# npm
+npm version minor # increment minor version, tag and commit
+npm publish # publish 
+
+# yarn
+yarn publish --minor # tags, commits and publishes
 ```
 
 ### Documentation

@@ -20,7 +20,7 @@
     "deploy": "gh-pages -d storybook/storybook-static",
     "prepare": "yarn run build",
     "predeploy": "cd storybook && yarn install && yarn run build",
-    "prepublish": "yarn run test && rm -rf dist",
+    "prepublishOnly": "yarn run test && rm -rf dist",
     "lint": "eslint ./src && prettier --check \"src/**/*.js\"",
     "lint:fix": "eslint ./src --fix && prettier --write \"src/**/*.js\"",
     "start": "rollup -c -w",
