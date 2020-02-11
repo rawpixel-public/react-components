@@ -38,9 +38,9 @@ Icon and title as a link.
   <Story name="addon">
     <Centered style={{background: "#F4F4F4"}}>
       <WidgetAddon
-        title={text("title", "Fonts")}
-        icon={fontSvg}
-        href="https://www.rawpixel.com/search/fonts?sort=curated&page=1"
+        title={text("title", "Fonts", "addon")}
+        icon={text("icon", fontSvg, "addon")}
+        href={text("href", "https://www.rawpixel.com/search/fonts?sort=curated&page=1", "addon")}
       />
     </Centered>
   </Story>
@@ -54,10 +54,10 @@ Icon and title with `onClick` handler.
   <Story name="filter">
     <Centered style={{background: "#F4F4F4"}}>
       <WidgetFilter
-        title={text("title", "My topics")}
-        icon={starSvg}
+        title={text("title", "My topics", "filter")}
+        icon={text("icon", starSvg, "filter")}
         onClick={action("widget-filter-click")}
-        active={boolean("active", false)}
+        active={boolean("active", false, "filter")}
       />
     </Centered>
   </Story>
