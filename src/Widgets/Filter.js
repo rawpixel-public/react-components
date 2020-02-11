@@ -4,9 +4,9 @@ import React from "react";
 import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
 
-const WidgetFilter = ({ title, icon, onClick }) => (
-  <StyledButton onClick={onClick} role="button">
-    <WidgetIcon href={icon} />
+const WidgetFilter = ({ title, icon, onClick, active = false }) => (
+  <StyledButton onClick={onClick} role="button" active={active}>
+    <WidgetIcon href={icon} active={active} />
     <StyledText>{title}</StyledText>
   </StyledButton>
 );
@@ -14,7 +14,8 @@ const WidgetFilter = ({ title, icon, onClick }) => (
 WidgetFilter.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  active: PropTypes.bool
 };
 
 WidgetFilter.displayName = "WidgetFilter";

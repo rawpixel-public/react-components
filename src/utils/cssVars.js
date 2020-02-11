@@ -29,7 +29,7 @@ export const palette = {
 };
 
 export const fontFamily = {
-  base: '"Helvetica Neue", Helvetica, Arial, sans-serif, "Dam Icons"'
+  base: '"Helvetica Neue LT W01_41488878", Arial, sans-serif'
 };
 
 export const srOnly = {

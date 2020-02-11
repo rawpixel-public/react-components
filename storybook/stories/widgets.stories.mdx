@@ -1,8 +1,14 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import Centered from "../components/Centered";
 
-import { WidgetAddon, WidgetFilter } from "@rawpixel1/react-components";
+import * as stories from "./widgets.stories.js";
+import {
+  WidgetAddon,
+  WidgetFilter,
+  WidgetsList
+} from "@rawpixel1/react-components";
 
 import "../.storybook/global.css";
 import fontSvg from "../images/font.svg";
@@ -12,17 +18,31 @@ import starSvg from "../images/star.svg";
 
 # Widgets
 
+Sidebar icons with text labels.
+
+## List
+
+A list of filters and addon widgets.
+
+<Preview>
+  <Story name="list">
+    <Centered style={{background: "#F4F4F4"}}>{stories.list()}</Centered>
+  </Story>
+</Preview>
+
 ## Addon
 
 Icon and title as a link.
 
 <Preview>
   <Story name="addon">
-    <WidgetAddon
-      title={text("title", "Fonts")}
-      icon={fontSvg}
-      href="https://www.rawpixel.com/search/fonts?sort=curated&page=1"
-    />
+    <Centered style={{background: "#F4F4F4"}}>
+      <WidgetAddon
+        title={text("title", "Fonts")}
+        icon={fontSvg}
+        href="https://www.rawpixel.com/search/fonts?sort=curated&page=1"
+      />
+    </Centered>
   </Story>
 </Preview>
 
@@ -32,10 +52,13 @@ Icon and title with `onClick` handler.
 
 <Preview>
   <Story name="filter">
-    <WidgetFilter
-      title={text("title", "My topics")}
-      icon={starSvg}
-      onClick={action("widget-filter-click")}
-    />
+    <Centered style={{background: "#F4F4F4"}}>
+      <WidgetFilter
+        title={text("title", "My topics")}
+        icon={starSvg}
+        onClick={action("widget-filter-click")}
+        active={boolean("active", false)}
+      />
+    </Centered>
   </Story>
 </Preview>
