@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125" x="0px" y="0px">
+  <defs>
+    <style>
+      .cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;}
+    </style>
+  </defs>
+  <title>resize-6</title>
+  <g>
+    <polyline class="cls-1" points="25.5 39.52 25.5 25.52 39.5 25.52"/>
+    <polyline class="cls-1" points="74.48 61.5 74.48 75.5 60.48 75.5"/>
+    <rect class="cls-1" x="32.96" y="33.49" width="34.05" height="34.05"/>
+  </g>
+</svg>
