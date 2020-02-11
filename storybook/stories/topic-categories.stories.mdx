@@ -1,0 +1,60 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
+import Centered from "../components/Centered";
+
+import {
+  Categories
+} from "@rawpixel1/react-components";
+
+import "../.storybook/global.css";
+import fontSvg from "../images/font.svg";
+import starSvg from "../images/star.svg";
+
+<Meta title="Topics/Categories" decorators={[withKnobs]} />
+
+# Topic Categories
+
+Displays at the top of the topics sidebar.
+
+<Preview>
+  <Story name="categories">
+    <Centered style={{background: "#F4F4F4"}}>
+      <Categories
+        categories={object("categories", 
+          [
+            {
+              id: 1,
+              title: "All",
+              visible: true
+            },
+            {
+              id: 2,
+              title: "Elements",
+              visible: true
+            },
+            {
+              id: 3,
+              title: "Stickers",
+              visible: true
+            },
+            {
+              id: 4,
+              title: "Photos",
+              visible: false
+            },
+            {
+              id: 5,
+              title: "Wallpaper",
+              visible: true
+            }
+          ])
+        }
+        title={text("title", "Graphics")}
+        showClear={boolean("showClear", false)}
+        onClearClick={action("clear-click")}
+        onCategoryClick={action("category-click")}
+      />
+    </Centered>
+  </Story>
+</Preview>
