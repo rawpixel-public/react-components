@@ -4,20 +4,20 @@ import React from "react";
 import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
 
-const WidgetFilter = ({ title, icon, onClick, active = false }) => (
+const WidgetTopicGroup = ({ title, icon, onClick, active = false }) => (
   <StyledButton onClick={onClick} role="button" active={active}>
     <WidgetIcon href={icon} active={active} />
     <StyledText>{title}</StyledText>
   </StyledButton>
 );
 
-WidgetFilter.propTypes = {
+WidgetTopicGroup.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   active: PropTypes.bool
 };
 
-WidgetFilter.displayName = "WidgetFilter";
+WidgetTopicGroup.displayName = "WidgetTopicGroup";
 
-export default WidgetFilter;
+export default WidgetTopicGroup;

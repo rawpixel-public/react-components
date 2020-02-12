@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import WidgetAddon from "./Addon";
-import WidgetFilter from "./Filter";
+import Addon from "./Addon";
+import TopicGroup from "./TopicGroup";
 import {
   StyledHR,
   StyledWidgetsWrapper,
@@ -35,7 +35,7 @@ const WidgetsBar = ({
     .filter(widget => widget.type === "filter")
     .map(widget => (
       <StyledListItem key={widget.title}>
-        <WidgetFilter
+        <TopicGroup
           icon={widget.icon}
           title={widget.title}
           onClick={e => filterClickHandler(e, widget)}
@@ -48,11 +48,7 @@ const WidgetsBar = ({
     .filter(widget => widget.type === "addon")
     .map(widget => (
       <StyledListItem key={widget.title}>
-        <WidgetAddon
-          icon={widget.icon}
-          href={widget.url}
-          title={widget.title}
-        />
+        <Addon icon={widget.icon} href={widget.url} title={widget.title} />
       </StyledListItem>
     ));
 

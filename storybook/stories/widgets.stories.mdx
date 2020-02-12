@@ -6,7 +6,7 @@ import Centered from "../components/Centered";
 import * as stories from "./widgets.stories.js";
 import {
   WidgetAddon,
-  WidgetFilter
+  WidgetTopicGroup
 } from "@rawpixel1/react-components";
 
 import "../.storybook/global.css";
@@ -21,7 +21,7 @@ Represents "topic groups" as icons with text labels.
 
 ## Sidebar
 
-A vertical list of filters and addon widgets.
+A vertical list of topic groups and addon widgets.
 
 <Preview>
   <Story name="sidebar">
@@ -31,7 +31,7 @@ A vertical list of filters and addon widgets.
 
 ## DAM
 
-A horizontal list of filters and addon widgets.
+A horizontal list of topic groups and addon widgets.
 
 <Preview>
   <Story name="dam">
@@ -55,14 +55,14 @@ Icon and title as a link.
   </Story>
 </Preview>
 
-## Filter
+## Topic Group
 
 Icon and title with `onClick` handler.
 
 <Preview>
-  <Story name="filter">
+  <Story name="topic-group">
     <Centered style={{background: "#F4F4F4"}}>
-      <WidgetFilter
+      <WidgetTopicGroup
         title={text("title", "My topics", "filter")}
         icon={text("icon", starSvg, "filter")}
         onClick={action("widget-filter-click")}

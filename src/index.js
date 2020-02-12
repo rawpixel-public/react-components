@@ -1,6 +1,6 @@
 import { SidebarTabs, SidebarTab } from "./sidebar-tabs";
 import Categories from "./Topics/Categories";
-import WidgetFilter from "./Widgets/Filter";
+import WidgetTopicGroup from "./Widgets/TopicGroup";
 import WidgetAddon from "./Widgets/Addon";
 import WidgetsBar from "./Widgets/Bar";
 
@@ -10,7 +10,7 @@ export {
   SidebarTab,
   WidgetsBar,
   WidgetAddon,
-  WidgetFilter
+  WidgetTopicGroup
 };
 
 export default {
@@ -19,5 +19,5 @@ export default {
   SidebarTab,
   WidgetsBar,
   WidgetAddon,
-  WidgetFilter
+  WidgetTopicGroup
 };
