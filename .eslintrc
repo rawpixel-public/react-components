@@ -22,6 +22,9 @@
     "space-before-function-paren": 0,
 
     // allow specifying true explicitly for boolean props
-    "react/jsx-boolean-value": 0
+    "react/jsx-boolean-value": 0,
+
+    // disable to prevent clash with prettier
+    "react/jsx-indent": 0
   }
 }
