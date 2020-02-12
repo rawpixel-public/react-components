@@ -34,17 +34,21 @@ const Categories = ({
         )}
       </StyledHeadingWrapper>
       {!!visible.length && (
-        <StyledCategoryList>
-          {visible.map(category => (
-            <li key={category.id}>
-              <StyledCategoryButton
-                onClick={e => categoryClickHandler(e, category)}
-              >
-                {category.title}
-              </StyledCategoryButton>
-            </li>
-          ))}
-        </StyledCategoryList>
+        <div>
+          <button>Previous</button>
+          <StyledCategoryList>
+            {visible.map(category => (
+              <li key={category.id}>
+                <StyledCategoryButton
+                  onClick={e => categoryClickHandler(e, category)}
+                >
+                  {category.title}
+                </StyledCategoryButton>
+              </li>
+            ))}
+          </StyledCategoryList>
+          <button>Next</button>
+        </div>
       )}
     </StyledCategoriesWrapper>
   );

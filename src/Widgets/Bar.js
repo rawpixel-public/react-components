@@ -9,7 +9,12 @@ import {
   StyledListItem
 } from "./StyledWidgets";
 
-const WidgetsList = ({ widgets, onFilterClick, activeWidget }) => {
+const WidgetsBar = ({
+  widgets,
+  onFilterClick,
+  activeWidget,
+  direction = "column"
+}) => {
   const [activeIndex, setActiveIndex] = React.useState(activeWidget);
   const published = widgets.filter(widget => widget.isPublished);
 
@@ -53,10 +58,12 @@ const WidgetsList = ({ widgets, onFilterClick, activeWidget }) => {
 
   return (
     !!published.length && (
-      <StyledWidgetsWrapper>
-        <StyledUnorderedList>
+      <StyledWidgetsWrapper direction={direction}>
+        <StyledUnorderedList direction={direction}>
           {filters}
-          {!!filters.length && !!addons.length && <StyledHR />}
+          {!!filters.length && !!addons.length && (
+            <StyledHR direction={direction} />
+          )}
           {addons}
         </StyledUnorderedList>
       </StyledWidgetsWrapper>
@@ -64,10 +71,11 @@ const WidgetsList = ({ widgets, onFilterClick, activeWidget }) => {
   );
 };
 
-WidgetsList.propTypes = {
+WidgetsBar.propTypes = {
   widgets: PropTypes.array.isRequired,
   onFilterClick: PropTypes.func,
-  activeWidget: PropTypes.number
+  activeWidget: PropTypes.number,
+  direction: PropTypes.oneOf(["column", "row"])
 };
 
-export default WidgetsList;
+export default WidgetsBar;

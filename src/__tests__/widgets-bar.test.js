@@ -3,9 +3,9 @@ import { queryByText } from "@testing-library/dom";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import WidgetsList from "../Widgets/List";
+import WidgetsBar from "../Widgets/Bar";
 
-describe("widgets list", () => {
+describe("widgets bar", () => {
   it("should render published widgets", async () => {
     const widgets = [
       {
@@ -35,7 +35,7 @@ describe("widgets list", () => {
         isPublished: false
       }
     ];
-    const { container, getByText } = render(<WidgetsList widgets={widgets} />);
+    const { container, getByText } = render(<WidgetsBar widgets={widgets} />);
 
     expect(getByText("My topics")).toBeInTheDocument();
     expect(queryByText(container, "Trending")).not.toBeInTheDocument();
@@ -60,7 +60,7 @@ describe("widgets list", () => {
     ];
     const myFn = jest.fn();
     const { getByText } = render(
-      <WidgetsList widgets={widgets} onFilterClick={myFn} />
+      <WidgetsBar widgets={widgets} onFilterClick={myFn} />
     );
 
     fireEvent(

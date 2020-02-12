@@ -6,8 +6,7 @@ import Centered from "../components/Centered";
 import * as stories from "./widgets.stories.js";
 import {
   WidgetAddon,
-  WidgetFilter,
-  WidgetsList
+  WidgetFilter
 } from "@rawpixel1/react-components";
 
 import "../.storybook/global.css";
@@ -18,15 +17,25 @@ import starSvg from "../images/star.svg";
 
 # Widgets
 
-Sidebar icons with text labels.
+Represents "topic groups" as icons with text labels.
 
-## List
+## Sidebar
 
-A list of filters and addon widgets.
+A vertical list of filters and addon widgets.
 
 <Preview>
-  <Story name="list">
-    <Centered style={{background: "#F4F4F4"}}>{stories.list()}</Centered>
+  <Story name="sidebar">
+    <Centered style={{background: "#F4F4F4"}}>{stories.sidebar()}</Centered>
+  </Story>
+</Preview>
+
+## DAM
+
+A horizontal list of filters and addon widgets.
+
+<Preview>
+  <Story name="dam">
+    <Centered style={{background: "#F4F4F4"}}>{stories.dam()}</Centered>
   </Story>
 </Preview>
 
