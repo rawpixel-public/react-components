@@ -8,8 +8,6 @@ import {
 } from "@rawpixel1/react-components";
 
 import "../.storybook/global.css";
-import fontSvg from "../images/font.svg";
-import starSvg from "../images/star.svg";
 
 <Meta title="Topics/Categories" decorators={[withKnobs]} />
 
@@ -17,8 +15,12 @@ import starSvg from "../images/star.svg";
 
 Displays at the top of the topics sidebar.
 
+## With controls
+
+When there are more than 3 topic categories.
+
 <Preview>
-  <Story name="categories">
+  <Story name="controls">
     <Centered style={{background: "#F4F4F4"}}>
       <Categories
         categories={object("categories", 
@@ -48,13 +50,50 @@ Displays at the top of the topics sidebar.
               title: "Wallpaper",
               visible: true
             }
-          ])
+          ], "controls")
         }
-        title={text("title", "Graphics")}
-        showClear={boolean("showClear", false)}
+        title={text("title", "Graphics", "controls")}
+        showClear={boolean("showClear", false, "controls")}
         onClearClick={action("clear-click")}
         onCategoryClick={action("category-click")}
       />
     </Centered>
   </Story>
 </Preview>
+
+## Clear
+
+Optional "Clear" button.
+
+<Preview>
+  <Story name="no-controls">
+    <Centered style={{background: "#F4F4F4"}}>
+      <Categories
+        categories={object("categories", 
+          [
+            {
+              id: 1,
+              title: "All",
+              visible: true
+            },
+            {
+              id: 2,
+              title: "Elements",
+              visible: true
+            },
+            {
+              id: 3,
+              title: "Stickers",
+              visible: true
+            }
+          ], "clear")
+        }
+        title={text("title", "Graphics", "clear")}
+        showClear={boolean("showClear", true, "clear")}
+        onClearClick={action("clear-click")}
+        onCategoryClick={action("category-click")}
+      />
+    </Centered>
+  </Story>
+</Preview>
+

@@ -6,6 +6,7 @@ import { fontFamily, palette } from "../utils/cssVars";
 const lighterGray = "#e9e9e9";
 const lightGray = "#7d7c7c";
 const darkGray = "#4b4b4c";
+const categoryButtonWidth = 75;
 
 export const StyledCategoryButton = styled.button`
   background: #e9e9e9;
@@ -16,6 +17,7 @@ export const StyledCategoryButton = styled.button`
   font-size: 12px;
   padding: 5px 10px;
   transition: color linear 250ms, background-color linear 250ms;
+  width: ${categoryButtonWidth}px;
 
   &:hover {
     cursor: pointer;
@@ -46,8 +48,15 @@ export const StyledClearButton = styled.button`
 `;
 
 export const StyledCategoriesWrapper = styled.div`
-  max-width: 240px;
+  max-width: 320px;
   overflow: hidden;
+`;
+
+export const StyledListWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
 `;
 
 export const StyledCategoryHeading = styled.h3`
@@ -62,13 +71,16 @@ export const StyledCategoryList = styled.ul`
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  margin: 0;
+  margin: 0 5px;
   padding: 0;
+  max-width: 245px;
+  overflow: hidden;
 
   li {
     margin: 0 5px;
+    transition: margin-left ease 200ms;
     &:first-child {
-      margin-left: 0;
+      margin-left: -${props => props.carouselPosition * (categoryButtonWidth + 10)}px;
     }
 
     &:last-child {
@@ -80,4 +92,28 @@ export const StyledCategoryList = styled.ul`
 export const StyledHeadingWrapper = styled.div`
   position: relative;
   padding: 5px 0 15px;
+`;
+
+export const StyledControlButton = styled.button`
+  background: none;
+  border: none;
+  border-radius: 0.25rem;
+  color: ${palette.grayLight};
+  font-family: ${fontFamily.base};
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  &[disabled] {
+    color: ${palette.grayLighter};
+  }
+
+  &[disabled]:hover {
+    background: none;
+    cursor: auto;
+    font-weight: normal;
+  }
 `;

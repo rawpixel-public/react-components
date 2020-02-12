@@ -7,8 +7,13 @@ import {
   StyledCategoryHeading,
   StyledCategoryList,
   StyledClearButton,
-  StyledHeadingWrapper
+  StyledControlButton,
+  StyledHeadingWrapper,
+  StyledListWrapper
 } from "./StyledCategories";
+
+// Number of categories required before previous/next controls are disabled.
+const minimumNumberOfCarouselItems = 4;
 
 const Categories = ({
   categories = [],
@@ -17,7 +22,10 @@ const Categories = ({
   onClearClick,
   showClear = false
 }) => {
+  const [carouselPosition, setCarouselPosition] = React.useState(0);
+
   const visible = categories.filter(category => category.visible);
+  const showControls = visible.length >= minimumNumberOfCarouselItems;
 
   const categoryClickHandler = (event, category) => {
     if (typeof onCategoryClick === "function") {
@@ -34,9 +42,18 @@ const Categories = ({
         )}
       </StyledHeadingWrapper>
       {!!visible.length && (
-        <div>
-          <button>Previous</button>
-          <StyledCategoryList>
+        <StyledListWrapper>
+          {showControls && (
+            <StyledControlButton
+              data-testid="previous"
+              aria-label="Previous"
+              onClick={() => setCarouselPosition(carouselPosition - 1)}
+              disabled={carouselPosition === 0 && "disabled"}
+            >
+              <span aria-hidden>{"<"}</span>
+            </StyledControlButton>
+          )}
+          <StyledCategoryList carouselPosition={carouselPosition}>
             {visible.map(category => (
               <li key={category.id}>
                 <StyledCategoryButton
@@ -47,8 +64,21 @@ const Categories = ({
               </li>
             ))}
           </StyledCategoryList>
-          <button>Next</button>
-        </div>
+          {showControls && (
+            <StyledControlButton
+              data-testid="next"
+              aria-label="Next"
+              onClick={() => setCarouselPosition(carouselPosition + 1)}
+              disabled={
+                (visible.length < 4 ||
+                  carouselPosition === visible.length - 3) &&
+                "disabled"
+              }
+            >
+              <span aria-hidden>{">"}</span>
+            </StyledControlButton>
+          )}
+        </StyledListWrapper>
       )}
     </StyledCategoriesWrapper>
   );

@@ -14,7 +14,7 @@ describe("topic categories", () => {
       },
       {
         title: "Elements",
-        isPublished: false
+        visible: false
       },
       {
         title: "Stickers",
@@ -76,5 +76,60 @@ describe("topic categories", () => {
     );
 
     expect(myFn).toHaveBeenCalled();
+  });
+
+  it("should show 'next' control when there are more categories than visible space", async () => {
+    const categories = [
+      {
+        title: "All",
+        visible: true
+      },
+      {
+        title: "Elements",
+        visible: true
+      },
+      {
+        title: "Stickers",
+        visible: true
+      },
+      {
+        title: "Graphics",
+        visible: true
+      }
+    ].map((category, index) => ({ ...category, id: index }));
+    const { getByTestId } = render(<TopicCategories categories={categories} />);
+
+    expect(getByTestId("previous")).toHaveAttribute("disabled");
+    expect(getByTestId("next")).not.toHaveAttribute("disabled");
+
+    fireEvent(
+      getByTestId("next"),
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true
+      })
+    );
+
+    expect(getByTestId("previous")).not.toHaveAttribute("disabled");
+    expect(getByTestId("next")).toHaveAttribute("disabled");
+  });
+
+  it("should not show controls when not enough visible categories", async () => {
+    const categories = [
+      {
+        title: "All",
+        visible: true
+      },
+      {
+        title: "Elements",
+        visible: true
+      }
+    ].map((category, index) => ({ ...category, id: index }));
+    const { container, queryByTestId } = render(
+      <TopicCategories categories={categories} />
+    );
+
+    expect(queryByTestId(container, "previous")).not.toBeInTheDocument();
+    expect(queryByTestId(container, "next")).not.toBeInTheDocument();
   });
 });
