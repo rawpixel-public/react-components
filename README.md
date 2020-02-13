@@ -1,6 +1,6 @@
 # react-components
 
-![Node.js CI](https://github.com/rawpixel1/react-components/workflows/Node.js%20CI/badge.svg?branch=master&event=push)
+![Test and lint](https://github.com/rawpixel1/react-components/workflows/Test%20and%20lint/badge.svg?branch=master)
 
 RawPixel React component library.
 
