@@ -1,5 +1,7 @@
 # react-components
 
+![Node.js CI](https://github.com/rawpixel1/react-components/workflows/Node.js%20CI/badge.svg?branch=master&event=push)
+
 RawPixel React component library.
 
 ## Install
