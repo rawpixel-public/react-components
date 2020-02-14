@@ -46,6 +46,7 @@ export const StyledText = styled.span`
 export const StyledWidgetsWrapper = styled.div`
   ${props => (props.direction === "column" ? "max-width: 60px;" : null)};
   ${verticalCentreCss};
+  padding: 10px 0;
 `;
 
 export const StyledUnorderedList = styled.ul`

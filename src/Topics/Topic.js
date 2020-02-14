@@ -33,7 +33,9 @@ const Topic = ({
       isLoading={isLoading}
     >
       <StyledImgWrapper className="img-wrapper">
-        {isLoading && <DotLoader className="loader" />}
+        {isLoading && (
+          <DotLoader className="loader" loaderWidth={60} dotSize={10} />
+        )}
         <svg>
           <image xlinkHref={icon} />
         </svg>

@@ -6,7 +6,7 @@ import { StyledTopicsGrid } from "./StyledTopicsGrid";
 import Topic from "./Topic";
 
 // 3 rows of topics' height.
-const defaultHeight = 280;
+const defaultHeight = 240;
 
 const TopicsGrid = ({ topics, onTopicClick, isDAM = false }) => {
   const [height, setHeight] = React.useState(defaultHeight);
@@ -29,7 +29,7 @@ const TopicsGrid = ({ topics, onTopicClick, isDAM = false }) => {
   }, [topics]);
 
   return (
-    <Scrollbars style={{ height, width: 275 }} hideTracksWhenNotNeeded>
+    <Scrollbars style={{ height, width: 225 }} hideTracksWhenNotNeeded>
       <StyledTopicsGrid ref={topicsGridRef}>
         {topics.map(topic => (
           <Topic
@@ -39,7 +39,7 @@ const TopicsGrid = ({ topics, onTopicClick, isDAM = false }) => {
             key={topic.id}
             isDAM={isDAM}
             isLoading={topic.isLoading}
-            topic={topic.isTagged}
+            isTagged={topic.isTagged}
             onTopicClick={e => handleTopicClick(e, topic)}
           />
         ))}

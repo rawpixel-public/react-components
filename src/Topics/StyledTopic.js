@@ -8,7 +8,8 @@ const taggingGreen = "#95BDAA";
 export const StyledTopicButton = styled.button`
   background: none;
   border: none;
-  max-width: 80px;
+  max-width: 60px;
+  min-height: 80px;
   padding-bottom: 5px;
   display: flex;
   flex-direction: column;
@@ -45,18 +46,19 @@ export const StyledTopicButton = styled.button`
 
 export const StyledImgWrapper = styled.div`
   position: relative;
-  height: 70px;
-  width: 80px;
+  height: 50px;
+  width: 60px;
+  border-radius: 0.25em;
 
   svg {
     display: block;
     margin: 5px auto;
-    height: 60px;
-    width: 80px;
+    height: 50px;
+    width: 60px;
 
     image {
-      height: 70px;
-      width: 80px;
+      height: 50px;
+      width: 60px;
       // Cannot access SVG filter/stroke/fill props when loading via URL, so CSS
       // filter is necessary to apply styles to SVG images.
       filter: brightness(0) invert(1);
@@ -65,7 +67,8 @@ export const StyledImgWrapper = styled.div`
 
   .loader {
     position: absolute;
-    top: 30px;
+    top: 20px;
+    left: 2px;
   }
 `;
 

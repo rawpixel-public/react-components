@@ -5,5 +5,6 @@ export const StyledTopicsGrid = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  width: 260px;
+  width: 200px;
+  padding: 10px;
 `;

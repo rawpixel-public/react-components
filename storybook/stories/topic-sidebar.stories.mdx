@@ -1,0 +1,40 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import Centered from "../components/Centered";
+
+import * as stories from "./topic-sidebar.stories.js";
+import {
+  WidgetAddon,
+  WidgetTopicGroup
+} from "@rawpixel-public/react-components";
+
+import "../.storybook/global.css";
+import fontSvg from "../images/font.svg";
+import starSvg from "../images/star.svg";
+
+<Meta title="Topics/Sidebar" decorators={[withKnobs]} />
+
+# Sidebar
+
+Examples of the topics components assembled into sidebar UI.
+
+## DAM
+
+Example for [dam.rawpixel.com](https://dam.rawpixel.com)
+
+<Preview>
+  <Story name="dam">
+    <Centered style={{background: "#F4F4F4"}}>{stories.dam()}</Centered>
+  </Story>
+</Preview>
+
+## Website
+
+Example for [www.rawpixel.com](https://www.rawpixel.com)
+
+<Preview>
+  <Story name="website">
+    <Centered style={{background: "#F4F4F4"}}>{stories.website()}</Centered>
+  </Story>
+</Preview>

@@ -6,7 +6,7 @@ import { fontFamily, palette } from "../utils/cssVars";
 const lighterGray = "#e9e9e9";
 const lightGray = "#7d7c7c";
 const darkGray = "#4b4b4c";
-const categoryButtonWidth = 75;
+const categoryButtonWidth = 60;
 
 export const StyledCategoryButton = styled.button`
   background: #e9e9e9;
@@ -14,7 +14,7 @@ export const StyledCategoryButton = styled.button`
   border-radius: 0.25rem;
   color: ${lightGray};
   font-family: ${fontFamily.base};
-  font-size: 12px;
+  font-size: 10px;
   padding: 5px 10px;
   transition: color linear 250ms, background-color linear 250ms;
   width: ${categoryButtonWidth}px;
@@ -48,8 +48,11 @@ export const StyledClearButton = styled.button`
 `;
 
 export const StyledCategoriesWrapper = styled.div`
-  max-width: 320px;
+  max-width: 210px;
   overflow: hidden;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 `;
 
 export const StyledListWrapper = styled.div`
@@ -77,10 +80,10 @@ export const StyledCategoryList = styled.ul`
   overflow: hidden;
 
   li {
-    margin: 0 5px;
+    margin: 0 2px;
     transition: margin-left ease 200ms;
     &:first-child {
-      margin-left: -${props => props.carouselPosition * (categoryButtonWidth + 10)}px;
+      margin-left: -${props => props.carouselPosition * (categoryButtonWidth + 4)}px;
     }
 
     &:last-child {
@@ -100,6 +103,7 @@ export const StyledControlButton = styled.button`
   border-radius: 0.25rem;
   color: ${palette.grayLight};
   font-family: ${fontFamily.base};
+  font-size: 10px;
   padding: 0;
 
   &:hover {
