@@ -1,5 +1,4 @@
 import React from "react";
-import { queryByText } from "@testing-library/dom";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
