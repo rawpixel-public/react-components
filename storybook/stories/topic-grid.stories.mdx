@@ -46,10 +46,25 @@ Example to show different states and loading.
 
 ## Topics Grid
 
+Displays topics in a grid. Adds a scrollbar when more there are more topics than allocated space.
+
 <Preview>
   <Story name="grid">
-    <Centered style={{background: "#FFF"}}>
+    <Centered style={{background: "#FFF", height: "320px"}}>
       {stories.grid()}
     </Centered>
   </Story>
 </Preview>
+
+## Topics Grid (without scroll)
+
+Displays topics in a grid. No scrollbar with 9 topics or fewer.
+
+<Preview>
+  <Story name="no-scroll">
+    <Centered style={{background: "#FFF", height: "320px"}}>
+      {stories.noScroll()}
+    </Centered>
+  </Story>
+</Preview>
+

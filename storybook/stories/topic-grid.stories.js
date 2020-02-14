@@ -104,6 +104,12 @@ export const grid = () => {
   );
 };
 
+export const noScroll = () => {
+  return (
+    <TopicsGrid topics={topicsData.slice(0, 9)} onTopicClick={action("topic-grid-click")} />
+  );
+};
+
 export const dam = () => {
   const [loading, setLoading] = React.useState(false);
   const [tagged, setTagged] = React.useState(true);
