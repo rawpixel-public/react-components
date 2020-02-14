@@ -1,7 +1,7 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs } from "@storybook/addon-knobs";
-import { WidgetsBar } from "@rawpixel1/react-components";
+import { WidgetsBar } from "@rawpixel-public/react-components";
 
 import backgroundSvg from "../images/background.svg";
 import fontSvg from "../images/font.svg";

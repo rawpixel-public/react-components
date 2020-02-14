@@ -7,17 +7,17 @@ RawPixel React component library.
 ## Install
 
 The library is published to GitHub packages, so the host app will need an `.npmrc`
-file defined to indicate where to look for the `@rawpixel1` packages.
+file defined to indicate where to look for the `@rawpixel-public` packages.
 
 ```text
 # .npmrc contents
-@rawpixel1:registry=https://npm.pkg.github.com
+@rawpixel-public:registry=https://npm.pkg.github.com
 ```
 
 Then add the package via npm/yarn.
 
 ```bash
-npm install --save @rawpixel1/react-components
+npm install --save @rawpixel-public/react-components
 ```
 
 Ensure `peerDependencies` specified are also installed.
@@ -27,7 +27,7 @@ Ensure `peerDependencies` specified are also installed.
 ```jsx
 import React, { Component } from "react";
 
-import MyComponent from "@rawpixel1/rawpixel-components";
+import MyComponent from "@rawpixel-public/rawpixel-components";
 
 class Example extends Component {
   render() {
@@ -56,7 +56,7 @@ cd storybook && yarn start
 ```
 
 Alternatively, you could use `npm link` from your host application to link
-`@rawpixel1/react-components` to your local instance of this repository, then
+`@rawpixel-public/react-components` to your local instance of this repository, then
 develop the component from the host application.
 
 In order to ensure your component can be imported, you need to implement at
@@ -66,7 +66,7 @@ least one of the following:
 import the component like this:
 
 ```jsx
-import { MyComponent } from "@rawpixel1/react-components";
+import { MyComponent } from "@rawpixel-public/react-components";
 
 const Example = () => (
   <div>
@@ -80,7 +80,7 @@ config array to generate it's own file. This would allow imports like this,
 which may be preferable for code-splitting:
 
 ```jsx
-import MyComponent from "@rawpixel1/react-components/dist/my-component";
+import MyComponent from "@rawpixel-public/react-components/dist/my-component";
 
 const Example = () => (
   <div>

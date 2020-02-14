@@ -1,12 +1,12 @@
 {
-  "name": "@rawpixel1/react-components-storybook",
-  "homepage": "https://rawpixel1.github.io/react-components",
+  "name": "@rawpixel-public/react-components-storybook",
+  "homepage": "https://rawpixel-public.github.io/react-components",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rawpixel1/react-components": "link:..",
+    "@rawpixel-public/react-components": "link:..",
     "prop-types": "^15.6.2",
     "react": "^16.12.0",
     "react-dom": "^16.4.1",

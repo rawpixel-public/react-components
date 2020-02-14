@@ -1,6 +1,6 @@
 import React from "react";
 import { withKnobs, text } from "@storybook/addon-knobs";
-import { Topic } from "@rawpixel1/react-components";
+import { Topic } from "@rawpixel-public/react-components";
 import starSvg from "../images/star.svg";
 
 export const dam = () => {
