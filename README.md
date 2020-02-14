@@ -1,7 +1,5 @@
 # react-components
 
-![Test and lint](https://github.com/rawpixel1/react-components/workflows/Test%20and%20lint/badge.svg?branch=master)
-
 RawPixel React component library.
 
 ## Install
