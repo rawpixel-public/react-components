@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 import { fontFamily, palette } from "../utils/cssVars";
 
+const taggedGreen = "#A1D1B7";
+const taggingGreen = "#95BDAA";
+
 export const StyledTopicButton = styled.button`
   background: none;
   border: none;
   max-width: 80px;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,19 +21,25 @@ export const StyledTopicButton = styled.button`
 
     .img-wrapper {
       background: ${props =>
-        props.isTagged ? palette.grayLighter : "#A1D1B7"};
+        props.isTagged
+          ? palette.grayLighter
+          : props.isDAM
+          ? taggedGreen
+          : palette.grayLight};
     }
   }
 
   .img-wrapper {
-    background: ${props => (props.isTagged ? "#A1D1B7" : palette.grayLighter)};
+    background: ${props =>
+      props.isTagged ? taggedGreen : palette.grayLighter};
     transition: background-color linear 250ms;
   }
 
   // Showing the loader sets the disabled attr, so we can use this to style
   // loading state.
   &[disabled] .img-wrapper {
-    background: ${props => (props.isTagged ? palette.grayLight : "#95BDAA")};
+    background: ${props =>
+      props.isTagged || !props.isDAM ? palette.grayLight : taggingGreen};
   }
 `;
 
@@ -39,7 +49,9 @@ export const StyledImgWrapper = styled.div`
   width: 80px;
 
   svg {
-    height: 70px;
+    display: block;
+    margin: 5px auto;
+    height: 60px;
     width: 80px;
 
     image {
@@ -61,5 +73,6 @@ export const StyledTopicTitle = styled.span`
   font-family: ${fontFamily.base};
   font-size: 12px;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.25;
+  margin-top: 2px;
 `;

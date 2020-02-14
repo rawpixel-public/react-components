@@ -27,19 +27,29 @@ Additional states to indicate tagged images used on the DAM.
 <Preview>
   <Story name="topic">
     <Centered style={{background: "#FFF"}}>
-      <Topic id={text("id", 1, "topic")} icon={text("icon", starSvg, "topic")} title={text("title", "My topics", "topic")} isLoading={boolean("isLoading", false, "topic")} isTagged={boolean("isTagged", false, "topic")} onTopicClick={action("topic-click")} />
+      <Topic id={text("id", 1, "topic")} icon={text("icon", starSvg, "topic")} title={text("title", "My topics", "topic")} isLoading={boolean("isLoading", false, "topic")} isTagged={boolean("isTagged", false, "topic")} isDAM={boolean("isDAM", false, "topic")} onTopicClick={action("topic-click")} />
     </Centered>
   </Story>
 </Preview>
 
 ## Topic (DAM)
 
-Example with to show different states and loading.
+Example to show different states and loading.
 
 <Preview>
   <Story name="dam">
     <Centered style={{background: "#FFF"}}>
       {stories.dam()}
+    </Centered>
+  </Story>
+</Preview>
+
+## Topics Grid
+
+<Preview>
+  <Story name="grid">
+    <Centered style={{background: "#FFF"}}>
+      {stories.grid()}
     </Centered>
   </Story>
 </Preview>
