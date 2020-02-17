@@ -1,10 +1,10 @@
 import { SidebarTabs, SidebarTab } from "./sidebar-tabs";
-import Categories from "./Topics/Categories";
-import Topic from "./Topics/Topic";
-import TopicsGrid from "./Topics/TopicsGrid";
-import WidgetTopicGroup from "./Widgets/TopicGroup";
-import WidgetAddon from "./Widgets/Addon";
-import WidgetsBar from "./Widgets/Bar";
+import Categories from "./components/Topics/Categories";
+import Topic from "./components/Topics/Topic";
+import TopicsGrid from "./components/Topics/TopicsGrid";
+import WidgetTopicGroup from "./components/Widgets/TopicGroup";
+import WidgetAddon from "./components/Widgets/Addon";
+import WidgetsBar from "./components/Widgets/Bar";
 
 export {
   Categories,

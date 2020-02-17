@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { fontFamily, palette } from "../utils/cssVars";
+import { fontFamily, palette } from "../../utils/cssVars";
 
 const taggedGreen = "#A1D1B7";
 const taggingGreen = "#95BDAA";

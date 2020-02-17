@@ -3,7 +3,7 @@ import { queryByText } from "@testing-library/dom";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import WidgetsBar from "../Widgets/Bar";
+import { WidgetsBar } from "../index";
 
 describe("widgets bar", () => {
   it("should render published widgets", async () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import Topic from "../Topics/Topic";
+import { Topic } from "../index";
 
 describe("topic", () => {
   it("should render", async () => {

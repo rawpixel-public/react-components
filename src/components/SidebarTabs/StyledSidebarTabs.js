@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ifProp } from "styled-tools";
 
-import { fontFamily, palette } from "../utils/cssVars";
+import { fontFamily, palette } from "../../utils/cssVars";
 
 export const StyledTabs = styled.div``;
 

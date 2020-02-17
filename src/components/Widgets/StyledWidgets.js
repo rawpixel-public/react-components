@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { prop } from "styled-tools";
 
-import { fontFamily, palette } from "../utils/cssVars";
+import { fontFamily, palette } from "../../utils/cssVars";
 
 const verticalCentreCss = css`
   display: flex;

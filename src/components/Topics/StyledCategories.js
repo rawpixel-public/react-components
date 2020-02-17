@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { fontFamily, palette } from "../utils/cssVars";
+import { fontFamily, palette } from "../../utils/cssVars";
 
 // todo: consolidate website and DAM palette.
 const lighterGray = "#e9e9e9";

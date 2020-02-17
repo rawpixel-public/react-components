@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { prop } from "styled-tools";
 import PropTypes from "prop-types";
 
-import { palette } from "../utils/cssVars";
+import { palette } from "../../utils/cssVars";
 
 const initialPosition = width => parseInt(width) / 10;
 const middlePosition = width => parseInt(width) / 2.5;

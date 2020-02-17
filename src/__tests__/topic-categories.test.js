@@ -3,7 +3,7 @@ import { queryByText } from "@testing-library/dom";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import TopicCategories from "../Topics/Categories";
+import { Categories as TopicCategories } from "../index";
 
 describe("topic categories", () => {
   it("should render visible categories", async () => {

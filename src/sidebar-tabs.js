@@ -6,7 +6,7 @@ import {
   StyledTabsContent,
   StyledTabsHeader,
   StyledTabButton
-} from "./SidebarTabs/StyledSidebarTabs";
+} from "./components/SidebarTabs/StyledSidebarTabs";
 
 const SidebarTabs = ({ children, activeTab, onTabChange }) => {
   const [activeIndex, setActiveIndex] = useState(activeTab || 0);
