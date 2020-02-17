@@ -32,7 +32,7 @@ export const StyledTopicButton = styled.button`
 
   .img-wrapper {
     background: ${props =>
-      props.isTagged ? taggedGreen : palette.grayLighter};
+      props.isTagged && props.isDAM ? taggedGreen : palette.grayLighter};
     transition: background-color linear 250ms;
   }
 

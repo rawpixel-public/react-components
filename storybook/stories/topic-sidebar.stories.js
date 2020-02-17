@@ -9,14 +9,14 @@ import {
 } from "@rawpixel-public/react-components";
 import { widgets, topics, categories } from "./topic-sidebar.data";
 
-const Sidebar = styled.div`
-  background: #fff;
+const StyledSidebar = styled.div`
+  background: ${props => (props.isDAM ? "#FFF" : "#F4F4F4")};
   display: flex;
   flex-direction: row;
   width: 280px;
 `;
 
-export const dam = () => {
+const ExampleSidebar = ({ isDAM }) => {
   const [topicData, setTopicData] = React.useState(topics);
   const [title, setTitle] = React.useState(widgets[0].title);
   const [activeFilter, setActiveFilter] = React.useState(0);
@@ -51,14 +51,18 @@ export const dam = () => {
   };
 
   return (
-    <Sidebar>
+    <StyledSidebar isDAM={isDAM}>
       <div>
         <Categories
           title={title}
           categories={categories}
           onCategoryClick={action("category-click")}
         />
-        <TopicsGrid topics={topicData} onTopicClick={handleTopicClick} isDAM />
+        <TopicsGrid
+          topics={topicData}
+          onTopicClick={handleTopicClick}
+          isDAM={isDAM}
+        />
       </div>
       <div>
         <WidgetsBar
@@ -67,11 +71,17 @@ export const dam = () => {
           activeWidget={activeFilter}
         />
       </div>
-    </Sidebar>
+    </StyledSidebar>
   );
 };
 
-export const website = () => {};
+export const dam = () => {
+  return <ExampleSidebar isDAM />;
+};
+
+export const website = () => {
+  return <ExampleSidebar isDAM={false} />;
+};
 
 export default {
   title: "Topics/Sidebar",
