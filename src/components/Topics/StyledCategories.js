@@ -48,7 +48,7 @@ export const StyledClearButton = styled.button`
 `;
 
 export const StyledCategoriesWrapper = styled.div`
-  max-width: 210px;
+  max-width: 220px;
   overflow: hidden;
   padding-left: 10px;
   padding-bottom: 10px;
