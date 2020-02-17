@@ -2,3 +2,7 @@ html,
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "Dam Icons";
 }
+
+* {
+  box-sizing: border-box;
+}

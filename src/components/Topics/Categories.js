@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Heading from "../../atoms/Heading";
+
 import {
   StyledCategoriesWrapper,
   StyledCategoryButton,
-  StyledCategoryHeading,
   StyledCategoryList,
   StyledClearButton,
   StyledControlButton,
@@ -36,7 +37,7 @@ const Categories = ({
   return (
     <StyledCategoriesWrapper>
       <StyledHeadingWrapper>
-        <StyledCategoryHeading>{title}</StyledCategoryHeading>
+        <Heading level={3}>{title}</Heading>
         {showClear && (
           <StyledClearButton onClick={onClearClick}>Clear</StyledClearButton>
         )}

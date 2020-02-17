@@ -1,29 +1,17 @@
 import styled from "styled-components";
+import Button from "../../atoms/Button";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
 // todo: consolidate website and DAM palette.
 const lighterGray = "#e9e9e9";
 const lightGray = "#7d7c7c";
-const darkGray = "#4b4b4c";
 const categoryButtonWidth = 60;
 
-export const StyledCategoryButton = styled.button`
-  background: #e9e9e9;
-  border: none;
-  border-radius: 0.25rem;
-  color: ${lightGray};
-  font-family: ${fontFamily.base};
+export const StyledCategoryButton = styled(Button)`
   font-size: 10px;
   padding: 5px 10px;
-  transition: color linear 250ms, background-color linear 250ms;
   width: ${categoryButtonWidth}px;
-
-  &:hover {
-    cursor: pointer;
-    background: ${darkGray};
-    color: ${palette.white};
-  }
 `;
 
 export const StyledClearButton = styled.button`
@@ -38,7 +26,7 @@ export const StyledClearButton = styled.button`
   padding: 5px 10px;
   position: absolute;
   right: 0;
-  top: 0;
+  top: -3px;
   transition: background-color linear 250ms;
 
   &:hover {
@@ -60,14 +48,6 @@ export const StyledListWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
-`;
-
-export const StyledCategoryHeading = styled.h3`
-  color: ${darkGray};
-  display: inline;
-  font-family: ${fontFamily.base};
-  font-weight: normal;
-  font-size: 16px;
 `;
 
 export const StyledCategoryList = styled.ul`
@@ -94,7 +74,6 @@ export const StyledCategoryList = styled.ul`
 
 export const StyledHeadingWrapper = styled.div`
   position: relative;
-  padding: 5px 0 15px;
 `;
 
 export const StyledControlButton = styled.button`

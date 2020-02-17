@@ -1,0 +1,57 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import Centered from "../components/Centered";
+
+import * as stories from "./topic-sidebar.stories.js";
+import {
+  Button
+} from "@rawpixel-public/react-components";
+
+import "../.storybook/global.css";
+
+<Meta title="Atoms/Button" decorators={[withKnobs]} />
+
+# Button
+
+Styled button component. Extendable using `styled-components` extension e.g:
+
+```
+import { Button } from "@rawpixel-public/react-components";
+
+const RedButton = styled(Button)`
+  color: red;
+`;
+```
+
+Use `as` prop to render different elements (see examples);
+
+## Button
+
+A regular `<button>` component.
+
+<Preview>
+  <Story name="button">
+    <Button onClick={action("button-click")} style={{width: "200px"}}>{text("children", "Click me!", "button")}</Button>
+  </Story>
+</Preview>
+
+## Link
+
+Render `as` an `a` tag and add an `href` prop.
+
+<Preview>
+  <Story name="link">
+    <Button as="a" href="https://www.rawpixel.com" style={{width: "200px"}}>{text("children", "Link elsewhere", "link")}</Button>
+  </Story>
+</Preview>
+
+## Input
+
+Render `as` and `input` tag and add a `type="submit"` prop. Note that the button text must be supplied as the `value` prop, as React does not allow this element to use `children`.
+
+<Preview>
+  <Story name="submit">
+    <Button as="input" type="submit" onClick={action("submit-click")} style={{width: "200px"}} value={text("value", "Submit button", "input")} />
+  </Story>
+</Preview>

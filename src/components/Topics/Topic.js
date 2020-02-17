@@ -7,7 +7,7 @@ import {
   StyledTopicTitle
 } from "./StyledTopic";
 
-import DotLoader from "../Loader/DotLoader";
+import DotLoader from "../../atoms/Loader/DotLoader";
 
 const Topic = ({
   id,

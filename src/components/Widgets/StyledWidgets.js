@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { prop } from "styled-tools";
+import HorizontalRule from "../../atoms/HorizontalRule";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -60,20 +61,14 @@ export const StyledListItem = styled.li`
   margin-bottom: 10px;
 `;
 
-export const StyledHR = styled.hr`
-  background: ${palette.grayLighter};
-  border: none;
+export const StyledHR = styled(HorizontalRule)`
+  width: 40px;
 
   ${props =>
-    props.direction === "row"
-      ? css`
-          margin: 0 10px;
-          height: 40px;
-          width: 2px;
-        `
-      : css`
-          margin-bottom: 10px;
-          height: 2px;
-          width: 40px;
-        `};
+    props.direction === "row" &&
+    css`
+      margin: 0 10px;
+      height: 40px;
+      width: 2px;
+    `};
 `;
