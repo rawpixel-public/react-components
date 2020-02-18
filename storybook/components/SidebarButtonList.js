@@ -12,7 +12,7 @@ const StyledList = styled.ul`
 `;
 
 const StyledListItem = styled.li`
-  width: 100px;
+  width: ${props => (210 - 5 * props.itemsPerRow) / props.itemsPerRow}px;
   margin-bottom: 5px;
 
   &:first-child {
@@ -24,12 +24,14 @@ const StyledWrapper = styled.div`
   padding: 0 10px;
 `;
 
-export default ({ children, title }) => (
+export default ({ children, title, itemsPerRow = 2 }) => (
   <StyledWrapper>
     {title}
     <StyledList>
       {React.Children.toArray(children).map((item, index) => (
-        <StyledListItem key={index}>{item}</StyledListItem>
+        <StyledListItem key={index} itemsPerRow={itemsPerRow}>
+          {item}
+        </StyledListItem>
       ))}
     </StyledList>
   </StyledWrapper>

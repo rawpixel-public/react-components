@@ -19,7 +19,7 @@ const StyledSidebar = styled.div`
   border-radius: 0.25em;
   display: flex;
   flex-direction: row;
-  padding: 0 0 10px 0;
+  padding: 10px 0;
   width: 280px;
 `;
 
@@ -27,6 +27,8 @@ const ExampleSidebar = ({ isDAM }) => {
   const [topicData, setTopicData] = React.useState(topics);
   const [title, setTitle] = React.useState(widgets[0].title);
   const [activeFilter, setActiveFilter] = React.useState(0);
+  const [live, setLive] = React.useState(false);
+  const [score, setScore] = React.useState(0);
 
   const handleFilterClick = (e, filter) => {
     setTitle(filter.title);
@@ -60,6 +62,32 @@ const ExampleSidebar = ({ isDAM }) => {
   return (
     <StyledSidebar isDAM={isDAM}>
       <div>
+        {isDAM && (
+          <>
+            <SidebarButtonList>
+              <Button>Details</Button>
+              <Button active>Topics</Button>
+            </SidebarButtonList>
+            <SidebarButtonList itemsPerRow={3}>
+              <Button size="small">Boards</Button>
+              <Button size="small">Tag</Button>
+              <Button size="small" active>Scores</Button>
+            </SidebarButtonList>
+            <SidebarButtonList>
+              <Button>leaves</Button>
+              <div
+                style={{ textAlign: "center", padding: "5px 0", color: "#bbb" }}
+              >
+                {700 + score} ({score})
+              </div>
+            </SidebarButtonList>
+            <SidebarButtonList>
+              <Button onClick={() => setScore(score + 50)}>+50</Button>
+              <Button onClick={() => setScore(score - 50)}>-50</Button>
+            </SidebarButtonList>
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
         <Categories
           title={title}
           categories={categories}
@@ -70,6 +98,19 @@ const ExampleSidebar = ({ isDAM }) => {
           onTopicClick={handleTopicClick}
           isDAM={isDAM}
         />
+        {isDAM && (
+          <>
+            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarButtonList>
+              <Button active={live} onClick={() => setLive(!live)}>
+                Live
+              </Button>
+              <Button active={!live} onClick={() => setLive(!live)}>
+                Unpublished
+              </Button>
+            </SidebarButtonList>
+          </>
+        )}
         <HorizontalRule style={{ width: "200px" }} />
         <SidebarButtonList title={<Heading level={3}>File type</Heading>}>
           <Button

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Button from "../../atoms/Button";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -7,12 +6,6 @@ import { fontFamily, palette } from "../../utils/cssVars";
 const lighterGray = "#e9e9e9";
 const lightGray = "#7d7c7c";
 const categoryButtonWidth = 60;
-
-export const StyledCategoryButton = styled(Button)`
-  font-size: 10px;
-  padding: 5px 10px;
-  width: ${categoryButtonWidth}px;
-`;
 
 export const StyledClearButton = styled.button`
   background: transparent;
@@ -40,7 +33,6 @@ export const StyledCategoriesWrapper = styled.div`
   overflow: hidden;
   padding-left: 10px;
   padding-bottom: 10px;
-  padding-top: 10px;
 `;
 
 export const StyledListWrapper = styled.div`
@@ -62,6 +54,7 @@ export const StyledCategoryList = styled.ul`
   li {
     margin: 0 2px;
     transition: margin-left ease 200ms;
+    min-width: ${categoryButtonWidth}px;
     &:first-child {
       margin-left: -${props => props.carouselPosition * (categoryButtonWidth + 4)}px;
     }

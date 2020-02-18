@@ -29,22 +29,5 @@ export const palette = {
 };
 
 export const fontFamily = {
-  base: '"Helvetica Neue LT W01_41488878", Arial, sans-serif'
-};
-
-export const srOnly = {
-  position: "absolute",
-  width: "1px",
-  height: "1px",
-  padding: 0,
-  margin: "-1px",
-  overflow: "hidden",
-  clip: "rect(0,0,0,0)",
-  border: 0
-};
-
-export const clearFix = {
-  content: " ",
-  display: "table",
-  clear: "both"
+  base: '"Helvetica Neue LT W01_41488878", "Helvetica Neue", Arial, sans-serif'
 };

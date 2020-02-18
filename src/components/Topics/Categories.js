@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Heading from "../../atoms/Heading";
+import Button from "../../atoms/Button";
 
 import {
   StyledCategoriesWrapper,
-  StyledCategoryButton,
   StyledCategoryList,
   StyledClearButton,
   StyledControlButton,
@@ -57,11 +57,12 @@ const Categories = ({
           <StyledCategoryList carouselPosition={carouselPosition}>
             {visible.map(category => (
               <li key={category.id}>
-                <StyledCategoryButton
+                <Button
+                  size="xsmall"
                   onClick={e => categoryClickHandler(e, category)}
                 >
                   {category.title}
-                </StyledCategoryButton>
+                </Button>
               </li>
             ))}
           </StyledCategoryList>

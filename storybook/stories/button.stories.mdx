@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import Centered from "../components/Centered";
 
 import * as stories from "./topic-sidebar.stories.js";
@@ -28,11 +28,13 @@ Use `as` prop to render different elements (see examples);
 
 ## Button
 
-A regular `<button>` component.
+A regular `<button>` component with an `onClick` prop.
+
+The `disabled` prop can be set to `true` to disable the button (e.g. for loading states etc). If no `onClick` or `href` is supplied, the button will have the disabled attribute.
 
 <Preview>
   <Story name="button">
-    <Button onClick={action("button-click")} style={{width: "200px"}}>{text("children", "Click me!", "button")}</Button>
+    <Button active={boolean("active", false, "button")} onClick={action("button-click")} disabled={boolean("disabled", false, "button")} loading={boolean("loading", false, "button")} size={select("size", ["xsmall", "small", "medium", "large", "xlarge"], "medium", "button")} style={{width: "200px"}}>{text("children", "Click me!", "button")}</Button>
   </Story>
 </Preview>
 
@@ -40,9 +42,11 @@ A regular `<button>` component.
 
 Render `as` an `a` tag and add an `href` prop.
 
+Additional HTML attributes can be used as per a regular anchor tag e.g. `target=_blank`, `rel=noopener` etc.
+
 <Preview>
   <Story name="link">
-    <Button as="a" href="https://www.rawpixel.com" style={{width: "200px"}}>{text("children", "Link elsewhere", "link")}</Button>
+    <Button as="a" href="https://www.rawpixel.com" target={text("target", "_blank", "link")} style={{width: "200px"}}>{text("children", "Link elsewhere", "link")}</Button>
   </Story>
 </Preview>
 
