@@ -4,9 +4,7 @@ import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import Centered from "../components/Centered";
 
 import * as stories from "./topic-sidebar.stories.js";
-import {
-  Button
-} from "@rawpixel-public/react-components";
+import Button from "@rawpixel-public/react-components/dist/button";
 
 import "../.storybook/global.css";
 
@@ -17,7 +15,7 @@ import "../.storybook/global.css";
 Styled button component. Extendable using `styled-components` extension e.g:
 
 ```
-import { Button } from "@rawpixel-public/react-components";
+import Button from "@rawpixel-public/react-components/dist/button";
 
 const RedButton = styled(Button)`
   color: red;
