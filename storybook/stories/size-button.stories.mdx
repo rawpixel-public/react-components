@@ -1,0 +1,29 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
+import Centered from "../components/Centered";
+
+import * as stories from "./topic-sidebar.stories.js";
+import { SizeButton } from "@rawpixel-public/react-components";
+
+import "../.storybook/global.css";
+
+<Meta title="Atoms/Size Button" decorators={[withKnobs]} />
+
+# Size Button
+
+Styled button component.
+
+Use `as` prop to render different elements (see examples);
+
+## Button
+
+A `<button>` component with an `onClick` prop. Set block dimensions using `height` and `width` props.
+
+The `disabled` prop can be set to `true` to disable the button (e.g. for loading states etc).
+
+<Preview>
+  <Story name="button">
+    <SizeButton active={boolean("active", false, "button")} onClick={action("button-click")} disabled={boolean("disabled", false, "button")} height={number("height", 40, "button")} width={number("width", 30, "button")} title={text("title", "Portrait", "button")} />
+  </Story>
+</Preview>

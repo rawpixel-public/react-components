@@ -2,6 +2,7 @@ import { SidebarTabs, SidebarTab } from "./sidebar-tabs";
 import Button from "./atoms/Button";
 import Heading from "./atoms/Heading";
 import HorizontalRule from "./atoms/HorizontalRule";
+import SizeButton from "./atoms/SizeButton";
 import Categories from "./components/Topics/Categories";
 import Topic from "./components/Topics/Topic";
 import TopicsGrid from "./components/Topics/TopicsGrid";
@@ -13,6 +14,7 @@ export {
   Button,
   Heading,
   HorizontalRule,
+  SizeButton,
   Categories,
   SidebarTabs,
   SidebarTab,
@@ -27,6 +29,7 @@ export default {
   Button,
   Heading,
   HorizontalRule,
+  SizeButton,
   Categories,
   SidebarTabs,
   SidebarTab,

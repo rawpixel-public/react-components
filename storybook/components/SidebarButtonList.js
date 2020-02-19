@@ -12,6 +12,8 @@ const StyledList = styled.ul`
 `;
 
 const StyledListItem = styled.li`
+  display: flex;
+  justify-content: center;
   width: ${props => (210 - 5 * props.itemsPerRow) / props.itemsPerRow}px;
   margin-bottom: 5px;
 
@@ -22,6 +24,7 @@ const StyledListItem = styled.li`
 
 const StyledWrapper = styled.div`
   padding: 0 10px;
+  margin-top: 10px;
 `;
 
 export default ({ children, title, itemsPerRow = 2 }) => (

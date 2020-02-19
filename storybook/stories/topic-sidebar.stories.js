@@ -6,6 +6,7 @@ import {
   Button,
   Heading,
   HorizontalRule,
+  SizeButton,
   WidgetsBar,
   TopicsGrid,
   Categories
@@ -71,7 +72,9 @@ const ExampleSidebar = ({ isDAM }) => {
             <SidebarButtonList itemsPerRow={3}>
               <Button size="small">Boards</Button>
               <Button size="small">Tag</Button>
-              <Button size="small" active>Scores</Button>
+              <Button size="small" active>
+                Scores
+              </Button>
             </SidebarButtonList>
             <SidebarButtonList>
               <Button>leaves</Button>
@@ -152,6 +155,22 @@ const ExampleSidebar = ({ isDAM }) => {
           <Button onClick={action("sidebar-button-click")}>Stickers</Button>
           <Button onClick={action("sidebar-button-click")}>Remix</Button>
         </SidebarButtonList>
+        {!isDAM && (
+          <>
+            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarButtonList title={<Heading level={3}>Sizes</Heading>}>
+              <SizeButton title="Portrait" height={40} width={30} />
+              <SizeButton title="Landscape" height={30} width={40} />
+              <SizeButton title="Social" height={40} width={40} />
+              <SizeButton title="Banner 2:1" height={20} width={40} />
+              <SizeButton title="Pinterest 2:3" height={45} width={30} />
+              <SizeButton title="Landscape 16:9" height={27} width={48} />
+              <SizeButton title="Story 9:16" height={48} width={27} />
+              <SizeButton title="Banner 3:1" height={15} width={45} />
+              <SizeButton title="Banner 5:7" height={40} width={30} />
+            </SidebarButtonList>
+          </>
+        )}
       </div>
 
       <div>
