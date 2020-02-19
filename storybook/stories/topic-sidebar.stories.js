@@ -92,6 +92,7 @@ const ExampleSidebar = ({ isDAM }) => {
           title={title}
           categories={categories}
           onCategoryClick={action("category-click")}
+          showClear={!isDAM}
         />
         <TopicsGrid
           topics={topicData}

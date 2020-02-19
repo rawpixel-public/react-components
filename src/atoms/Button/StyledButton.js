@@ -14,7 +14,7 @@ export const StyledButton = styled.button`
   border-radius: 0.25rem;
   color: ${ifProp("active", palette.white, lightGray)};
   display: block;
-  flex: 1 1 0;
+  flex: 0 1 auto;
   font-family: ${fontFamily.base};
   font-size: ${switchProp("size", {
     xsmall: "10px",

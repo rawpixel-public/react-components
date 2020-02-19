@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars";
 
-import { StyledTopicsGrid } from "./StyledTopicsGrid";
+import { StyledTopicsGrid, StyledScrollbar } from "./StyledTopicsGrid";
 import Topic from "./Topic";
 
 // 3 rows of topics' height.
@@ -29,7 +29,11 @@ const TopicsGrid = ({ topics, onTopicClick, isDAM = false }) => {
   }, [topics]);
 
   return (
-    <Scrollbars style={{ height, width: 225 }} hideTracksWhenNotNeeded>
+    <Scrollbars
+      style={{ height, width: 225 }}
+      hideTracksWhenNotNeeded
+      renderThumbVertical={props => <StyledScrollbar {...props} />}
+    >
       <StyledTopicsGrid ref={topicsGridRef}>
         {topics.map(topic => (
           <Topic

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { fontFamily, palette } from "../../utils/cssVars";
 
 // todo: consolidate website and DAM palette.
-const lighterGray = "#e9e9e9";
 const lightGray = "#7d7c7c";
 const categoryButtonWidth = 60;
 
@@ -19,12 +18,11 @@ export const StyledClearButton = styled.button`
   padding: 5px 10px;
   position: absolute;
   right: 0;
-  top: -3px;
+  top: -4px;
   transition: background-color linear 250ms;
 
   &:hover {
     cursor: pointer;
-    background: ${lighterGray};
   }
 `;
 
