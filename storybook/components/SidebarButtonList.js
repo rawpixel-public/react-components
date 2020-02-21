@@ -24,7 +24,6 @@ const StyledListItem = styled.li`
 
 const StyledWrapper = styled.div`
   padding: 0 10px;
-  margin-top: 10px;
 `;
 
 export default ({ children, title, itemsPerRow = 2 }) => (

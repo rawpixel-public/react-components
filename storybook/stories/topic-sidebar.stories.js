@@ -9,7 +9,8 @@ import {
   SizeButton,
   WidgetsBar,
   TopicsGrid,
-  Categories
+  Categories,
+  FilterButtonGroup
 } from "@rawpixel-public/react-components";
 
 import { topics } from "./topic-sidebar.data";
@@ -25,7 +26,33 @@ const StyledSidebar = styled.div`
   width: 300px;
 `;
 
-const ExampleSidebar = ({ isDAM }) => {
+const getFilterGroups = (site, widget) => {
+  const { websiteFilters = {}, damFilters = {} } = widget;
+  const { main, fileTypes, filters: filtersWebsite } = websiteFilters;
+  const { team = {}, website = {} } = damFilters;
+  const { filters: filtersDamWeb } = website;
+  const { filters: filtersDamTeam, secondaryFilters } = team;
+
+  const getFiltersBySite = site => {
+    switch (site) {
+      case "dam-website":
+        return filtersDamWeb;
+      case "dam-team":
+        return filtersDamTeam;
+      case "website":
+        return filtersWebsite;
+    }
+  };
+
+  return {
+    main,
+    fileTypes,
+    filters: getFiltersBySite(site),
+    ...(site === "dam-team" && { secondaryFilters })
+  };
+};
+
+const ExampleSidebar = ({ isDAM, isTeam }) => {
   const { widgets } = useTopicWidgets();
 
   const [topicData, setTopicData] = React.useState(topics);
@@ -39,6 +66,11 @@ const ExampleSidebar = ({ isDAM }) => {
       ...[{ name: "All" }],
       ...activeWidget.subCategories
     ];
+  const site = isDAM ? (isTeam ? "dam-team" : "dam-website") : "website";
+  const { main, fileTypes, filters, secondaryFilters } = getFilterGroups(
+    site,
+    activeWidget
+  );
 
   React.useEffect(() => {
     if (!title && widgets.length) {
@@ -131,45 +163,43 @@ const ExampleSidebar = ({ isDAM }) => {
           </>
         )}
         <HorizontalRule style={{ width: "200px" }} />
-        <SidebarButtonList title={<Heading level={3}>File type</Heading>}>
-          <Button
-            as="a"
-            href="https://www.rawpixel.com/search/trending?sort=curated&type=photos&page=1"
-          >
-            JPG / TIFF
-          </Button>
-          <Button
-            as="a"
-            href="https://www.rawpixel.com/search/trending?sort=curated&type=vectors&page=1"
-          >
-            Vectors
-          </Button>
-          <Button
-            as="a"
-            href="https://www.rawpixel.com/search/trending?sort=curated&type=psd&page=1"
-          >
-            PSD
-          </Button>
-          <Button
-            as="a"
-            href="https://www.rawpixel.com/search/trending?sort=curated&type=png&page=1"
-          >
-            PSD
-          </Button>
-          <Button
-            as="a"
-            href="https://www.rawpixel.com/search/trending?sort=curated&type=svg&page=1"
-          >
-            SVG
-          </Button>
-        </SidebarButtonList>
-        <HorizontalRule style={{ width: "200px" }} />
-        <SidebarButtonList>
-          <Button onClick={action("sidebar-button-click")}>Backgrounds</Button>
-          <Button onClick={action("sidebar-button-click")}>Frames</Button>
-          <Button onClick={action("sidebar-button-click")}>Stickers</Button>
-          <Button onClick={action("sidebar-button-click")}>Remix</Button>
-        </SidebarButtonList>
+        {main && (
+          <>
+            <FilterButtonGroup
+              filters={main}
+              onFilterClick={action("main-filter-click")}
+            />
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
+        {fileTypes && (
+          <>
+            <FilterButtonGroup
+              title="File types"
+              filters={fileTypes}
+              onFilterClick={action("filetypes-filter-click")}
+            />
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
+        {filters && (
+          <>
+            <FilterButtonGroup
+              filters={filters}
+              onFilterClick={action("filters-filter-click")}
+            />
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
+        {isDAM && isTeam && secondaryFilters && (
+          <>
+            <FilterButtonGroup
+              filters={secondaryFilters}
+              onFilterClick={action("secondary-filters-filter-click")}
+            />
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
         {!isDAM && (
           <>
             <HorizontalRule style={{ width: "200px" }} />
@@ -205,6 +235,10 @@ export const dam = () => {
 
 export const website = () => {
   return <ExampleSidebar isDAM={false} />;
+};
+
+export const team = () => {
+  return <ExampleSidebar isDAM isTeam />;
 };
 
 export default {
