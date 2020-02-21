@@ -17,63 +17,63 @@ const widgetsData = [
   {
     title: "My topics",
     url: "https://www.rawpixel.com/search/my+topics?sort=curated&page=1",
-    icon: starSvg,
-    type: "filter",
+    filter_icon: starSvg,
+    type: "topic_group",
     isPublished: true
   },
   {
     title: "Trending",
     url: "https://www.rawpixel.com/search/trending?sort=curated&page=1",
-    icon: trendingSvg,
-    type: "filter",
+    filter_icon: trendingSvg,
+    type: "topic_group",
     isPublished: true
   },
   {
     title: "Stickers",
     url: "https://www.rawpixel.com/search/stickers?sort=curated&page=1",
-    icon: stickerSvg,
-    type: "filter",
+    filter_icon: stickerSvg,
+    type: "topic_group",
     isPublished: true
   },
   {
     title: "Photos",
     url: "https://www.rawpixel.com/search/photos?sort=curated&page=1",
-    icon: backgroundSvg,
-    type: "filter",
+    filter_icon: backgroundSvg,
+    type: "topic_group",
     isPublished: true
   },
   {
     title: "Graphics",
     url: "https://www.rawpixel.com/search/graphics?sort=curated&page=1",
-    icon: resizeSvg,
-    type: "filter",
+    filter_icon: resizeSvg,
+    type: "topic_group",
     isPublished: true
   },
   {
     title: "Templates",
     url: "https://www.rawpixel.com/search/templates?sort=curated&page=1",
-    icon: templateSvg,
-    type: "filter",
+    filter_icon: templateSvg,
+    type: "topic_group",
     isPublished: true
   },
   {
     title: "Public domain",
     url: "https://www.rawpixel.com/search/public+domain?sort=curated&page=1",
-    icon: leafSvg,
-    type: "filter",
+    filter_icon: leafSvg,
+    type: "topic_group",
     isPublished: true
   },
   {
     title: "Fonts",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
-    icon: fontSvg,
+    filter_icon: fontSvg,
     type: "addon",
     isPublished: true
   },
   {
     title: "Lightroom Presets",
     url: "https://www.rawpixel.com/search/lightroom?sort=curated&page=1",
-    icon: slidersSvg,
+    filter_icon: slidersSvg,
     type: "addon",
     isPublished: true
   }

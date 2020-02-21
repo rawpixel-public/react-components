@@ -98,27 +98,27 @@ export const topics = [
 export const categories = [
   {
     id: 1,
-    title: "All",
+    name: "All",
     visible: true
   },
   {
     id: 2,
-    title: "Elements",
+    name: "Elements",
     visible: true
   },
   {
     id: 3,
-    title: "Stickers",
+    name: "Stickers",
     visible: true
   },
   {
     id: 4,
-    title: "Photos",
+    name: "Photos",
     visible: false
   },
   {
     id: 5,
-    title: "Wallpaper",
+    name: "Wallpaper",
     visible: true
   }
 ];

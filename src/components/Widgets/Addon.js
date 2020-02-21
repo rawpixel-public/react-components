@@ -4,16 +4,16 @@ import React from "react";
 import { StyledAnchor, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
 
-const WidgetAddon = ({ title, icon, href }) => (
+const WidgetAddon = ({ title, filter_icon, href }) => (
   <StyledAnchor href={href}>
-    <WidgetIcon href={icon} />
+    <WidgetIcon href={filter_icon} />
     <StyledText>{title}</StyledText>
   </StyledAnchor>
 );
 
 WidgetAddon.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  filter_icon: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired
 };
 

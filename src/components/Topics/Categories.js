@@ -24,9 +24,7 @@ const Categories = ({
   showClear = false
 }) => {
   const [carouselPosition, setCarouselPosition] = React.useState(0);
-
-  const visible = categories.filter(category => category.visible);
-  const showControls = visible.length >= minimumNumberOfCarouselItems;
+  const showControls = categories.length >= minimumNumberOfCarouselItems;
 
   const categoryClickHandler = (event, category) => {
     if (typeof onCategoryClick === "function") {
@@ -42,7 +40,7 @@ const Categories = ({
           <StyledClearButton onClick={onClearClick}>Clear</StyledClearButton>
         )}
       </StyledHeadingWrapper>
-      {!!visible.length && (
+      {!!categories.length && (
         <StyledListWrapper>
           {showControls && (
             <StyledControlButton
@@ -55,13 +53,13 @@ const Categories = ({
             </StyledControlButton>
           )}
           <StyledCategoryList carouselPosition={carouselPosition}>
-            {visible.map(category => (
+            {categories.map(category => (
               <li key={category.id}>
                 <Button
                   size="xsmall"
                   onClick={e => categoryClickHandler(e, category)}
                 >
-                  {category.title}
+                  {category.name}
                 </Button>
               </li>
             ))}
@@ -72,8 +70,8 @@ const Categories = ({
               aria-label="Next"
               onClick={() => setCarouselPosition(carouselPosition + 1)}
               disabled={
-                (visible.length < 4 ||
-                  carouselPosition === visible.length - 3) &&
+                (categories.length < 4 ||
+                  carouselPosition === categories.length - 3) &&
                 "disabled"
               }
             >

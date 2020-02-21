@@ -12,8 +12,9 @@ import {
   Categories
 } from "@rawpixel-public/react-components";
 
-import { widgets, topics, categories } from "./topic-sidebar.data";
+import { topics } from "./topic-sidebar.data";
 import SidebarButtonList from "../components/SidebarButtonList";
+import useTopicWidgets from "../hooks/useTopicWidgets";
 
 const StyledSidebar = styled.div`
   background: ${props => (props.isDAM ? "#FFF" : "#F4F4F4")};
@@ -21,15 +22,29 @@ const StyledSidebar = styled.div`
   display: flex;
   flex-direction: row;
   padding: 10px 0;
-  width: 280px;
+  width: 300px;
 `;
 
 const ExampleSidebar = ({ isDAM }) => {
+  const { widgets } = useTopicWidgets();
+
   const [topicData, setTopicData] = React.useState(topics);
-  const [title, setTitle] = React.useState(widgets[0].title);
+  const [title, setTitle] = React.useState("");
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
+  const activeWidget = widgets.length && widgets[activeFilter];
+  const categories = activeWidget &&
+    activeWidget.subCategories.length && [
+      ...[{ name: "All" }],
+      ...activeWidget.subCategories
+    ];
+
+  React.useEffect(() => {
+    if (!title && widgets.length) {
+      setTitle(widgets[activeFilter].title);
+    }
+  }, [widgets]);
 
   const handleFilterClick = (e, filter) => {
     setTitle(filter.title);

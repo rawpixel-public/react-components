@@ -13,13 +13,13 @@ export const StyledClearButton = styled.button`
   color: ${lightGray};
   display: block;
   font-family: ${fontFamily.base};
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   padding: 5px 10px;
   position: absolute;
   right: 0;
-  top: -4px;
-  transition: background-color linear 250ms;
+  top: -2px;
+  width: auto;
 
   &:hover {
     cursor: pointer;
@@ -28,6 +28,7 @@ export const StyledClearButton = styled.button`
 
 export const StyledCategoriesWrapper = styled.div`
   max-width: 220px;
+  min-height: 66px;
   overflow: hidden;
   padding-left: 10px;
   padding-bottom: 10px;

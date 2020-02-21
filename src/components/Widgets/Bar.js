@@ -16,7 +16,6 @@ const WidgetsBar = ({
   direction = "column"
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(activeWidget);
-  const published = widgets.filter(widget => widget.isPublished);
 
   if (activeWidget !== undefined && activeWidget !== activeIndex) {
     setActiveIndex(activeWidget);
@@ -31,12 +30,12 @@ const WidgetsBar = ({
     }
   };
 
-  const filters = published
-    .filter(widget => widget.type === "filter")
+  const filters = widgets
+    .filter(widget => widget.type === "topic_group")
     .map(widget => (
       <StyledListItem key={widget.title}>
         <TopicGroup
-          icon={widget.icon}
+          filter_icon={widget.filter_icon}
           title={widget.title}
           onClick={e => filterClickHandler(e, widget)}
           active={widgets.indexOf(widget) === activeIndex}
@@ -44,26 +43,28 @@ const WidgetsBar = ({
       </StyledListItem>
     ));
 
-  const addons = published
+  const addons = widgets
     .filter(widget => widget.type === "addon")
     .map(widget => (
       <StyledListItem key={widget.title}>
-        <Addon icon={widget.icon} href={widget.url} title={widget.title} />
+        <Addon
+          filter_icon={widget.filter_icon}
+          href={widget.url}
+          title={widget.title}
+        />
       </StyledListItem>
     ));
 
   return (
-    !!published.length && (
-      <StyledWidgetsWrapper direction={direction}>
-        <StyledUnorderedList direction={direction}>
-          {filters}
-          {!!filters.length && !!addons.length && (
-            <StyledHR direction={direction} />
-          )}
-          {addons}
-        </StyledUnorderedList>
-      </StyledWidgetsWrapper>
-    )
+    <StyledWidgetsWrapper direction={direction}>
+      <StyledUnorderedList direction={direction}>
+        {filters}
+        {!!filters.length && !!addons.length && (
+          <StyledHR direction={direction} />
+        )}
+        {addons}
+      </StyledUnorderedList>
+    </StyledWidgetsWrapper>
   );
 };
 

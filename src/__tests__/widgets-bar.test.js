@@ -1,60 +1,55 @@
 import React from "react";
-import { queryByText } from "@testing-library/dom";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { WidgetsBar } from "../index";
 
 describe("widgets bar", () => {
-  it("should render published widgets", async () => {
+  it("should render widgets", async () => {
     const widgets = [
       {
         title: "My topics",
-        type: "filter",
-        icon: "https://placehold.it/40x40",
-        isPublished: true
+        type: "topic_group",
+        filter_icon: "https://placehold.it/40x40"
       },
       {
         title: "Trending",
-        type: "filter",
-        icon: "https://placehold.it/40x40",
-        isPublished: false
+        type: "topic_group",
+        filter_icon: "https://placehold.it/40x40"
       },
       {
         title: "Fonts",
         type: "addon",
         url: "https://www.example.com",
-        icon: "https://placehold.it/40x40",
-        isPublished: true
+        filter_icon: "https://placehold.it/40x40"
       },
       {
         title: "Lightroom Presets",
         type: "addon",
         url: "https://www.example.com",
-        icon: "https://placehold.it/40x40",
-        isPublished: false
+        filter_icon: "https://placehold.it/40x40"
       }
     ];
-    const { container, getByText } = render(<WidgetsBar widgets={widgets} />);
+    const { getByText } = render(<WidgetsBar widgets={widgets} />);
 
     expect(getByText("My topics")).toBeInTheDocument();
-    expect(queryByText(container, "Trending")).not.toBeInTheDocument();
+    expect(getByText("Trending")).toBeInTheDocument();
     expect(getByText("Fonts")).toBeInTheDocument();
-    expect(queryByText(container, "Lightroom Presets")).not.toBeInTheDocument();
+    expect(getByText("Lightroom Presets")).toBeInTheDocument();
   });
 
   it("should call my fn on filter click", async () => {
     const widgets = [
       {
         title: "My topics",
-        type: "filter",
-        icon: "https://placehold.it/40x40",
+        type: "topic_group",
+        filter_icon: "https://placehold.it/40x40",
         isPublished: true
       },
       {
         title: "Trending",
-        type: "filter",
-        icon: "https://placehold.it/40x40",
+        type: "topic_group",
+        filter_icon: "https://placehold.it/40x40",
         isPublished: true
       }
     ];

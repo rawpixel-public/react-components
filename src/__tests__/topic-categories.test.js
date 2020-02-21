@@ -1,47 +1,41 @@
 import React from "react";
-import { queryByText } from "@testing-library/dom";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { Categories as TopicCategories } from "../index";
 
 describe("topic categories", () => {
-  it("should render visible categories", async () => {
+  it("should render categories", async () => {
     const categories = [
       {
-        title: "All",
-        visible: true
+        name: "All"
       },
       {
-        title: "Elements",
-        visible: false
+        name: "Elements"
       },
       {
-        title: "Stickers",
-        visible: true
+        name: "Stickers"
       }
     ].map((category, index) => ({ ...category, id: index }));
-    const { container, getByText } = render(
-      <TopicCategories categories={categories} />
-    );
+    const { getByText } = render(<TopicCategories categories={categories} />);
 
     expect(getByText("All")).toBeInTheDocument();
-    expect(queryByText(container, "Elements")).not.toBeInTheDocument();
+    expect(getByText("Elements")).toBeInTheDocument();
     expect(getByText("Stickers")).toBeInTheDocument();
   });
 
   it("should call my fn on category click", async () => {
     const categories = [
       {
-        title: "All",
+        name: "All",
         visible: true
       },
       {
-        title: "Elements",
+        name: "Elements",
         isPublished: false
       },
       {
-        title: "Stickers",
+        name: "Stickers",
         visible: true
       }
     ].map((category, index) => ({ ...category, id: index }));
@@ -81,19 +75,19 @@ describe("topic categories", () => {
   it("should show 'next' control when there are more categories than visible space", async () => {
     const categories = [
       {
-        title: "All",
+        name: "All",
         visible: true
       },
       {
-        title: "Elements",
+        name: "Elements",
         visible: true
       },
       {
-        title: "Stickers",
+        name: "Stickers",
         visible: true
       },
       {
-        title: "Graphics",
+        name: "Graphics",
         visible: true
       }
     ].map((category, index) => ({ ...category, id: index }));
@@ -117,11 +111,11 @@ describe("topic categories", () => {
   it("should not show controls when not enough visible categories", async () => {
     const categories = [
       {
-        title: "All",
+        name: "All",
         visible: true
       },
       {
-        title: "Elements",
+        name: "Elements",
         visible: true
       }
     ].map((category, index) => ({ ...category, id: index }));

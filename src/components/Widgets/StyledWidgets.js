@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { prop } from "styled-tools";
+import { prop, switchProp } from "styled-tools";
 import HorizontalRule from "../../atoms/HorizontalRule";
 
 import { fontFamily, palette } from "../../utils/cssVars";
@@ -8,6 +8,7 @@ const verticalCentreCss = css`
   display: flex;
   flex-direction: ${prop("direction")};
   justify-content: center;
+  align-items: ${switchProp("direction", { column: "center", row: "start" })};
 `;
 
 export const StyledButton = styled.button`
@@ -42,12 +43,14 @@ export const StyledText = styled.span`
   font-size: 10px;
   line-height: 1.25;
   text-align: center;
+  margin: 3px 0;
 `;
 
 export const StyledWidgetsWrapper = styled.div`
-  ${props => (props.direction === "column" ? "max-width: 60px;" : null)};
+  ${props => (props.direction === "column" ? "max-width: 80px;" : null)};
   ${verticalCentreCss};
   padding: 10px 0;
+  width: 80px;
 `;
 
 export const StyledUnorderedList = styled.ul`
@@ -62,13 +65,13 @@ export const StyledListItem = styled.li`
 `;
 
 export const StyledHR = styled(HorizontalRule)`
-  width: 40px;
+  width: 50px;
 
   ${props =>
     props.direction === "row" &&
     css`
       margin: 0 10px;
-      height: 40px;
+      height: 50px;
       width: 2px;
     `};
 `;

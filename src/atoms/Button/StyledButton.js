@@ -24,8 +24,6 @@ export const StyledButton = styled.button`
     xlarge: "18px"
   })};
   line-height: 1;
-  //padding-top: 0.5rem;
-  //padding-bottom: 0.5rem;
   padding: ${switchProp("size", {
     xsmall: "0.3rem",
     small: "0.4rem",

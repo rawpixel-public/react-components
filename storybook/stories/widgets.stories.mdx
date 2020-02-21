@@ -48,7 +48,7 @@ Icon and title as a link.
     <Centered style={{background: "#F4F4F4"}}>
       <WidgetAddon
         title={text("title", "Fonts", "addon")}
-        icon={text("icon", fontSvg, "addon")}
+        filter_icon={text("icon", fontSvg, "addon")}
         href={text("href", "https://www.rawpixel.com/search/fonts?sort=curated&page=1", "addon")}
       />
     </Centered>
@@ -64,7 +64,7 @@ Icon and title with `onClick` handler.
     <Centered style={{background: "#F4F4F4"}}>
       <WidgetTopicGroup
         title={text("title", "My topics", "filter")}
-        icon={text("icon", starSvg, "filter")}
+        filter_icon={text("icon", starSvg, "filter")}
         onClick={action("widget-filter-click")}
         active={boolean("active", false, "filter")}
       />
