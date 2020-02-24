@@ -54,7 +54,7 @@ const getFilterGroups = (site, widget) => {
 
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
-  const catalog = isTeam && isWebsiteCatalog && "website_content";
+  const catalog = isTeam ? isWebsiteCatalog ? "website_content" : "team" : false;
   const { widgets } = useTopicWidgets(target, catalog);
 
   const [topicData, setTopicData] = React.useState(topics);
@@ -165,7 +165,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <HorizontalRule style={{ width: "200px" }} />
-        {main && (
+        {main && !!main.filter(i => i.published).length && (
           <>
             <FilterButtonGroup
               filters={main}
@@ -174,7 +174,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
-        {fileTypes && (
+        {fileTypes && !!fileTypes.filter(i => i.published).length && (
           <>
             <FilterButtonGroup
               title="File types"
@@ -184,7 +184,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
-        {filters && (
+        {filters && !!filters.filter(i => i.published).length && (
           <>
             <FilterButtonGroup
               filters={filters}
@@ -193,7 +193,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
-        {isTeam && isTeam && secondaryFilters && (
+        {isTeam && secondaryFilters && !!secondaryFilters.filter(i => i.published).length && (
           <>
             <FilterButtonGroup
               filters={secondaryFilters}
@@ -204,7 +204,6 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         )}
         {!isTeam && (
           <>
-            <HorizontalRule style={{ width: "200px" }} />
             <SidebarButtonList title={<Heading level={3}>Sizes</Heading>}>
               <SizeButton title="Portrait" height={40} width={30} />
               <SizeButton title="Landscape" height={30} width={40} />

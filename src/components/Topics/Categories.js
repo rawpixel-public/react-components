@@ -53,8 +53,8 @@ const Categories = ({
             </StyledControlButton>
           )}
           <StyledCategoryList carouselPosition={carouselPosition}>
-            {categories.map(category => (
-              <li key={category.id}>
+            {categories.map((category, index) => (
+              <li key={index}>
                 <Button
                   size="xsmall"
                   onClick={e => categoryClickHandler(e, category)}
