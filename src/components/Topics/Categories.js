@@ -35,7 +35,9 @@ const Categories = ({
   return (
     <StyledCategoriesWrapper>
       <StyledHeadingWrapper>
-        <Heading level={3}>{title}</Heading>
+        <Heading level={3} style={{ minHeight: "19px" }}>
+          {title}
+        </Heading>
         {showClear && (
           <StyledClearButton onClick={onClearClick}>Clear</StyledClearButton>
         )}

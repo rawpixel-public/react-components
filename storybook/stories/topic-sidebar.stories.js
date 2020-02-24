@@ -6,6 +6,7 @@ import {
   Button,
   Heading,
   HorizontalRule,
+  LoadingPlaceholder,
   SizeButton,
   WidgetsBar,
   TopicsGrid,
@@ -55,7 +56,7 @@ const getFilterGroups = (site, widget) => {
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
   const catalog = isTeam ? isWebsiteCatalog ? "website_content" : "team" : false;
-  const { widgets } = useTopicWidgets(target, catalog);
+  const { loading, widgets } = useTopicWidgets(target, catalog);
 
   const [topicData, setTopicData] = React.useState(topics);
   const [title, setTitle] = React.useState("");
@@ -141,7 +142,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <Categories
-          title={title}
+          title={loading ? <LoadingPlaceholder width="100px" height="19px" /> : title}
           categories={categories}
           onCategoryClick={action("category-click")}
           showClear={!isTeam}
