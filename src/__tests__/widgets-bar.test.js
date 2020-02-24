@@ -19,13 +19,13 @@ describe("widgets bar", () => {
       },
       {
         title: "Fonts",
-        type: "addon",
+        type: "add_on",
         url: "https://www.example.com",
         filter_icon: "https://placehold.it/40x40"
       },
       {
         title: "Lightroom Presets",
-        type: "addon",
+        type: "add_on",
         url: "https://www.example.com",
         filter_icon: "https://placehold.it/40x40"
       }

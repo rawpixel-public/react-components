@@ -41,9 +41,11 @@ export const StyledText = styled.span`
   color: ${palette.grayMedium};
   font-family: ${fontFamily.base};
   font-size: 10px;
-  line-height: 1.25;
+  line-height: 1.5;
   text-align: center;
   margin: 3px 0;
+  max-width: 60px;
+  word-wrap: normal;
 `;
 
 export const StyledWidgetsWrapper = styled.div`

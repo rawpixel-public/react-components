@@ -39,18 +39,20 @@ const WidgetsBar = ({
           title={widget.title}
           onClick={e => filterClickHandler(e, widget)}
           active={widgets.indexOf(widget) === activeIndex}
+          type={widget.type}
         />
       </StyledListItem>
     ));
 
   const addons = widgets
-    .filter(widget => widget.type === "addon")
+    .filter(widget => widget.type === "add_on")
     .map(widget => (
       <StyledListItem key={widget.title}>
         <Addon
           filter_icon={widget.filter_icon}
           href={widget.url}
           title={widget.title}
+          type={widget.type}
         />
       </StyledListItem>
     ));
@@ -68,8 +70,17 @@ const WidgetsBar = ({
   );
 };
 
+export const WidgetProps = {
+  title: PropTypes.string.isRequired,
+  filter_icon: PropTypes.string.isRequired,
+  href: PropTypes.string,
+  type: PropTypes.oneOf(["topic_group", "add_on"]).isRequired,
+  onClick: PropTypes.func,
+  active: PropTypes.bool
+};
+
 WidgetsBar.propTypes = {
-  widgets: PropTypes.array.isRequired,
+  widgets: PropTypes.arrayOf(PropTypes.shape(WidgetProps)).isRequired,
   onFilterClick: PropTypes.func,
   activeWidget: PropTypes.number,
   direction: PropTypes.oneOf(["column", "row"])

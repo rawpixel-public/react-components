@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
+import { WidgetProps } from "./Bar";
 
 const WidgetTopicGroup = ({ title, filter_icon, onClick, active = false }) => (
   <StyledButton onClick={onClick} role="button" active={active}>
@@ -11,13 +11,7 @@ const WidgetTopicGroup = ({ title, filter_icon, onClick, active = false }) => (
   </StyledButton>
 );
 
-WidgetTopicGroup.propTypes = {
-  title: PropTypes.string.isRequired,
-  filter_icon: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  active: PropTypes.bool
-};
-
+WidgetTopicGroup.propTypes = WidgetProps;
 WidgetTopicGroup.displayName = "WidgetTopicGroup";
 
 export default WidgetTopicGroup;
