@@ -12,7 +12,8 @@ import {
   WidgetsBar,
   TopicsGrid,
   Categories,
-  FilterButtonGroup
+  FilterButtonGroup,
+  FilterButtonGroupPlaceholder
 } from "@rawpixel-public/react-components";
 
 import { topics } from "./topic-sidebar.data";
@@ -173,12 +174,24 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <HorizontalRule style={{ width: "200px" }} />
+        {loading && (
+          <>
+            <FilterButtonGroupPlaceholder />
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
         {main && !!main.filter(i => i.published).length && (
           <>
             <FilterButtonGroup
               filters={main}
               onFilterClick={action("main-filter-click")}
             />
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
+        {loading && (
+          <>
+            <FilterButtonGroupPlaceholder hasTitle numberOfItems={5} />
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
@@ -189,6 +202,12 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
               filters={fileTypes}
               onFilterClick={action("filetypes-filter-click")}
             />
+            <HorizontalRule style={{ width: "200px" }} />
+          </>
+        )}
+        {loading && (
+          <>
+            <FilterButtonGroupPlaceholder numberOfItems={5} />
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
