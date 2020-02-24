@@ -6,7 +6,6 @@ import {
   Button,
   Heading,
   HorizontalRule,
-  LoadingPlaceholder,
   SizeButton,
   WidgetsBar,
   TopicsGrid,
@@ -68,11 +67,12 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
   const activeWidget = widgets.length && widgets[activeFilter];
-  const categories = activeWidget &&
-    activeWidget.subCategories.length && [
-      ...[{ name: "All" }],
-      ...activeWidget.subCategories
-    ];
+  const categories = activeWidget
+    ? activeWidget.subCategories.length && [
+        ...[{ name: "All" }],
+        ...activeWidget.subCategories
+      ]
+    : [];
   const site = isTeam ? (isTeam ? "dam-team" : "dam-website") : "website";
   const { main, fileTypes, filters, secondaryFilters } = getFilterGroups(
     site,
@@ -146,20 +146,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <Categories
-          title={
-            loading ? (
-              <LoadingPlaceholder
-                width="100px"
-                height="19px"
-                borderRadius="none"
-              />
-            ) : (
-              title
-            )
-          }
+          title={title}
           categories={categories}
           onCategoryClick={action("category-click")}
           showClear={!isTeam}
+          loading={loading}
         />
         <TopicsGrid
           topics={topicData}

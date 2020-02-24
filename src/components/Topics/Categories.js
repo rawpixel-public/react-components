@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
+import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 
 import {
   StyledCategoriesWrapper,
@@ -16,12 +17,29 @@ import {
 // Number of categories required before previous/next controls are disabled.
 const minimumNumberOfCarouselItems = 4;
 
+const CategoryButtonsPlaceholder = props => (
+  <StyledListWrapper {...props}>
+    <StyledCategoryList>
+      <li>
+        <LoadingPlaceholder width="60px" height="20px" />
+      </li>
+      <li>
+        <LoadingPlaceholder width="60px" height="20px" />
+      </li>
+      <li>
+        <LoadingPlaceholder width="60px" height="20px" />
+      </li>
+    </StyledCategoryList>
+  </StyledListWrapper>
+);
+
 const Categories = ({
   categories = [],
   title,
   onCategoryClick,
   onClearClick,
-  showClear = false
+  showClear = false,
+  loading = false
 }) => {
   const [carouselPosition, setCarouselPosition] = React.useState(0);
   const showControls = categories.length >= minimumNumberOfCarouselItems;
@@ -36,12 +54,24 @@ const Categories = ({
     <StyledCategoriesWrapper>
       <StyledHeadingWrapper>
         <Heading level={3} style={{ minHeight: "19px" }}>
-          {title}
+          {loading ? (
+            <LoadingPlaceholder
+              width="100px"
+              height="19px"
+              borderRadius="none"
+              data-testid="category-title-placeholder"
+            />
+          ) : (
+            title
+          )}
         </Heading>
         {showClear && (
           <StyledClearButton onClick={onClearClick}>Clear</StyledClearButton>
         )}
       </StyledHeadingWrapper>
+      {loading && (
+        <CategoryButtonsPlaceholder data-testid="category-buttons-placeholder" />
+      )}
       {!!categories.length && (
         <StyledListWrapper>
           {showControls && (
@@ -88,10 +118,11 @@ const Categories = ({
 
 Categories.propTypes = {
   categories: PropTypes.array,
-  title: PropTypes.string,
+  title: PropTypes.node,
   onCategoryClick: PropTypes.func,
   onClearClick: PropTypes.func,
-  showClear: PropTypes.bool
+  showClear: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 export default Categories;
