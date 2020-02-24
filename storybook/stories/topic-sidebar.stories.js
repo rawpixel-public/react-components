@@ -30,7 +30,7 @@ const StyledSidebar = styled.div`
   width: 300px;
 `;
 
-const getFilterGroups = (site, widget) => {
+const getFilterGroups = (site, widget = {}) => {
   const { websiteFilters = {}, damFilters = {} } = widget;
   const { main, fileTypes, filters: filtersWebsite } = websiteFilters;
   const { team = {}, website = {} } = damFilters;

@@ -23,8 +23,16 @@ export default (target = "website", catalog = "") => {
     )
       .then(response => response.json())
       .then(data => {
+        if (Array.isArray(data)) {
+          setLoading(false);
+          setWidgets(data);
+        } else {
+          console.log({ data });
+        }
+      })
+      .catch(reason => {
+        console.log({ reason });
         setLoading(false);
-        setWidgets(data);
       });
   }, [target, catalog]);
 
