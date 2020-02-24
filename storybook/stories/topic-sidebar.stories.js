@@ -13,6 +13,7 @@ import {
   TopicsGrid,
   Categories,
   FilterButtonGroup,
+  FilterButtonGroupMain,
   FilterButtonGroupPlaceholder
 } from "@rawpixel-public/react-components";
 
@@ -182,7 +183,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         )}
         {main && !!main.filter(i => i.published).length && (
           <>
-            <FilterButtonGroup
+            <FilterButtonGroupMain
               filters={main}
               onFilterClick={action("main-filter-click")}
             />

@@ -7,6 +7,7 @@ import ImageButtonGrid from "./atoms/ImageButtonGrid";
 import LoadingPlaceholder from "./atoms/LoadingPlaceholder";
 import SizeButton from "./atoms/SizeButton";
 import FilterButtonGroup from "./components/Sidebar/FilterButtonGroup";
+import FilterButtonGroupMain from "./components/Sidebar/FilterButtonGroupMain";
 import FilterButtonGroupPlaceholder from "./components/Sidebar/FilterButtonGroupPlaceholder";
 import Categories from "./components/Topics/Categories";
 import Topic from "./components/Topics/Topic";
@@ -25,6 +26,7 @@ export {
   SizeButton,
   Categories,
   FilterButtonGroup,
+  FilterButtonGroupMain,
   FilterButtonGroupPlaceholder,
   SidebarTabs,
   SidebarTab,
@@ -45,6 +47,7 @@ export default {
   SizeButton,
   Categories,
   FilterButtonGroup,
+  FilterButtonGroupMain,
   FilterButtonGroupPlaceholder,
   SidebarTabs,
   SidebarTab,

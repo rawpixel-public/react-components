@@ -44,11 +44,12 @@ export const FilterShape = PropTypes.shape({
   tag: PropTypes.string
 });
 
-FilterButtonGroup.propTypes = {
+export const FilterButtonGroupProps = {
   filters: PropTypes.arrayOf(FilterShape),
   onFilterClick: PropTypes.func,
   title: PropTypes.string,
   itemsPerRow: PropTypes.number
 };
 
+FilterButtonGroup.propTypes = FilterButtonGroupProps;
 export default FilterButtonGroup;
