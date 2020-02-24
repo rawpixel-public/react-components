@@ -38,6 +38,11 @@ describe("widgets bar", () => {
     expect(getByText("Lightroom Presets")).toBeInTheDocument();
   });
 
+  it("should render placeholders when loading", async () => {
+    const { getByTestId } = render(<WidgetsBar loading widgets={[]} />);
+    expect(getByTestId("widget-placeholder-1")).toBeInTheDocument();
+  });
+
   it("should call my fn on filter click", async () => {
     const widgets = [
       {

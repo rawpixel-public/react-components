@@ -55,7 +55,11 @@ const getFilterGroups = (site, widget) => {
 
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
-  const catalog = isTeam ? isWebsiteCatalog ? "website_content" : "team" : false;
+  const catalog = isTeam
+    ? isWebsiteCatalog
+      ? "website_content"
+      : "team"
+    : false;
   const { loading, widgets } = useTopicWidgets(target, catalog);
 
   const [topicData, setTopicData] = React.useState(topics);
@@ -142,7 +146,17 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <Categories
-          title={loading ? <LoadingPlaceholder width="100px" height="19px" /> : title}
+          title={
+            loading ? (
+              <LoadingPlaceholder
+                width="100px"
+                height="19px"
+                borderRadius="none"
+              />
+            ) : (
+              title
+            )
+          }
           categories={categories}
           onCategoryClick={action("category-click")}
           showClear={!isTeam}
@@ -194,15 +208,17 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
-        {isTeam && secondaryFilters && !!secondaryFilters.filter(i => i.published).length && (
-          <>
-            <FilterButtonGroup
-              filters={secondaryFilters}
-              onFilterClick={action("secondary-filters-filter-click")}
-            />
-            <HorizontalRule style={{ width: "200px" }} />
-          </>
-        )}
+        {isTeam &&
+          secondaryFilters &&
+          !!secondaryFilters.filter(i => i.published).length && (
+            <>
+              <FilterButtonGroup
+                filters={secondaryFilters}
+                onFilterClick={action("secondary-filters-filter-click")}
+              />
+              <HorizontalRule style={{ width: "200px" }} />
+            </>
+          )}
         {!isTeam && (
           <>
             <SidebarButtonList title={<Heading level={3}>Sizes</Heading>}>
@@ -225,6 +241,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           widgets={widgets}
           onFilterClick={handleFilterClick}
           activeWidget={activeFilter}
+          loading={loading}
         />
       </div>
     </StyledSidebar>

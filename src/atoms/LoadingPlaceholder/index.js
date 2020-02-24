@@ -8,7 +8,8 @@ const LoadingPlaceholder = ({
   width,
   height,
   background,
-  borderRadius
+  borderRadius,
+  ...props
 }) => (
   <StyledLoadingPlaceholder
     className={className}
@@ -16,6 +17,7 @@ const LoadingPlaceholder = ({
     heightValue={height}
     backgroundValue={background}
     borderRadiusValue={borderRadius}
+    {...props}
   />
 );
 
