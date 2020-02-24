@@ -48,7 +48,7 @@ const LikesButton = styled(Button)`
 const ButtonComponents = {
   $free: Button,
   $premium: Button,
-  $exclusive: ExclusiveButton,
+  $exclusive: Button,
   $likes: LikesButton
 };
 
