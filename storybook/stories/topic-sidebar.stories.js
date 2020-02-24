@@ -52,8 +52,10 @@ const getFilterGroups = (site, widget) => {
   };
 };
 
-const ExampleSidebar = ({ isDAM, isTeam }) => {
-  const { widgets } = useTopicWidgets();
+const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
+  const target = isTeam ? "team" : "website";
+  const catalog = isTeam && isWebsiteCatalog && "website_content";
+  const { widgets } = useTopicWidgets(target, catalog);
 
   const [topicData, setTopicData] = React.useState(topics);
   const [title, setTitle] = React.useState("");
@@ -66,7 +68,7 @@ const ExampleSidebar = ({ isDAM, isTeam }) => {
       ...[{ name: "All" }],
       ...activeWidget.subCategories
     ];
-  const site = isDAM ? (isTeam ? "dam-team" : "dam-website") : "website";
+  const site = isTeam ? (isTeam ? "dam-team" : "dam-website") : "website";
   const { main, fileTypes, filters, secondaryFilters } = getFilterGroups(
     site,
     activeWidget
@@ -108,9 +110,9 @@ const ExampleSidebar = ({ isDAM, isTeam }) => {
   };
 
   return (
-    <StyledSidebar isDAM={isDAM}>
+    <StyledSidebar isDAM={isTeam}>
       <div>
-        {isDAM && (
+        {isTeam && (
           <>
             <SidebarButtonList>
               <Button>Details</Button>
@@ -142,14 +144,14 @@ const ExampleSidebar = ({ isDAM, isTeam }) => {
           title={title}
           categories={categories}
           onCategoryClick={action("category-click")}
-          showClear={!isDAM}
+          showClear={!isTeam}
         />
         <TopicsGrid
           topics={topicData}
           onTopicClick={handleTopicClick}
-          isDAM={isDAM}
+          isDAM={isTeam}
         />
-        {isDAM && (
+        {isTeam && (
           <>
             <HorizontalRule style={{ width: "200px" }} />
             <SidebarButtonList>
@@ -191,7 +193,7 @@ const ExampleSidebar = ({ isDAM, isTeam }) => {
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
-        {isDAM && isTeam && secondaryFilters && (
+        {isTeam && isTeam && secondaryFilters && (
           <>
             <FilterButtonGroup
               filters={secondaryFilters}
@@ -200,7 +202,7 @@ const ExampleSidebar = ({ isDAM, isTeam }) => {
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
-        {!isDAM && (
+        {!isTeam && (
           <>
             <HorizontalRule style={{ width: "200px" }} />
             <SidebarButtonList title={<Heading level={3}>Sizes</Heading>}>
@@ -229,16 +231,16 @@ const ExampleSidebar = ({ isDAM, isTeam }) => {
   );
 };
 
-export const dam = () => {
-  return <ExampleSidebar isDAM />;
+export const team = () => {
+  return <ExampleSidebar isTeam />;
 };
 
 export const website = () => {
-  return <ExampleSidebar isDAM={false} />;
+  return <ExampleSidebar isTeam={false} />;
 };
 
-export const team = () => {
-  return <ExampleSidebar isDAM isTeam />;
+export const teamWebsite = () => {
+  return <ExampleSidebar isTeam isWebsiteCatalog />;
 };
 
 export default {
