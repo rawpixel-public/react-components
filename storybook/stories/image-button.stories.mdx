@@ -1,0 +1,55 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
+
+import { ImageButton, ImageButtonGrid } from "@rawpixel-public/react-components";
+
+import "../.storybook/global.css";
+import starSvg from "../images/star.svg";
+
+<Meta title="Atoms/Image Button" decorators={[withKnobs]} />
+
+# Image Button
+
+Styled button component which takes an `icon` prop to display an SVG image. Extendable using `styled-components` extension e.g:
+
+```
+import { ImageButton } from "@rawpixel-public/react-components";
+
+const RedButton = styled(ImageButton)`
+  background-color: red;
+`;
+```
+
+## Image Button
+
+<Preview>
+  <Story name="image-button">
+    <ImageButton onClick={action("image-button-click")} disabled={boolean("disabled", false, "image-button")} isLoading={boolean("isLoading", false, "image-button")}
+    icon={text("icon", starSvg, "image-button")}
+    title={text("title", "Click me", "image-button")} />
+  </Story>
+</Preview>
+
+## Image Button Grid
+
+Renders a group of buttons inside a scrollable area.
+
+<Preview>
+  <Story name="grid">
+    <ImageButtonGrid>
+      <ImageButton icon={starSvg} title="Button 1" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 2" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 3" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 4" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 5" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 6" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 7" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 8" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 9" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 10" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 11" onClick={action("image-button-grid-click")} />
+      <ImageButton icon={starSvg} title="Button 12" onClick={action("image-button-grid-click")} />
+    </ImageButtonGrid>
+  </Story>
+</Preview>

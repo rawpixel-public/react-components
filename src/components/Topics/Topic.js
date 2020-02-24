@@ -1,13 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {
-  StyledTopicButton,
-  StyledImgWrapper,
-  StyledTopicTitle
-} from "./StyledTopic";
-
-import DotLoader from "../../atoms/Loader/DotLoader";
+import { StyledTopicButton } from "./StyledTopic";
 
 const Topic = ({
   id,
@@ -31,18 +25,9 @@ const Topic = ({
       isDAM={isDAM}
       isTagged={isTagged}
       isLoading={isLoading}
-    >
-      <StyledImgWrapper className="img-wrapper">
-        {isLoading && (
-          <DotLoader className="loader" loaderWidth={60} dotSize={10} />
-        )}
-        <svg>
-          <image xlinkHref={icon} />
-        </svg>
-      </StyledImgWrapper>
-
-      <StyledTopicTitle>{title}</StyledTopicTitle>
-    </StyledTopicButton>
+      title={title}
+      icon={icon}
+    />
   );
 };
 

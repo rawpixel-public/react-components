@@ -25,8 +25,12 @@ describe("topic categories", () => {
     expect(getByText("Elements")).toBeInTheDocument();
     expect(getByText("Stickers")).toBeInTheDocument();
 
-    expect(queryByTestId(container, "category-title-placeholder")).not.toBeInTheDocument();
-    expect(queryByTestId(container,"category-buttons-placeholder")).not.toBeInTheDocument();
+    expect(
+      queryByTestId(container, "category-title-placeholder")
+    ).not.toBeInTheDocument();
+    expect(
+      queryByTestId(container, "category-buttons-placeholder")
+    ).not.toBeInTheDocument();
   });
 
   it("should call my fn on category click", async () => {

@@ -6,6 +6,8 @@ import {
   Button,
   Heading,
   HorizontalRule,
+  ImageButton,
+  ImageButtonGrid,
   SizeButton,
   WidgetsBar,
   TopicsGrid,
@@ -203,10 +205,20 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           secondaryFilters &&
           !!secondaryFilters.filter(i => i.published).length && (
             <>
-              <FilterButtonGroup
-                filters={secondaryFilters}
-                onFilterClick={action("secondary-filters-filter-click")}
-              />
+              <ImageButtonGrid
+                viewable={
+                  secondaryFilters.length < 9 ? secondaryFilters.length : 9
+                }
+              >
+                {secondaryFilters.map((filter, index) => (
+                  <ImageButton
+                    key={index}
+                    icon={filter.icon}
+                    title={filter.name}
+                    onClick={action("secondary-filter-click")}
+                  />
+                ))}
+              </ImageButtonGrid>
               <HorizontalRule style={{ width: "200px" }} />
             </>
           )}

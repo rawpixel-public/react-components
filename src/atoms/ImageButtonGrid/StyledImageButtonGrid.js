@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const StyledTopicsGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+export const StyledImageButtonGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: baseline;
   width: 220px;
   padding: 10px;
