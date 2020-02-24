@@ -10,6 +10,7 @@ import {
   StyledUnorderedList,
   StyledListItem
 } from "./StyledWidgets";
+import WidgetProps from "./WidgetProps";
 
 const WidgetPlaceholder = props => (
   <div
@@ -93,15 +94,6 @@ const WidgetsBar = ({
       </StyledUnorderedList>
     </StyledWidgetsWrapper>
   );
-};
-
-export const WidgetProps = {
-  title: PropTypes.string.isRequired,
-  filter_icon: PropTypes.string.isRequired,
-  href: PropTypes.string,
-  type: PropTypes.oneOf(["topic_group", "add_on"]).isRequired,
-  onClick: PropTypes.func,
-  active: PropTypes.bool
 };
 
 WidgetsBar.propTypes = {

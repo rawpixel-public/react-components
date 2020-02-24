@@ -2,7 +2,7 @@ import React from "react";
 
 import { StyledAnchor, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
-import { WidgetProps } from "./Bar";
+import WidgetProps from "./WidgetProps";
 
 const WidgetAddon = ({ title, filter_icon, href }) => (
   <StyledAnchor href={href}>

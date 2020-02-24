@@ -2,7 +2,7 @@ import React from "react";
 
 import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
-import { WidgetProps } from "./Bar";
+import WidgetProps from "./WidgetProps";
 
 const WidgetTopicGroup = ({ title, filter_icon, onClick, active = false }) => (
   <StyledButton onClick={onClick} role="button" active={active}>
