@@ -16,7 +16,8 @@ import {
   FilterButtonGroupMain,
   FilterButtonGroupPlaceholder,
   useTopicWidgets,
-  useTopicWidgetSettings
+  useTopicWidgetSettings,
+  useTopicWidgetSettingsActiveState
 } from "@rawpixel-public/react-components";
 
 import { topics } from "./topic-sidebar.data";
@@ -45,22 +46,24 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
-  const activeWidget = widgets.length && widgets[activeFilter];
+  const activeWidget = !!widgets.length && widgets[activeFilter];
   const categories =
     activeWidget && !!activeWidget.subCategories.length
       ? [...[{ name: "All" }], ...activeWidget.subCategories]
       : [];
   const site = isTeam ? (isTeam ? "dam-team" : "dam-website") : "website";
+
+  const { main, fileTypes, filters, secondaryFilters } = useTopicWidgetSettings(
+    site,
+    activeWidget
+  );
+
   const {
-    main,
-    fileTypes,
-    filters,
-    secondaryFilters,
-    setMain,
-    setFileTypes,
-    setFilters,
-    setSecondaryFilters
-  } = useTopicWidgetSettings(site, activeWidget);
+    activeFilters,
+    setActiveFilters,
+    isFilterActiveMapper,
+    resetActiveFilters
+  } = useTopicWidgetSettingsActiveState();
 
   React.useEffect(() => {
     if (!title && widgets.length) {
@@ -97,18 +100,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
     }, 1500);
   };
 
-  const handleFilterGroupButtonClick = (
-    e,
-    filter,
-    filterGroup,
-    setFilterGroup
-  ) => {
-    filter.active = !filter.active;
-    const index = filterGroup.indexOf(filter);
-    const updatedFilters = [...filterGroup];
-    filterGroup[index] = filter;
-    setFilterGroup(updatedFilters, filter);
-  };
+  const handleFilterGroupButtonClick = (e, filter) => setActiveFilters(filter);
 
   return (
     <StyledSidebar isDAM={isTeam}>
@@ -145,7 +137,8 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           title={title}
           categories={categories}
           onCategoryClick={action("category-click")}
-          showClear={!isTeam}
+          showClear={!isTeam && activeFilters.length > 0}
+          onClearClick={() => resetActiveFilters()}
           loading={loading}
         />
         <TopicsGrid
@@ -179,10 +172,8 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         {main && !!main.filter(i => i.published).length && (
           <>
             <FilterButtonGroupMain
-              filters={main}
-              onFilterClick={(e, filter) =>
-                handleFilterGroupButtonClick(e, filter, main, setMain)
-              }
+              filters={main.map(isFilterActiveMapper)}
+              onFilterClick={handleFilterGroupButtonClick}
             />
             <HorizontalRule style={{ width: "200px" }} />
           </>
@@ -197,10 +188,8 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           <>
             <FilterButtonGroup
               title="File types"
-              filters={fileTypes}
-              onFilterClick={(e, filter) =>
-                handleFilterGroupButtonClick(e, filter, fileTypes, setFileTypes)
-              }
+              filters={fileTypes.map(isFilterActiveMapper)}
+              onFilterClick={handleFilterGroupButtonClick}
             />
             <HorizontalRule style={{ width: "200px" }} />
           </>
@@ -214,10 +203,8 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         {filters && !!filters.filter(i => i.published).length && (
           <>
             <FilterButtonGroup
-              filters={filters}
-              onFilterClick={(e, filter) =>
-                handleFilterGroupButtonClick(e, filter, filters, setFilters)
-              }
+              filters={filters.map(isFilterActiveMapper)}
+              onFilterClick={handleFilterGroupButtonClick}
             />
             <HorizontalRule style={{ width: "200px" }} />
           </>
@@ -231,21 +218,17 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                   secondaryFilters.length < 9 ? secondaryFilters.length : 9
                 }
               >
-                {secondaryFilters.map((filter, index) => (
-                  <ImageButton
-                    key={index}
-                    icon={filter.icon}
-                    title={filter.name}
-                    onClick={(e, filter) =>
-                      handleFilterGroupButtonClick(
-                        e,
-                        filter,
-                        secondaryFilters,
-                        setSecondaryFilters
-                      )
-                    }
-                  />
-                ))}
+                {secondaryFilters
+                  .map(isFilterActiveMapper)
+                  .map((filter, index) => (
+                    <ImageButton
+                      key={index}
+                      icon={filter.icon}
+                      title={filter.name}
+                      onClick={handleFilterGroupButtonClick}
+                      active={filter.active}
+                    />
+                  ))}
               </ImageButtonGrid>
               <HorizontalRule style={{ width: "200px" }} />
             </>

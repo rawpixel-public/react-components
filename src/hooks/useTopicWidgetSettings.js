@@ -1,5 +1,7 @@
 import React from "react";
 
+const groupMapper = group => filter => ({ ...filter, group });
+
 const useTopicWidgetSettings = (site, widget) => {
   const [main, setMain] = React.useState([]);
   const [fileTypes, setFileTypes] = React.useState([]);
@@ -7,6 +9,10 @@ const useTopicWidgetSettings = (site, widget) => {
   const [secondaryFilters, setSecondaryFilters] = React.useState([]);
 
   React.useEffect(() => {
+    if (!widget) {
+      return;
+    }
+
     const { websiteFilters = {}, damFilters = {} } = widget;
     const { main, fileTypes, filters: filtersWebsite } = websiteFilters;
     const { team = {}, website = {} } = damFilters;
@@ -24,55 +30,22 @@ const useTopicWidgetSettings = (site, widget) => {
       }
     };
 
-    setMain(main);
-    setFileTypes(fileTypes);
-    setFilters(getFiltersBySite(site));
+    setMain(main.map(groupMapper("main")));
+    setFileTypes(fileTypes.map(groupMapper("fileTypes")));
+    setFilters(getFiltersBySite(site).map(groupMapper("filters")));
 
     if (site === "dam-team") {
-      setSecondaryFilters(secondaryFilters);
+      setSecondaryFilters(
+        secondaryFilters.map(groupMapper("secondaryFilters"))
+      );
     }
   }, [site, widget]);
-
-  // Handles rules around which filters can be active in "main" group.
-  const validateAndSetMain = (filters, updatedFilter) => {
-    if (updatedFilter.tag === "$free" && updatedFilter.active) {
-      const premium = filters.find(filter => filter.tag === "$premium");
-      const premiumIndex = filters.indexOf(premium);
-      premium.active = false;
-      filters[premiumIndex] = premium;
-    }
-
-    if (updatedFilter.tag === "$premium" && updatedFilter.active) {
-      const free = filters.find(filter => filter.tag === "$free");
-      const freeIndex = filters.indexOf(free);
-      free.active = false;
-      filters[freeIndex] = free;
-    }
-
-    setMain(filters);
-  };
-
-  // Only one filter from the "filters" group can be active at a time.
-  const validateAndSetFilters = (filters, updatedFilter) => {
-    setFilters(
-      filters.map(filter => {
-        if (filter.tag !== updatedFilter.tag) {
-          filter.active = false;
-        }
-        return filter;
-      })
-    );
-  };
 
   return {
     main,
     fileTypes,
     filters,
-    ...(site === "dam-team" && { secondaryFilters }),
-    setMain: validateAndSetMain,
-    setFileTypes,
-    setFilters: validateAndSetFilters,
-    secondaryFilters
+    ...(site === "dam-team" && { secondaryFilters })
   };
 };
 
