@@ -4,14 +4,15 @@ const useTopicWidgetSettingsActiveState = () => {
   const [activeFilters, setActiveFilters] = React.useState([]);
 
   const handleSetActiveFilters = filter => {
-    const { group } = filter;
-    const index = activeFilters.indexOf(filter);
-    const isActive = index > -1;
+    const { group, tag } = filter;
+    const isActive = !!activeFilters.find(
+      activeFilter => tag === activeFilter.tag
+    );
 
     if (isActive) {
-      const updatedActiveFilters = [...activeFilters];
-      updatedActiveFilters[index] = false;
-      setActiveFilters(updatedActiveFilters.filter(Boolean));
+      setActiveFilters([
+        ...activeFilters.filter(activeFilter => tag !== activeFilter.tag)
+      ]);
     } else {
       switch (group) {
         case "main":
