@@ -15,7 +15,8 @@ import {
   FilterButtonGroup,
   FilterButtonGroupMain,
   FilterButtonGroupPlaceholder,
-  useTopicWidgets
+  useTopicWidgets,
+  useTopicWidgetSettings
 } from "@rawpixel-public/react-components";
 
 import { topics } from "./topic-sidebar.data";
@@ -29,32 +30,6 @@ const StyledSidebar = styled.div`
   padding: 10px 0;
   width: 300px;
 `;
-
-const getFilterGroups = (site, widget = {}) => {
-  const { websiteFilters = {}, damFilters = {} } = widget;
-  const { main, fileTypes, filters: filtersWebsite } = websiteFilters;
-  const { team = {}, website = {} } = damFilters;
-  const { filters: filtersDamWeb } = website;
-  const { filters: filtersDamTeam, secondaryFilters } = team;
-
-  const getFiltersBySite = site => {
-    switch (site) {
-      case "dam-website":
-        return filtersDamWeb;
-      case "dam-team":
-        return filtersDamTeam;
-      case "website":
-        return filtersWebsite;
-    }
-  };
-
-  return {
-    main,
-    fileTypes,
-    filters: getFiltersBySite(site),
-    ...(site === "dam-team" && { secondaryFilters })
-  };
-};
 
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
@@ -76,10 +51,16 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       ? [...[{ name: "All" }], ...activeWidget.subCategories]
       : [];
   const site = isTeam ? (isTeam ? "dam-team" : "dam-website") : "website";
-  const { main, fileTypes, filters, secondaryFilters } = getFilterGroups(
-    site,
-    activeWidget
-  );
+  const {
+    main,
+    fileTypes,
+    filters,
+    secondaryFilters,
+    setMain,
+    setFileTypes,
+    setFilters,
+    setSecondaryFilters
+  } = useTopicWidgetSettings(site, activeWidget);
 
   React.useEffect(() => {
     if (!title && widgets.length) {
@@ -114,6 +95,19 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       updatedTopics[index] = loadedTopic;
       setTopicData(updatedTopics);
     }, 1500);
+  };
+
+  const handleFilterGroupButtonClick = (
+    e,
+    filter,
+    filterGroup,
+    setFilterGroup
+  ) => {
+    filter.active = !filter.active;
+    const index = filterGroup.indexOf(filter);
+    const updatedFilters = [...filterGroup];
+    filterGroup[index] = filter;
+    setFilterGroup(updatedFilters, filter);
   };
 
   return (
@@ -186,7 +180,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           <>
             <FilterButtonGroupMain
               filters={main}
-              onFilterClick={action("main-filter-click")}
+              onFilterClick={(e, filter) =>
+                handleFilterGroupButtonClick(e, filter, main, setMain)
+              }
             />
             <HorizontalRule style={{ width: "200px" }} />
           </>
@@ -202,7 +198,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             <FilterButtonGroup
               title="File types"
               filters={fileTypes}
-              onFilterClick={action("filetypes-filter-click")}
+              onFilterClick={(e, filter) =>
+                handleFilterGroupButtonClick(e, filter, fileTypes, setFileTypes)
+              }
             />
             <HorizontalRule style={{ width: "200px" }} />
           </>
@@ -217,7 +215,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           <>
             <FilterButtonGroup
               filters={filters}
-              onFilterClick={action("filters-filter-click")}
+              onFilterClick={(e, filter) =>
+                handleFilterGroupButtonClick(e, filter, filters, setFilters)
+              }
             />
             <HorizontalRule style={{ width: "200px" }} />
           </>
@@ -236,7 +236,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                     key={index}
                     icon={filter.icon}
                     title={filter.name}
-                    onClick={action("secondary-filter-click")}
+                    onClick={(e, filter) =>
+                      handleFilterGroupButtonClick(
+                        e,
+                        filter,
+                        secondaryFilters,
+                        setSecondaryFilters
+                      )
+                    }
                   />
                 ))}
               </ImageButtonGrid>
