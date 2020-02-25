@@ -18,8 +18,7 @@ import WidgetsBar from "./components/Widgets/Bar";
 
 import useTopicWidgets from "./hooks/useTopicWidgets";
 import useTopicWidgetSettings from "./hooks/useTopicWidgetSettings";
-import useTopicWidgetSettingsActiveState
-  from "./hooks/useTopicWidgetSettingsActiveState";
+import useTopicWidgetSettingsActiveState from "./hooks/useTopicWidgetSettingsActiveState";
 
 export {
   Button,
