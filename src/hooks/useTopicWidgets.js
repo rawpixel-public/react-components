@@ -1,6 +1,10 @@
 import React from "react";
 
-export default (target = "website", catalog = "", baseUrl = 'https://dev-labs.rawpixel.com/_services') => {
+export default (
+  target = "website",
+  catalog = "",
+  baseUrl = "https://dev-labs.rawpixel.com"
+) => {
   const [loading, setLoading] = React.useState(false);
   const [widgets, setWidgets] = React.useState([]);
 
@@ -15,12 +19,9 @@ export default (target = "website", catalog = "", baseUrl = 'https://dev-labs.ra
       .map(key => `${key}=${queryParams[key]}`)
       .join("&");
 
-    fetch(
-      `${baseUrl}/topics/sidebar/widgets?${queryString}`,
-      {
-        method: "GET"
-      }
-    )
+    fetch(`${baseUrl}/_services/topics/sidebar/widgets?${queryString}`, {
+      method: "GET"
+    })
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {

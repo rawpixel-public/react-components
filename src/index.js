@@ -16,6 +16,8 @@ import WidgetTopicGroup from "./components/Widgets/TopicGroup";
 import WidgetAddon from "./components/Widgets/Addon";
 import WidgetsBar from "./components/Widgets/Bar";
 
+import useTopicWidgets from "./hooks/useTopicWidgets";
+
 export {
   Button,
   Heading,
@@ -34,7 +36,8 @@ export {
   TopicsGrid,
   WidgetsBar,
   WidgetAddon,
-  WidgetTopicGroup
+  WidgetTopicGroup,
+  useTopicWidgets
 };
 
 export default {
@@ -55,5 +58,6 @@ export default {
   TopicsGrid,
   WidgetsBar,
   WidgetAddon,
-  WidgetTopicGroup
+  WidgetTopicGroup,
+  useTopicWidgets
 };

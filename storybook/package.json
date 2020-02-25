@@ -8,8 +8,8 @@
   "dependencies": {
     "@rawpixel-public/react-components": "link:..",
     "prop-types": "^15.6.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.4.1",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {

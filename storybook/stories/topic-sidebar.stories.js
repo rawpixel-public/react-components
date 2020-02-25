@@ -14,12 +14,12 @@ import {
   Categories,
   FilterButtonGroup,
   FilterButtonGroupMain,
-  FilterButtonGroupPlaceholder
+  FilterButtonGroupPlaceholder,
+  useTopicWidgets
 } from "@rawpixel-public/react-components";
 
 import { topics } from "./topic-sidebar.data";
 import SidebarButtonList from "../components/SidebarButtonList";
-import useTopicWidgets from "../hooks/useTopicWidgets";
 
 const StyledSidebar = styled.div`
   background: ${props => (props.isDAM ? "#FFF" : "#F4F4F4")};
@@ -71,12 +71,10 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
   const activeWidget = widgets.length && widgets[activeFilter];
-  const categories = activeWidget
-    ? activeWidget.subCategories.length && [
-        ...[{ name: "All" }],
-        ...activeWidget.subCategories
-      ]
-    : [];
+  const categories =
+    activeWidget && !!activeWidget.subCategories.length
+      ? [...[{ name: "All" }], ...activeWidget.subCategories]
+      : [];
   const site = isTeam ? (isTeam ? "dam-team" : "dam-website") : "website";
   const { main, fileTypes, filters, secondaryFilters } = getFilterGroups(
     site,
