@@ -35,7 +35,11 @@ const ExclusiveButton = props => (
 
 const LikesButton = props => (
   <Button {...props}>
-    <StyledIcon imgSrc={heartSvg} background={palette.pink} /> Likes
+    <StyledIcon
+      imgSrc={heartSvg}
+      background={`linear-gradient(to left, ${palette.pink}, ${palette.blue})`}
+    />{" "}
+    Likes
   </Button>
 );
 

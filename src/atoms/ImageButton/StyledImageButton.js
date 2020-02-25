@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { prop } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -31,6 +32,10 @@ export const StyledImageButton = styled.button`
   &[disabled] .img-wrapper {
     background: ${palette.grayLight};
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const StyledImgWrapper = styled.div`
@@ -38,21 +43,6 @@ export const StyledImgWrapper = styled.div`
   height: 50px;
   width: 60px;
   border-radius: 0.25em;
-
-  svg {
-    display: block;
-    margin: 5px auto;
-    height: 50px;
-    width: 60px;
-
-    image {
-      height: 50px;
-      width: 60px;
-      // Cannot access SVG filter/stroke/fill props when loading via URL, so CSS
-      // filter is necessary to apply styles to SVG images.
-      filter: brightness(0) invert(1);
-    }
-  }
 
   .loader {
     position: absolute;
@@ -68,4 +58,14 @@ export const StyledImageButtonTitle = styled.span`
   line-height: 1.25;
   margin-top: 2px;
   min-width: 45px;
+`;
+
+export const StyledIcon = styled.div`
+  display: inline-block;
+  height: 50px;
+  width: 60px;
+  vertical-align: top;
+  mask: url(${prop("imgSrc")}) no-repeat center;
+  background: ${palette.white};
+  margin: 5px auto;
 `;

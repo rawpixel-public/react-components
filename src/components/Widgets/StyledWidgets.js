@@ -21,6 +21,10 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const StyledAnchor = styled.a`
@@ -44,6 +48,7 @@ export const StyledText = styled.span`
   line-height: 1.5;
   text-align: center;
   margin: 3px 0;
+  min-width: 40px;
   max-width: 60px;
   word-wrap: normal;
 `;
