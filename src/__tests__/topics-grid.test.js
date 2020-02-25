@@ -34,4 +34,10 @@ describe("topic grid", () => {
 
     expect(myFn).toHaveBeenCalled();
   });
+
+  it("should render placeholders while loading", async () => {
+    const { getByTestId } = render(<TopicsGrid topics={[]} loading />);
+
+    expect(getByTestId(`topics-placeholder-0`)).toBeVisible();
+  });
 });

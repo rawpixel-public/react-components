@@ -100,13 +100,23 @@ const topicsData = [
 
 export const grid = () => {
   return (
-    <TopicsGrid topics={topicsData} onTopicClick={action("topic-grid-click")} />
+    <TopicsGrid
+      topics={topicsData}
+      onTopicClick={action("topic-grid-click")}
+      loading={boolean("loading", false)}
+    />
   );
 };
 
 export const noScroll = () => {
   return (
-    <TopicsGrid topics={topicsData.slice(0, 9)} onTopicClick={action("topic-grid-click")} />
+    <TopicsGrid
+      topics={topicsData.slice(0, 9)}
+      onTopicClick={action("topic-grid-click")}
+      defaultHeight={320}
+      loading={boolean("loading", false)}
+      viewable={9}
+    />
   );
 };
 

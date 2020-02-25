@@ -1,6 +1,6 @@
 import React from "react";
 
-export default (target = "website", catalog = "") => {
+export default (target = "website", catalog = "", baseUrl = 'https://dev-labs.rawpixel.com/_services') => {
   const [loading, setLoading] = React.useState(false);
   const [widgets, setWidgets] = React.useState([]);
 
@@ -16,7 +16,7 @@ export default (target = "website", catalog = "") => {
       .join("&");
 
     fetch(
-      `https://8703b7e2-39a9-46c9-888e-71d05385ced9.mock.pstmn.io/_services/topics/sidebar/widgets?${queryString}`,
+      `${baseUrl}/topics/sidebar/widgets?${queryString}`,
       {
         method: "GET"
       }

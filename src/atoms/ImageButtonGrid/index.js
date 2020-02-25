@@ -7,11 +7,12 @@ import {
   StyledScrollbar
 } from "./StyledImageButtonGrid";
 
-// 3 rows of image buttons height.
-const defaultHeight = 240;
-const defaultWidth = 225;
-
-const ImageButtonGrid = ({ children, viewable = 9 }) => {
+const ImageButtonGrid = ({
+  children,
+  viewable = 9,
+  defaultHeight = 240,
+  defaultWidth = 225
+}) => {
   const [height, setHeight] = React.useState(defaultHeight);
   const ContainerRef = React.useRef();
 
@@ -40,7 +41,9 @@ const ImageButtonGrid = ({ children, viewable = 9 }) => {
 
 ImageButtonGrid.propTypes = {
   children: PropTypes.node,
-  viewable: PropTypes.number
+  viewable: PropTypes.number,
+  defaultHeight: PropTypes.number,
+  defaultWidth: PropTypes.number
 };
 
 export default ImageButtonGrid;

@@ -1,10 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ImageButtonGrid from "../../atoms/ImageButtonGrid";
-
+import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 import Topic from "./Topic";
 
-const TopicsGrid = ({ topics, onTopicClick, isDAM = false }) => {
+const TopicsPlaceholder = ({ count = 12 }) => {
+  return [...Array(count)].map((_, index) => (
+    <div
+      style={{ display: "flex", flexDirection: "column", margin: "5px 0" }}
+      data-testid={`topics-placeholder-${index}`}
+      key={index}
+    >
+      <LoadingPlaceholder
+        width="60px"
+        height="50px"
+        style={{ marginBottom: "5px" }}
+      />
+      <LoadingPlaceholder width="60px" height="20px" borderRadius="none" />
+    </div>
+  ));
+};
+
+TopicsPlaceholder.propTypes = {
+  count: PropTypes.number
+};
+
+const TopicsGrid = ({
+  topics,
+  onTopicClick,
+  isDAM = false,
+  loading = false,
+  viewable = 12,
+  defaultHeight = 320
+}) => {
   const handleTopicClick = (e, topic) => {
     if (typeof onTopicClick === "function") {
       onTopicClick(e, topic);
@@ -12,19 +40,21 @@ const TopicsGrid = ({ topics, onTopicClick, isDAM = false }) => {
   };
 
   return (
-    <ImageButtonGrid>
-      {topics.map(topic => (
-        <Topic
-          icon={topic.icon}
-          id={topic.id}
-          title={topic.title}
-          key={topic.id}
-          isDAM={isDAM}
-          isLoading={topic.isLoading}
-          isTagged={topic.isTagged}
-          onTopicClick={e => handleTopicClick(e, topic)}
-        />
-      ))}
+    <ImageButtonGrid viewable={viewable} defaultHeight={defaultHeight}>
+      {loading && <TopicsPlaceholder count={viewable} />}
+      {!loading &&
+        topics.map(topic => (
+          <Topic
+            icon={topic.icon}
+            id={topic.id}
+            title={topic.title}
+            key={topic.id}
+            isDAM={isDAM}
+            isLoading={topic.isLoading}
+            isTagged={topic.isTagged}
+            onTopicClick={e => handleTopicClick(e, topic)}
+          />
+        ))}
     </ImageButtonGrid>
   );
 };
@@ -32,7 +62,10 @@ const TopicsGrid = ({ topics, onTopicClick, isDAM = false }) => {
 TopicsGrid.propTypes = {
   topics: PropTypes.array,
   onTopicClick: PropTypes.func,
-  isDAM: PropTypes.bool
+  isDAM: PropTypes.bool,
+  loading: PropTypes.bool,
+  viewable: PropTypes.number,
+  defaultHeight: PropTypes.number
 };
 
 export default TopicsGrid;

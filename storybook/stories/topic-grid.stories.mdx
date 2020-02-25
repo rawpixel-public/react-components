@@ -18,6 +18,11 @@ import starSvg from "../images/star.svg";
 
 Displays a grid of topics in the sidebar.
 
+The entire grid can be shown with placeholders using the loading prop:
+```javascript
+<TopicsGrid loading />
+```
+
 ## Topic
 
 Icon and title to represent a topic from a topic group.
@@ -59,6 +64,8 @@ Displays topics in a grid. Adds a scrollbar when more there are more topics than
 ## Topics Grid (without scroll)
 
 Displays topics in a grid. No scrollbar with 9 topics or fewer.
+
+Optionally change this with `viewable` prop (count of number of viewable topics) and/or the `defaultHeight` (height in pixels of the container).
 
 <Preview>
   <Story name="no-scroll">

@@ -160,6 +160,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           topics={topicData}
           onTopicClick={handleTopicClick}
           isDAM={isTeam}
+          loading={loading}
+          viewable={isTeam ? 12 : 9}
+          defaultHeight={isTeam ? 320 : 270}
         />
         {isTeam && (
           <>
