@@ -7,8 +7,7 @@ export default (widget = {}) => {
     const { subCategories } = widget;
     if (subCategories && subCategories.length) {
       setCategories([...[{ name: "All", active: true }], ...subCategories]);
-    }
-    else {
+    } else {
       setCategories([]);
     }
   }, [widget]);
