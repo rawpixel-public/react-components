@@ -90,6 +90,7 @@ const Categories = ({
                 <Button
                   size="xsmall"
                   onClick={e => categoryClickHandler(e, category)}
+                  active={category.active}
                 >
                   {category.name}
                 </Button>

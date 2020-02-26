@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { action } from "@storybook/addon-actions";
 import { withKnobs } from "@storybook/addon-knobs";
 import {
   Button,
@@ -15,6 +14,7 @@ import {
   FilterButtonGroup,
   FilterButtonGroupMain,
   FilterButtonGroupPlaceholder,
+  useTopicWidgetCategories,
   useTopicWidgets,
   useTopicWidgetSettings,
   useTopicWidgetSettingsActiveState
@@ -42,16 +42,18 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const { loading, widgets } = useTopicWidgets(target, catalog);
 
   const [topicData, setTopicData] = React.useState(topics);
-  const [title, setTitle] = React.useState("");
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
   const activeWidget = !!widgets.length && widgets[activeFilter];
-  const categories =
-    activeWidget && !!activeWidget.subCategories.length
-      ? [...[{ name: "All" }], ...activeWidget.subCategories]
-      : [];
-  const site = isTeam ? (isTeam ? "dam-team" : "dam-website") : "website";
+  const { categories, setActiveCategory } = useTopicWidgetCategories(
+    activeWidget
+  );
+  const site = isTeam
+    ? isWebsiteCatalog
+      ? "dam-website"
+      : "dam-team"
+    : "website";
 
   const { main, fileTypes, filters, secondaryFilters } = useTopicWidgetSettings(
     site,
@@ -65,14 +67,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
     resetActiveFilters
   } = useTopicWidgetSettingsActiveState();
 
-  React.useEffect(() => {
-    if (!title && widgets.length) {
-      setTitle(widgets[activeFilter].title);
-    }
-  }, [widgets]);
-
   const handleFilterClick = (e, filter) => {
-    setTitle(filter.title);
     setActiveFilter(widgets.indexOf(filter));
   };
 
@@ -134,9 +129,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <Categories
-          title={title}
+          title={activeWidget.title}
           categories={categories}
-          onCategoryClick={action("category-click")}
+          onCategoryClick={(e, category) => setActiveCategory(category)}
           showClear={!isTeam && activeFilters.length > 0}
           onClearClick={() => resetActiveFilters()}
           loading={loading}
