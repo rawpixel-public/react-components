@@ -152,7 +152,7 @@ export const dam = () => {
         title={text("title", "My topics", "dam")}
         isLoading={loading}
         isTagged={tagged}
-        isDAM={boolean("isDAM", true, "dam")}
+        isTagMode={boolean("isTagMode", true, "dam")}
         onTopicClick={handleTopicClick}
       />
     </div>

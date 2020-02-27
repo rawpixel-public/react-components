@@ -7,7 +7,7 @@ const Topic = ({
   id,
   icon,
   title,
-  isDAM = false,
+  isTagMode = false,
   isLoading = false,
   isTagged = false,
   onTopicClick
@@ -22,7 +22,7 @@ const Topic = ({
     <StyledTopicButton
       onClick={handleTopicClick}
       disabled={isLoading && "disabled"}
-      isDAM={isDAM}
+      isTagMode={isTagMode}
       isTagged={isTagged}
       isLoading={isLoading}
       title={title}
@@ -35,7 +35,7 @@ Topic.propTypes = {
   id: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  isDAM: PropTypes.bool,
+  isTagMode: PropTypes.bool,
   isLoading: PropTypes.bool,
   isTagged: PropTypes.bool,
   onTopicClick: PropTypes.func

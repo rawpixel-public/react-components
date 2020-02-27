@@ -28,7 +28,7 @@ TopicsPlaceholder.propTypes = {
 const TopicsGrid = ({
   topics,
   onTopicClick,
-  isDAM = false,
+  isTagMode = false,
   loading = false,
   viewable = 12,
   defaultHeight = 320
@@ -49,7 +49,7 @@ const TopicsGrid = ({
             id={topic.id}
             title={topic.title}
             key={topic.id}
-            isDAM={isDAM}
+            isTagMode={isTagMode}
             isLoading={topic.isLoading}
             isTagged={topic.isTagged}
             onTopicClick={e => handleTopicClick(e, topic)}
@@ -62,7 +62,7 @@ const TopicsGrid = ({
 TopicsGrid.propTypes = {
   topics: PropTypes.array,
   onTopicClick: PropTypes.func,
-  isDAM: PropTypes.bool,
+  isTagMode: PropTypes.bool,
   loading: PropTypes.bool,
   viewable: PropTypes.number,
   defaultHeight: PropTypes.number

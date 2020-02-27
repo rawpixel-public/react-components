@@ -45,6 +45,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
+  const [tagMode, setTagMode] = React.useState(false);
   const activeWidget = !!widgets.length && widgets[activeFilter];
   const { categories, setActiveCategory } = useTopicWidgetCategories(
     activeWidget
@@ -108,7 +109,13 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             </SidebarButtonList>
             <SidebarButtonList itemsPerRow={3}>
               <Button size="small">Boards</Button>
-              <Button size="small">Tag</Button>
+              <Button
+                active={tagMode}
+                size="small"
+                onClick={() => setTagMode(!tagMode)}
+              >
+                Tag
+              </Button>
               <Button size="small" active>
                 Scores
               </Button>
@@ -139,7 +146,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         <TopicsGrid
           topics={topicData}
           onTopicClick={handleTopicClick}
-          isDAM={isTeam}
+          isTagMode={isTeam && tagMode}
           loading={loading}
           viewable={isTeam ? 12 : 9}
           defaultHeight={isTeam ? 320 : 270}

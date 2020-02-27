@@ -14,7 +14,7 @@ export const StyledTopicButton = styled(ImageButton)`
       background: ${props =>
         props.isTagged
           ? palette.grayLighter
-          : props.isDAM
+          : props.isTagMode
           ? taggedGreen
           : palette.grayLight};
     }
@@ -22,7 +22,7 @@ export const StyledTopicButton = styled(ImageButton)`
 
   .img-wrapper {
     background: ${props =>
-      props.isTagged && props.isDAM ? taggedGreen : palette.grayLighter};
+      props.isTagged && props.isTagMode ? taggedGreen : palette.grayLighter};
     transition: background-color linear 250ms;
   }
 
@@ -30,7 +30,7 @@ export const StyledTopicButton = styled(ImageButton)`
   // loading state.
   &[disabled] .img-wrapper {
     background: ${props =>
-      props.isTagged || !props.isDAM ? palette.grayLight : taggingGreen};
+      props.isTagged || !props.isTagMode ? palette.grayLight : taggingGreen};
   }
 
   > span {
