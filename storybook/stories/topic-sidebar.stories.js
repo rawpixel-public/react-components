@@ -45,6 +45,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
+  const [displayScore, setDisplayScore] = React.useState(false);
   const [tagMode, setTagMode] = React.useState(false);
   const activeWidget = !!widgets.length && widgets[activeFilter];
   const { categories, setActiveCategory } = useTopicWidgetCategories(
@@ -107,31 +108,52 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
               <Button>Details</Button>
               <Button active>Topics</Button>
             </SidebarButtonList>
-            <SidebarButtonList itemsPerRow={3}>
-              <Button size="small">Boards</Button>
-              <Button
-                active={tagMode}
-                size="small"
-                onClick={() => setTagMode(!tagMode)}
-              >
-                Tag
-              </Button>
-              <Button size="small" active>
-                Scores
-              </Button>
-            </SidebarButtonList>
-            <SidebarButtonList>
-              <Button>leaves</Button>
-              <div
-                style={{ textAlign: "center", padding: "5px 0", color: "#bbb" }}
-              >
-                {700 + score} ({score})
-              </div>
-            </SidebarButtonList>
-            <SidebarButtonList>
-              <Button onClick={() => setScore(score + 50)}>+50</Button>
-              <Button onClick={() => setScore(score - 50)}>-50</Button>
-            </SidebarButtonList>
+            {isWebsiteCatalog ? (
+              <SidebarButtonList itemsPerRow={3}>
+                <Button size="small">Boards</Button>
+                <Button
+                  active={tagMode}
+                  size="small"
+                  onClick={() => setTagMode(!tagMode)}
+                >
+                  Tag
+                </Button>
+                <Button
+                  size="small"
+                  active={displayScore}
+                  onClick={() => setDisplayScore(!displayScore)}
+                >
+                  Scores
+                </Button>
+              </SidebarButtonList>
+            ) : (
+              <SidebarButtonList>
+                <Button onClick={() => setTagMode(!tagMode)} active={tagMode}>
+                  Tag
+                </Button>
+                <Button>Add crown</Button>
+              </SidebarButtonList>
+            )}
+            {displayScore && (
+              <>
+                <SidebarButtonList>
+                  <Button>leaves</Button>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      padding: "5px 0",
+                      color: "#bbb"
+                    }}
+                  >
+                    {700 + score} ({score})
+                  </div>
+                </SidebarButtonList>
+                <SidebarButtonList>
+                  <Button onClick={() => setScore(score + 50)}>+50</Button>
+                  <Button onClick={() => setScore(score - 50)}>-50</Button>
+                </SidebarButtonList>
+              </>
+            )}
             <HorizontalRule style={{ width: "200px" }} />
           </>
         )}
