@@ -10,8 +10,16 @@ import {
 
 import DotLoader from "../Loader/DotLoader";
 
-const ImageButton = ({ icon, title, isLoading = false, onClick, ...props }) => (
+const ImageButton = ({
+  active = false,
+  icon,
+  title,
+  isLoading = false,
+  onClick,
+  ...props
+}) => (
   <StyledImageButton
+    active={active}
     onClick={onClick}
     disabled={(isLoading && "disabled") || props.disabled}
     isLoading={isLoading}
@@ -28,6 +36,7 @@ const ImageButton = ({ icon, title, isLoading = false, onClick, ...props }) => (
 );
 
 ImageButton.propTypes = {
+  active: PropTypes.bool,
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   isLoading: PropTypes.bool,

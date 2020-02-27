@@ -249,7 +249,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                       key={index}
                       icon={filter.icon}
                       title={filter.name}
-                      onClick={handleFilterGroupButtonClick}
+                      onClick={(e) => handleFilterGroupButtonClick(e, filter)}
                       active={filter.active}
                     />
                   ))}

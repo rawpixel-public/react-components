@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { prop } from "styled-tools";
+import { prop, ifProp } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -16,7 +16,7 @@ export const StyledImageButton = styled.button`
   align-items: center;
 
   .img-wrapper {
-    background: ${palette.grayLighter};
+    background: ${ifProp("active", palette.gray, palette.grayLighter)};
     transition: background-color linear 250ms;
   }
 

@@ -14,34 +14,21 @@ const useTopicWidgetSettingsActiveState = () => {
         ...activeFilters.filter(activeFilter => tag !== activeFilter.tag)
       ]);
     } else {
-      switch (group) {
-        case "main":
-          // Only one of "free" or "premium" can be active.
-          setActiveFilters([
-            ...activeFilters.filter(({ tag }) => {
-              if (filter.tag === "$free") {
-                return tag !== "$premium";
-              }
-              if (filter.tag === "$premium") {
-                return tag !== "$free";
-              }
-              return true;
-            }),
-            filter
-          ]);
-          break;
-
-        case "filters":
-          // Only one filter can be active at a time.
-          setActiveFilters([
-            ...activeFilters.filter(({ group }) => group !== "filters"),
-            filter
-          ]);
-          break;
-
-        default:
-          setActiveFilters([...activeFilters, filter]);
-          break;
+      if (group === "main") {
+        setActiveFilters([
+          ...activeFilters.filter(({ tag }) => {
+            if (filter.tag === "$free") {
+              return tag !== "$premium";
+            }
+            if (filter.tag === "$premium") {
+              return tag !== "$free";
+            }
+            return true;
+          }),
+          filter
+        ]);
+      } else {
+        setActiveFilters([...activeFilters, filter]);
       }
     }
   };
