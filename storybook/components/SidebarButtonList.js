@@ -14,7 +14,7 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   display: flex;
   justify-content: center;
-  width: ${props => (210 - 5 * props.itemsPerRow) / props.itemsPerRow}px;
+  width: ${props => (220 - 5 * props.itemsPerRow) / props.itemsPerRow}px;
   margin-bottom: 5px;
 
   &:first-child {
@@ -22,12 +22,8 @@ const StyledListItem = styled.li`
   }
 `;
 
-const StyledWrapper = styled.div`
-  padding: 0 10px;
-`;
-
 export default ({ children, title, itemsPerRow = 2 }) => (
-  <StyledWrapper>
+  <div>
     {title}
     <StyledList>
       {React.Children.toArray(children).map((item, index) => (
@@ -36,5 +32,5 @@ export default ({ children, title, itemsPerRow = 2 }) => (
         </StyledListItem>
       ))}
     </StyledList>
-  </StyledWrapper>
+  </div>
 );

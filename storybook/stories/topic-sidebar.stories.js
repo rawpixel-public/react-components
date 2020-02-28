@@ -30,7 +30,14 @@ const StyledSidebar = styled.div`
   flex-direction: row;
   padding: 10px 0;
   width: 300px;
+
+  .content {
+    width: 220px;
+    margin-left: 10px;
+  }
 `;
+
+const SidebarHorizontalRule = () => <HorizontalRule style={{ width: "220px" }} />
 
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
@@ -101,7 +108,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
 
   return (
     <StyledSidebar isDAM={isTeam}>
-      <div>
+      <div className="content">
         {isTeam && (
           <>
             <SidebarButtonList>
@@ -154,7 +161,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                 </SidebarButtonList>
               </>
             )}
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
           </>
         )}
         <Categories
@@ -171,11 +178,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           isTagMode={isTeam && tagMode}
           loading={loading}
           viewable={isTeam ? 12 : 9}
-          defaultHeight={isTeam ? 320 : 270}
+          defaultHeight={isTeam ? 300 : 260}
         />
         {isTeam && (
           <>
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
             <SidebarButtonList>
               <Button active={live} onClick={() => setLive(!live)}>
                 Live
@@ -186,11 +193,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             </SidebarButtonList>
           </>
         )}
-        <HorizontalRule style={{ width: "200px" }} />
+        <SidebarHorizontalRule />
         {loading && (
           <>
             <FilterButtonGroupPlaceholder />
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
           </>
         )}
         {main && !!main.filter(i => i.published).length && (
@@ -199,13 +206,13 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
               filters={main.map(isFilterActiveMapper)}
               onFilterClick={handleFilterGroupButtonClick}
             />
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
           </>
         )}
         {loading && (
           <>
             <FilterButtonGroupPlaceholder hasTitle numberOfItems={5} />
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
           </>
         )}
         {fileTypes && !!fileTypes.filter(i => i.published).length && (
@@ -215,13 +222,13 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
               filters={fileTypes.map(isFilterActiveMapper)}
               onFilterClick={handleFilterGroupButtonClick}
             />
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
           </>
         )}
         {loading && (
           <>
             <FilterButtonGroupPlaceholder numberOfItems={5} />
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
           </>
         )}
         {filters && !!filters.filter(i => i.published).length && (
@@ -230,7 +237,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
               filters={filters.map(isFilterActiveMapper)}
               onFilterClick={handleFilterGroupButtonClick}
             />
-            <HorizontalRule style={{ width: "200px" }} />
+            <SidebarHorizontalRule />
           </>
         )}
         {isTeam &&
@@ -254,7 +261,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                     />
                   ))}
               </ImageButtonGrid>
-              <HorizontalRule style={{ width: "200px" }} />
+              <SidebarHorizontalRule />
             </>
           )}
         {!isTeam && (

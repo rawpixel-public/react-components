@@ -2,18 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 
-import {
-  StyledList,
-  StyledListItem,
-  StyledWrapper
-} from "./StyledFilterButtonGroup";
+import { StyledList, StyledListItem } from "./StyledFilterButtonGroup";
 
 const FilterButtonGroupPlaceholder = ({
   hasTitle = false,
   numberOfItems = 4,
   itemsPerRow = 2
 }) => (
-  <StyledWrapper>
+  <div>
     {hasTitle && (
       <LoadingPlaceholder width="125px" height="19px" borderRadius="none" />
     )}
@@ -24,7 +20,7 @@ const FilterButtonGroupPlaceholder = ({
         </StyledListItem>
       ))}
     </StyledList>
-  </StyledWrapper>
+  </div>
 );
 
 FilterButtonGroupPlaceholder.propTypes = {

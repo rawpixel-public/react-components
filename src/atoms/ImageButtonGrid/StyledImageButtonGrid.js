@@ -4,8 +4,8 @@ export const StyledImageButtonGridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: baseline;
-  width: 220px;
-  padding: 10px;
+  width: 230px;
+  padding: 5px 0;
 `;
 
 export const StyledScrollbar = styled.div`

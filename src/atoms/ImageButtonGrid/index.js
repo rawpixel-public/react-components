@@ -11,7 +11,7 @@ const ImageButtonGrid = ({
   children,
   viewable = 9,
   defaultHeight = 240,
-  defaultWidth = 225
+  defaultWidth = 230
 }) => {
   const [height, setHeight] = React.useState(defaultHeight);
   const ContainerRef = React.useRef();

@@ -4,11 +4,7 @@ import PropTypes from "prop-types";
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
 
-import {
-  StyledList,
-  StyledListItem,
-  StyledWrapper
-} from "./StyledFilterButtonGroup";
+import { StyledList, StyledListItem } from "./StyledFilterButtonGroup";
 
 const FilterButtonGroup = ({
   filters = [],
@@ -16,7 +12,7 @@ const FilterButtonGroup = ({
   title,
   itemsPerRow = 2
 }) => (
-  <StyledWrapper>
+  <div>
     {title && <Heading level={3}>{title}</Heading>}
     <StyledList>
       {filters
@@ -33,7 +29,7 @@ const FilterButtonGroup = ({
           </StyledListItem>
         ))}
     </StyledList>
-  </StyledWrapper>
+  </div>
 );
 
 export const FilterShape = PropTypes.shape({

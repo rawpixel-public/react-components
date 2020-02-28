@@ -5,11 +5,7 @@ import Button from "../../atoms/Button";
 import { palette } from "../../utils/cssVars";
 
 import { FilterButtonGroupProps } from "./FilterButtonGroup";
-import {
-  StyledList,
-  StyledListItem,
-  StyledWrapper
-} from "./StyledFilterButtonGroup";
+import { StyledList, StyledListItem } from "./StyledFilterButtonGroup";
 
 import crownSvg from "../../icons/crown.svg";
 import heartSvg from "../../icons/heart-o.svg";
@@ -59,7 +55,7 @@ const FilterButtonGroupMain = ({
   const rowSize = published.length > 1 ? itemsPerRow : 1;
 
   return (
-    <StyledWrapper>
+    <div>
       <StyledList>
         {published.map((filter, index) => {
           const Component = ButtonComponents[filter.tag];
@@ -76,7 +72,7 @@ const FilterButtonGroupMain = ({
           );
         })}
       </StyledList>
-    </StyledWrapper>
+    </div>
   );
 };
 

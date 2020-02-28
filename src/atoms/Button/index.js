@@ -14,7 +14,7 @@ const Button = ({ children, disabled = false, size = "medium", ...props }) => (
 
 Button.propTypes = {
   active: PropTypes.bool,
-  as: PropTypes.oneOf(["a", "button", "input"]),
+  as: PropTypes.oneOf(["a", "button", "input", "div", "span"]),
   children: PropTypes.node,
   disabled: PropTypes.bool,
   href: PropTypes.string,

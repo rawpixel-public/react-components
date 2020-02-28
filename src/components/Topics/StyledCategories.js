@@ -27,9 +27,8 @@ export const StyledClearButton = styled.button`
 `;
 
 export const StyledCategoriesWrapper = styled.div`
-  max-width: 220px;
+  max-width: 230px;
   overflow: hidden;
-  padding-left: 10px;
   padding-bottom: 10px;
 `;
 
@@ -50,11 +49,11 @@ export const StyledCategoryList = styled.ul`
   overflow: hidden;
 
   li {
-    margin: 0 2px;
+    margin: 0 5px;
     transition: margin-left ease 200ms;
     min-width: ${categoryButtonWidth}px;
     &:first-child {
-      margin-left: -${props => props.carouselPosition * (categoryButtonWidth + 4)}px;
+      margin-left: -${props => props.carouselPosition * (categoryButtonWidth + 6)}px;
     }
 
     &:last-child {
