@@ -51,4 +51,19 @@ export const StyledButton = styled.button`
     background: ${ifProp("active", lightGray, lighterGray)};
     color: ${ifProp("active", palette.white, lightGray)};
   }
+
+  &[type="text"] {
+    text-align: left;
+    color: ${darkGray};
+
+    &:hover {
+      cursor: text;
+      background-color: ${lighterGray};
+    }
+
+    &:focus {
+      box-shadow: 0 0 1px ${palette.green};
+      transition: box-shadow 0.2s;
+    }
+  }
 `;

@@ -57,3 +57,13 @@ Render `as` and `input` tag and add a `type="submit"` prop. Note that the button
     <Button as="input" type="submit" onClick={action("submit-click")} style={{width: "200px"}} value={text("value", "Submit button", "input")} />
   </Story>
 </Preview>
+
+## Text field
+
+Render `as` and `input` tag and add a `type="text"` prop. Note that the button text must be supplied as the `value` prop, as React does not allow this element to use `children`. `onChange` should be used instead of `onClick`.
+
+<Preview>
+  <Story name="textfield">
+    <Button as="input" type="text" placeholder={text("placeholder", "Type in here", "textfield")} onChange={action("on-text-input-change")} style={{width: "200px"}} />
+  </Story>
+</Preview>
