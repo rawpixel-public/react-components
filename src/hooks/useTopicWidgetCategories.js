@@ -1,6 +1,8 @@
 import React from "react";
 
-export default (widget = {}) => {
+const defaultWidget = {};
+
+export default (widget = defaultWidget) => {
   const [categories, setCategories] = React.useState([]);
 
   React.useEffect(() => {
