@@ -35,6 +35,10 @@ export const StyledButton = styled.button`
   text-decoration: none;
   transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
   width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:hover {
     cursor: pointer;
