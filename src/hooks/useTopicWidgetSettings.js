@@ -2,7 +2,7 @@ import React from "react";
 
 const groupMapper = group => filter => ({ ...filter, group });
 
-const useTopicWidgetSettings = (site, widget) => {
+const useTopicWidgetSettings = (catalogId, widget) => {
   const [main, setMain] = React.useState([]);
   const [fileTypes, setFileTypes] = React.useState([]);
   const [filters, setFilters] = React.useState([]);
@@ -19,10 +19,12 @@ const useTopicWidgetSettings = (site, widget) => {
     const { filters: filtersDamWeb } = website;
     const { filters: filtersDamTeam, secondaryFilters } = team;
 
-    const getFiltersBySite = site => {
-      switch (site) {
+    const getFiltersByCatalogId = id => {
+      switch (id) {
+        case "website_content":
         case "dam-website":
           return filtersDamWeb;
+        case "team":
         case "dam-team":
           return filtersDamTeam;
         case "website":
@@ -32,20 +34,22 @@ const useTopicWidgetSettings = (site, widget) => {
 
     setMain(main.map(groupMapper("main")));
     setFileTypes(fileTypes.map(groupMapper("fileTypes")));
-    setFilters(getFiltersBySite(site).map(groupMapper("filters")));
+    setFilters(getFiltersByCatalogId(catalogId).map(groupMapper("filters")));
 
-    if (site === "dam-team") {
+    if (catalogId === "dam-team" || catalogId === "team") {
       setSecondaryFilters(
         secondaryFilters.map(groupMapper("secondaryFilters"))
       );
     }
-  }, [site, widget]);
+  }, [catalogId, widget]);
 
   return {
     main,
     fileTypes,
     filters,
-    ...(site === "dam-team" && { secondaryFilters })
+    ...((catalogId === "dam-team" || catalogId === "team") && {
+      secondaryFilters
+    })
   };
 };
 

@@ -16,12 +16,13 @@ import {
   FilterButtonGroupPlaceholder,
   useTopicWidgetCategories,
   useTopicWidgets,
-  useTopicWidgetSettings,
-  useTopicWidgetSettingsActiveState
+  useTopicWidgetSettings
 } from "@rawpixel-public/react-components";
 
 import { topics } from "./topic-sidebar.data";
 import SidebarButtonList from "../components/SidebarButtonList";
+import useTopicWidgetSettingsActiveState
+  from "../hooks/useTopicWidgetSettingsActiveState";
 
 const StyledSidebar = styled.div`
   background: ${props => (props.isDAM ? "#FFF" : "#F4F4F4")};

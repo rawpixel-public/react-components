@@ -19,7 +19,6 @@ import WidgetsBar from "./components/Widgets/Bar";
 import useTopicWidgetCategories from "./hooks/useTopicWidgetCategories";
 import useTopicWidgets from "./hooks/useTopicWidgets";
 import useTopicWidgetSettings from "./hooks/useTopicWidgetSettings";
-import useTopicWidgetSettingsActiveState from "./hooks/useTopicWidgetSettingsActiveState";
 
 export {
   Button,
@@ -42,8 +41,7 @@ export {
   WidgetTopicGroup,
   useTopicWidgetCategories,
   useTopicWidgets,
-  useTopicWidgetSettings,
-  useTopicWidgetSettingsActiveState
+  useTopicWidgetSettings
 };
 
 export default {
@@ -66,6 +64,5 @@ export default {
   WidgetAddon,
   WidgetTopicGroup,
   useTopicWidgets,
-  useTopicWidgetSettings,
-  useTopicWidgetSettingsActiveState
+  useTopicWidgetSettings
 };
