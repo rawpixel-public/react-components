@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { prop } from "styled-tools";
+import { Link } from "react-router";
 import Button from "../../atoms/Button";
 import { palette } from "../../utils/cssVars";
 
@@ -62,9 +63,11 @@ const FilterButtonGroupMain = ({
           return (
             <StyledListItem key={index} itemsPerRow={rowSize}>
               <Component
+                as={filter.to ? Link : "button"}
                 active={filter.active}
                 disabled={filter.disabled}
                 onClick={e => onFilterClick && onFilterClick(e, filter)}
+                to={filter.to}
               >
                 {filter.name}
               </Component>

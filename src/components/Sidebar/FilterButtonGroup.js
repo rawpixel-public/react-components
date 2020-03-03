@@ -24,11 +24,7 @@ const FilterButtonGroup = ({
               as={filter.to ? Link : "button"}
               active={filter.active}
               disabled={filter.disabled}
-              onClick={
-                !filter.to
-                  ? e => onFilterClick && onFilterClick(e, filter)
-                  : null
-              }
+              onClick={e => onFilterClick && onFilterClick(e, filter)}
               to={filter.to}
             >
               {filter.name}
