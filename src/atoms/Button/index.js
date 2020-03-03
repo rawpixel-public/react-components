@@ -7,11 +7,11 @@ const isDisabled = props => {
     return true;
   }
 
-  if (!props.href && !props.onClick && props.as !== "input") {
+  if (props.as === "input" && props.type === "text" && !props.onChange) {
     return true;
   }
 
-  if (props.as === "input" && props.type === "text" && !props.onChange) {
+  if (!props.to && !props.href && !props.onClick && props.as !== "input") {
     return true;
   }
 
@@ -26,7 +26,7 @@ const Button = ({ children, disabled = false, size = "medium", ...props }) => (
 
 Button.propTypes = {
   active: PropTypes.bool,
-  as: PropTypes.oneOf(["a", "button", "input", "div", "span"]),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   children: PropTypes.node,
   disabled: PropTypes.bool,
   href: PropTypes.string,

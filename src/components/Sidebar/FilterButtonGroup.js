@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router";
 
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
@@ -20,9 +21,15 @@ const FilterButtonGroup = ({
         .map((filter, index) => (
           <StyledListItem key={index} itemsPerRow={itemsPerRow}>
             <Button
+              as={filter.to ? Link : "button"}
               active={filter.active}
               disabled={filter.disabled}
-              onClick={e => onFilterClick && onFilterClick(e, filter)}
+              onClick={
+                !filter.to
+                  ? e => onFilterClick && onFilterClick(e, filter)
+                  : null
+              }
+              to={filter.to}
             >
               {filter.name}
             </Button>
