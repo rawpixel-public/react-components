@@ -14,9 +14,11 @@ const verticalCentreCss = css`
 export const StyledButton = styled.button`
   background: none;
   border: none;
+  color: ${palette.grayMedium};
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-decoration: none;
 
   &:hover {
     cursor: pointer;
@@ -24,20 +26,6 @@ export const StyledButton = styled.button`
 
   &:focus {
     outline: none;
-  }
-`;
-
-export const StyledAnchor = styled.a`
-  background: none;
-  border: none;
-  color: ${palette.grayMedium};
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  &:hover {
-    cursor: pointer;
   }
 `;
 
