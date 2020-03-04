@@ -16,8 +16,8 @@ const WidgetTopicGroup = ({
   <StyledButton
     as={to ? Link : "button"}
     onClick={onClick}
-    role="button"
     active={active ? true : undefined}
+    to={to}
     {...props}
   >
     <WidgetIcon href={filter_icon} active={active} />
