@@ -1,11 +1,25 @@
 import React from "react";
+import { Link } from "react-router";
 
 import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
 import WidgetProps from "./WidgetProps";
 
-const WidgetTopicGroup = ({ title, filter_icon, onClick, active = false }) => (
-  <StyledButton onClick={onClick} role="button" active={active}>
+const WidgetTopicGroup = ({
+  to,
+  title,
+  filter_icon,
+  onClick,
+  active = false,
+  ...props
+}) => (
+  <StyledButton
+    as={to ? Link : "button"}
+    onClick={onClick}
+    role="button"
+    active={active ? true : undefined}
+    {...props}
+  >
     <WidgetIcon href={filter_icon} active={active} />
     <StyledText>{title}</StyledText>
   </StyledButton>

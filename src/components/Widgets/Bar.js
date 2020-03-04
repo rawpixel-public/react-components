@@ -54,10 +54,11 @@ const WidgetsBar = ({
     .map(widget => (
       <StyledListItem key={widget.title}>
         <TopicGroup
+          to={widget.to}
           filter_icon={widget.filter_icon}
           title={widget.title}
           onClick={e => filterClickHandler(e, widget)}
-          active={widgets.indexOf(widget) === activeIndex}
+          active={widget.active || widgets.indexOf(widget) === activeIndex}
           type={widget.type}
         />
       </StyledListItem>

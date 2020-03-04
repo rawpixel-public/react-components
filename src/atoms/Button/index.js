@@ -18,8 +18,19 @@ const isDisabled = props => {
   return false;
 };
 
-const Button = ({ children, disabled = false, size = "medium", ...props }) => (
-  <StyledButton disabled={isDisabled(props)} {...props} size={size}>
+const Button = ({
+  active,
+  children,
+  disabled = false,
+  size = "medium",
+  ...props
+}) => (
+  <StyledButton
+    active={active ? true : undefined}
+    disabled={isDisabled(props)}
+    {...props}
+    size={size}
+  >
     {children}
   </StyledButton>
 );
