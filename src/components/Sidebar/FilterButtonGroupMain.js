@@ -21,7 +21,7 @@ const StyledIcon = styled.div`
 `;
 
 const ExclusiveButton = props => (
-  <Button {...props} style={{ padding: "5px 0" }}>
+  <Button {...props} style={{ padding: "6px 0", minHeight: "34px" }}>
     <StyledIcon
       imgSrc={crownSvg}
       background={palette.gold}
