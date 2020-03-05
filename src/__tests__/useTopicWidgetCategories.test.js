@@ -1,7 +1,23 @@
 import { renderHook, act } from "@testing-library/react-hooks";
-import useTopicWidgetCategories from "../hooks/useTopicWidgetCategories";
+import { useTopicWidgetCategories } from "../index";
 
 describe("useTopicWidgetCategories", () => {
+  test("should handle undefined gracefully", () => {
+    const widget = undefined;
+    const { result } = renderHook(() => useTopicWidgetCategories(widget));
+    const { categories, setActiveCategory } = result.current;
+    expect(Array.isArray(categories)).toBe(true);
+    expect(typeof setActiveCategory).toBe("function");
+  });
+
+  test("should handle undefined subcategories prop gracefully", () => {
+    const widget = { subCategories: undefined };
+    const { result } = renderHook(() => useTopicWidgetCategories(widget));
+    const { categories, setActiveCategory } = result.current;
+    expect(Array.isArray(categories)).toBe(true);
+    expect(typeof setActiveCategory).toBe("function");
+  });
+
   test("should get categories from widget", () => {
     const widget = { subCategories: [{ name: "Test" }] };
     const { result } = renderHook(() => useTopicWidgetCategories(widget));

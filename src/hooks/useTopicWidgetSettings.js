@@ -14,10 +14,14 @@ const useTopicWidgetSettings = (catalogId, widget) => {
     }
 
     const { websiteFilters = {}, damFilters = {} } = widget;
-    const { main, fileTypes, filters: filtersWebsite } = websiteFilters;
+    const {
+      main = [],
+      fileTypes = [],
+      filters: filtersWebsite = []
+    } = websiteFilters;
     const { team = {}, website = {} } = damFilters;
-    const { filters: filtersDamWeb } = website;
-    const { filters: filtersDamTeam, secondaryFilters } = team;
+    const { filters: filtersDamWeb = [] } = website;
+    const { filters: filtersDamTeam = [], secondaryFilters = [] } = team;
 
     const getFiltersByCatalogId = id => {
       switch (id) {
