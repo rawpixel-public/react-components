@@ -19,7 +19,7 @@ const ImageButton = ({
   ...props
 }) => (
   <StyledImageButton
-    active={active}
+    active={active ? true : undefined}
     onClick={onClick}
     disabled={(isLoading && "disabled") || props.disabled}
     isLoading={isLoading}

@@ -18,7 +18,7 @@ const SizeButton = ({
   <StyledSizeButton
     as={as}
     className={className}
-    active={active}
+    active={active ? true : undefined}
     disabled={disabled}
     onClick={onClick}
     href={href}

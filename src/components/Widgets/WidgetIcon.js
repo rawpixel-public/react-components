@@ -23,7 +23,7 @@ const StyledIcon = styled.div`
 `;
 
 const WidgetIcon = ({ href, active = false }) => (
-  <StyledIcon active={active} imgSrc={href} />
+  <StyledIcon active={active ? true : undefined} imgSrc={href} />
 );
 
 WidgetIcon.propTypes = {
