@@ -24,6 +24,34 @@ The `disabled` prop can be set to `true` to disable the button (e.g. for loading
 
 <Preview>
   <Story name="button">
-    <SizeButton active={boolean("active", false, "button")} onClick={action("button-click")} disabled={boolean("disabled", false, "button")} height={number("height", 40, "button")} width={number("width", 30, "button")} title={text("title", "Portrait", "button")} />
+    <SizeButton
+      active={boolean("active", false, "button")}
+      onClick={action("button-click")}
+      disabled={boolean("disabled", false, "button")}
+      height={number("height", 40, "button")}
+      width={number("width", 30, "button")}
+      title={text("title", "Portrait", "button")}
+    />
+  </Story>
+</Preview>
+
+## Link
+
+The `as` prop can be used to render other DOM elements/components. An `<a>` component with an `href` prop. Set block dimensions using `height` and `width` props.
+
+The `Link` component from `react-router` can also be used. In this case, use the `to` prop for the link destination.
+
+<Preview>
+  <Story name="link">
+    <SizeButton
+      as="a"
+      active={boolean("active", false, "link")}
+      href={text("href", "https://www.rawpixel.com", "link")}
+      disabled={boolean("disabled", false, "link")}
+      height={number("height", 40, "link")}
+      width={number("width", 30, "link")}
+      title={text("title", "Portrait (link)", "link")}
+      target={text("target", "_blank", "link")}
+    />
   </Story>
 </Preview>

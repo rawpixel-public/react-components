@@ -11,7 +11,9 @@ const SizeButton = ({
   onClick,
   active,
   disabled,
-  href
+  href,
+  to,
+  ...props
 }) => (
   <StyledSizeButton
     as={as}
@@ -20,6 +22,8 @@ const SizeButton = ({
     disabled={disabled}
     onClick={onClick}
     href={href}
+    to={to}
+    {...props}
   >
     <StyledBlock style={{ height: `${height}px`, width: `${width}px` }} />
     <StyledTitle>{title}</StyledTitle>
@@ -35,7 +39,8 @@ SizeButton.propTypes = {
   onClick: PropTypes.func,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  href: PropTypes.string
+  href: PropTypes.string,
+  to: PropTypes.string
 };
 
 export default SizeButton;

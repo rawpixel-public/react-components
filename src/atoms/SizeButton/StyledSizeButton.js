@@ -13,6 +13,8 @@ export const StyledSizeButton = styled.button`
   justify-content: center;
   align-content: center;
   align-items: center;
+  text-decoration: none;
+  color: #7d7c7c;
 
   &:hover {
     cursor: pointer;
