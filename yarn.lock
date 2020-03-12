@@ -5479,6 +5479,11 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
+filter-react-props@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/filter-react-props/-/filter-react-props-0.0.4.tgz#d21af9ddc31a2fcc1b567684ec69b99c1bfd8344"
+  integrity sha512-f/DRNP1B6C16RxwqDUQf85ud22F4xVInqDGV9SqBbVEq2yY8GwFNiQZas5MHaYjiqcItuGYR5dEbGf9/e07rCQ==
+
 finalhandler@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.2.tgz#b7e7d000ffd11938d0fdb053506f6ebabe9f587d"

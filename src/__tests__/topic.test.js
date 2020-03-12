@@ -68,4 +68,18 @@ describe("topic", () => {
 
     expect(getByTestId("stickers")).toBeInstanceOf(HTMLAnchorElement);
   });
+
+  it("should render as anchor element", () => {
+    const { getByTestId } = render(
+      <Topic
+        id="1"
+        title="Stickers"
+        icon="https://placehold.it/80x60"
+        data-testid="stickers"
+        href="https://www.rawpixel.com/stickers"
+      />
+    );
+
+    expect(getByTestId("stickers")).toBeInstanceOf(HTMLAnchorElement);
+  });
 });

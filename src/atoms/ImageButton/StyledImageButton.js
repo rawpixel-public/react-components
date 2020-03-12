@@ -6,6 +6,7 @@ import { fontFamily, palette } from "../../utils/cssVars";
 export const StyledImageButton = styled.button`
   background: none;
   border: none;
+  color: ${palette.gray};
   max-width: 60px;
   min-height: 80px;
   padding-bottom: 5px;
