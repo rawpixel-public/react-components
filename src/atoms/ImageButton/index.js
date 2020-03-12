@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router";
 
 import {
   StyledImageButton,
@@ -16,13 +17,16 @@ const ImageButton = ({
   title,
   isLoading = false,
   onClick,
+  to,
   ...props
 }) => (
   <StyledImageButton
     active={active ? true : undefined}
+    as={to ? Link : "button"}
     onClick={onClick}
     disabled={(isLoading && "disabled") || props.disabled}
-    isLoading={isLoading}
+    isLoading={isLoading ? true : undefined}
+    to={to}
     {...props}
   >
     <StyledImgWrapper className="img-wrapper">
@@ -41,7 +45,8 @@ ImageButton.propTypes = {
   title: PropTypes.string.isRequired,
   isLoading: PropTypes.bool,
   onClick: PropTypes.func,
-  disabled: PropTypes.any
+  disabled: PropTypes.any,
+  to: PropTypes.string
 };
 
 export default ImageButton;

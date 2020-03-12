@@ -14,6 +14,7 @@ export const StyledImageButton = styled.button`
   justify-content: center;
   align-content: center;
   align-items: center;
+  text-decoration: none;
 
   .img-wrapper {
     background: ${ifProp("active", palette.gray, palette.grayLighter)};

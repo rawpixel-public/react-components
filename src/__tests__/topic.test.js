@@ -6,11 +6,17 @@ import { Topic } from "../index";
 
 describe("topic", () => {
   it("should render", async () => {
-    const { getByText } = render(
-      <Topic id="1" title="Stickers" icon="https://placehold.it/80x60" />
+    const { getByText, getByTestId } = render(
+      <Topic
+        id="1"
+        title="Stickers"
+        icon="https://placehold.it/80x60"
+        data-testid="stickers"
+      />
     );
 
     expect(getByText("Stickers")).toBeVisible();
+    expect(getByTestId("stickers")).toBeInstanceOf(HTMLButtonElement);
   });
 
   it("should call my fn on topic click", async () => {
@@ -46,5 +52,20 @@ describe("topic", () => {
     );
 
     expect(getByTestId("dot-loader")).toBeVisible();
+  });
+
+  it("should render as Link", () => {
+    const { getByTestId } = render(
+      <Topic
+        id="1"
+        title="Stickers"
+        icon="https://placehold.it/80x60"
+        isLoading
+        data-testid="stickers"
+        to="/stickers"
+      />
+    );
+
+    expect(getByTestId("stickers")).toBeInstanceOf(HTMLAnchorElement);
   });
 });

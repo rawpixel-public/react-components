@@ -10,7 +10,9 @@ const Topic = ({
   isTagMode = false,
   isLoading = false,
   isTagged = false,
-  onTopicClick
+  onTopicClick,
+  to,
+  ...props
 }) => {
   const handleTopicClick = e => {
     if (typeof onTopicClick === "function") {
@@ -22,11 +24,13 @@ const Topic = ({
     <StyledTopicButton
       onClick={handleTopicClick}
       disabled={isLoading && "disabled"}
-      isTagMode={isTagMode}
-      isTagged={isTagged}
-      isLoading={isLoading}
+      isTagMode={isTagMode ? true : undefined}
+      isTagged={isTagged ? true : undefined}
+      isLoading={isLoading ? true : undefined}
       title={title}
       icon={icon}
+      to={to}
+      {...props}
     />
   );
 };
@@ -38,7 +42,8 @@ Topic.propTypes = {
   isTagMode: PropTypes.bool,
   isLoading: PropTypes.bool,
   isTagged: PropTypes.bool,
-  onTopicClick: PropTypes.func
+  onTopicClick: PropTypes.func,
+  to: PropTypes.string
 };
 
 export default Topic;
