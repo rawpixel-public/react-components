@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { fontFamily } from "../../utils/cssVars";
+import styled, { css } from "styled-components";
+import { ifProp } from "styled-tools";
+import { fontFamily, palette } from "../../utils/cssVars";
 
 export const StyledSizeButton = styled.button`
   background: none;
@@ -17,13 +18,29 @@ export const StyledSizeButton = styled.button`
     cursor: pointer;
   }
 
-  &:hover > div {
+  &:not([disabled]):hover > div {
     background: #4b4b4c;
   }
 
-  &:hover > span {
+  &:not([disabled]):hover > span {
     color: #4b4b4c;
   }
+
+  &[disabled]:hover {
+    cursor: not-allowed;
+  }
+
+  ${ifProp(
+    "active",
+    css`
+      & > div {
+        background: ${palette.grayLight};
+      }
+      & > span {
+        color: ${palette.grayLight};
+      }
+    `
+  )}
 `;
 
 export const StyledBlock = styled.div`
@@ -37,4 +54,5 @@ export const StyledTitle = styled.span`
   font-size: 12px;
   margin-top: 5px;
   transition: color linear 250ms;
+  text-align: center;
 `;
