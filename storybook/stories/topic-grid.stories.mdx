@@ -32,7 +32,7 @@ Additional states to indicate tagged images used on the DAM.
 <Preview>
   <Story name="topic">
     <Centered style={{background: "#FFF"}}>
-      <Topic id={text("id", 1, "topic")} icon={text("icon", starSvg, "topic")} title={text("title", "My topics", "topic")} isLoading={boolean("isLoading", false, "topic")} isTagged={boolean("isTagged", false, "topic")} isTagMode={boolean("isTagMode", false, "topic")} onTopicClick={action("topic-click")} />
+      <Topic id={text("id", 1, "topic")} icon={text("icon", starSvg, "topic")} name={text("name", "My topics", "topic")} isLoading={boolean("isLoading", false, "topic")} isTagged={boolean("isTagged", false, "topic")} isTagMode={boolean("isTagMode", false, "topic")} onTopicClick={action("topic-click")} />
     </Centered>
   </Story>
 </Preview>
@@ -82,7 +82,7 @@ Specifying `to` prop will render as a `react-router` `Link` component.
 <Preview>
   <Story name="link">
     <Centered style={{background: "#FFF"}}>
-      <Topic to={text("to", "/my-topics", "link")} id={text("id", 1, "link")} icon={text("icon", starSvg, "link")} title={text("title", "My topics", "link")} isLoading={boolean("isLoading", false, "link")} isTagged={boolean("isTagged", false, "link")} isTagMode={boolean("isTagMode", false, "link")} />
+      <Topic to={text("to", "/my-topics", "link")} id={text("id", 1, "link")} icon={text("icon", starSvg, "link")} name={text("name", "My topics", "link")} isLoading={boolean("isLoading", false, "link")} isTagged={boolean("isTagged", false, "link")} isTagMode={boolean("isTagMode", false, "link")} />
     </Centered>
   </Story>
 </Preview>
@@ -94,7 +94,7 @@ Specifying an `href` will render as a regular HTML anchor tag. Other props are p
 <Preview>
   <Story name="anchor">
     <Centered style={{background: "#FFF"}}>
-      <Topic href={text("href", "https://www.rawpixel.com", "anchor")} id={text("id", 1, "anchor")} icon={text("icon", starSvg, "anchor")} title={text("title", "My topics", "anchor")} isLoading={boolean("isLoading", false, "anchor")} isTagged={boolean("isTagged", false, "anchor")} isTagMode={boolean("isTagMode", false, "anchor")} target={text("target", "_blank", "anchor")} />
+      <Topic href={text("href", "https://www.rawpixel.com", "anchor")} id={text("id", 1, "anchor")} icon={text("icon", starSvg, "anchor")} name={text("name", "My topics", "anchor")} isLoading={boolean("isLoading", false, "anchor")} isTagged={boolean("isTagged", false, "anchor")} isTagMode={boolean("isTagMode", false, "anchor")} target={text("target", "_blank", "anchor")} />
     </Centered>
   </Story>
 </Preview>
