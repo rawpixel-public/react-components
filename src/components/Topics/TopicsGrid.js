@@ -55,6 +55,7 @@ const TopicsGrid = ({
             onTopicClick={onTopicClick ? e => handleTopicClick(e, topic) : null}
             topic={topic}
             to={topic.to}
+            data-testid={topic.id}
           />
         ))}
     </ImageButtonGrid>
