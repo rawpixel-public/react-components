@@ -63,11 +63,12 @@ export const StyledImageButtonTitle = styled.span`
 `;
 
 export const StyledIcon = styled.div`
-  display: inline-block;
-  height: 50px;
-  width: 60px;
+  display: block;
+  height: 40px;
+  width: 40px;
   vertical-align: top;
   mask: url(${prop("imgSrc")}) no-repeat center;
+  mask-size: contain;
   background: ${palette.white};
   margin: 5px auto;
 `;
