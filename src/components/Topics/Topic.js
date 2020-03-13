@@ -6,17 +6,18 @@ import { StyledTopicButton } from "./StyledTopic";
 const Topic = ({
   id,
   icon,
-  title,
+  name,
   isTagMode = false,
   isLoading = false,
   isTagged = false,
   onTopicClick,
   to,
+  topic,
   ...props
 }) => {
   const handleTopicClick = e => {
     if (typeof onTopicClick === "function") {
-      onTopicClick(e, { id });
+      onTopicClick(e, topic);
     }
   };
 
@@ -27,7 +28,7 @@ const Topic = ({
       isTagMode={isTagMode ? true : undefined}
       isTagged={isTagged ? true : undefined}
       isLoading={isLoading ? true : undefined}
-      title={title}
+      title={name}
       icon={icon}
       to={to}
       {...props}
@@ -38,11 +39,16 @@ const Topic = ({
 Topic.propTypes = {
   id: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   isTagMode: PropTypes.bool,
   isLoading: PropTypes.bool,
   isTagged: PropTypes.bool,
   onTopicClick: PropTypes.func,
+  topic: PropTypes.shape({
+    name: PropTypes.string,
+    tag: PropTypes.string,
+    dam_tam_tag: PropTypes.string
+  }),
   to: PropTypes.string
 };
 

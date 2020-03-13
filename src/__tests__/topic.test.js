@@ -9,7 +9,7 @@ describe("topic", () => {
     const { getByText, getByTestId } = render(
       <Topic
         id="1"
-        title="Stickers"
+        name="Stickers"
         icon="https://placehold.it/80x60"
         data-testid="stickers"
       />
@@ -20,13 +20,19 @@ describe("topic", () => {
   });
 
   it("should call my fn on topic click", async () => {
-    const myFn = jest.fn();
+    const myFn = jest.fn((event, topic) => topic);
+    const topic = {
+      name: "Stickers",
+      tag: "$stickers",
+      dam_tam_tag: "stickers"
+    };
     const { getByText } = render(
       <Topic
         id="1"
-        title="Stickers"
+        name="Stickers"
         icon="https://placehold.it/80x60"
         onTopicClick={myFn}
+        topic={topic}
       />
     );
 
@@ -38,14 +44,14 @@ describe("topic", () => {
       })
     );
 
-    expect(myFn).toHaveBeenCalled();
+    expect(myFn).toHaveReturnedWith(topic);
   });
 
   it("should show loader", async () => {
     const { getByTestId } = render(
       <Topic
         id="1"
-        title="Stickers"
+        name="Stickers"
         icon="https://placehold.it/80x60"
         isLoading
       />
@@ -58,7 +64,7 @@ describe("topic", () => {
     const { getByTestId } = render(
       <Topic
         id="1"
-        title="Stickers"
+        name="Stickers"
         icon="https://placehold.it/80x60"
         isLoading
         data-testid="stickers"
@@ -73,7 +79,7 @@ describe("topic", () => {
     const { getByTestId } = render(
       <Topic
         id="1"
-        title="Stickers"
+        name="Stickers"
         icon="https://placehold.it/80x60"
         data-testid="stickers"
         href="https://www.rawpixel.com/stickers"

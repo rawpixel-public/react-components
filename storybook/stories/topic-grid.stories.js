@@ -22,78 +22,78 @@ import watercolorSvg from "../images/watercolor.svg";
 
 const topicsData = [
   {
-    title: "Stickers",
-    filter: "$stickers",
+    name: "Stickers",
+    tag: "$stickers",
     icon: stickerSvg
   },
   {
-    title: "Patterns",
-    filter: "$patterns",
+    name: "Patterns",
+    tag: "$patterns",
     icon: patternSvg
   },
   {
-    title: "Icons",
-    filter: "$icons",
+    name: "Icons",
+    tag: "$icons",
     icon: heartSvg
   },
   {
-    title: "Doodles",
-    filter: "$doodles",
+    name: "Doodles",
+    tag: "$doodles",
     icon: doodleSvg
   },
   {
-    title: "Typography",
-    filter: "$typography",
+    name: "Typography",
+    tag: "$typography",
     icon: fontSvg
   },
   {
-    title: "Frames",
-    filter: "$frames",
+    name: "Frames",
+    tag: "$frames",
     icon: frameSvg
   },
   {
-    title: "Logos",
-    filter: "$logos",
+    name: "Logos",
+    tag: "$logos",
     icon: logoSvg
   },
   {
-    title: "Ornamental",
-    filter: "$ornamental",
+    name: "Ornamental",
+    tag: "$ornamental",
     icon: ornamentSvg
   },
   {
-    title: "Transparent PNG",
-    filter: "$transparent",
+    name: "Transparent PNG",
+    tag: "$transparent",
     icon: transparentSvg
   },
   {
-    title: "Wallpaper",
-    filter: "$wallpaper",
+    name: "Wallpaper",
+    tag: "$wallpaper",
     icon: wallpaperSvg
   },
   {
-    title: "Watercolors",
-    filter: "$watercolors",
+    name: "Watercolors",
+    tag: "$watercolors",
     icon: watercolorSvg
   },
   {
-    title: "Backgrounds",
-    filter: "$backgrounds",
+    name: "Backgrounds",
+    tag: "$backgrounds",
     icon: backgroundSvg
   },
   {
-    title: "Nature",
-    filter: "$nature",
+    name: "Nature",
+    tag: "$nature",
     icon: leafSvg
   },
   {
-    title: "Graphics",
-    filter: "$graphics",
+    name: "Graphics",
+    tag: "$graphics",
     icon: resizeSvg
   },
   {
-    title: "Watercolors",
-    filter: "$watercolors",
+    name: "Watercolors",
+    tag: "$watercolors",
     icon: watercolorSvg
   }
 ].map((topic, index) => ({ ...topic, id: index }));
@@ -149,7 +149,7 @@ export const dam = () => {
       <Topic
         id={text("id", 1, "dam")}
         icon={text("icon", starSvg, "dam")}
-        title={text("title", "My topics", "dam")}
+        name={text("name", "My topics", "dam")}
         isLoading={loading}
         isTagged={tagged}
         isTagMode={boolean("isTagMode", true, "dam")}

@@ -47,12 +47,13 @@ const TopicsGrid = ({
           <Topic
             icon={topic.icon}
             id={topic.id}
-            title={topic.title}
+            name={topic.name}
             key={topic.id}
             isTagMode={isTagMode}
             isLoading={topic.isLoading}
             isTagged={topic.isTagged}
             onTopicClick={e => handleTopicClick(e, topic)}
+            topic={topic}
           />
         ))}
     </ImageButtonGrid>
