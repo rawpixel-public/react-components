@@ -20,7 +20,8 @@ export default (
       .join("&");
 
     fetch(`${baseUrl}/_services/topics/sidebar/widgets?${queryString}`, {
-      method: "GET"
+      method: "GET",
+      credentials: "include"
     })
       .then(response => response.json())
       .then(data => {
