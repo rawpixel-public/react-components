@@ -21,7 +21,7 @@ const FilterButtonGroup = ({
         .map((filter, index) => (
           <StyledListItem key={index} itemsPerRow={itemsPerRow}>
             <Button
-              as={filter.to ? Link : "button"}
+              as={filter.to ? Link : filter.href ? "a" : "button"}
               active={filter.active}
               disabled={filter.disabled}
               onClick={e => onFilterClick && onFilterClick(e, filter)}

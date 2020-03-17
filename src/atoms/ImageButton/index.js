@@ -50,7 +50,7 @@ const ImageButton = ({
 }) => (
   <StyledImageButton
     active={active ? true : undefined}
-    as={to || href ? ImageButtonLink : "button"}
+    as={to ? ImageButtonLink : href ? "a" : "button"}
     onClick={onClick}
     disabled={(isLoading && "disabled") || props.disabled}
     isLoading={isLoading ? true : undefined}
