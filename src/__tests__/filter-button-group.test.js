@@ -46,4 +46,20 @@ describe("filter button group", () => {
 
     expect(myFn).toHaveBeenCalled();
   });
+
+  it("should render as a Link component", () => {
+    const { getByText } = render(
+      <FilterButtonGroup
+        filters={[
+          { name: "PSD", published: true, to: "/react-router-link" },
+          { name: "Vector", published: true },
+          { name: "JPEG", published: true, href: "https://www.rawpixel.com" }
+        ]}
+      />
+    );
+
+    expect(getByText("PSD")).toBeInstanceOf(HTMLAnchorElement);
+    expect(getByText("Vector")).toBeInstanceOf(HTMLButtonElement);
+    expect(getByText("JPEG")).toBeInstanceOf(HTMLAnchorElement);
+  });
 });
