@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import Centered from "../components/Centered";
 
 import * as stories from "./widgets.stories.js";
@@ -59,7 +59,7 @@ Icon and title as a link.
 
 Icon and title with `onClick` handler.
 
-Set the `to` prop to render as a `Link` component from [react-router](https://reacttraining.com/react-router/web/api/Link/to-string)
+Set the `as` prop to render as a custom element or component - for example, the `Link` component from [react-router](https://reacttraining.com/react-router/web/api/Link/to-string). In this case, also supply the `to` prop.
 
 <Preview>
   <Story name="topic-group">
@@ -69,6 +69,8 @@ Set the `to` prop to render as a `Link` component from [react-router](https://re
         icon_url={text("icon_url", starSvg, "filter")}
         onClick={action("widget-filter-click")}
         active={boolean("active", false, "filter")}
+        as={select("as", {"a": "a", "button": "button", "div": "div"}, "button", "filter")}
+        href={text("href", "https://www.rawpixel.com", "filter")}
       />
     </Centered>
   </Story>
