@@ -10,7 +10,7 @@ describe("widget aka topic group aka addon", () => {
     const { getByText, getByTestId } = render(
       <WidgetTopicGroup
         title="My topics"
-        filter_icon="https://placehold.it/40x40"
+        icon_url="https://placehold.it/40x40"
         type="topic_group"
         onClick={myFn}
         data-testid="topic-group"
@@ -35,7 +35,7 @@ describe("widget aka topic group aka addon", () => {
     const { getByText, getByTestId } = render(
       <WidgetAddon
         title="Lightroom Presets"
-        filter_icon="https://placehold.it/40x40"
+        icon_url="https://placehold.it/40x40"
         type="add_on"
         href="https://example.com"
         data-testid="add-on"
@@ -49,7 +49,7 @@ describe("widget aka topic group aka addon", () => {
     const { getByTestId } = render(
       <WidgetTopicGroup
         title="My topics"
-        filter_icon="https://placehold.it/40x40"
+        icon_url="https://placehold.it/40x40"
         type="topic_group"
         to="/my-react-route"
         data-testid="my-topics"

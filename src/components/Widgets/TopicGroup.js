@@ -8,19 +8,21 @@ import WidgetProps from "./WidgetProps";
 const WidgetTopicGroup = ({
   to,
   title,
-  filter_icon,
+  icon_url,
   onClick,
   active = false,
+  href,
   ...props
 }) => (
   <StyledButton
-    as={to ? Link : "button"}
+    as={to ? Link : href ? "a" : "button"}
     onClick={onClick}
     active={active ? true : undefined}
     to={to}
+    href={href}
     {...props}
   >
-    <WidgetIcon href={filter_icon} active={active} />
+    <WidgetIcon href={icon_url} active={active} />
     <StyledText>{title}</StyledText>
   </StyledButton>
 );

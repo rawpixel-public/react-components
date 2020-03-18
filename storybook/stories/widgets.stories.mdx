@@ -48,7 +48,7 @@ Icon and title as a link.
     <Centered style={{background: "#F4F4F4"}}>
       <WidgetAddon
         title={text("title", "Fonts", "addon")}
-        filter_icon={text("icon", fontSvg, "addon")}
+        icon_url={text("icon_url", fontSvg, "addon")}
         href={text("href", "https://www.rawpixel.com/search/fonts?sort=curated&page=1", "addon")}
       />
     </Centered>
@@ -66,7 +66,7 @@ Set the `to` prop to render as a `Link` component from [react-router](https://re
     <Centered style={{background: "#F4F4F4"}}>
       <WidgetTopicGroup
         title={text("title", "My topics", "filter")}
-        filter_icon={text("icon", starSvg, "filter")}
+        icon_url={text("icon_url", starSvg, "filter")}
         onClick={action("widget-filter-click")}
         active={boolean("active", false, "filter")}
       />
