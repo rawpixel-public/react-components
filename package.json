@@ -16,7 +16,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf ./dist && rollup -c",
     "deploy": "gh-pages -d storybook/storybook-static",
     "prepare": "yarn run build",
     "predeploy": "cd storybook && yarn install && yarn run build",
