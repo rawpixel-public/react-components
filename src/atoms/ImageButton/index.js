@@ -1,45 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router";
-import filterReactProps from "filter-react-props";
 
-import {
-  StyledImageButton,
-  StyledImgWrapper,
-  StyledImageButtonTitle,
-  StyledIcon
-} from "./StyledImageButton";
-
-import DotLoader from "../Loader/DotLoader";
-
-// Destruct props to remove props which should not be passed to the DOM.
-const ImageButtonLink = ({ className, children, href, to, ...props }) => {
-  const filteredProps = filterReactProps({ ...props });
-  return to ? (
-    <Link
-      className={className}
-      to={to}
-      onlyActiveOnIndex={false}
-      {...filteredProps}
-    >
-      {children}
-    </Link>
-  ) : (
-    <a className={className} href={href} {...filteredProps}>
-      {children}
-    </a>
-  );
-};
-
-ImageButtonLink.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  href: PropTypes.string,
-  to: PropTypes.string
-};
+import { StyledImageButton, StyledImageButtonTitle } from "./StyledImageButton";
+import Icon from "../Icon";
 
 const ImageButton = ({
+  as,
   active = false,
+  children,
   href,
   icon,
   title,
@@ -50,7 +18,7 @@ const ImageButton = ({
 }) => (
   <StyledImageButton
     active={active ? true : undefined}
-    as={to ? ImageButtonLink : href ? "a" : "button"}
+    as={as}
     onClick={onClick}
     disabled={(isLoading && "disabled") || props.disabled}
     isLoading={isLoading ? true : undefined}
@@ -58,18 +26,19 @@ const ImageButton = ({
     href={href}
     {...props}
   >
-    <StyledImgWrapper className="img-wrapper">
-      {isLoading && (
-        <DotLoader className="loader" loaderWidth={60} dotSize={10} />
-      )}
-      <StyledIcon imgSrc={icon} />
-    </StyledImgWrapper>
-    <StyledImageButtonTitle>{title}</StyledImageButtonTitle>
+    {children || (
+      <Fragment>
+        <Icon icon={icon} loading={isLoading} className="img-wrapper" />
+        <StyledImageButtonTitle>{title}</StyledImageButtonTitle>
+      </Fragment>
+    )}
   </StyledImageButton>
 );
 
 ImageButton.propTypes = {
+  as: PropTypes.any,
   active: PropTypes.bool,
+  children: PropTypes.node,
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   href: PropTypes.string,

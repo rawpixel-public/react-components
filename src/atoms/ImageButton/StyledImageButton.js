@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { prop, ifProp } from "styled-tools";
+import { ifProp } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -40,19 +40,6 @@ export const StyledImageButton = styled.button`
   }
 `;
 
-export const StyledImgWrapper = styled.div`
-  position: relative;
-  height: 50px;
-  width: 60px;
-  border-radius: 0.25em;
-
-  .loader {
-    position: absolute;
-    top: 20px;
-    left: 2px;
-  }
-`;
-
 export const StyledImageButtonTitle = styled.span`
   font-family: ${fontFamily.base};
   font-size: 12px;
@@ -60,15 +47,4 @@ export const StyledImageButtonTitle = styled.span`
   line-height: 1.25;
   margin-top: 2px;
   min-width: 45px;
-`;
-
-export const StyledIcon = styled.div`
-  display: block;
-  height: 40px;
-  width: 40px;
-  vertical-align: top;
-  mask: url(${prop("imgSrc")}) no-repeat center;
-  mask-size: contain;
-  background: ${palette.white};
-  margin: 5px auto;
 `;

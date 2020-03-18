@@ -40,17 +40,4 @@ describe("topic grid", () => {
 
     expect(getByTestId(`topics-placeholder-0`)).toBeVisible();
   });
-
-  it("should pass down to prop to render as Link", () => {
-    const { getByTestId } = render(
-      <TopicsGrid
-        topics={generateTopics(2).map(topic => ({
-          ...topic,
-          to: topic.id === "1" ? `/topic/${topic.id}` : null
-        }))}
-      />
-    );
-    expect(getByTestId("1")).toBeInstanceOf(HTMLAnchorElement);
-    expect(getByTestId("0")).toBeInstanceOf(HTMLButtonElement);
-  });
 });

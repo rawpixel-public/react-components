@@ -1,12 +1,24 @@
 import styled from "styled-components";
-import ImageButton from "../../atoms/ImageButton";
 
-import { palette } from "../../utils/cssVars";
+import { fontFamily, palette } from "../../utils/cssVars";
 
 const taggedGreen = "#A1D1B7";
 const taggingGreen = "#95BDAA";
 
-export const StyledTopicButton = styled(ImageButton)`
+export const StyledTopicButton = styled.button`
+  background: none;
+  border: none;
+  color: ${palette.gray};
+  max-width: 60px;
+  min-height: 80px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-decoration: none;
+
   &:hover {
     cursor: pointer;
 
@@ -40,4 +52,13 @@ export const StyledTopicButton = styled(ImageButton)`
   > span {
     min-height: 30px;
   }
+`;
+
+export const StyledTitle = styled.span`
+  font-family: ${fontFamily.base};
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.25;
+  margin-top: 2px;
+  min-width: 45px;
 `;

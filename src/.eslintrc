@@ -1,5 +1,8 @@
 {
   "env": {
     "jest": true
+  },
+  "rules": {
+    "react/jsx-fragments": 0
   }
 }

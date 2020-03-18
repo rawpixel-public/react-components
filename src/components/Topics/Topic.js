@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { StyledTopicButton } from "./StyledTopic";
+import Icon from "../../atoms/Icon";
+import { StyledTopicButton, StyledTitle } from "./StyledTopic";
 
 const Topic = ({
   icon,
@@ -27,11 +28,14 @@ const Topic = ({
       isTagMode={isTagMode ? true : undefined}
       isTagged={isTagged ? true : undefined}
       isLoading={isLoading ? true : undefined}
-      title={name}
-      icon={icon}
       to={to}
       {...props}
-    />
+      icon={icon}
+      title={name}
+    >
+      <Icon loading={isLoading} icon={icon} className="img-wrapper" />
+      <StyledTitle>{name}</StyledTitle>
+    </StyledTopicButton>
   );
 };
 
