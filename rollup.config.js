@@ -6,7 +6,7 @@ import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
 
 export default {
-  input: ["src/index.js", "src/sidebar-tabs.js", "src/button.js"],
+  input: ["src/index.js", "src/button.js"],
   output: {
     dir: "dist",
     format: "cjs",
