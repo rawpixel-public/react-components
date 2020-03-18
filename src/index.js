@@ -1,4 +1,3 @@
-import { SidebarTabs, SidebarTab } from "./sidebar-tabs";
 import Button from "./atoms/Button";
 import Heading from "./atoms/Heading";
 import HorizontalRule from "./atoms/HorizontalRule";
@@ -32,8 +31,6 @@ export {
   FilterButtonGroup,
   FilterButtonGroupMain,
   FilterButtonGroupPlaceholder,
-  SidebarTabs,
-  SidebarTab,
   Topic,
   TopicsGrid,
   WidgetsBar,
@@ -56,8 +53,6 @@ export default {
   FilterButtonGroup,
   FilterButtonGroupMain,
   FilterButtonGroupPlaceholder,
-  SidebarTabs,
-  SidebarTab,
   Topic,
   TopicsGrid,
   WidgetsBar,
