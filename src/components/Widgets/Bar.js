@@ -55,7 +55,7 @@ const WidgetsBar = ({
       <StyledListItem key={widget.title}>
         <TopicGroup
           to={widget.to}
-          filter_icon={widget.filter_icon}
+          icon_url={widget.icon_url}
           title={widget.title}
           onClick={e => filterClickHandler(e, widget)}
           active={widget.active || widgets.indexOf(widget) === activeIndex}
@@ -69,7 +69,7 @@ const WidgetsBar = ({
     .map(widget => (
       <StyledListItem key={widget.title}>
         <Addon
-          filter_icon={widget.filter_icon}
+          icon_url={widget.icon_url}
           href={widget.url}
           title={widget.title}
           type={widget.type}

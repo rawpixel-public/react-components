@@ -17,63 +17,63 @@ const widgetsData = [
   {
     title: "My topics",
     url: "https://www.rawpixel.com/search/my+topics?sort=curated&page=1",
-    filter_icon: starSvg,
+    icon_url: starSvg,
     type: "topic_group",
     isPublished: true
   },
   {
     title: "Trending",
     url: "https://www.rawpixel.com/search/trending?sort=curated&page=1",
-    filter_icon: trendingSvg,
+    icon_url: trendingSvg,
     type: "topic_group",
     isPublished: true
   },
   {
     title: "Stickers",
     url: "https://www.rawpixel.com/search/stickers?sort=curated&page=1",
-    filter_icon: stickerSvg,
+    icon_url: stickerSvg,
     type: "topic_group",
     isPublished: true
   },
   {
     title: "Photos",
     url: "https://www.rawpixel.com/search/photos?sort=curated&page=1",
-    filter_icon: backgroundSvg,
+    icon_url: backgroundSvg,
     type: "topic_group",
     isPublished: true
   },
   {
     title: "Graphics",
     url: "https://www.rawpixel.com/search/graphics?sort=curated&page=1",
-    filter_icon: resizeSvg,
+    icon_url: resizeSvg,
     type: "topic_group",
     isPublished: true
   },
   {
     title: "Templates",
     url: "https://www.rawpixel.com/search/templates?sort=curated&page=1",
-    filter_icon: templateSvg,
+    icon_url: templateSvg,
     type: "topic_group",
     isPublished: true
   },
   {
     title: "Public domain",
     url: "https://www.rawpixel.com/search/public+domain?sort=curated&page=1",
-    filter_icon: leafSvg,
+    icon_url: leafSvg,
     type: "topic_group",
     isPublished: true
   },
   {
     title: "Fonts",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
-    filter_icon: fontSvg,
+    icon_url: fontSvg,
     type: "addon",
     isPublished: true
   },
   {
     title: "Lightroom Presets",
     url: "https://www.rawpixel.com/search/lightroom?sort=curated&page=1",
-    filter_icon: slidersSvg,
+    icon_url: slidersSvg,
     type: "addon",
     isPublished: true
   }

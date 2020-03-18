@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { StyledTopicButton } from "./StyledTopic";
 
 const Topic = ({
-  id,
   icon,
   name,
   isTagMode = false,

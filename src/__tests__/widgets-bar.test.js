@@ -10,24 +10,24 @@ describe("widgets bar", () => {
       {
         title: "My topics",
         type: "topic_group",
-        filter_icon: "https://placehold.it/40x40"
+        icon_url: "https://placehold.it/40x40"
       },
       {
         title: "Trending",
         type: "topic_group",
-        filter_icon: "https://placehold.it/40x40"
+        icon_url: "https://placehold.it/40x40"
       },
       {
         title: "Fonts",
         type: "add_on",
         url: "https://www.example.com",
-        filter_icon: "https://placehold.it/40x40"
+        icon_url: "https://placehold.it/40x40"
       },
       {
         title: "Lightroom Presets",
         type: "add_on",
         url: "https://www.example.com",
-        filter_icon: "https://placehold.it/40x40"
+        icon_url: "https://placehold.it/40x40"
       }
     ];
     const { getByText } = render(<WidgetsBar widgets={widgets} />);
@@ -48,13 +48,13 @@ describe("widgets bar", () => {
       {
         title: "My topics",
         type: "topic_group",
-        filter_icon: "https://placehold.it/40x40",
+        icon_url: "https://placehold.it/40x40",
         isPublished: true
       },
       {
         title: "Trending",
         type: "topic_group",
-        filter_icon: "https://placehold.it/40x40",
+        icon_url: "https://placehold.it/40x40",
         isPublished: true
       }
     ];
