@@ -1,13 +1,15 @@
 import Button from "./atoms/Button";
+import LikesButton from "./atoms/Button/LikesButton";
+import ExclusiveButton from "./atoms/Button/ExclusiveButton";
 import Heading from "./atoms/Heading";
 import HorizontalRule from "./atoms/HorizontalRule";
 import ImageButton from "./atoms/ImageButton";
 import ImageButtonGrid from "./atoms/ImageButtonGrid";
 import LoadingPlaceholder from "./atoms/LoadingPlaceholder";
 import SizeButton from "./atoms/SizeButton";
-import FilterButtonGroup from "./components/Sidebar/FilterButtonGroup";
-import FilterButtonGroupMain from "./components/Sidebar/FilterButtonGroupMain";
-import FilterButtonGroupPlaceholder from "./components/Sidebar/FilterButtonGroupPlaceholder";
+
+import ButtonGroupList from "./components/Sidebar/ButtonGroupList";
+import ButtonGroupPlaceholder from "./components/Sidebar/ButtonGroupPlaceholder";
 import Categories from "./components/Topics/Categories";
 import Topic from "./components/Topics/Topic";
 import TopicsGrid from "./components/Topics/TopicsGrid";
@@ -21,16 +23,17 @@ import useTopicWidgetSettings from "./hooks/useTopicWidgetSettings";
 
 export {
   Button,
+  LikesButton,
+  ExclusiveButton,
   Heading,
   HorizontalRule,
   ImageButton,
   ImageButtonGrid,
   LoadingPlaceholder,
   SizeButton,
+  ButtonGroupList,
   Categories,
-  FilterButtonGroup,
-  FilterButtonGroupMain,
-  FilterButtonGroupPlaceholder,
+  ButtonGroupPlaceholder,
   Topic,
   TopicsGrid,
   WidgetsBar,
@@ -43,16 +46,17 @@ export {
 
 export default {
   Button,
+  LikesButton,
+  ExclusiveButton,
   Heading,
   HorizontalRule,
   ImageButton,
   ImageButtonGrid,
   LoadingPlaceholder,
   SizeButton,
+  ButtonGroupList,
   Categories,
-  FilterButtonGroup,
-  FilterButtonGroupMain,
-  FilterButtonGroupPlaceholder,
+  ButtonGroupPlaceholder,
   Topic,
   TopicsGrid,
   WidgetsBar,

@@ -45,17 +45,17 @@ describe("widget aka topic group aka addon", () => {
     expect(getByText("Lightroom Presets")).toBeInTheDocument();
   });
 
-  it("should render as react-router Link with `to` prop", async () => {
+  it("should render as custom element with `as` prop", async () => {
     const { getByTestId } = render(
       <WidgetTopicGroup
         title="My topics"
         icon_url="https://placehold.it/40x40"
         type="topic_group"
-        to="/my-react-route"
         data-testid="my-topics"
+        as="div"
       />
     );
 
-    expect(getByTestId("my-topics")).toBeInstanceOf(HTMLAnchorElement);
+    expect(getByTestId("my-topics")).toBeInstanceOf(HTMLDivElement);
   });
 });

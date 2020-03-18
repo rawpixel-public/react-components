@@ -3,26 +3,25 @@ import styled from "styled-components";
 import { withKnobs } from "@storybook/addon-knobs";
 import {
   Button,
-  Heading,
+  LikesButton,
+  ExclusiveButton,
   HorizontalRule,
   ImageButton,
   ImageButtonGrid,
   SizeButton,
   WidgetsBar,
   TopicsGrid,
+  ButtonGroupList,
   Categories,
-  FilterButtonGroup,
-  FilterButtonGroupMain,
-  FilterButtonGroupPlaceholder,
+  ButtonGroupPlaceholder,
   useTopicWidgetCategories,
   useTopicWidgets,
   useTopicWidgetSettings
 } from "@rawpixel-public/react-components";
 
 import { topics } from "./topic-sidebar.data";
-import SidebarButtonList from "../components/SidebarButtonList";
-import useTopicWidgetSettingsActiveState
-  from "../hooks/useTopicWidgetSettingsActiveState";
+import useTopicWidgetSettingsActiveState from "../hooks/useTopicWidgetSettingsActiveState";
+import { Link } from "react-router";
 
 const StyledSidebar = styled.div`
   background: ${props => (props.isDAM ? "#FFF" : "#F4F4F4")};
@@ -38,7 +37,61 @@ const StyledSidebar = styled.div`
   }
 `;
 
-const SidebarHorizontalRule = () => <HorizontalRule style={{ width: "220px" }} />
+const SidebarHorizontalRule = () => (
+  <HorizontalRule style={{ width: "220px" }} />
+);
+
+const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
+  <ButtonGroupList title={title}>
+    {filters.map(filter => (
+      <Button
+        as={filter.to ? Link : filter.href ? "a" : "button"}
+        active={filter.active}
+        disabled={filter.disabled}
+        onClick={e => onFilterClick && onFilterClick(e, filter)}
+        to={filter.to}
+      >
+        {filter.name}
+      </Button>
+    ))}
+  </ButtonGroupList>
+);
+
+const ButtonComponents = {
+  $free: Button,
+  $premium: Button,
+  $exclusive: ExclusiveButton,
+  $likes: LikesButton
+};
+
+const FilterButtonGroupMain = ({
+  filters = [],
+  onFilterClick,
+  itemsPerRow = 2
+}) => {
+  const published = filters.filter(filter => filter.published);
+  const rowSize = published.length > 1 ? itemsPerRow : 1;
+
+  return (
+    <ButtonGroupList itemsPerRow={rowSize}>
+      {published.map((filter, index) => {
+        const Component = ButtonComponents[filter.tag];
+        return (
+          <Component
+            key={index}
+            as={filter.to ? Link : filter.href ? "a" : "button"}
+            active={filter.active}
+            disabled={filter.disabled}
+            onClick={e => onFilterClick && onFilterClick(e, filter)}
+            to={filter.to}
+          >
+            {filter.name}
+          </Component>
+        );
+      })}
+    </ButtonGroupList>
+  );
+};
 
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
@@ -112,12 +165,12 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       <div className="content">
         {isTeam && (
           <>
-            <SidebarButtonList>
+            <ButtonGroupList>
               <Button>Details</Button>
               <Button active>Topics</Button>
-            </SidebarButtonList>
+            </ButtonGroupList>
             {isWebsiteCatalog ? (
-              <SidebarButtonList itemsPerRow={3}>
+              <ButtonGroupList itemsPerRow={3}>
                 <Button size="small">Boards</Button>
                 <Button
                   active={tagMode}
@@ -133,18 +186,18 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                 >
                   Scores
                 </Button>
-              </SidebarButtonList>
+              </ButtonGroupList>
             ) : (
-              <SidebarButtonList>
+              <ButtonGroupList>
                 <Button onClick={() => setTagMode(!tagMode)} active={tagMode}>
                   Tag
                 </Button>
                 <Button>Add crown</Button>
-              </SidebarButtonList>
+              </ButtonGroupList>
             )}
             {displayScore && (
               <>
-                <SidebarButtonList>
+                <ButtonGroupList>
                   <Button>leaves</Button>
                   <div
                     style={{
@@ -155,11 +208,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                   >
                     {700 + score} ({score})
                   </div>
-                </SidebarButtonList>
-                <SidebarButtonList>
+                </ButtonGroupList>
+                <ButtonGroupList>
                   <Button onClick={() => setScore(score + 50)}>+50</Button>
                   <Button onClick={() => setScore(score - 50)}>-50</Button>
-                </SidebarButtonList>
+                </ButtonGroupList>
               </>
             )}
             <SidebarHorizontalRule />
@@ -184,20 +237,20 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         {isTeam && (
           <>
             <SidebarHorizontalRule />
-            <SidebarButtonList>
+            <ButtonGroupList>
               <Button active={live} onClick={() => setLive(!live)}>
                 Live
               </Button>
               <Button active={!live} onClick={() => setLive(!live)}>
                 Unpublished
               </Button>
-            </SidebarButtonList>
+            </ButtonGroupList>
           </>
         )}
         <SidebarHorizontalRule />
         {loading && (
           <>
-            <FilterButtonGroupPlaceholder />
+            <ButtonGroupPlaceholder />
             <SidebarHorizontalRule />
           </>
         )}
@@ -212,7 +265,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         )}
         {loading && (
           <>
-            <FilterButtonGroupPlaceholder hasTitle numberOfItems={5} />
+            <ButtonGroupPlaceholder hasTitle numberOfItems={5} />
             <SidebarHorizontalRule />
           </>
         )}
@@ -228,7 +281,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         )}
         {loading && (
           <>
-            <FilterButtonGroupPlaceholder numberOfItems={5} />
+            <ButtonGroupPlaceholder numberOfItems={5} />
             <SidebarHorizontalRule />
           </>
         )}
@@ -257,7 +310,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                       key={index}
                       icon={filter.icon}
                       title={filter.name}
-                      onClick={(e) => handleFilterGroupButtonClick(e, filter)}
+                      onClick={e => handleFilterGroupButtonClick(e, filter)}
                       active={filter.active}
                     />
                   ))}
@@ -267,7 +320,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           )}
         {!isTeam && (
           <>
-            <SidebarButtonList title={<Heading level={3}>Sizes</Heading>}>
+            <ButtonGroupList title="Sizes">
               <SizeButton title="Portrait" height={40} width={30} />
               <SizeButton title="Landscape" height={30} width={40} />
               <SizeButton title="Social" height={40} width={40} />
@@ -277,7 +330,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
               <SizeButton title="Story 9:16" height={48} width={27} />
               <SizeButton title="Banner 3:1" height={15} width={45} />
               <SizeButton title="Banner 5:7" height={40} width={30} />
-            </SidebarButtonList>
+            </ButtonGroupList>
           </>
         )}
       </div>

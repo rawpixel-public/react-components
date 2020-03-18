@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ifProp, switchProp } from "styled-tools";
+import { ifProp, prop, switchProp } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -66,4 +66,13 @@ export const StyledButton = styled.button`
       transition: box-shadow 0.2s;
     }
   }
+`;
+
+export const StyledIcon = styled.div`
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  vertical-align: top;
+  mask: url(${prop("imgSrc")}) no-repeat center;
+  background: ${prop("background")};
 `;
