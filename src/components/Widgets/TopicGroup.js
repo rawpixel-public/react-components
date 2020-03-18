@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router";
 
 import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
 import WidgetProps from "./WidgetProps";
 
 const WidgetTopicGroup = ({
+  as,
   to,
   title,
   icon_url,
@@ -15,7 +15,7 @@ const WidgetTopicGroup = ({
   ...props
 }) => (
   <StyledButton
-    as={to ? Link : href ? "a" : "button"}
+    as={as}
     onClick={onClick}
     active={active ? true : undefined}
     to={to}

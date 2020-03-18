@@ -4,7 +4,7 @@ import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 
 import { StyledList, StyledListItem } from "./StyledFilterButtonGroup";
 
-const FilterButtonGroupPlaceholder = ({
+const ButtonGroupPlaceholder = ({
   hasTitle = false,
   numberOfItems = 4,
   itemsPerRow = 2
@@ -23,10 +23,10 @@ const FilterButtonGroupPlaceholder = ({
   </div>
 );
 
-FilterButtonGroupPlaceholder.propTypes = {
+ButtonGroupPlaceholder.propTypes = {
   hasTitle: PropTypes.bool,
   itemsPerRow: PropTypes.number,
   numberOfItems: PropTypes.number
 };
 
-export default FilterButtonGroupPlaceholder;
+export default ButtonGroupPlaceholder;

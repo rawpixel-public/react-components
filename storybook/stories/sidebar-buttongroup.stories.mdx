@@ -1,0 +1,37 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, text, object, select } from "@storybook/addon-knobs";
+import Centered from "../components/Centered";
+
+import { Button, ButtonGroupList } from "@rawpixel-public/react-components";
+
+import "../.storybook/global.css";
+
+<Meta title="Sidebar/Filter Buttons" decorators={[withKnobs]} />
+
+# Button Group List
+
+## Default
+
+Group of buttons (or other child components) to be used in a sidebar component.
+
+Use `itemsPerRow` to control the number of buttons per row.
+
+<Preview>
+  <Story name="default">
+    <Centered style={{width: "270px"}}>
+      <ButtonGroupList
+        title={text("title", "My title")}
+        headingLevel={select("headingLevel", [1, 2, 3, 4, 5, 6], 3)}
+        itemsPerRow={select("itemsPerRow", [1, 2, 3], 2)}
+      >
+        <Button onClick={action("backgrounds")}>Backgrounds</Button>
+        <Button onClick={action("stickers")}>Stickers</Button>
+        <Button onClick={action("vectors")}>Vectors</Button>
+        <Button onClick={action("graphics")}>Graphics</Button>
+        <Button onClick={action("transparent")}>Transparent</Button>
+        <Button onClick={action("patterns")}>Patterns</Button>
+      </ButtonGroupList>
+    </Centered>
+  </Story>
+</Preview>
