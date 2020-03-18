@@ -75,26 +75,16 @@ Optionally change this with `viewable` prop (count of number of viewable topics)
   </Story>
 </Preview>
 
-## Link
-
-Specifying `to` prop will render as a `react-router` `Link` component.
-
-<Preview>
-  <Story name="link">
-    <Centered style={{background: "#FFF"}}>
-      <Topic to={text("to", "/my-topics", "link")} id={text("id", 1, "link")} icon={text("icon", starSvg, "link")} name={text("name", "My topics", "link")} isLoading={boolean("isLoading", false, "link")} isTagged={boolean("isTagged", false, "link")} isTagMode={boolean("isTagMode", false, "link")}  active={boolean("active", false, "link")} />
-    </Centered>
-  </Story>
-</Preview>
-
 ## Anchor
 
-Specifying an `href` will render as a regular HTML anchor tag. Other props are passed down, so for example `target="_blank"` and other attributes could be used.
+Specifying `as="a"` and an `href` will render as a regular HTML anchor tag. Other props are passed down, so for example `target="_blank"` and other attributes could be used.
+
+Custom components can be used e.g. `as={Link}` for `react-router` Link components. Note that the `children` and `className` props need to be implemented by the custom component in order for styling to work.
 
 <Preview>
   <Story name="anchor">
     <Centered style={{background: "#FFF"}}>
-      <Topic href={text("href", "https://www.rawpixel.com", "anchor")} id={text("id", 1, "anchor")} icon={text("icon", starSvg, "anchor")} name={text("name", "My topics", "anchor")} isLoading={boolean("isLoading", false, "anchor")} isTagged={boolean("isTagged", false, "anchor")} isTagMode={boolean("isTagMode", false, "anchor")} target={text("target", "_blank", "anchor")} active={boolean("active", false, "anchor")} />
+      <Topic as="a" href={text("href", "https://www.rawpixel.com", "anchor")} id={text("id", 1, "anchor")} icon={text("icon", starSvg, "anchor")} name={text("name", "My topics", "anchor")} isLoading={boolean("isLoading", false, "anchor")} isTagged={boolean("isTagged", false, "anchor")} isTagMode={boolean("isTagMode", false, "anchor")} target={text("target", "_blank", "anchor")} active={boolean("active", false, "anchor")} />
     </Centered>
   </Story>
 </Preview>

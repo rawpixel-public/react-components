@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import filterAllowedProps from "filter-react-props";
 
 import { Topic } from "../index";
 
@@ -60,24 +62,10 @@ describe("topic", () => {
     expect(getByTestId("dot-loader")).toBeVisible();
   });
 
-  it("should render as Link", () => {
-    const { getByTestId } = render(
-      <Topic
-        id="1"
-        name="Stickers"
-        icon="https://placehold.it/80x60"
-        isLoading
-        data-testid="stickers"
-        to="/stickers"
-      />
-    );
-
-    expect(getByTestId("stickers")).toBeInstanceOf(HTMLAnchorElement);
-  });
-
   it("should render as anchor element", () => {
     const { getByTestId } = render(
       <Topic
+        as="a"
         id="1"
         name="Stickers"
         icon="https://placehold.it/80x60"
@@ -87,5 +75,30 @@ describe("topic", () => {
     );
 
     expect(getByTestId("stickers")).toBeInstanceOf(HTMLAnchorElement);
+  });
+
+  it("should render as custom element", () => {
+    // This could be an external component e.g. the Link component from react-router.
+    const CustomElement = props => {
+      return (
+        <>
+          <h1 {...filterAllowedProps(props)}>{props.to}</h1>
+          {props.children}
+        </>
+      );
+    };
+    const { getByTestId, getByText } = render(
+      <Topic
+        as={CustomElement}
+        id="1"
+        name="Stickers"
+        icon="https://placehold.it/80x60"
+        data-testid="stickers"
+        to="https://www.rawpixel.com/stickers"
+      />
+    );
+
+    expect(getByTestId("stickers")).toBeInstanceOf(HTMLHeadingElement);
+    expect(getByText("https://www.rawpixel.com/stickers")).toBeVisible();
   });
 });
