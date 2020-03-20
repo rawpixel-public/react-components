@@ -11,7 +11,7 @@
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-router": "^3.2.5",
-    "styled-components": "^5.0.1"
+    "styled-components": "link:../node_modules/styled-components"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
