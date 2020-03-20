@@ -32,7 +32,9 @@ const WidgetsBar = ({
   onFilterClick,
   activeWidget,
   direction = "column",
-  loading = false
+  loading = false,
+  topicGroupComponent,
+  addonComponent
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(activeWidget);
 
@@ -54,6 +56,7 @@ const WidgetsBar = ({
     .map(widget => (
       <StyledListItem key={widget.title}>
         <TopicGroup
+          as={topicGroupComponent}
           to={widget.to}
           icon_url={widget.icon_url}
           title={widget.title}
@@ -69,6 +72,7 @@ const WidgetsBar = ({
     .map(widget => (
       <StyledListItem key={widget.title}>
         <Addon
+          as={addonComponent}
           icon_url={widget.icon_url}
           href={widget.url}
           title={widget.title}
@@ -102,7 +106,12 @@ WidgetsBar.propTypes = {
   onFilterClick: PropTypes.func,
   activeWidget: PropTypes.number,
   direction: PropTypes.oneOf(["column", "row"]),
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  topicGroupComponent: PropTypes.oneOfType([
+    PropTypes.elementType,
+    PropTypes.string
+  ]),
+  addonComponent: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string])
 };
 
 export default WidgetsBar;
