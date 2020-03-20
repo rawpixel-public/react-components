@@ -17,6 +17,7 @@ import WidgetTopicGroup from "./components/Widgets/TopicGroup";
 import WidgetAddon from "./components/Widgets/Addon";
 import WidgetsBar from "./components/Widgets/Bar";
 
+import useTopicsApi from "./hooks/useTopicsApi";
 import useTopicWidgetCategories from "./hooks/useTopicWidgetCategories";
 import useTopicWidgets from "./hooks/useTopicWidgets";
 import useTopicWidgetSettings from "./hooks/useTopicWidgetSettings";
@@ -39,6 +40,7 @@ export {
   WidgetsBar,
   WidgetAddon,
   WidgetTopicGroup,
+  useTopicsApi,
   useTopicWidgetCategories,
   useTopicWidgets,
   useTopicWidgetSettings
@@ -62,6 +64,7 @@ export default {
   WidgetsBar,
   WidgetAddon,
   WidgetTopicGroup,
+  useTopicsApi,
   useTopicWidgets,
   useTopicWidgetSettings
 };
