@@ -67,14 +67,14 @@ const widgetsData = [
     title: "Fonts",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
     icon_url: fontSvg,
-    type: "addon",
+    type: "add_on",
     isPublished: true
   },
   {
     title: "Lightroom Presets",
     url: "https://www.rawpixel.com/search/lightroom?sort=curated&page=1",
     icon_url: slidersSvg,
-    type: "addon",
+    type: "add_on",
     isPublished: true
   }
 ];

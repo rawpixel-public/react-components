@@ -44,12 +44,13 @@ A horizontal list of topic groups and addon widgets.
 Icon and title as a link.
 
 <Preview>
-  <Story name="addon">
+  <Story name="add_on">
     <Centered style={{background: "#F4F4F4"}}>
       <WidgetAddon
-        title={text("title", "Fonts", "addon")}
-        icon_url={text("icon_url", fontSvg, "addon")}
-        href={text("href", "https://www.rawpixel.com/search/fonts?sort=curated&page=1", "addon")}
+        title={text("title", "Fonts", "add_on")}
+        icon_url={text("icon_url", fontSvg, "add_on")}
+        href={text("href", "https://www.rawpixel.com/search/fonts?sort=curated&page=1", "add_on")}
+        type="add_on"
       />
     </Centered>
   </Story>
@@ -71,6 +72,7 @@ Set the `as` prop to render as a custom element or component - for example, the 
         active={boolean("active", false, "filter")}
         as={select("as", {"a": "a", "button": "button", "div": "div"}, "button", "filter")}
         href={text("href", "https://www.rawpixel.com", "filter")}
+        type="topic_group"
       />
     </Centered>
   </Story>
