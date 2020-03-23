@@ -165,7 +165,12 @@ export const dam = () => {
 
 export const api = () => {
   const { loading, topics } = useTopicsApi(
-    select("widget", [1, 2, 3, 4, 5], 1, "api")
+    select(
+      "widget",
+      { "My Topics": undefined, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
+      1,
+      "api"
+    )
   );
   return (
     <TopicsGrid

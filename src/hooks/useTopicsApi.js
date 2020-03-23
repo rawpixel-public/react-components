@@ -46,9 +46,7 @@ export default (widget, baseUrl = "https://dev-labs.rawpixel.com") => {
       }
     }
 
-    if (widget) {
-      loadTopics().finally();
-    }
+    loadTopics().finally();
   }, [widget, baseUrl]);
 
   return { error, loading, topics };
