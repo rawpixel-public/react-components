@@ -45,7 +45,7 @@ const TopicsGrid = ({
       {!loading &&
         topics.map(topic => (
           <Topic
-            icon={topic.icon}
+            icon={topic.icon_url}
             id={topic.id}
             name={topic.name}
             key={topic.id}

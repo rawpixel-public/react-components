@@ -1,8 +1,12 @@
 import React from "react";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 
-import { Topic, TopicsGrid, useTopicsApi } from "@rawpixel-public/react-components";
+import {
+  Topic,
+  TopicsGrid,
+  useTopicsApi
+} from "@rawpixel-public/react-components";
 
 import backgroundSvg from "../images/background.svg";
 import fontSvg from "../images/font.svg";
@@ -160,14 +164,18 @@ export const dam = () => {
 };
 
 export const api = () => {
-  const { loading, topics } = useTopicsApi();
-  return <TopicsGrid
-    topics={topics}
-    onTopicClick={action("topic-grid-click")}
-    defaultHeight={320}
-    loading={loading}
-    viewable={9}
-  />
+  const { loading, topics } = useTopicsApi(
+    select("widget", [1, 2, 3, 4, 5], 1, "api")
+  );
+  return (
+    <TopicsGrid
+      topics={topics}
+      onTopicClick={action("topic-grid-click")}
+      defaultHeight={320}
+      loading={loading}
+      viewable={9}
+    />
+  );
 };
 
 export default {
