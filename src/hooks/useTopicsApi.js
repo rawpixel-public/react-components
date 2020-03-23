@@ -24,7 +24,8 @@ export default (
 
     fetch(`${baseUrl}/api/v1/topics?${queryString}`, {
       method: "GET",
-      credentials: "include"
+      credentials: "include",
+      mode: "cors"
     })
       .then(response => response.json())
       .then(data => {

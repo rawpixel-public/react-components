@@ -23,7 +23,8 @@ describe("useTopicWidgets", () => {
       `https://api.example.com/_services/topics/sidebar/widgets?target=foo&catalog=bar`,
       {
         method: "GET",
-        credentials: "include"
+        credentials: "include",
+        mode: "cors"
       }
     );
     expect(result.current.loading).toBe(false);
