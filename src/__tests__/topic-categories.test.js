@@ -1,5 +1,10 @@
 import React from "react";
-import { render, fireEvent, queryByTestId } from "@testing-library/react";
+import {
+  render,
+  fireEvent,
+  queryByTestId,
+  queryByText
+} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { Categories as TopicCategories } from "../index";
@@ -100,10 +105,14 @@ describe("topic categories", () => {
         visible: true
       }
     ].map((category, index) => ({ ...category, id: index }));
-    const { getByTestId } = render(<TopicCategories categories={categories} />);
+    const { container, getByTestId } = render(
+      <TopicCategories categories={categories} />
+    );
 
     expect(getByTestId("previous")).toHaveAttribute("disabled");
     expect(getByTestId("next")).not.toHaveAttribute("disabled");
+    expect(queryByText(container, "Stickers")).toBeInTheDocument();
+    expect(queryByText(container, "Graphics")).not.toBeInTheDocument();
 
     fireEvent(
       getByTestId("next"),
@@ -115,6 +124,8 @@ describe("topic categories", () => {
 
     expect(getByTestId("previous")).not.toHaveAttribute("disabled");
     expect(getByTestId("next")).toHaveAttribute("disabled");
+    expect(queryByText(container, "Graphics")).toBeInTheDocument();
+    expect(queryByText(container, "All")).not.toBeInTheDocument();
   });
 
   it("should not show controls when not enough visible categories", async () => {

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import filterAllowedProps from "filter-react-props";
 
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
@@ -13,9 +14,6 @@ import {
   StyledHeadingWrapper,
   StyledListWrapper
 } from "./StyledCategories";
-
-// Number of categories required before previous/next controls are disabled.
-const minimumNumberOfCarouselItems = 4;
 
 const CategoryButtonsPlaceholder = props => (
   <StyledListWrapper {...props}>
@@ -39,10 +37,11 @@ const Categories = ({
   onCategoryClick,
   onClearClick,
   showClear = false,
-  loading = false
+  loading = false,
+  displayedItems = 3,
+  ...props
 }) => {
   const [carouselPosition, setCarouselPosition] = React.useState(0);
-  const showControls = categories.length >= minimumNumberOfCarouselItems;
 
   const categoryClickHandler = (event, category) => {
     if (typeof onCategoryClick === "function") {
@@ -50,8 +49,12 @@ const Categories = ({
     }
   };
 
+  // Number of categories required before previous/next controls are disabled.
+  const minimumNumberOfCarouselItems = displayedItems + 1;
+  const showControls = categories.length >= minimumNumberOfCarouselItems;
+
   return (
-    <StyledCategoriesWrapper>
+    <StyledCategoriesWrapper {...filterAllowedProps(props)}>
       <StyledHeadingWrapper>
         <Heading level={3} style={{ minHeight: "19px" }}>
           {loading ? (
@@ -80,22 +83,25 @@ const Categories = ({
               aria-label="Previous"
               onClick={() => setCarouselPosition(carouselPosition - 1)}
               disabled={carouselPosition === 0 && "disabled"}
+              style={{ marginRight: "5px" }}
             >
               <span aria-hidden>{"<"}</span>
             </StyledControlButton>
           )}
-          <StyledCategoryList carouselPosition={carouselPosition}>
-            {categories.map((category, index) => (
-              <li key={index}>
-                <Button
-                  size="xsmall"
-                  onClick={e => categoryClickHandler(e, category)}
-                  active={category.active}
-                >
-                  {category.name}
-                </Button>
-              </li>
-            ))}
+          <StyledCategoryList displayedItems={displayedItems}>
+            {categories
+              .slice(carouselPosition, carouselPosition + displayedItems)
+              .map((category, index) => (
+                <li key={index}>
+                  <Button
+                    size="xsmall"
+                    onClick={e => categoryClickHandler(e, category)}
+                    active={category.active}
+                  >
+                    {category.name}
+                  </Button>
+                </li>
+              ))}
           </StyledCategoryList>
           {showControls && (
             <StyledControlButton
@@ -103,10 +109,11 @@ const Categories = ({
               aria-label="Next"
               onClick={() => setCarouselPosition(carouselPosition + 1)}
               disabled={
-                (categories.length < 4 ||
-                  carouselPosition === categories.length - 3) &&
+                (categories.length < minimumNumberOfCarouselItems ||
+                  carouselPosition === categories.length - displayedItems) &&
                 "disabled"
               }
+              style={{ marginLeft: "5px" }}
             >
               <span aria-hidden>{">"}</span>
             </StyledControlButton>
@@ -123,7 +130,8 @@ Categories.propTypes = {
   onCategoryClick: PropTypes.func,
   onClearClick: PropTypes.func,
   showClear: PropTypes.bool,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  displayedItems: PropTypes.number
 };
 
 export default Categories;

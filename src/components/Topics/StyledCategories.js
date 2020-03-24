@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { prop } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
 // todo: consolidate website and DAM palette.
 const lightGray = "#7d7c7c";
-const categoryButtonWidth = 60;
 
 export const StyledClearButton = styled.button`
   background: transparent;
@@ -27,7 +27,6 @@ export const StyledClearButton = styled.button`
 `;
 
 export const StyledCategoriesWrapper = styled.div`
-  max-width: 230px;
   overflow: hidden;
   padding-bottom: 10px;
 `;
@@ -43,17 +42,17 @@ export const StyledCategoryList = styled.ul`
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  margin: 0 5px;
+  margin: 0;
   padding: 0;
-  max-width: 245px;
   overflow: hidden;
+  width: 100%;
 
   li {
-    margin: 0 5px;
-    transition: margin-left ease 200ms;
-    min-width: ${categoryButtonWidth}px;
+    margin: 0 3px;
+    min-width: 60px;
+    flex-basis: calc(100% / ${prop("displayedItems", 3)});
     &:first-child {
-      margin-left: -${props => props.carouselPosition * (categoryButtonWidth + 6)}px;
+      margin-left: 0;
     }
 
     &:last-child {
@@ -74,6 +73,7 @@ export const StyledControlButton = styled.button`
   font-family: ${fontFamily.base};
   font-size: 10px;
   padding: 0;
+  width: 10px;
 
   &:hover {
     cursor: pointer;

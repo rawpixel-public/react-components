@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, object, select } from "@storybook/addon-knobs";
 import Centered from "../components/Centered";
 
 import {
@@ -15,48 +15,53 @@ import "../.storybook/global.css";
 
 Displays at the top of the topics sidebar.
 
+Wrapping element determines the width of the component.
+
 ## With controls
 
-When there are more than 3 topic categories.
+When there are more topic categories than the number allowed to display at once (defaults to 3).
 
 <Preview>
   <Story name="controls">
     <Centered style={{background: "#F4F4F4"}}>
-      <Categories
-        categories={object("categories",
-          [
-            {
-              id: 1,
-              name: "All",
-              visible: true
-            },
-            {
-              id: 2,
-              name: "Elements",
-              visible: true
-            },
-            {
-              id: 3,
-              name: "Stickers",
-              visible: true
-            },
-            {
-              id: 4,
-              name: "Photos",
-              visible: false
-            },
-            {
-              id: 5,
-              name: "Wallpaper",
-              visible: true
-            }
-          ], "controls")
-        }
-        title={text("title", "Graphics", "controls")}
-        showClear={boolean("showClear", false, "controls")}
-        onClearClick={action("clear-click")}
-        onCategoryClick={action("category-click")}
-      />
+      <div style={{width: "300px"}}>
+        <Categories
+          categories={object("categories",
+            [
+              {
+                id: 1,
+                name: "All",
+                visible: true
+              },
+              {
+                id: 2,
+                name: "Elements",
+                visible: true
+              },
+              {
+                id: 3,
+                name: "Stickers",
+                visible: true
+              },
+              {
+                id: 4,
+                name: "Photos",
+                visible: false
+              },
+              {
+                id: 5,
+                name: "Wallpaper",
+                visible: true
+              }
+            ], "controls")
+          }
+          title={text("title", "Graphics", "controls")}
+          showClear={boolean("showClear", false, "controls")}
+          onClearClick={action("clear-click")}
+          onCategoryClick={action("category-click")}
+          displayedItems={select("displayedItems", [2, 3, 4, 5], 3, "controls")}
+        />
+      </div>
     </Centered>
   </Story>
 </Preview>
@@ -68,31 +73,34 @@ Optional "Clear" button.
 <Preview>
   <Story name="no-controls">
     <Centered style={{background: "#F4F4F4"}}>
-      <Categories
-        categories={object("categories",
-          [
-            {
-              id: 1,
-              name: "All",
-              visible: true
-            },
-            {
-              id: 2,
-              name: "Elements",
-              visible: true
-            },
-            {
-              id: 3,
-              name: "Stickers",
-              visible: true
-            }
-          ], "clear")
-        }
-        title={text("title", "Graphics", "clear")}
-        showClear={boolean("showClear", true, "clear")}
-        onClearClick={action("clear-click")}
-        onCategoryClick={action("category-click")}
-      />
+      <div style={{width: "300px"}}>
+        <Categories
+          categories={object("categories",
+            [
+              {
+                id: 1,
+                name: "All",
+                visible: true
+              },
+              {
+                id: 2,
+                name: "Elements",
+                visible: true
+              },
+              {
+                id: 3,
+                name: "Stickers",
+                visible: true
+              }
+            ], "clear")
+          }
+          title={text("title", "Graphics", "clear")}
+          showClear={boolean("showClear", true, "clear")}
+          onClearClick={action("clear-click")}
+          onCategoryClick={action("category-click")}
+          displayedItems={select("displayedItems", [2, 3], 3, "clear")}
+        />
+      </div>
     </Centered>
   </Story>
 </Preview>
