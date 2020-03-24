@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { prop } from "styled-tools";
+import styled, { css } from "styled-components";
+import { ifProp, prop } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -28,7 +28,12 @@ export const StyledClearButton = styled.button`
 
 export const StyledCategoriesWrapper = styled.div`
   overflow: hidden;
-  padding-bottom: 10px;
+  ${ifProp(
+    "hasCategories",
+    css`
+      padding-bottom: 10px;
+    `
+  )}
 `;
 
 export const StyledListWrapper = styled.div`

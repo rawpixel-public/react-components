@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
+export const StyledWrapper = styled.div``;
+
 export const StyledList = styled.ul`
   list-style-type: none;
-  margin: 15px 0 0 0;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;

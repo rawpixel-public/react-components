@@ -9,15 +9,16 @@ export const StyledTopicButton = styled.button`
   background: none;
   border: none;
   color: ${palette.gray};
-  max-width: 60px;
-  min-height: 80px;
-  padding-bottom: 5px;
+  width: 65px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
   text-decoration: none;
+  justify-self: start;
+  padding: 0;
 
   &:hover {
     cursor: pointer;
@@ -48,10 +49,6 @@ export const StyledTopicButton = styled.button`
     background: ${props =>
       props.isTagged || !props.isTagMode ? palette.grayLight : taggingGreen};
   }
-
-  > span {
-    min-height: 30px;
-  }
 `;
 
 export const StyledTitle = styled.span`
@@ -60,5 +57,9 @@ export const StyledTitle = styled.span`
   text-align: center;
   line-height: 1.25;
   margin-top: 2px;
-  min-width: 45px;
+  width: 65px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;

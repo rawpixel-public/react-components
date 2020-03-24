@@ -9,7 +9,7 @@ describe("topic grid", () => {
     [...Array(length)].map((_, index) => ({
       name: `Topic ${index}`,
       id: index.toString(),
-      icon: "https://placehold.it/80x60"
+      icon_url: "https://placehold.it/80x60"
     }));
 
   it("should render topics", async () => {

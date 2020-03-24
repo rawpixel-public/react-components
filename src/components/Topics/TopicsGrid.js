@@ -31,7 +31,8 @@ const TopicsGrid = ({
   isTagMode = false,
   loading = false,
   viewable = 12,
-  defaultHeight = 320
+  defaultHeight = 320,
+  defaultWidth = 230
 }) => {
   const handleTopicClick = (e, topic) => {
     if (typeof onTopicClick === "function") {
@@ -40,7 +41,11 @@ const TopicsGrid = ({
   };
 
   return (
-    <ImageButtonGrid viewable={viewable} defaultHeight={defaultHeight}>
+    <ImageButtonGrid
+      viewable={viewable}
+      defaultHeight={defaultHeight}
+      defaultWidth={defaultWidth}
+    >
       {loading && <TopicsPlaceholder count={viewable} />}
       {!loading &&
         topics.map(topic => (
@@ -68,7 +73,8 @@ TopicsGrid.propTypes = {
   isTagMode: PropTypes.bool,
   loading: PropTypes.bool,
   viewable: PropTypes.number,
-  defaultHeight: PropTypes.number
+  defaultHeight: PropTypes.number,
+  defaultWidth: PropTypes.number
 };
 
 export default TopicsGrid;

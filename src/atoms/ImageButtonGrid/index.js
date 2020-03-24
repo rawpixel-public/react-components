@@ -4,14 +4,26 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 import {
   StyledImageButtonGridContainer,
-  StyledScrollbar
+  StyledScrollbar,
+  StyledRow
 } from "./StyledImageButtonGrid";
+
+const chunk = (array, size) => {
+  const chunked_arr = [];
+  let index = 0;
+  while (index < array.length) {
+    chunked_arr.push(array.slice(index, size + index));
+    index += size;
+  }
+  return chunked_arr;
+};
 
 const ImageButtonGrid = ({
   children,
   viewable = 9,
   defaultHeight = 240,
-  defaultWidth = 230
+  defaultWidth = 230,
+  columns = 3
 }) => {
   const [height, setHeight] = React.useState(defaultHeight);
   const ContainerRef = React.useRef();
@@ -26,14 +38,21 @@ const ImageButtonGrid = ({
     }
   }, [children, viewable]);
 
+  const rows = chunk(Children.toArray(children), columns);
+
   return (
     <Scrollbars
       style={{ height, width: defaultWidth }}
       hideTracksWhenNotNeeded
       renderThumbVertical={props => <StyledScrollbar {...props} />}
+      autoHide
     >
-      <StyledImageButtonGridContainer ref={ContainerRef}>
-        {children}
+      <StyledImageButtonGridContainer ref={ContainerRef} columns={columns}>
+        {rows.map((row, index) => (
+          <StyledRow columns={columns} key={index}>
+            {row}
+          </StyledRow>
+        ))}
       </StyledImageButtonGridContainer>
     </Scrollbars>
   );
@@ -43,7 +62,8 @@ ImageButtonGrid.propTypes = {
   children: PropTypes.node,
   viewable: PropTypes.number,
   defaultHeight: PropTypes.number,
-  defaultWidth: PropTypes.number
+  defaultWidth: PropTypes.number,
+  columns: PropTypes.number
 };
 
 export default ImageButtonGrid;

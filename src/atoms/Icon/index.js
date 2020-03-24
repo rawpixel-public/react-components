@@ -8,7 +8,7 @@ import DotLoader from "../Loader/DotLoader";
 export const StyledImgWrapper = styled.div`
   position: relative;
   height: 50px;
-  width: 60px;
+  width: 65px;
   border-radius: 0.25em;
 
   .loader {

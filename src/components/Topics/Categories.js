@@ -52,9 +52,13 @@ const Categories = ({
   // Number of categories required before previous/next controls are disabled.
   const minimumNumberOfCarouselItems = displayedItems + 1;
   const showControls = categories.length >= minimumNumberOfCarouselItems;
+  const hasCategories = !!categories.length;
 
   return (
-    <StyledCategoriesWrapper {...filterAllowedProps(props)}>
+    <StyledCategoriesWrapper
+      hasCategories={hasCategories}
+      {...filterAllowedProps(props)}
+    >
       <StyledHeadingWrapper>
         <Heading level={3} style={{ minHeight: "19px" }}>
           {loading ? (
@@ -75,7 +79,7 @@ const Categories = ({
       {loading && (
         <CategoryButtonsPlaceholder data-testid="category-buttons-placeholder" />
       )}
-      {!!categories.length && (
+      {hasCategories && (
         <StyledListWrapper>
           {showControls && (
             <StyledControlButton

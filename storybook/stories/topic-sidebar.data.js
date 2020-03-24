@@ -21,77 +21,77 @@ export const topics = [
   {
     name: "Stickers",
     tag: "$stickers",
-    icon: stickerSvg
+    icon_url: stickerSvg
   },
   {
     name: "Patterns",
     tag: "$patterns",
-    icon: patternSvg
+    icon_url: patternSvg
   },
   {
     name: "Icons",
-    tag: "$icons",
-    icon: heartSvg
+    tag: "$icon",
+    icon_url: heartSvg
   },
   {
     name: "Doodles",
     tag: "$doodles",
-    icon: doodleSvg
+    icon_url: doodleSvg
   },
   {
     name: "Typography",
     tag: "$typography",
-    icon: fontSvg
+    icon_url: fontSvg
   },
   {
     name: "Frames",
     tag: "$frames",
-    icon: frameSvg
+    icon_url: frameSvg
   },
   {
     name: "Logos",
     tag: "$logos",
-    icon: logoSvg
+    icon_url: logoSvg
   },
   {
     name: "Ornamental",
     tag: "$ornamental",
-    icon: ornamentSvg
+    icon_url: ornamentSvg
   },
   {
     name: "Transparent PNG",
     tag: "$transparent",
-    icon: transparentSvg
+    icon_url: transparentSvg
   },
   {
     name: "Wallpaper",
     tag: "$wallpaper",
-    icon: wallpaperSvg
+    icon_url: wallpaperSvg
   },
   {
     name: "Watercolors",
     tag: "$watercolors",
-    icon: watercolorSvg
+    icon_url: watercolorSvg
   },
   {
     name: "Backgrounds",
     tag: "$backgrounds",
-    icon: backgroundSvg
+    icon_url: backgroundSvg
   },
   {
     name: "Nature",
     tag: "$nature",
-    icon: leafSvg
+    icon_url: leafSvg
   },
   {
     name: "Graphics",
     tag: "$graphics",
-    icon: resizeSvg
+    icon_url: resizeSvg
   },
   {
     name: "Watercolors",
     tag: "$watercolors",
-    icon: watercolorSvg
+    icon_url: watercolorSvg
   }
 ].map((topic, index) => ({ ...topic, id: index.toString() }));
 
@@ -127,63 +127,63 @@ export const widgets = [
   {
     title: "My topics",
     url: "https://www.rawpixel.com/search/my+topics?sort=curated&page=1",
-    icon: starSvg,
+    icon_url: starSvg,
     type: "filter",
     isPublished: true
   },
   {
     title: "Trending",
     url: "https://www.rawpixel.com/search/trending?sort=curated&page=1",
-    icon: trendingSvg,
+    icon_url: trendingSvg,
     type: "filter",
     isPublished: true
   },
   {
     title: "Stickers",
     url: "https://www.rawpixel.com/search/stickers?sort=curated&page=1",
-    icon: stickerSvg,
+    icon_url: stickerSvg,
     type: "filter",
     isPublished: true
   },
   {
     title: "Photos",
     url: "https://www.rawpixel.com/search/photos?sort=curated&page=1",
-    icon: backgroundSvg,
+    icon_url: backgroundSvg,
     type: "filter",
     isPublished: true
   },
   {
     title: "Graphics",
     url: "https://www.rawpixel.com/search/graphics?sort=curated&page=1",
-    icon: resizeSvg,
+    icon_url: resizeSvg,
     type: "filter",
     isPublished: true
   },
   {
     title: "Templates",
     url: "https://www.rawpixel.com/search/templates?sort=curated&page=1",
-    icon: templateSvg,
+    icon_url: templateSvg,
     type: "filter",
     isPublished: true
   },
   {
     title: "Public domain",
     url: "https://www.rawpixel.com/search/public+domain?sort=curated&page=1",
-    icon: leafSvg,
+    icon_url: leafSvg,
     type: "filter",
     isPublished: true
   },
   {
     title: "Fonts",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
-    icon: fontSvg,
+    icon_url: fontSvg,
     type: "addon",
     isPublished: true
   },
   {
     title: "Lightroom Presets",
     url: "https://www.rawpixel.com/search/lightroom?sort=curated&page=1",
-    icon: slidersSvg,
+    icon_url: slidersSvg,
     type: "addon",
     isPublished: true
   }

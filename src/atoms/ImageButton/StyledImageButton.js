@@ -7,7 +7,7 @@ export const StyledImageButton = styled.button`
   background: none;
   border: none;
   color: ${palette.gray};
-  max-width: 60px;
+  max-width: 65px;
   min-height: 80px;
   padding-bottom: 5px;
   display: flex;

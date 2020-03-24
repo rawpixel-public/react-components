@@ -39,6 +39,10 @@ export const StyledText = styled.span`
   min-width: 40px;
   max-width: 60px;
   word-wrap: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const StyledWidgetsWrapper = styled.div`

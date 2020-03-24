@@ -29,9 +29,9 @@ const Topic = ({
       isTagged={isTagged ? true : undefined}
       isLoading={isLoading ? true : undefined}
       to={to}
-      {...props}
       icon={icon}
       title={name}
+      {...props}
     >
       <Icon loading={isLoading} icon={icon} className="img-wrapper" />
       <StyledTitle>{name}</StyledTitle>

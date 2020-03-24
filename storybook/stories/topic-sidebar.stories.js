@@ -38,7 +38,7 @@ const StyledSidebar = styled.div`
 `;
 
 const SidebarHorizontalRule = () => (
-  <HorizontalRule style={{ width: "220px" }} />
+  <HorizontalRule style={{ width: "220px", marginTop: "5px", marginBottom: "15px" }} />
 );
 
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
@@ -231,8 +231,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           onTopicClick={handleTopicClick}
           isTagMode={isTeam && tagMode}
           loading={loading}
-          viewable={isTeam ? 12 : 9}
-          defaultHeight={isTeam ? 300 : 260}
+          viewable={12}
+          defaultHeight={330}
+          defaultWidth={235}
         />
         {isTeam && (
           <>
@@ -308,7 +309,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                   .map((filter, index) => (
                     <ImageButton
                       key={index}
-                      icon={filter.icon}
+                      icon={filter.icon_url}
                       title={filter.name}
                       onClick={e => handleFilterGroupButtonClick(e, filter)}
                       active={filter.active}
