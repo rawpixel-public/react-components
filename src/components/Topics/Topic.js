@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Icon from "../../atoms/Icon";
-import { StyledTopicButton, StyledTitle } from "./StyledTopic";
+import { StyledTopicButton, StyledTitle, StyledIcon } from "./StyledTopic";
 
 const Topic = ({
   icon,
@@ -13,6 +13,7 @@ const Topic = ({
   onTopicClick,
   to,
   topic,
+  groupIcon,
   ...props
 }) => {
   const handleTopicClick = e => {
@@ -34,7 +35,10 @@ const Topic = ({
       {...props}
     >
       <Icon loading={isLoading} icon={icon} className="img-wrapper" />
-      <StyledTitle>{name}</StyledTitle>
+      <StyledTitle>
+        {groupIcon && <StyledIcon icon={groupIcon} />}
+        {name}
+      </StyledTitle>
     </StyledTopicButton>
   );
 };
@@ -52,7 +56,8 @@ Topic.propTypes = {
     tag: PropTypes.string,
     dam_tam_tag: PropTypes.string
   }),
-  to: PropTypes.string
+  to: PropTypes.string,
+  groupIcon: PropTypes.string
 };
 
 export default Topic;

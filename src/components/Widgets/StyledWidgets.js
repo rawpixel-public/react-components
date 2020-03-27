@@ -32,8 +32,8 @@ export const StyledButton = styled.button`
 export const StyledText = styled.span`
   color: ${palette.grayMedium};
   font-family: ${fontFamily.base};
-  font-size: 10px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.25;
   text-align: center;
   margin: 3px 0;
   min-width: 40px;
@@ -46,10 +46,10 @@ export const StyledText = styled.span`
 `;
 
 export const StyledWidgetsWrapper = styled.div`
-  ${props => (props.direction === "column" ? "max-width: 80px;" : null)};
+  ${props => (props.direction === "column" ? "max-width: 90px;" : null)};
   ${verticalCentreCss};
   padding: 10px 0;
-  width: 80px;
+  width: 90px;
 `;
 
 export const StyledUnorderedList = styled.ul`

@@ -5,6 +5,7 @@ import filterAllowedProps from "filter-react-props";
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
 import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
+import Chevron from "./Chevron";
 
 import {
   StyledCategoriesWrapper,
@@ -81,15 +82,15 @@ const Categories = ({
       )}
       {hasCategories && (
         <StyledListWrapper>
-          {showControls && (
+          {showControls && carouselPosition > 0 && (
             <StyledControlButton
               data-testid="previous"
               aria-label="Previous"
               onClick={() => setCarouselPosition(carouselPosition - 1)}
               disabled={carouselPosition === 0 && "disabled"}
-              style={{ marginRight: "5px" }}
+              style={{ marginRight: "3px" }}
             >
-              <span aria-hidden>{"<"}</span>
+              <Chevron className="previous" />
             </StyledControlButton>
           )}
           <StyledCategoryList displayedItems={displayedItems}>
@@ -107,21 +108,25 @@ const Categories = ({
                 </li>
               ))}
           </StyledCategoryList>
-          {showControls && (
-            <StyledControlButton
-              data-testid="next"
-              aria-label="Next"
-              onClick={() => setCarouselPosition(carouselPosition + 1)}
-              disabled={
-                (categories.length < minimumNumberOfCarouselItems ||
-                  carouselPosition === categories.length - displayedItems) &&
-                "disabled"
-              }
-              style={{ marginLeft: "5px" }}
-            >
-              <span aria-hidden>{">"}</span>
-            </StyledControlButton>
-          )}
+          {showControls &&
+            !(
+              categories.length < minimumNumberOfCarouselItems ||
+              carouselPosition === categories.length - displayedItems
+            ) && (
+              <StyledControlButton
+                data-testid="next"
+                aria-label="Next"
+                onClick={() => setCarouselPosition(carouselPosition + 1)}
+                disabled={
+                  (categories.length < minimumNumberOfCarouselItems ||
+                    carouselPosition === categories.length - displayedItems) &&
+                  "disabled"
+                }
+                style={{ marginLeft: "3px" }}
+              >
+                <Chevron className="next" />
+              </StyledControlButton>
+            )}
         </StyledListWrapper>
       )}
     </StyledCategoriesWrapper>

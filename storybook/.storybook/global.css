@@ -1,6 +1,9 @@
 html,
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "Dam Icons";
+  font-size: calc(1rem + 0.33000000000000007 * ((100vw - 20rem) / 140));
+  line-height: 1.5;
+  word-wrap: break-word;
 }
 
 * {

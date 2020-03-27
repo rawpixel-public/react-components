@@ -7,8 +7,7 @@ export const StyledImageButton = styled.button`
   background: none;
   border: none;
   color: ${palette.gray};
-  max-width: 65px;
-  min-height: 80px;
+  max-width: 60px;
   padding-bottom: 5px;
   display: flex;
   flex-direction: column;
@@ -18,7 +17,7 @@ export const StyledImageButton = styled.button`
   text-decoration: none;
 
   .img-wrapper {
-    background: ${ifProp("active", palette.gray, palette.grayLighter)};
+    background: ${ifProp("active", palette.gray, "#DADADA")};
     transition: background-color linear 250ms;
   }
 

@@ -6,13 +6,12 @@ import { ifProp, prop } from "styled-tools";
 import { palette } from "../../utils/cssVars";
 
 const StyledIcon = styled.div`
-  height: 30px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   margin: auto;
-  vertical-align: top;
-  mask: url(${prop("imgSrc")}) no-repeat center;
-  background: ${palette.grayDark};
-  transition: background linear 250ms;
+  vertical-align: center;
+  mask: url(${prop("imgSrc")}) no-repeat center center;
+  background: ${palette.grayMedium};
 
   ${ifProp(
     "active",

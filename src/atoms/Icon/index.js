@@ -8,7 +8,7 @@ import DotLoader from "../Loader/DotLoader";
 export const StyledImgWrapper = styled.div`
   position: relative;
   height: 50px;
-  width: 65px;
+  width: 60px;
   border-radius: 0.25em;
 
   .loader {
@@ -20,13 +20,13 @@ export const StyledImgWrapper = styled.div`
 
 export const StyledIcon = styled.div`
   display: block;
-  height: 40px;
-  width: 40px;
-  vertical-align: top;
+  height: 35px;
+  width: 35px;
+  vertical-align: center;
   mask: url(${prop("imgSrc")}) no-repeat center;
   mask-size: contain;
   background: ${palette.white};
-  margin: 5px auto;
+  margin: 7.5px auto;
 `;
 
 const Icon = ({ loading, icon, className }) => (

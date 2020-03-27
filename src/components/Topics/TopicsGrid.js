@@ -32,7 +32,7 @@ const TopicsGrid = ({
   loading = false,
   viewable = 12,
   defaultHeight = 320,
-  defaultWidth = 230
+  defaultWidth = 240
 }) => {
   const handleTopicClick = (e, topic) => {
     if (typeof onTopicClick === "function") {
@@ -61,6 +61,7 @@ const TopicsGrid = ({
             topic={topic}
             to={topic.to}
             data-testid={topic.id}
+            groupIcon={topic.groupIcon}
           />
         ))}
     </ImageButtonGrid>

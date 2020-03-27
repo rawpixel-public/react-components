@@ -1,6 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledSizeButton, StyledBlock, StyledTitle } from "./StyledSizeButton";
+import {
+  StyledSizeButton,
+  StyledBlock,
+  StyledTitle,
+  BlockWrapper
+} from "./StyledSizeButton";
 
 const SizeButton = ({
   as,
@@ -25,7 +30,9 @@ const SizeButton = ({
     to={to}
     {...props}
   >
-    <StyledBlock style={{ height: `${height}px`, width: `${width}px` }} />
+    <BlockWrapper>
+      <StyledBlock style={{ height: `${height}px`, width: `${width}px` }} />
+    </BlockWrapper>
     <StyledTitle>{title}</StyledTitle>
   </StyledSizeButton>
 );

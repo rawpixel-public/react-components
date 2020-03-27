@@ -109,7 +109,7 @@ describe("topic categories", () => {
       <TopicCategories categories={categories} />
     );
 
-    expect(getByTestId("previous")).toHaveAttribute("disabled");
+    expect(queryByTestId(container, "previous")).not.toBeInTheDocument();
     expect(getByTestId("next")).not.toHaveAttribute("disabled");
     expect(queryByText(container, "Stickers")).toBeInTheDocument();
     expect(queryByText(container, "Graphics")).not.toBeInTheDocument();
@@ -123,7 +123,7 @@ describe("topic categories", () => {
     );
 
     expect(getByTestId("previous")).not.toHaveAttribute("disabled");
-    expect(getByTestId("next")).toHaveAttribute("disabled");
+    expect(queryByTestId(container, "next")).not.toBeInTheDocument();
     expect(queryByText(container, "Graphics")).toBeInTheDocument();
     expect(queryByText(container, "All")).not.toBeInTheDocument();
   });

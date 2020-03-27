@@ -3,14 +3,11 @@ import { ifProp, prop } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
-// todo: consolidate website and DAM palette.
-const lightGray = "#7d7c7c";
-
 export const StyledClearButton = styled.button`
   background: transparent;
   border: none;
   border-radius: 0.25rem;
-  color: ${lightGray};
+  color: ${palette.grayLight};
   display: block;
   font-family: ${fontFamily.base};
   font-size: 14px;
@@ -74,7 +71,7 @@ export const StyledControlButton = styled.button`
   background: none;
   border: none;
   border-radius: 0.25rem;
-  color: ${palette.grayLight};
+  fill: ${palette.grayLight};
   font-family: ${fontFamily.base};
   font-size: 10px;
   padding: 0;
@@ -93,5 +90,13 @@ export const StyledControlButton = styled.button`
     background: none;
     cursor: auto;
     font-weight: normal;
+  }
+
+  .next {
+    transform: rotate(-90deg);
+  }
+
+  .previous {
+    transform: rotate(90deg);
   }
 `;

@@ -5,7 +5,8 @@ import { Scrollbars } from "react-custom-scrollbars";
 import {
   StyledImageButtonGridContainer,
   StyledScrollbar,
-  StyledRow
+  StyledRow,
+  Spacer
 } from "./StyledImageButtonGrid";
 
 const chunk = (array, size) => {
@@ -22,7 +23,7 @@ const ImageButtonGrid = ({
   children,
   viewable = 9,
   defaultHeight = 240,
-  defaultWidth = 230,
+  defaultWidth = 240,
   columns = 3
 }) => {
   const [height, setHeight] = React.useState(defaultHeight);
@@ -38,7 +39,15 @@ const ImageButtonGrid = ({
     }
   }, [children, viewable]);
 
-  const rows = chunk(Children.toArray(children), columns);
+  const rows = chunk(Children.toArray(children), columns).map(row => {
+    if (row.length === columns) {
+      return row;
+    }
+    const spacers = [...Array(columns - row.length)].map((_, key) => (
+      <Spacer key={key} />
+    ));
+    return [...row, ...spacers];
+  });
 
   return (
     <Scrollbars

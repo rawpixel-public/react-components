@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import Heading from "../../atoms/Heading";
 
@@ -9,6 +10,10 @@ import {
   StyledWrapper
 } from "./StyledFilterButtonGroup";
 
+const Title = styled(Heading)`
+  font-size: 14px;
+`;
+
 const ButtonGroupList = ({
   children,
   title,
@@ -17,7 +22,7 @@ const ButtonGroupList = ({
   ...props
 }) => (
   <StyledWrapper {...props}>
-    {title && <Heading level={headingLevel}>{title}</Heading>}
+    {title && <Title level={headingLevel}>{title}</Title>}
     <StyledList>
       {React.Children.toArray(children).map((element, index) => (
         <StyledListItem key={index} itemsPerRow={itemsPerRow}>

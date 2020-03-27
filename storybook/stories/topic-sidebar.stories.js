@@ -32,13 +32,17 @@ const StyledSidebar = styled.div`
   width: 300px;
 
   .content {
-    width: 220px;
+    width: 210px;
     margin-left: 10px;
+  }
+
+  .size-button-group ul {
+    align-items: flex-start;
   }
 `;
 
 const SidebarHorizontalRule = () => (
-  <HorizontalRule style={{ width: "220px", marginTop: "5px", marginBottom: "15px" }} />
+  <HorizontalRule style={{ width: "210px", marginTop: "5px", marginBottom: "15px" }} />
 );
 
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
@@ -233,7 +237,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           loading={loading}
           viewable={12}
           defaultHeight={330}
-          defaultWidth={235}
+          defaultWidth={225}
         />
         {isTeam && (
           <>
@@ -303,6 +307,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
                 viewable={
                   secondaryFilters.length < 9 ? secondaryFilters.length : 9
                 }
+                defaultWidth={225}
               >
                 {secondaryFilters
                   .map(isFilterActiveMapper)
@@ -321,7 +326,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           )}
         {!isTeam && (
           <>
-            <ButtonGroupList title="Sizes">
+            <ButtonGroupList title="Sizes" className="size-button-group">
               <SizeButton title="Portrait" height={40} width={30} />
               <SizeButton title="Landscape" height={30} width={40} />
               <SizeButton title="Social" height={40} width={40} />

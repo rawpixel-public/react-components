@@ -28,79 +28,84 @@ const topicsData = [
   {
     name: "Stickers",
     tag: "$stickers",
-    icon: stickerSvg
+    icon_url: stickerSvg
   },
   {
     name: "Patterns",
     tag: "$patterns",
-    icon: patternSvg
+    icon_url: patternSvg
   },
   {
     name: "Icons",
     tag: "$icons",
-    icon: heartSvg
+    icon_url: heartSvg
   },
   {
     name: "Doodles",
     tag: "$doodles",
-    icon: doodleSvg
+    icon_url: doodleSvg
   },
   {
     name: "Typography",
     tag: "$typography",
-    icon: fontSvg
+    icon_url: fontSvg
   },
   {
     name: "Frames",
     tag: "$frames",
-    icon: frameSvg
+    icon_url: frameSvg
   },
   {
     name: "Logos",
     tag: "$logos",
-    icon: logoSvg
+    icon_url: logoSvg
   },
   {
     name: "Ornamental",
     tag: "$ornamental",
-    icon: ornamentSvg
+    icon_url: ornamentSvg
   },
   {
     name: "Transparent PNG",
     tag: "$transparent",
-    icon: transparentSvg
+    icon_url: transparentSvg
+  },
+  {
+    name: "Social media post",
+    tag: "$social",
+    icon_url: logoSvg
   },
   {
     name: "Wallpaper",
     tag: "$wallpaper",
-    icon: wallpaperSvg
+    icon_url: wallpaperSvg
   },
   {
     name: "Watercolors",
     tag: "$watercolors",
-    icon: watercolorSvg
+    icon_url: watercolorSvg
   },
   {
     name: "Backgrounds",
     tag: "$backgrounds",
-    icon: backgroundSvg
+    icon_url: backgroundSvg
   },
   {
     name: "Nature",
     tag: "$nature",
-    icon: leafSvg
+    icon_url: leafSvg
   },
   {
     name: "Graphics",
     tag: "$graphics",
-    icon: resizeSvg
+    icon_url: resizeSvg
   },
   {
     name: "Watercolors",
     tag: "$watercolors",
-    icon: watercolorSvg
+    icon_url: watercolorSvg
   }
-].map((topic, index) => ({ ...topic, id: index }));
+].map((topic, index) => ({ ...topic, id: index, groupIcon: topic.icon_url }));
 
 export const grid = () => {
   return (
@@ -174,7 +179,10 @@ export const api = () => {
   );
   return (
     <TopicsGrid
-      topics={topics}
+      topics={topics.map(topic => ({
+        ...topic,
+        groupIcon: boolean("groupIcon", true, "api") ? topic.icon_url : null
+      }))}
       onTopicClick={action("topic-grid-click")}
       defaultHeight={320}
       loading={loading}
