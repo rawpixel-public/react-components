@@ -19,6 +19,7 @@ export const StyledButton = styled.button`
   flex-direction: column;
   justify-content: center;
   text-decoration: none;
+  white-space: normal;
 
   &:hover {
     cursor: pointer;
@@ -37,7 +38,7 @@ export const StyledText = styled.span`
   text-align: center;
   margin: 3px 0;
   min-width: 40px;
-  max-width: 60px;
+  max-width: 75px;
   word-wrap: normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
