@@ -38,12 +38,12 @@ export const StyledText = styled.span`
   text-align: center;
   margin: 3px 0;
   min-width: 40px;
-  max-width: 75px;
+  max-width: 80px;
   word-wrap: normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: visible;
 `;
 
 export const StyledWidgetsWrapper = styled.div`
