@@ -1,5 +1,11 @@
 import React from "react";
-import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
+import {
+  withKnobs,
+  text,
+  boolean,
+  select,
+  number
+} from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 
 import {
@@ -110,7 +116,12 @@ const topicsData = [
 export const grid = () => {
   return (
     <TopicsGrid
-      topics={topicsData}
+      topics={topicsData
+        .map(topic => ({
+          ...topic,
+          groupIcon: boolean("show group icon", false) && topic.groupIcon
+        }))
+        .slice(0, number("number of topics", topicsData.length))}
       onTopicClick={action("topic-grid-click")}
       loading={boolean("loading", false)}
     />

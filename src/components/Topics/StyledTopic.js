@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { fontFamily, palette } from "../../utils/cssVars";
-import { prop } from "styled-tools";
+import { ifProp, prop } from "styled-tools";
 
 const taggedGreen = "#A1D1B7";
 const taggingGreen = "#95BDAA";
@@ -64,9 +64,25 @@ export const StyledTitle = styled.span`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
   word-wrap: normal;
   overflow: hidden;
+  word-break: break-word;
+  position: relative;
+
+  ${ifProp(
+    "isHyphenated",
+    css`
+      word-break: break-all;
+      padding-right: 4px;
+
+      &:after {
+        content: "-";
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    `
+  )}
 `;
 
 export const StyledIcon = styled.div`
