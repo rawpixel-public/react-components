@@ -4,8 +4,8 @@ import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
 import WidgetProps from "./WidgetProps";
 
-const WidgetAddon = ({ title, icon_url, href, ...props }) => (
-  <StyledButton as="a" href={href} {...props}>
+const WidgetAddon = ({ as, title, icon_url, href, ...props }) => (
+  <StyledButton as={as || "a"} href={href} {...props}>
     <WidgetIcon href={icon_url} />
     <StyledText>{title}</StyledText>
   </StyledButton>
