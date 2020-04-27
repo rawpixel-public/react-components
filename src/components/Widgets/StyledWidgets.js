@@ -43,7 +43,8 @@ export const StyledText = styled.span`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  overflow: visible;
+  overflow-x: visible;
+  overflow-y: hidden;
 `;
 
 export const StyledWidgetsWrapper = styled.div`
