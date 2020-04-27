@@ -62,8 +62,6 @@ const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
 );
 
 const ButtonComponents = {
-  $free: Button,
-  $premium: Button,
   $exclusive: ExclusiveButton,
   $likes: LikesButton
 };
@@ -79,7 +77,7 @@ const FilterButtonGroupMain = ({
   return (
     <ButtonGroupList itemsPerRow={rowSize}>
       {published.map((filter, index) => {
-        const Component = ButtonComponents[filter.tag];
+        const Component = ButtonComponents[filter.tag] || Button;
         return (
           <Component
             key={index}
