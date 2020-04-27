@@ -21,8 +21,8 @@ const chunk = (array, size) => {
 
 const ImageButtonGrid = ({
   children,
-  viewable = 9,
-  defaultHeight = 240,
+  viewable = 12,
+  defaultHeight = 320,
   defaultWidth = 240,
   columns = 3
 }) => {
@@ -31,10 +31,19 @@ const ImageButtonGrid = ({
 
   React.useEffect(() => {
     const element = ContainerRef.current;
+    const childCount = Children.count(children);
     const offsetHeight = element.offsetHeight;
 
-    // Set container to exact height to hide scrollbar tracks.
-    if (Children.count(children).length <= viewable) {
+    if (childCount > viewable) {
+      const rowElements = Array.from(element.childNodes);
+      const visibleRowElements = rowElements.slice(0, viewable / columns);
+      const rowMargin = 10;
+      const visibleHeight = visibleRowElements.reduce(
+        (value, element) => value + element.offsetHeight + rowMargin,
+        0
+      );
+      setHeight(visibleHeight);
+    } else {
       setHeight(offsetHeight);
     }
   }, [children, viewable]);
