@@ -7,6 +7,18 @@ import filterAllowedProps from "filter-react-props";
 import { Topic } from "../index";
 
 describe("topic", () => {
+  beforeAll(() => {
+    global.document.createRange = () => ({
+      setStart: () => {},
+      setEnd: () => {},
+      commonAncestorContainer: {
+        nodeName: "BODY",
+        ownerDocument: document
+      },
+      getBoundingClientRect: () => ({ height: 0 })
+    });
+  });
+
   it("should render", async () => {
     const { getByText, getByTestId } = render(
       <Topic
