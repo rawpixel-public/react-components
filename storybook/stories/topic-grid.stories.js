@@ -180,13 +180,19 @@ export const dam = () => {
 };
 
 export const api = () => {
+  const favouriteBy = boolean('favourite by', false, "api");
+  const userId = number('user id', 1, "api");
   const { loading, topics } = useTopicsApi(
     select(
       "widget",
       { "My Topics": undefined, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
       1,
       "api"
-    )
+    ),
+    "https://dev-labs.rawpixel.com",
+    "/api/v1",
+    false,
+    favouriteBy && userId
   );
   return (
     <TopicsGrid
