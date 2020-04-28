@@ -20,11 +20,13 @@ const chunk = (array, size) => {
 };
 
 const ImageButtonGrid = ({
+  className,
   children,
   viewable = 12,
   defaultHeight = 320,
   defaultWidth = 240,
-  columns = 3
+  columns = 3,
+  ...props
 }) => {
   const [height, setHeight] = React.useState(defaultHeight);
   const ContainerRef = React.useRef();
@@ -60,7 +62,8 @@ const ImageButtonGrid = ({
 
   return (
     <Scrollbars
-      style={{ height, width: defaultWidth }}
+      className={className}
+      style={{ height, width: defaultWidth, ...props.style }}
       hideTracksWhenNotNeeded
       renderThumbVertical={props => <StyledScrollbar {...props} />}
       autoHide
@@ -77,11 +80,13 @@ const ImageButtonGrid = ({
 };
 
 ImageButtonGrid.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node,
   viewable: PropTypes.number,
   defaultHeight: PropTypes.number,
   defaultWidth: PropTypes.number,
-  columns: PropTypes.number
+  columns: PropTypes.number,
+  style: PropTypes.object
 };
 
 export default ImageButtonGrid;
