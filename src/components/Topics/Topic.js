@@ -26,7 +26,7 @@ const Topic = ({
   };
 
   React.useEffect(() => {
-    const LINE_HEIGHT = 14;
+    const LINE_HEIGHT = 15;
     const titleElement = TitleRef.current;
     const textNode = Array.from(titleElement.childNodes).find(
       e => e.nodeName === "#text"
