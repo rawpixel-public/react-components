@@ -5,6 +5,7 @@ const TOPICS_BY_HEART_FILTER = "topics_by_heart_filter";
 const TOPICS_FAVOURITE_BY_USER = "topics_favourite_by_user";
 const TOPICS_ALL = "all_topics";
 const TOPICS_LOADING = "topics_loading";
+const TOPICS_TRENDING = "topics_trending";
 
 const fetchTopics = async ({
   widget,
@@ -13,12 +14,14 @@ const fetchTopics = async ({
   baseUrl,
   basePath,
   heartFilter = false,
-  favouriteBy
+  favouriteBy,
+  trending = false
 }) => {
   const queryParams = {
     ...(typeof widget === "number" && { widget }),
     ...(typeof favouriteBy === "number" && { favourite_by: favouriteBy }),
     ...(heartFilter && { heart_filter: 1 }),
+    ...(trending && { trending: 1 }),
     page,
     pagesize
   };
@@ -63,6 +66,15 @@ const fetchTopicsByFavouriteBy = ({
   return fetchTopics({ page, pagesize, baseUrl, basePath, favouriteBy });
 };
 
+const fetchTrendingTopics = ({
+  page = 1,
+  pagesize = 100,
+  baseUrl,
+  basePath
+}) => {
+  return fetchTopics({ page, pagesize, baseUrl, basePath, trending: true });
+};
+
 const fetchAllTopics = ({ page = 1, pagesize = 100, baseUrl, basePath }) => {
   return fetchTopics({ page, baseUrl, basePath, pagesize });
 };
@@ -78,7 +90,7 @@ const topicsApiReducer = (state, action) => {
       return { ...state, [`widget_${widget}`]: topics, loading: false };
 
     case TOPICS_BY_HEART_FILTER:
-      return { ...state, heart_filter: topics };
+      return { ...state, heart_filter: topics, loading: false };
 
     case TOPICS_FAVOURITE_BY_USER:
       return {
@@ -86,6 +98,9 @@ const topicsApiReducer = (state, action) => {
         [`favouriteBy_${favouriteBy}`]: topics,
         loading: false
       };
+
+    case TOPICS_TRENDING:
+      return { ...state, trending: action.topics, loading: false };
 
     case TOPICS_ALL:
       return { ...state, topics, loading: false };
@@ -99,7 +114,8 @@ const fetchFunctions = {
   [TOPICS_ALL]: fetchAllTopics,
   [TOPICS_BY_WIDGET_ID]: fetchTopicsByWidget,
   [TOPICS_BY_HEART_FILTER]: fetchTopicsByHeartFilter,
-  [TOPICS_FAVOURITE_BY_USER]: fetchTopicsByFavouriteBy
+  [TOPICS_FAVOURITE_BY_USER]: fetchTopicsByFavouriteBy,
+  [TOPICS_TRENDING]: fetchTrendingTopics
 };
 
 const initialState = {
@@ -111,16 +127,19 @@ export default (
   baseUrl = "https://dev-labs.rawpixel.com",
   basePath = "/api/v1",
   heartFilter = false,
-  favouriteBy
+  favouriteBy,
+  trending = false
 ) => {
   const [state, dispatch] = React.useReducer(topicsApiReducer, initialState);
 
   let key = "topics";
   if (heartFilter) {
     key = "heart_filter";
-  } else if (typeof favouriteBy === "number") {
+  } else if (trending) {
+    key = "trending";
+  } else if (favouriteBy) {
     key = `favouriteBy_${favouriteBy}`;
-  } else if (typeof widget === "number") {
+  } else if (widget) {
     key = `widget_${widget}`;
   }
 
@@ -133,16 +152,16 @@ export default (
       let page = 1;
       let loadedTopics = [];
       let allTopicsLoaded = false;
-      let type;
+      let type = TOPICS_ALL;
 
       if (heartFilter) {
         type = TOPICS_BY_HEART_FILTER;
+      } else if (trending) {
+        type = TOPICS_TRENDING;
       } else if (favouriteBy) {
         type = TOPICS_FAVOURITE_BY_USER;
       } else if (widget) {
         type = TOPICS_BY_WIDGET_ID;
-      } else {
-        type = TOPICS_ALL;
       }
 
       const fn = fetchFunctions[type];
@@ -155,24 +174,25 @@ export default (
             baseUrl,
             basePath,
             heartFilter,
-            favouriteBy
+            favouriteBy,
+            trending
           });
           loadedTopics = loadedTopics.concat(results);
           allTopicsLoaded = loadedTopics.length === total;
           page++;
         }
 
-        dispatch({ type, topics: loadedTopics, widget, favouriteBy });
+        dispatch({ type, topics: loadedTopics, widget, favouriteBy, trending });
       } catch (error) {
         console.error(error);
         dispatch({ type: TOPICS_LOADING, loading: false });
       }
     }
 
-    if (!(key in state) && !state.loading) {
+    if (!(key in state)) {
       loadTopics().finally();
     }
-  }, [widget, baseUrl, basePath, heartFilter, favouriteBy]);
+  }, [widget, baseUrl, basePath, heartFilter, favouriteBy, trending]);
 
-  return { loading: state.loading, topics };
+  return { topics, loading: state.loading };
 };
