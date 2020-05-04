@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import fetchMocks from "jest-fetch-mock";
 
-import { useTopicWidgets } from "../index";
+import { useTopicWidgetsApi } from "../index";
 
 fetchMocks.enableMocks();
 
@@ -11,7 +11,7 @@ describe("useTopicWidgets", () => {
       Promise.resolve(JSON.stringify([{ id: 1, title: "My widget" }]))
     );
     const { result, waitForNextUpdate } = renderHook(() =>
-      useTopicWidgets("foo", "bar", "https://api.example.com")
+      useTopicWidgetsApi("foo", "bar", "https://api.example.com")
     );
 
     expect(result.current.loading).toBe(true);
@@ -39,7 +39,7 @@ describe("useTopicWidgets", () => {
       Promise.reject(JSON.stringify({ code: 500, message: "Server error" }))
     );
     const { result, waitForNextUpdate } = renderHook(() =>
-      useTopicWidgets("website")
+      useTopicWidgetsApi("website")
     );
 
     await waitForNextUpdate();

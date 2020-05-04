@@ -15,7 +15,7 @@ import {
   Categories,
   ButtonGroupPlaceholder,
   useTopicWidgetCategories,
-  useTopicWidgets,
+  useTopicWidgetsApi,
   useTopicWidgetSettings
 } from "@rawpixel-public/react-components";
 
@@ -102,7 +102,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       ? "website_content"
       : "team"
     : false;
-  const { loading, widgets } = useTopicWidgets(target, catalog);
+  const { loading, widgets } = useTopicWidgetsApi(target, catalog);
 
   const [topicData, setTopicData] = React.useState(topics);
   const [activeFilter, setActiveFilter] = React.useState(0);
