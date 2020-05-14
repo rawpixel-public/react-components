@@ -15,7 +15,8 @@ const fetchTopics = async ({
   basePath,
   heartFilter = false,
   favouriteBy,
-  trending = false
+  trending = false,
+  published = true
 }) => {
   const queryParams = {
     ...(typeof widget === "number" && { widget }),
@@ -23,7 +24,8 @@ const fetchTopics = async ({
     ...(heartFilter && { heart_filter: 1 }),
     ...(trending && { trending: 1 }),
     page,
-    pagesize
+    pagesize,
+    published: published ? 1 : 0
   };
   const queryString = Object.keys(queryParams)
     .map(key => `${key}=${queryParams[key]}`)
@@ -42,18 +44,27 @@ const fetchTopicsByWidget = ({
   page = 1,
   pagesize = 100,
   baseUrl,
-  basePath
+  basePath,
+  published
 }) => {
-  return fetchTopics({ widget, page, baseUrl, basePath, pagesize });
+  return fetchTopics({ widget, page, baseUrl, basePath, pagesize, published });
 };
 
 const fetchTopicsByHeartFilter = ({
   page = 1,
   pagesize = 100,
   baseUrl,
-  basePath
+  basePath,
+  published
 }) => {
-  return fetchTopics({ page, pagesize, baseUrl, basePath, heartFilter: true });
+  return fetchTopics({
+    page,
+    pagesize,
+    baseUrl,
+    basePath,
+    heartFilter: true,
+    published
+  });
 };
 
 const fetchTopicsByFavouriteBy = ({
@@ -61,49 +72,59 @@ const fetchTopicsByFavouriteBy = ({
   pagesize = 100,
   baseUrl,
   basePath,
-  favouriteBy
+  favouriteBy,
+  published
 }) => {
-  return fetchTopics({ page, pagesize, baseUrl, basePath, favouriteBy });
+  return fetchTopics({
+    page,
+    pagesize,
+    baseUrl,
+    basePath,
+    favouriteBy,
+    published
+  });
 };
 
 const fetchTrendingTopics = ({
   page = 1,
   pagesize = 100,
   baseUrl,
-  basePath
+  basePath,
+  published
 }) => {
-  return fetchTopics({ page, pagesize, baseUrl, basePath, trending: true });
+  return fetchTopics({
+    page,
+    pagesize,
+    baseUrl,
+    basePath,
+    trending: true,
+    published
+  });
 };
 
-const fetchAllTopics = ({ page = 1, pagesize = 100, baseUrl, basePath }) => {
-  return fetchTopics({ page, baseUrl, basePath, pagesize });
+const fetchAllTopics = ({
+  page = 1,
+  pagesize = 100,
+  baseUrl,
+  basePath,
+  published
+}) => {
+  return fetchTopics({ page, baseUrl, basePath, pagesize, published });
 };
 
 const topicsApiReducer = (state, action) => {
-  const { type, topics, loading, widget, favouriteBy } = action;
+  const { type, topics, loading, key } = action;
 
   switch (type) {
     case TOPICS_LOADING:
       return { ...state, loading };
 
     case TOPICS_BY_WIDGET_ID:
-      return { ...state, [`widget_${widget}`]: topics, loading: false };
-
     case TOPICS_BY_HEART_FILTER:
-      return { ...state, heart_filter: topics, loading: false };
-
     case TOPICS_FAVOURITE_BY_USER:
-      return {
-        ...state,
-        [`favouriteBy_${favouriteBy}`]: topics,
-        loading: false
-      };
-
     case TOPICS_TRENDING:
-      return { ...state, trending: action.topics, loading: false };
-
     case TOPICS_ALL:
-      return { ...state, topics, loading: false };
+      return { ...state, [key]: topics, loading: false };
 
     default:
       throw new Error(`Invalid action.type in topicsApiReducer: ${type}`);
@@ -122,28 +143,56 @@ const initialState = {
   loading: false
 };
 
+const getStateKey = params => {
+  const {
+    heartFilter,
+    trending,
+    favouriteBy,
+    widget,
+    published = true
+  } = params;
+  const publishedKey = published ? "published" : "unpublished";
+
+  let key = `topics_${publishedKey}`;
+  let type = TOPICS_ALL;
+
+  if (heartFilter) {
+    key = `heart_filter_${publishedKey}`;
+    type = TOPICS_BY_HEART_FILTER;
+  } else if (trending) {
+    key = `trending_${publishedKey}`;
+    type = TOPICS_TRENDING;
+  } else if (favouriteBy) {
+    key = `favouriteBy_${favouriteBy}_${publishedKey}`;
+    type = TOPICS_FAVOURITE_BY_USER;
+  } else if (widget) {
+    key = `widget_${widget}_${publishedKey}`;
+    type = TOPICS_BY_WIDGET_ID;
+  }
+
+  return { key, type };
+};
+
 export default (
   widget,
   baseUrl = "https://dev-labs.rawpixel.com",
   basePath = "/api/v1",
   heartFilter = false,
   favouriteBy,
-  trending = false
+  trending = false,
+  published = true
 ) => {
   const [state, dispatch] = React.useReducer(topicsApiReducer, initialState);
-
-  let key = "topics";
-  if (heartFilter) {
-    key = "heart_filter";
-  } else if (trending) {
-    key = "trending";
-  } else if (favouriteBy) {
-    key = `favouriteBy_${favouriteBy}`;
-  } else if (widget) {
-    key = `widget_${widget}`;
-  }
+  const { key, type } = getStateKey({
+    heartFilter,
+    favouriteBy,
+    trending,
+    widget,
+    published
+  });
 
   const topics = (key in state && state[key]) || [];
+  console.log({ key, type, topics, state });
 
   React.useEffect(() => {
     async function loadTopics() {
@@ -152,17 +201,6 @@ export default (
       let page = 1;
       let loadedTopics = [];
       let allTopicsLoaded = false;
-      let type = TOPICS_ALL;
-
-      if (heartFilter) {
-        type = TOPICS_BY_HEART_FILTER;
-      } else if (trending) {
-        type = TOPICS_TRENDING;
-      } else if (favouriteBy) {
-        type = TOPICS_FAVOURITE_BY_USER;
-      } else if (widget) {
-        type = TOPICS_BY_WIDGET_ID;
-      }
 
       const fn = fetchFunctions[type];
 
@@ -175,16 +213,17 @@ export default (
             basePath,
             heartFilter,
             favouriteBy,
-            trending
+            trending,
+            published
           });
           loadedTopics = loadedTopics.concat(results);
           allTopicsLoaded = loadedTopics.length === total;
           page++;
         }
 
-        dispatch({ type, topics: loadedTopics, widget, favouriteBy, trending });
-      } catch (error) {
-        console.error(error);
+        dispatch({ type, topics: loadedTopics, key });
+      } catch (reason) {
+        console.log({ reason });
         dispatch({ type: TOPICS_LOADING, loading: false });
       }
     }
@@ -192,7 +231,17 @@ export default (
     if (!(key in state)) {
       loadTopics().finally();
     }
-  }, [widget, baseUrl, basePath, heartFilter, favouriteBy, trending]);
+  }, [
+    widget,
+    baseUrl,
+    basePath,
+    heartFilter,
+    favouriteBy,
+    trending,
+    published,
+    key,
+    type
+  ]);
 
   return { topics, loading: state.loading };
 };

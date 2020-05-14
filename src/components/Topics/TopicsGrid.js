@@ -56,7 +56,7 @@ const TopicsGrid = ({
           <Topic
             icon={topic.icon_url}
             id={topic.id}
-            name={topic.name}
+            name={topic.title_short || topic.title_filter || topic.title}
             key={topic.id}
             isTagMode={isTagMode}
             isLoading={topic.isLoading}

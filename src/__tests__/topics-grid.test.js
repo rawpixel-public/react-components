@@ -7,7 +7,7 @@ import { TopicsGrid } from "../index";
 describe("topic grid", () => {
   const generateTopics = length =>
     [...Array(length)].map((_, index) => ({
-      name: `Topic ${index}`,
+      title: `Topic ${index}`,
       id: index.toString(),
       icon_url: "https://placehold.it/80x60"
     }));
