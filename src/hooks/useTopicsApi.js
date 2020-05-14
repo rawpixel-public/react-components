@@ -192,7 +192,6 @@ export default (
   });
 
   const topics = (key in state && state[key]) || [];
-  console.log({ key, type, topics, state });
 
   React.useEffect(() => {
     async function loadTopics() {
