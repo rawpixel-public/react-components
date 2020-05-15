@@ -63,7 +63,11 @@ export const StyledUnorderedList = styled.ul`
 `;
 
 export const StyledListItem = styled.li`
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+
+  &:first-child {
+    margin-top: 4px;
+  }
 `;
 
 export const StyledHR = styled(HorizontalRule)`

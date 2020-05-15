@@ -6,8 +6,8 @@ import { ifProp, prop } from "styled-tools";
 import { palette } from "../../utils/cssVars";
 
 const StyledIcon = styled.div`
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   margin: auto;
   vertical-align: center;
   mask: url(${prop("imgSrc")}) no-repeat center center;
