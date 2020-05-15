@@ -2,7 +2,7 @@
 
 ![tests](https://github.com/rawpixel-public/react-components/workflows/tests/badge.svg?branch=master)
 
-RawPixel React component library.
+rawpixel React component library.
 
 ## Install
 
