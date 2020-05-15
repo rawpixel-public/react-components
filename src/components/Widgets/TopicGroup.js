@@ -23,7 +23,7 @@ const WidgetTopicGroup = ({
     {...props}
   >
     <WidgetIcon href={icon_url} active={active} />
-    <StyledText>{title}</StyledText>
+    <StyledText active={active}>{title}</StyledText>
   </StyledButton>
 );
 

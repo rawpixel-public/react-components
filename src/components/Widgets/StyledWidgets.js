@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { prop, switchProp } from "styled-tools";
+import { prop, switchProp, ifProp } from "styled-tools";
 import HorizontalRule from "../../atoms/HorizontalRule";
 
 import { fontFamily, palette } from "../../utils/cssVars";
@@ -34,6 +34,7 @@ export const StyledText = styled.span`
   color: ${palette.grayMedium};
   font-family: ${fontFamily.base};
   font-size: 12px;
+  font-weight: ${ifProp("active", "700", "400")};
   line-height: 1.25;
   text-align: center;
   margin: 3px 0;
