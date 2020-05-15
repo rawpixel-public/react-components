@@ -9,7 +9,7 @@ export const StyledImgWrapper = styled.div`
   position: relative;
   height: 50px;
   width: 60px;
-  border-radius: 0.25em;
+  border-radius: 6px;
 
   .loader {
     position: absolute;
