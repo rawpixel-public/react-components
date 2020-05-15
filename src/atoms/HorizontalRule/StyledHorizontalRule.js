@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const StyledHorizontalRule = styled.hr`
-  background: #e9e9e9;
-  border: 0.5px solid #e9e9e9;
+  background: #cfcfcf;
+  border: 0.5px solid #cfcfcf;
   box-sizing: content-box;
-  height: 1px;
+  height: 0.5px;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   overflow: visible;

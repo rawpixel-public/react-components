@@ -24,7 +24,7 @@ import useTopicWidgetSettingsActiveState from "../hooks/useTopicWidgetSettingsAc
 import { Link } from "react-router";
 
 const StyledSidebar = styled.div`
-  background: ${props => (props.isDAM ? "#FFF" : "#F4F4F4")};
+  background: ${props => (props.isDAM ? "#FFF" : "#F9F9F9")};
   border-radius: 0.25em;
   display: flex;
   flex-direction: row;

@@ -45,13 +45,13 @@ export const StyledSizeButton = styled.button`
 `;
 
 export const StyledBlock = styled.div`
-  background: #e9e9e9;
+  background: #eeeeee;
   border-radius: 3px;
   transition: background-color linear 250ms;
 `;
 
 export const StyledTitle = styled.span`
-  color: #7d7c7c;
+  color: #4a4a4a;
   font-family: ${fontFamily.base};
   font-size: 12px;
   margin-top: 3px;

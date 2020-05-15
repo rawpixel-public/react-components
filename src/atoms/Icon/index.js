@@ -25,7 +25,7 @@ export const StyledIcon = styled.div`
   vertical-align: center;
   mask: url(${prop("imgSrc")}) no-repeat center;
   mask-size: contain;
-  background: ${palette.white};
+  background: ${palette.topicIconColor};
   margin: 7.5px auto;
 `;
 

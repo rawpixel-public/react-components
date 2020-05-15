@@ -9,7 +9,7 @@ const taggingGreen = "#95BDAA";
 export const StyledTopicButton = styled.button`
   background: none;
   border: none;
-  color: ${palette.gray};
+  color: #4a4a4a;
   width: 60px;
   min-height: 60px;
   display: flex;
@@ -41,8 +41,8 @@ export const StyledTopicButton = styled.button`
       props.isTagged && props.isTagMode
         ? taggedGreen
         : props.active
-        ? palette.grayLight
-        : "#DADADA"};
+        ? palette.topicActive
+        : palette.topicButtonBackground};
     transition: background-color linear 250ms;
   }
 

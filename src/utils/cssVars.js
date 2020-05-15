@@ -25,7 +25,12 @@ export const palette = {
   sidebarTagColor: "#c8c8c8",
   sidebarTagBg: "#5E5E5E",
   sidebarInputColor: "#c8c8c8",
-  sidebarInputBg: "#5E5E5E"
+  sidebarInputBg: "#5E5E5E",
+
+  topicActive: "#5C5C5C",
+  topicIconColor: "#F9F9F9",
+  topicButtonBackground: "#CFCFCF",
+  topicFilterBackground: "#EEE"
 };
 
 export const fontFamily = {

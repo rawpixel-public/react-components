@@ -4,15 +4,17 @@ import { ifProp, prop, switchProp } from "styled-tools";
 import { fontFamily, palette } from "../../utils/cssVars";
 
 // todo: consolidate website and DAM palette.
-const lighterGray = "#e9e9e9";
+const lighterGray = "#eee";
 const lightGray = "#7d7c7c";
 const darkGray = "#4b4b4c";
+const activeText = "#f9f9f9";
+const textColor = "#4a4a4a";
 
 export const StyledButton = styled.button`
   background: ${ifProp("active", darkGray, lighterGray)};
   border: 1px solid transparent;
   border-radius: 0.25rem;
-  color: ${ifProp("active", palette.white, lightGray)};
+  color: ${ifProp("active", activeText, textColor)};
   display: block;
   flex: 0 1 auto;
   font-family: ${fontFamily.base};
@@ -49,7 +51,7 @@ export const StyledButton = styled.button`
   &[disabled]:hover {
     cursor: not-allowed;
     background: ${ifProp("active", lightGray, lighterGray)};
-    color: ${ifProp("active", palette.white, lightGray)};
+    color: ${ifProp("active", activeText, lightGray)};
   }
 
   &[type="text"] {
