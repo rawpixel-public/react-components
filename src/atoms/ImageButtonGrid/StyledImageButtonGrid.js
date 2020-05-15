@@ -19,7 +19,8 @@ export const StyledScrollbar = styled.div`
 `;
 
 export const Spacer = styled.div`
-  display: block;
+  display: flex;
+  align-self: center;
   height: 60px;
   width: 60px;
 `;
