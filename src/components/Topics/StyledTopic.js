@@ -36,7 +36,6 @@ export const StyledTopicButton = styled.button`
   }
 
   .img-wrapper {
-    width: 100%;
     background: ${props =>
       props.isTagged && props.isTagMode
         ? taggedGreen
