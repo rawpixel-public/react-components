@@ -1,6 +1,6 @@
 {
   "name": "@rawpixel-public/react-components",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "RawPixel React component library",
   "license": "MIT",
   "repository": "git://github.com/rawpixel-public/react-components",
@@ -23,6 +23,7 @@
     "prepublishOnly": "yarn run lint && yarn run test",
     "lint": "eslint ./src && prettier --check \"src/**/*.js\"",
     "lint:fix": "eslint ./src --fix && prettier --write \"src/**/*.js\"",
+    "release": "standard-version",
     "start": "rollup -c -w",
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:coverage": "yarn run test --coverage",
@@ -80,6 +81,7 @@
     "rollup": "^1.31.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-peer-deps-external": "^2.2.0",
+    "standard-version": "^8.0.0",
     "styled-components": "^5.0.1",
     "styled-tools": "^1.7.1"
   },

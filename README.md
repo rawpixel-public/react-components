@@ -46,6 +46,12 @@ yarn install
 cd storybook && yarn install
 ```
 
+### Commit messages
+
+Use [conventional-commits](https://www.conventionalcommits.org/en/v1.0.0/) convention to indicate the type of change you've made. This will be used to generate the changelog release notes and semantic version when publishing a package.
+
+### Local environment
+
 To develop components locally within this repository, you can use Storybook.
 
 ```bash
@@ -98,12 +104,8 @@ Ensure you have configured your development environment to [publish to GitHub pa
 Then increment version and publish (example below).
 
 ```bash
-# npm
-npm version minor # increment minor version, tag and commit
-npm publish # publish 
-
-# yarn
-yarn publish --minor # tags, commits and publishes
+npm run release # tags and updates changelog
+git push --follow-tags origin master && npm publish # publish
 ```
 
 ### Documentation
