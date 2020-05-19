@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 import Addon from "./Addon";
@@ -34,7 +35,9 @@ const WidgetsBar = ({
   direction = "column",
   loading = false,
   topicGroupComponent,
-  addonComponent
+  addonComponent,
+  classes = {},
+  className
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(activeWidget);
 
@@ -56,6 +59,12 @@ const WidgetsBar = ({
     .map(widget => (
       <StyledListItem key={widget.title}>
         <TopicGroup
+          className={classnames("widget", "topic-group", {
+            [classes.widget]: classes.widget,
+            [classes.topicGroup]: classes.topicGroup,
+            [classes.activeWidget]:
+              widget.active || widgets.indexOf(widget) === activeIndex
+          })}
           as={topicGroupComponent}
           to={widget.to}
           icon_url={widget.icon_url}
@@ -72,6 +81,12 @@ const WidgetsBar = ({
     .map(widget => (
       <StyledListItem key={widget.title}>
         <Addon
+          className={classnames("widget", "add-on", {
+            [classes.widget]: classes.widget,
+            [classes.addOn]: classes.addOn,
+            [classes.activeWidget]:
+              widget.active || widgets.indexOf(widget) === activeIndex
+          })}
           as={addonComponent}
           icon_url={widget.icon_url}
           href={widget.url}
@@ -82,7 +97,10 @@ const WidgetsBar = ({
     ));
 
   return (
-    <StyledWidgetsWrapper direction={direction}>
+    <StyledWidgetsWrapper
+      direction={direction}
+      className={classnames("widgets", classes.wrapper, className)}
+    >
       <StyledUnorderedList direction={direction}>
         {loading &&
           [...Array(10)].map((_, index) => (
@@ -111,7 +129,24 @@ WidgetsBar.propTypes = {
     PropTypes.elementType,
     PropTypes.string
   ]),
-  addonComponent: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string])
+  addonComponent: PropTypes.oneOfType([
+    PropTypes.elementType,
+    PropTypes.string
+  ]),
+  classes: PropTypes.shape({
+    wrapper: PropTypes.string,
+    widget: PropTypes.string,
+    activeWidget: PropTypes.string,
+    topicGroup: PropTypes.string,
+    addOn: PropTypes.string
+  }),
+  className: PropTypes.string
+};
+
+WidgetsBar.defaultProps = {
+  classes: {
+    activeWidget: "widget--active"
+  }
 };
 
 export default WidgetsBar;

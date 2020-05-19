@@ -21,11 +21,16 @@ const StyledIcon = styled.div`
   )};
 `;
 
-const WidgetIcon = ({ href, active = false }) => (
-  <StyledIcon active={active ? true : undefined} imgSrc={href} />
+const WidgetIcon = ({ className, href, active = false }) => (
+  <StyledIcon
+    className={className}
+    active={active ? true : undefined}
+    imgSrc={href}
+  />
 );
 
 WidgetIcon.propTypes = {
+  className: PropTypes.string,
   href: PropTypes.string.isRequired,
   active: PropTypes.bool
 };
