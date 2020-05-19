@@ -32,82 +32,82 @@ import watercolorSvg from "../images/watercolor.svg";
 
 const topicsData = [
   {
-    name: "Stickers",
+    title: "Stickers",
     tag: "$stickers",
     icon_url: stickerSvg
   },
   {
-    name: "Patterns",
+    title: "Patterns",
     tag: "$patterns",
     icon_url: patternSvg
   },
   {
-    name: "Icons",
+    title: "Icons",
     tag: "$icons",
     icon_url: heartSvg
   },
   {
-    name: "Doodles",
+    title: "Doodles",
     tag: "$doodles",
     icon_url: doodleSvg
   },
   {
-    name: "Typography",
+    title: "Typography",
     tag: "$typography",
     icon_url: fontSvg
   },
   {
-    name: "Frames",
+    title: "Frames",
     tag: "$frames",
     icon_url: frameSvg
   },
   {
-    name: "Logos",
+    title: "Logos",
     tag: "$logos",
     icon_url: logoSvg
   },
   {
-    name: "Ornamental",
+    title: "Ornamental",
     tag: "$ornamental",
     icon_url: ornamentSvg
   },
   {
-    name: "Transparent PNG",
+    title: "Transparent PNG",
     tag: "$transparent",
     icon_url: transparentSvg
   },
   {
-    name: "Social media post",
+    title: "Social media post",
     tag: "$social",
     icon_url: logoSvg
   },
   {
-    name: "Wallpaper",
+    title: "Wallpaper",
     tag: "$wallpaper",
     icon_url: wallpaperSvg
   },
   {
-    name: "Watercolors",
+    title: "Watercolors",
     tag: "$watercolors",
     icon_url: watercolorSvg
   },
   {
-    name: "Backgrounds",
+    title: "Backgrounds",
     tag: "$backgrounds",
     icon_url: backgroundSvg
   },
   {
-    name: "Nature",
+    title: "Nature",
     tag: "$nature",
     icon_url: leafSvg
   },
   {
-    name: "Graphics",
+    title: "Graphics",
     tag: "$graphics",
     icon_url: resizeSvg
   },
   {
-    name: "Watercolors",
+    title: "Watercolors",
     tag: "$watercolors",
     icon_url: watercolorSvg
   }
