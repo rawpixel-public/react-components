@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.6](https://github.com/rawpixel-public/react-components/compare/v0.8.5...v0.8.6) (2020-05-21)
+
+
+### Bug Fixes
+
+* set default loading state for topics to true ([7ef79a9](https://github.com/rawpixel-public/react-components/commit/7ef79a9f5dc17c1414d48ee97b849bbbdc3376f3))
+
 ### [0.8.5](https://github.com/rawpixel-public/react-components/compare/v0.8.3...v0.8.5) (2020-05-19)
 
 
