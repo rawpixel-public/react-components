@@ -140,7 +140,7 @@ const fetchFunctions = {
 };
 
 const initialState = {
-  loading: false
+  loading: true
 };
 
 const getStateKey = params => {
