@@ -26,6 +26,10 @@ const Topic = ({
   };
 
   React.useEffect(() => {
+    if (!name || !("createRange" in document)) {
+      return;
+    }
+
     const LINE_HEIGHT = 15;
     const titleElement = TitleRef.current;
     const textNode = Array.from(titleElement.childNodes).find(

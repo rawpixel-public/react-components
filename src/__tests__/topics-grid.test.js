@@ -12,18 +12,6 @@ describe("topic grid", () => {
       icon_url: "https://placehold.it/80x60"
     }));
 
-  beforeAll(() => {
-    global.document.createRange = () => ({
-      setStart: () => {},
-      setEnd: () => {},
-      commonAncestorContainer: {
-        nodeName: "BODY",
-        ownerDocument: document
-      },
-      getBoundingClientRect: () => ({ height: 0 })
-    });
-  });
-
   it("should render topics", async () => {
     const { getByText } = render(<TopicsGrid topics={generateTopics(9)} />);
 
