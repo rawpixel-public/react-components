@@ -1,6 +1,6 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs } from "@storybook/addon-knobs";
+import { withKnobs, select } from "@storybook/addon-knobs";
 import { WidgetsBar } from "@rawpixel-public/react-components";
 
 import backgroundSvg from "../images/background.svg";
@@ -19,68 +19,68 @@ const widgetsData = [
     url: "https://www.rawpixel.com/search/my+topics?sort=curated&page=1",
     icon_url: starSvg,
     type: "topic_group",
-    isPublished: true
+    hearted: true
   },
   {
     title: "Trending",
     url: "https://www.rawpixel.com/search/trending?sort=curated&page=1",
     icon_url: trendingSvg,
     type: "topic_group",
-    isPublished: true
+    hearted: true
   },
   {
     title: "Stickers",
     url: "https://www.rawpixel.com/search/stickers?sort=curated&page=1",
     icon_url: stickerSvg,
-    type: "topic_group",
-    isPublished: true
+    type: "topic_group"
   },
   {
     title: "Photos",
     url: "https://www.rawpixel.com/search/photos?sort=curated&page=1",
     icon_url: backgroundSvg,
-    type: "topic_group",
-    isPublished: true
+    type: "topic_group"
   },
   {
     title: "Graphics",
     url: "https://www.rawpixel.com/search/graphics?sort=curated&page=1",
     icon_url: resizeSvg,
     type: "topic_group",
-    isPublished: true
+    hearted: true
   },
   {
     title: "Templates",
     url: "https://www.rawpixel.com/search/templates?sort=curated&page=1",
     icon_url: templateSvg,
-    type: "topic_group",
-    isPublished: true
+    type: "topic_group"
   },
   {
     title: "Public domain",
     url: "https://www.rawpixel.com/search/public+domain?sort=curated&page=1",
     icon_url: leafSvg,
     type: "topic_group",
-    isPublished: true
+    hearted: true
   },
   {
     title: "Fonts",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
     icon_url: fontSvg,
-    type: "add_on",
-    isPublished: true
+    type: "add_on"
   },
   {
     title: "Lightroom Presets",
     url: "https://www.rawpixel.com/search/lightroom?sort=curated&page=1",
     icon_url: slidersSvg,
     type: "add_on",
-    isPublished: true
+    hearted: true
   }
 ];
 
 export const sidebar = () => (
-  <WidgetsBar widgets={widgetsData} onFilterClick={action("filter-click")} />
+  <WidgetsBar
+    widgets={widgetsData}
+    onFilterClick={action("filter-click")}
+    grouping={select("grouping", ["hearted", "type", "none"], "type")}
+  />
 );
 
 export const dam = () => (
@@ -88,6 +88,7 @@ export const dam = () => (
     widgets={widgetsData}
     onFilterClick={action("filter-click")}
     direction="row"
+    grouping={select("grouping", ["hearted", "type", "none"], "type")}
   />
 );
 
