@@ -7,7 +7,7 @@ const TOPICS_ALL = "all_topics";
 const TOPICS_LOADING = "topics_loading";
 const TOPICS_TRENDING = "topics_trending";
 
-const fetchTopics = async ({
+const fetchTopics = async function({
   widget,
   page = 1,
   pagesize = 100,
@@ -17,7 +17,7 @@ const fetchTopics = async ({
   favouriteBy,
   trending = false,
   published = true
-}) => {
+}) {
   const queryParams = {
     ...(typeof widget === "number" && { widget }),
     ...(typeof favouriteBy === "number" && { favourite_by: favouriteBy }),
@@ -39,24 +39,24 @@ const fetchTopics = async ({
   return response.json();
 };
 
-const fetchTopicsByWidget = ({
+function fetchTopicsByWidget({
   widget,
   page = 1,
   pagesize = 100,
   baseUrl,
   basePath,
   published
-}) => {
+}) {
   return fetchTopics({ widget, page, baseUrl, basePath, pagesize, published });
-};
+}
 
-const fetchTopicsByHeartFilter = ({
+function fetchTopicsByHeartFilter({
   page = 1,
   pagesize = 100,
   baseUrl,
   basePath,
   published
-}) => {
+}) {
   return fetchTopics({
     page,
     pagesize,
@@ -65,16 +65,16 @@ const fetchTopicsByHeartFilter = ({
     heartFilter: true,
     published
   });
-};
+}
 
-const fetchTopicsByFavouriteBy = ({
+function fetchTopicsByFavouriteBy({
   page = 1,
   pagesize = 100,
   baseUrl,
   basePath,
   favouriteBy,
   published
-}) => {
+}) {
   return fetchTopics({
     page,
     pagesize,
@@ -83,15 +83,15 @@ const fetchTopicsByFavouriteBy = ({
     favouriteBy,
     published
   });
-};
+}
 
-const fetchTrendingTopics = ({
+function fetchTrendingTopics({
   page = 1,
   pagesize = 100,
   baseUrl,
   basePath,
   published
-}) => {
+}) {
   return fetchTopics({
     page,
     pagesize,
@@ -100,19 +100,19 @@ const fetchTrendingTopics = ({
     trending: true,
     published
   });
-};
+}
 
-const fetchAllTopics = ({
+function fetchAllTopics({
   page = 1,
   pagesize = 100,
   baseUrl,
   basePath,
   published
-}) => {
+}) {
   return fetchTopics({ page, baseUrl, basePath, pagesize, published });
-};
+}
 
-const topicsApiReducer = (state, action) => {
+function topicsApiReducer(state, action) {
   const { type, topics, loading, key } = action;
 
   switch (type) {
@@ -129,7 +129,7 @@ const topicsApiReducer = (state, action) => {
     default:
       throw new Error(`Invalid action.type in topicsApiReducer: ${type}`);
   }
-};
+}
 
 const fetchFunctions = {
   [TOPICS_ALL]: fetchAllTopics,
