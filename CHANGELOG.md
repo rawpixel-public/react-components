@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.7](https://github.com/rawpixel-public/react-components/compare/v0.8.6...v0.8.7) (2020-05-26)
+
+
+### Features
+
+* ability to group by type, hearted status or no grouping in widgets bar component ([faf3225](https://github.com/rawpixel-public/react-components/commit/faf3225c0763531431ace4a00eb67b6a3752a038))
+
+
+### Bug Fixes
+
+* don't run hyphenation code when no text present ([047c657](https://github.com/rawpixel-public/react-components/commit/047c6573860226e32fa862563fdace23ccdb9f8d))
+
 ### [0.8.6](https://github.com/rawpixel-public/react-components/compare/v0.8.5...v0.8.6) (2020-05-21)
 
 
