@@ -135,7 +135,7 @@ const WidgetsBar = ({
         ];
 
       default:
-        return [widgets.map(renderWidget)];
+        return [widgets.map(renderWidget)].filter(value => value.length > 0);
     }
   };
 
