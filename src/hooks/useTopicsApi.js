@@ -6,6 +6,7 @@ const TOPICS_FAVOURITE_BY_USER = "topics_favourite_by_user";
 const TOPICS_ALL = "all_topics";
 const TOPICS_LOADING = "topics_loading";
 const TOPICS_TRENDING = "topics_trending";
+const TOPICS_ERROR = "topics_error";
 
 const fetchTopics = async function({
   widget,
@@ -113,11 +114,14 @@ function fetchAllTopics({
 }
 
 function topicsApiReducer(state, action) {
-  const { type, topics, loading, key } = action;
+  const { type, topics, loading, key, error } = action;
 
   switch (type) {
     case TOPICS_LOADING:
       return { ...state, loading };
+
+    case TOPICS_ERROR:
+      return { ...state, error };
 
     case TOPICS_BY_WIDGET_ID:
     case TOPICS_BY_HEART_FILTER:
@@ -140,7 +144,8 @@ const fetchFunctions = {
 };
 
 const initialState = {
-  loading: true
+  loading: true,
+  error: false
 };
 
 const getStateKey = params => {
@@ -224,6 +229,7 @@ export default (
       } catch (reason) {
         console.log({ reason });
         dispatch({ type: TOPICS_LOADING, loading: false });
+        dispatch({ type: TOPICS_ERROR, error: true });
       }
     }
 
@@ -242,5 +248,9 @@ export default (
     type
   ]);
 
-  return { topics, loading: state.loading };
+  return {
+    topics,
+    loading: state.loading || (!(key in state) && !state.error),
+    error: state.error
+  };
 };

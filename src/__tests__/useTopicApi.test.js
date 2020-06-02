@@ -45,6 +45,7 @@ describe("useTopicsApi", () => {
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
+    expect(result.current.error).toBe(true);
     expect(logSpy).toHaveBeenCalledWith({
       reason: JSON.stringify({ code: 500, message: "Server error" })
     });
