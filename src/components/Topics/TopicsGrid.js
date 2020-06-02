@@ -4,7 +4,7 @@ import ImageButtonGrid from "../../atoms/ImageButtonGrid";
 import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 import Topic from "./Topic";
 
-const TopicsPlaceholder = ({ count = 12 }) => {
+const TopicsPlaceholder = (count = 12) => {
   return [...Array(count)].map((_, index) => (
     <div
       style={{ display: "flex", flexDirection: "column", margin: "5px 0" }}
@@ -16,7 +16,7 @@ const TopicsPlaceholder = ({ count = 12 }) => {
         height="50px"
         style={{ marginBottom: "5px" }}
       />
-      <LoadingPlaceholder width="60px" height="20px" borderRadius="none" />
+      <LoadingPlaceholder width="60px" height="15px" borderRadius="none" />
     </div>
   ));
 };
@@ -50,7 +50,7 @@ const TopicsGrid = ({
       defaultWidth={defaultWidth}
       style={style}
     >
-      {loading && <TopicsPlaceholder count={viewable} />}
+      {loading && TopicsPlaceholder(viewable)}
       {!loading &&
         topics.map(topic => (
           <Topic

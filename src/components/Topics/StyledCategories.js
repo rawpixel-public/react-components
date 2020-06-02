@@ -38,6 +38,10 @@ export const StyledListWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
+
+  &.loading {
+    margin-bottom: 10px;
+  }
 `;
 
 export const StyledCategoryList = styled.ul`

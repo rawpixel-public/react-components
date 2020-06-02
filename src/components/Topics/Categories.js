@@ -17,7 +17,7 @@ import {
 } from "./StyledCategories";
 
 const CategoryButtonsPlaceholder = props => (
-  <StyledListWrapper {...props}>
+  <StyledListWrapper className="loading" {...props}>
     <StyledCategoryList>
       <li>
         <LoadingPlaceholder width="60px" height="20px" />
