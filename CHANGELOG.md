@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.8](https://github.com/rawpixel-public/react-components/compare/v0.8.7...v0.8.8) (2020-06-02)
+
+
+### Bug Fixes
+
+* filter out empty widget groups ([d3c29e8](https://github.com/rawpixel-public/react-components/commit/d3c29e82b329e34b34f5adaa4545989d6427a8be))
+* fix issue with flash of empty content when switching between topics api calls ([f3e12e3](https://github.com/rawpixel-public/react-components/commit/f3e12e3953c379debca8dc0837bd33939313fdee))
+* updates placeholders ([5751246](https://github.com/rawpixel-public/react-components/commit/57512469d56477caefff1e65453429850ea20857))
+* widget spacing ([1ee78c0](https://github.com/rawpixel-public/react-components/commit/1ee78c0834433fa3363b21942035892d004634ed))
+
 ### [0.8.7](https://github.com/rawpixel-public/react-components/compare/v0.8.6...v0.8.7) (2020-05-26)
 
 
