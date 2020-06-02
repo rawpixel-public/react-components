@@ -53,6 +53,10 @@ export const StyledWidgetsWrapper = styled.div`
   ${verticalCentreCss};
   padding: 10px 0;
   width: 90px;
+
+  hr {
+    margin: 0 0 16px;
+  }
 `;
 
 export const StyledUnorderedList = styled.ul`
