@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
 import {
   Button,
   LikesButton,
@@ -14,12 +15,12 @@ import {
   ButtonGroupList,
   Categories,
   ButtonGroupPlaceholder,
+  useTopicsApi,
   useTopicWidgetCategories,
   useTopicWidgetsApi,
   useTopicWidgetSettings
 } from "@rawpixel-public/react-components";
 
-import { topics } from "./topic-sidebar.data";
 import useTopicWidgetSettingsActiveState from "../hooks/useTopicWidgetSettingsActiveState";
 import { Link } from "react-router";
 
@@ -42,7 +43,9 @@ const StyledSidebar = styled.div`
 `;
 
 const SidebarHorizontalRule = () => (
-  <HorizontalRule style={{ width: "210px", marginTop: "5px", marginBottom: "15px" }} />
+  <HorizontalRule
+    style={{ width: "210px", marginTop: "5px", marginBottom: "15px" }}
+  />
 );
 
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
@@ -104,7 +107,6 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
     : false;
   const { loading, widgets } = useTopicWidgetsApi(target, catalog);
 
-  const [topicData, setTopicData] = React.useState(topics);
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
@@ -113,6 +115,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const activeWidget = !!widgets.length && widgets[activeFilter];
   const { categories, setActiveCategory } = useTopicWidgetCategories(
     activeWidget
+  );
+  const { topics, loading: topics_loading } = useTopicsApi(
+    activeWidget ? activeWidget.id : null
   );
   const site = isTeam
     ? isWebsiteCatalog
@@ -134,30 +139,6 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
 
   const handleFilterClick = (e, filter) => {
     setActiveFilter(widgets.indexOf(filter));
-  };
-
-  const handleTopicClick = (e, topic) => {
-    const index = topicData.indexOf(topic);
-    const isTagged = !topic.isTagged;
-    const loadingTopic = {
-      ...topic,
-      isLoading: true,
-      isTagged
-    };
-    const updatedTopics = [...topicData];
-    updatedTopics[index] = loadingTopic;
-    setTopicData(updatedTopics);
-
-    setTimeout(() => {
-      const loadedTopic = {
-        ...topic,
-        isLoading: false,
-        isTagged: !topicData[index].isTagged
-      };
-      const updatedTopics = [...topicData];
-      updatedTopics[index] = loadedTopic;
-      setTopicData(updatedTopics);
-    }, 1500);
   };
 
   const handleFilterGroupButtonClick = (e, filter) => setActiveFilters(filter);
@@ -229,10 +210,10 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           loading={loading}
         />
         <TopicsGrid
-          topics={topicData}
-          onTopicClick={handleTopicClick}
+          topics={topics}
+          onTopicClick={action("topic clicked")}
           isTagMode={isTeam && tagMode}
-          loading={loading}
+          loading={topics_loading}
           viewable={12}
           defaultHeight={330}
           defaultWidth={225}
