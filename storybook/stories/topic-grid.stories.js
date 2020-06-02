@@ -192,7 +192,7 @@ export const api = () => {
     false,
     false,
     boolean("trending", false, "api"),
-    boolean("published", false, "api")
+    boolean("published", true, "api")
   );
   return (
     <TopicsGrid
