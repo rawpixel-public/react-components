@@ -5,7 +5,7 @@ export default (
   catalog = "",
   baseUrl = "https://dev-labs.rawpixel.com"
 ) => {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [widgets, setWidgets] = React.useState([]);
 
   React.useEffect(() => {
