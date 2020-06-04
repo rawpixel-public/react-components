@@ -56,7 +56,7 @@ export default (params = defaultParams, options = defaultOptions) => {
         })
         .catch(error => console.error(error));
     }
-  }, [filterId, baseUrl, fetch]);
+  }, [filterId, baseUrl, shouldFetch]);
 
   return settings[filterId] || initialState;
 };
