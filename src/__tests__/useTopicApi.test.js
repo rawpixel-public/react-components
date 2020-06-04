@@ -6,15 +6,21 @@ import { useTopicsApi } from "../index";
 fetchMocks.enableMocks();
 
 describe("useTopicsApi", () => {
-  test("should call api with expected params", async () => {
+  beforeEach(() => {
+    fetch.resetMocks();
+  });
+
+  test("should call api with expected params once", async () => {
     fetchMocks.mockResponseOnce(async () =>
       Promise.resolve(
         JSON.stringify({ results: [{ id: 1, title: "My topic" }], total: 1 })
       )
     );
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useTopicsApi(1, "https://api.example.com")
-    );
+    const { result, waitForNextUpdate } = renderHook(() => {
+      const params = { widget: 1 };
+      const options = { baseUrl: "https://api.example.com" };
+      return useTopicsApi(params, options);
+    });
 
     expect(result.current.loading).toBe(true);
     expect(Array.isArray(result.current.topics)).toBe(true);
@@ -40,7 +46,11 @@ describe("useTopicsApi", () => {
     fetchMocks.mockResponseOnce(async () =>
       Promise.reject(JSON.stringify({ code: 500, message: "Server error" }))
     );
-    const { result, waitForNextUpdate } = renderHook(() => useTopicsApi(1));
+    const { result, waitForNextUpdate } = renderHook(() => {
+      const params = { widget: 1 };
+      const options = { baseUrl: "https://api.example.com" };
+      return useTopicsApi(params, options);
+    });
 
     await waitForNextUpdate();
 
@@ -49,5 +59,20 @@ describe("useTopicsApi", () => {
     expect(logSpy).toHaveBeenCalledWith({
       reason: JSON.stringify({ code: 500, message: "Server error" })
     });
+  });
+
+  test("should not call the api when fetch is false", async () => {
+    fetchMocks.mockResponseOnce(async () =>
+      Promise.reject(JSON.stringify({ code: 500, message: "Server error" }))
+    );
+    renderHook(() => {
+      const params = { widget: 1 };
+      const options = {
+        baseUrl: "https://api.example.com",
+        shouldFetch: false
+      };
+      return useTopicsApi(params, options);
+    });
+    expect(fetchMocks).not.toHaveBeenCalled();
   });
 });

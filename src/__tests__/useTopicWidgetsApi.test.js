@@ -6,13 +6,19 @@ import { useTopicWidgetsApi } from "../index";
 fetchMocks.enableMocks();
 
 describe("useTopicWidgets", () => {
+  beforeEach(() => {
+    fetch.resetMocks();
+  });
+
   test("should call api with expected params", async () => {
     fetchMocks.mockResponseOnce(async () =>
       Promise.resolve(JSON.stringify([{ id: 1, title: "My widget" }]))
     );
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useTopicWidgetsApi("foo", "bar", "https://api.example.com")
-    );
+    const { result, waitForNextUpdate } = renderHook(() => {
+      const params = { target: "foo", catalog: "bar" };
+      const options = { baseUrl: "https://api.example.com" };
+      return useTopicWidgetsApi(params, options);
+    });
 
     expect(result.current.loading).toBe(true);
     expect(Array.isArray(result.current.widgets)).toBe(true);
@@ -38,9 +44,11 @@ describe("useTopicWidgets", () => {
     fetchMocks.mockResponseOnce(async () =>
       Promise.reject(JSON.stringify({ code: 500, message: "Server error" }))
     );
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useTopicWidgetsApi("website")
-    );
+    const { result, waitForNextUpdate } = renderHook(() => {
+      const params = { target: "website" };
+      const options = { baseUrl: "https://api.example.com" };
+      return useTopicWidgetsApi(params, options);
+    });
 
     await waitForNextUpdate();
 

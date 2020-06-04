@@ -145,7 +145,8 @@ const fetchFunctions = {
 
 const initialState = {
   loading: true,
-  error: false
+  error: false,
+  topics: []
 };
 
 const getStateKey = params => {
@@ -178,16 +179,33 @@ const getStateKey = params => {
   return { key, type };
 };
 
-export default (
-  widget,
-  baseUrl = "https://dev-labs.rawpixel.com",
-  basePath = "/api/v1",
-  heartFilter = false,
-  favouriteBy,
-  trending = false,
-  published = true
-) => {
+const defaultParams = {
+  widget: null,
+  heartFilter: false,
+  favouriteBy: false,
+  trending: false,
+  published: true
+};
+
+const defaultOptions = {
+  baseUrl: "https://dev-labs.rawpixel.com",
+  basePath: "/api/v1",
+  shouldFetch: true,
+  revalidate: false
+};
+
+export default (params = defaultParams, options = defaultOptions) => {
   const [state, dispatch] = React.useReducer(topicsApiReducer, initialState);
+
+  const { heartFilter, favouriteBy, trending, widget, published } = {
+    ...defaultParams,
+    ...params
+  };
+  const { baseUrl, basePath, shouldFetch, revalidate } = {
+    ...defaultOptions,
+    ...options
+  };
+
   const { key, type } = getStateKey({
     heartFilter,
     favouriteBy,
@@ -196,7 +214,7 @@ export default (
     published
   });
 
-  const topics = (key in state && state[key]) || [];
+  const topics = (key in state && state[key]) || initialState.topics;
 
   React.useEffect(() => {
     async function loadTopics() {
@@ -233,8 +251,10 @@ export default (
       }
     }
 
-    if (!(key in state)) {
-      loadTopics().finally();
+    if (shouldFetch) {
+      if (!(key in state) || revalidate) {
+        loadTopics().finally();
+      }
     }
   }, [
     widget,
@@ -245,7 +265,9 @@ export default (
     trending,
     published,
     key,
-    type
+    type,
+    shouldFetch,
+    revalidate
   ]);
 
   return {

@@ -17,11 +17,23 @@ const initialState = {
   }
 };
 
-export default (filterId, baseUrl = "https://dev-labs.rawpixel.com") => {
+const defaultParams = {
+  filterId: null
+};
+
+const defaultOptions = {
+  baseUrl: "https://dev-labs.rawpixel.com",
+  shouldFetch: true
+};
+
+export default (params = defaultParams, options = defaultOptions) => {
+  const { filterId } = { ...defaultParams, ...params };
+  const { baseUrl, shouldFetch } = { ...defaultOptions, ...options };
+
   const [settings, setSettings] = React.useState({});
 
   React.useEffect(() => {
-    if (filterId && !(filterId in settings)) {
+    if (shouldFetch && filterId && !(filterId in settings)) {
       const url = `${baseUrl}/_services/topics/filters/${filterId}`;
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -44,7 +56,7 @@ export default (filterId, baseUrl = "https://dev-labs.rawpixel.com") => {
         })
         .catch(error => console.error(error));
     }
-  }, [filterId, baseUrl]);
+  }, [filterId, baseUrl, fetch]);
 
   return settings[filterId] || initialState;
 };

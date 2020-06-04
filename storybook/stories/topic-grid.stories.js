@@ -181,18 +181,19 @@ export const dam = () => {
 
 export const api = () => {
   const { loading, topics } = useTopicsApi(
-    select(
-      "widget",
-      { "61": 61, "62": 62, "63": 63, "64": 64, "65": 65 },
-      61,
-      "api"
-    ),
-    "https://dev-labs.rawpixel.com",
-    "/api/v1",
-    false,
-    false,
-    boolean("trending", false, "api"),
-    boolean("published", true, "api")
+    {
+      widget: select(
+        "widget",
+        { "61": 61, "62": 62, "63": 63, "64": 64, "65": 65 },
+        61,
+        "api"
+      ),
+      trending: boolean("trending", false, "api"),
+      published: boolean("published", true, "api")
+    },
+    {
+      revalidate: boolean("revalidate", true, "api")
+    }
   );
   return (
     <TopicsGrid

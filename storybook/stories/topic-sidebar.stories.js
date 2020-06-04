@@ -105,7 +105,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       ? "website_content"
       : "team"
     : false;
-  const { loading, widgets } = useTopicWidgetsApi(target, catalog);
+  const { loading, widgets } = useTopicWidgetsApi({ target, catalog });
 
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
@@ -116,9 +116,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const { categories, setActiveCategory } = useTopicWidgetCategories(
     activeWidget
   );
-  const { topics, loading: topics_loading } = useTopicsApi(
-    activeWidget ? activeWidget.id : null
-  );
+  const { topics, loading: topics_loading } = useTopicsApi({
+    widget: activeWidget ? activeWidget.id : null
+  });
   const site = isTeam
     ? isWebsiteCatalog
       ? "dam-website"
