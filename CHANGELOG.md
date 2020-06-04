@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/rawpixel-public/react-components/compare/v0.8.8...v1.0.0) (2020-06-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* updates api functions to allow callers to specify whether fetch should execute, make function arguments consistent
+
+### Bug Fixes
+
+* set default loading state for widgets to true ([3a4f165](https://github.com/rawpixel-public/react-components/commit/3a4f165ec484f4e2403e773de525f110fd930b01))
+
+
+* updates api functions to allow callers to specify whether fetch should execute, make function arguments consistent ([b6f2035](https://github.com/rawpixel-public/react-components/commit/b6f2035d86fef197ebdb7fda7bd6b8a14113ef9f))
+
 ### [0.8.8](https://github.com/rawpixel-public/react-components/compare/v0.8.7...v0.8.8) (2020-06-02)
 
 
