@@ -39,7 +39,7 @@ export const StyledText = styled.span`
   text-align: center;
   margin: 3px 0;
   min-width: 40px;
-  max-width: 80px;
+  max-width: 70px;
   word-wrap: normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -49,14 +49,18 @@ export const StyledText = styled.span`
 `;
 
 export const StyledWidgetsWrapper = styled.div`
-  ${props => (props.direction === "column" ? "max-width: 90px;" : null)};
   ${verticalCentreCss};
   padding: 10px 0;
-  width: 90px;
+  width: 70px;
 
-  hr {
-    margin: 0 0 16px;
-  }
+  ${props =>
+    props.direction === "column" &&
+    css`
+      max-width: 70px;
+      hr {
+        margin: 0 0 16px;
+      }
+    `};
 `;
 
 export const StyledUnorderedList = styled.ul`

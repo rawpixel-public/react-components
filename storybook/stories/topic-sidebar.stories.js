@@ -30,10 +30,10 @@ const StyledSidebar = styled.div`
   display: flex;
   flex-direction: row;
   padding: 10px 0;
-  width: 300px;
+  width: 280px;
 
   .content {
-    width: 210px;
+    width: 200px;
     margin-left: 10px;
   }
 
@@ -44,7 +44,7 @@ const StyledSidebar = styled.div`
 
 const SidebarHorizontalRule = () => (
   <HorizontalRule
-    style={{ width: "210px", marginTop: "5px", marginBottom: "15px" }}
+    style={{ width: "190px", marginTop: "5px", marginBottom: "15px" }}
   />
 );
 
@@ -216,7 +216,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           loading={topics_loading}
           viewable={12}
           defaultHeight={330}
-          defaultWidth={225}
+          defaultWidth={205}
         />
         {isTeam && (
           <>
