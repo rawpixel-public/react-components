@@ -20,6 +20,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   text-decoration: none;
   white-space: normal;
+  min-width: 50px;
 
   &:hover {
     cursor: pointer;
@@ -68,14 +69,18 @@ export const StyledUnorderedList = styled.ul`
   margin: 0;
   padding: 0;
   ${verticalCentreCss};
+
+  ${props =>
+    props.direction === "column" &&
+    css`
+      li:first-child {
+        margin-top: 4px;
+      }
+    `}
 `;
 
 export const StyledListItem = styled.li`
   margin-bottom: 14px;
-
-  &:first-child {
-    margin-top: 4px;
-  }
 `;
 
 export const StyledHR = styled(HorizontalRule)`
@@ -86,6 +91,6 @@ export const StyledHR = styled(HorizontalRule)`
     css`
       margin: 0 10px;
       height: 50px;
-      width: 2px;
+      width: 1px;
     `};
 `;
