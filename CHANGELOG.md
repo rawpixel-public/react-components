@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/rawpixel-public/react-components/compare/v1.0.0...v1.0.1) (2020-06-09)
+
+
+### Bug Fixes
+
+* align icon and update icon colour ([7c27f52](https://github.com/rawpixel-public/react-components/commit/7c27f526cf84a4164492ae06d371270a1faebb7d))
+* incorrect dependency variable name ([31ef6a5](https://github.com/rawpixel-public/react-components/commit/31ef6a59e7a06eded4d33c696d80e58180f53b07))
+* only renders dividing line when multiple groups of widgets present (e.g. topic groups and add ons) ([4d95a65](https://github.com/rawpixel-public/react-components/commit/4d95a65965c83649f22a69dae975920e752f1245))
+* reduce widget icon size ([43a2328](https://github.com/rawpixel-public/react-components/commit/43a23280a035856155daf751c638b8136dc31a47))
+* reduces topic icon size ([0377c7e](https://github.com/rawpixel-public/react-components/commit/0377c7ec39fda0874e1a3449790d2777cfbfc5fb))
+* removes inline styles, removes min width ([8498bce](https://github.com/rawpixel-public/react-components/commit/8498bce84026f55e933d188cd712997bf8345844))
+* update styles when widgets rendered as row ([15f48c5](https://github.com/rawpixel-public/react-components/commit/15f48c5bb893f7c9687ca5cdafdbc778e82e754b))
+* update topic groups with overrides from website ([62068c7](https://github.com/rawpixel-public/react-components/commit/62068c783f18c9b08284108682fca08f57727c5d))
+
 ## [1.0.0](https://github.com/rawpixel-public/react-components/compare/v0.8.8...v1.0.0) (2020-06-04)
 
 
