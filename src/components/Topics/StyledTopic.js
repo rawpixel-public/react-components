@@ -86,11 +86,11 @@ export const StyledTitle = styled.span`
 
 export const StyledIcon = styled.div`
   display: inline-block;
-  height: 10px;
-  width: 10px;
+  height: 9px;
+  width: 9px;
   margin-right: 2px;
   vertical-align: baseline;
   mask: url(${prop("icon")}) no-repeat center;
   mask-size: contain;
-  background: ${palette.gray};
+  background: ${palette.grayMedium};
 `;
