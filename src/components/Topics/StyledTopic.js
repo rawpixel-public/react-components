@@ -36,6 +36,8 @@ export const StyledTopicButton = styled.button`
   }
 
   .img-wrapper {
+    height: 45px;
+    width: 55px;
     background: ${props =>
       props.isTagged && props.isTagMode
         ? taggedGreen
@@ -43,6 +45,10 @@ export const StyledTopicButton = styled.button`
         ? palette.topicActive
         : palette.topicButtonBackground};
     transition: background-color linear 250ms;
+    > div {
+      height: 30px;
+      width: 30px;
+    }
   }
 
   // Showing the loader sets the disabled attr, so we can use this to style
@@ -55,7 +61,7 @@ export const StyledTopicButton = styled.button`
 
 export const StyledTitle = styled.span`
   font-family: ${fontFamily.base};
-  font-size: 12px;
+  font-size: 11px;
   text-align: center;
   line-height: 1.2;
   margin-top: 3px;

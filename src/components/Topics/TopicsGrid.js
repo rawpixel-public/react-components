@@ -33,7 +33,7 @@ const TopicsGrid = ({
   loading = false,
   viewable = 12,
   defaultHeight = 320,
-  defaultWidth = 240,
+  defaultWidth = 210,
   style
 }) => {
   const handleTopicClick = (e, topic) => {
