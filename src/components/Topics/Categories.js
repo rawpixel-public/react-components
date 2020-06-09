@@ -61,7 +61,7 @@ const Categories = ({
       {...filterAllowedProps(props)}
     >
       <StyledHeadingWrapper>
-        <Heading level={3} style={{ minHeight: "19px" }}>
+        <Heading level={3}>
           {loading ? (
             <LoadingPlaceholder
               width="100px"
@@ -84,13 +84,13 @@ const Categories = ({
         <StyledListWrapper>
           {showControls && carouselPosition > 0 && (
             <StyledControlButton
+              className="previous-button"
               data-testid="previous"
               aria-label="Previous"
               onClick={() => setCarouselPosition(carouselPosition - 1)}
               disabled={carouselPosition === 0 && "disabled"}
-              style={{ marginRight: "3px" }}
             >
-              <Chevron className="previous" />
+              <Chevron className="previous-icon" />
             </StyledControlButton>
           )}
           <StyledCategoryList displayedItems={displayedItems}>
@@ -114,6 +114,7 @@ const Categories = ({
               carouselPosition === categories.length - displayedItems
             ) && (
               <StyledControlButton
+                className="next-button"
                 data-testid="next"
                 aria-label="Next"
                 onClick={() => setCarouselPosition(carouselPosition + 1)}
@@ -122,9 +123,8 @@ const Categories = ({
                     carouselPosition === categories.length - displayedItems) &&
                   "disabled"
                 }
-                style={{ marginLeft: "3px" }}
               >
-                <Chevron className="next" />
+                <Chevron className="next-icon" />
               </StyledControlButton>
             )}
         </StyledListWrapper>

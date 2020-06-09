@@ -55,7 +55,6 @@ export const StyledCategoryList = styled.ul`
 
   li {
     margin: 0 3px;
-    min-width: 60px;
     flex-basis: calc(100% / ${prop("displayedItems", 3)});
     &:first-child {
       margin-left: 0;
@@ -69,6 +68,9 @@ export const StyledCategoryList = styled.ul`
 
 export const StyledHeadingWrapper = styled.div`
   position: relative;
+  h3 {
+    min-height: 19px;
+  }
 `;
 
 export const StyledControlButton = styled.button`
@@ -96,11 +98,19 @@ export const StyledControlButton = styled.button`
     font-weight: normal;
   }
 
-  .next {
+  .next-button {
+    margin-left: 3px;
+  }
+
+  .next-icon {
     transform: rotate(-90deg);
   }
 
-  .previous {
+  .previous-button {
+    margin-right: 3px;
+  }
+
+  .previous-icon {
     transform: rotate(90deg);
   }
 `;
