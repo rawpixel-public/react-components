@@ -124,7 +124,7 @@ const WidgetsBar = ({
           widgets
             .filter(widget => widget.type === "add_on" && !widget.hearted)
             .map(renderAddOn)
-        ];
+        ].filter(group => group.length > 0);
 
       case "type":
         return [
@@ -132,7 +132,7 @@ const WidgetsBar = ({
             .filter(widget => widget.type === "topic_group")
             .map(renderTopicGroup),
           widgets.filter(widget => widget.type === "add_on").map(renderAddOn)
-        ];
+        ].filter(group => group.length > 0);
 
       default:
         return [widgets.map(renderWidget)].filter(value => value.length > 0);
@@ -154,15 +154,12 @@ const WidgetsBar = ({
               data-testid={`widget-placeholder-${index}`}
             />
           ))}
-        {groups.map(
-          (group, index, arr) =>
-            !!group.length && (
-              <React.Fragment key={index}>
-                {group}
-                {index !== arr.length - 1 && <StyledHR direction={direction} />}
-              </React.Fragment>
-            )
-        )}
+        {groups.map((group, index, arr) => (
+          <React.Fragment key={index}>
+            {group}
+            {index !== arr.length - 1 && <StyledHR direction={direction} />}
+          </React.Fragment>
+        ))}
       </StyledUnorderedList>
     </StyledWidgetsWrapper>
   );
