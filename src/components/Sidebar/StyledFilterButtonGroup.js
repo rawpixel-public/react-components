@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+const itemWidth = ({ itemsCount, itemsPerRow }) => {
+  if (itemsCount > 1) {
+    return itemsPerRow > 1 ? `calc(${100 / itemsPerRow}% - 5px)` : "100%";
+  }
+  return "100%";
+};
+
 export const StyledWrapper = styled.div``;
 
 export const StyledList = styled.ul`
@@ -15,6 +22,6 @@ export const StyledList = styled.ul`
 export const StyledListItem = styled.li`
   display: flex;
   justify-content: center;
-  width: calc(${props => 100 / props.itemsPerRow}% - 5px);
+  width: ${itemWidth};
   margin-bottom: 10px;
 `;

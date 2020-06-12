@@ -24,8 +24,12 @@ const ButtonGroupList = ({
   <StyledWrapper {...props}>
     {title && <Title level={headingLevel}>{title}</Title>}
     <StyledList>
-      {React.Children.toArray(children).map((element, index) => (
-        <StyledListItem key={index} itemsPerRow={itemsPerRow}>
+      {React.Children.toArray(children).map((element, index, arr) => (
+        <StyledListItem
+          key={index}
+          itemsPerRow={itemsPerRow}
+          itemsCount={arr.length}
+        >
           {element}
         </StyledListItem>
       ))}
