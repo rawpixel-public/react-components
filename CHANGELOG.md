@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/rawpixel-public/react-components/compare/v1.0.1...v1.0.2) (2020-06-12)
+
+
+### Bug Fixes
+
+* render a full width button when only one button is in the list ([cda6634](https://github.com/rawpixel-public/react-components/commit/cda6634bd96139425b1d181a58cf9ad4bf1ec6aa))
+
 ### [1.0.1](https://github.com/rawpixel-public/react-components/compare/v1.0.0...v1.0.1) (2020-06-09)
 
 
