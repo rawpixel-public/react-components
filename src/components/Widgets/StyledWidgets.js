@@ -24,6 +24,9 @@ export const StyledButton = styled.button`
 
   &:hover {
     cursor: pointer;
+    .widget-icon {
+      background: linear-gradient(to left, ${palette.pink}, ${palette.blue});
+    }
   }
 
   &:focus {
