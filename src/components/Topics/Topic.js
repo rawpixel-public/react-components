@@ -69,7 +69,6 @@ const Topic = ({
       isLoading={isLoading ? true : undefined}
       to={to}
       icon={icon}
-      title={name}
       {...props}
     >
       <Icon loading={isLoading} icon={icon} className="img-wrapper" />
