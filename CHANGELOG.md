@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/rawpixel-public/react-components/compare/v1.0.2...v1.0.3) (2020-06-15)
+
+
+### Bug Fixes
+
+* adds gradient on hover ([abfc95e](https://github.com/rawpixel-public/react-components/commit/abfc95e180c75da174f775cccc6d054f6ea0b416))
+* removes title attribute ([3f61dfa](https://github.com/rawpixel-public/react-components/commit/3f61dfab180255f7f5252a0e2c9d5e81375f794d))
+
 ### [1.0.2](https://github.com/rawpixel-public/react-components/compare/v1.0.1...v1.0.2) (2020-06-12)
 
 
