@@ -48,7 +48,7 @@ const ImageButtonGrid = ({
     } else {
       setHeight(offsetHeight);
     }
-  }, [childCount, viewable]);
+  }, [children, viewable]);
 
   const rows = chunk(Children.toArray(children), columns).map(row => {
     if (row.length === columns) {
@@ -67,7 +67,14 @@ const ImageButtonGrid = ({
       hideTracksWhenNotNeeded
       renderThumbVertical={props => <StyledScrollbar {...props} />}
       autoHide
-      autoHeight={childCount <= viewable}
+      autoHeight={
+        props.autoHeight !== undefined
+          ? props.autoHeight
+          : childCount <= viewable
+      }
+      autoHeightMax={
+        props.autoHeightMax !== undefined ? props.autoHeightMax : height
+      }
     >
       <StyledImageButtonGridContainer ref={ContainerRef} columns={columns}>
         {rows.map((row, index) => (
@@ -87,7 +94,9 @@ ImageButtonGrid.propTypes = {
   defaultHeight: PropTypes.number,
   defaultWidth: PropTypes.number,
   columns: PropTypes.number,
-  style: PropTypes.object
+  style: PropTypes.object,
+  autoHeight: PropTypes.bool,
+  autoHeightMax: PropTypes.number
 };
 
 export default ImageButtonGrid;
