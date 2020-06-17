@@ -202,9 +202,8 @@ export const api = () => {
         groupIcon: boolean("groupIcon", true, "api") ? topic.icon_url : null
       }))}
       onTopicClick={action("topic-grid-click")}
-      defaultHeight={320}
       loading={loading}
-      viewable={9}
+      viewable={select("viewable", [3, 6, 9, 12], 9, "api")}
     />
   );
 };
