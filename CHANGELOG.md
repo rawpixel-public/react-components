@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/rawpixel-public/react-components/compare/v1.0.4...v1.0.5) (2020-06-17)
+
+
+### Bug Fixes
+
+* set auto height when container doesn't need to scroll ([1d3eb6e](https://github.com/rawpixel-public/react-components/commit/1d3eb6e66ddf44d32b651d67f237d67292ccd51e))
+
 ### [1.0.4](https://github.com/rawpixel-public/react-components/compare/v1.0.3...v1.0.4) (2020-06-17)
 
 
