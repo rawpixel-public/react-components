@@ -18,6 +18,7 @@ export const StyledButton = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-decoration: none;
   white-space: normal;
   min-width: 50px;
