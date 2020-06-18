@@ -1,6 +1,7 @@
 import Button from "./atoms/Button";
 import LikesButton from "./atoms/Button/LikesButton";
 import ExclusiveButton from "./atoms/Button/ExclusiveButton";
+import PinkGradientInversePlusButton from "./atoms/Button/PinkGradientInversePlusButton";
 import Heading from "./atoms/Heading";
 import HorizontalRule from "./atoms/HorizontalRule";
 import ImageButton from "./atoms/ImageButton";
@@ -27,6 +28,7 @@ export {
   Button,
   LikesButton,
   ExclusiveButton,
+  PinkGradientInversePlusButton,
   Heading,
   HorizontalRule,
   ImageButton,
@@ -52,6 +54,7 @@ export default {
   Button,
   LikesButton,
   ExclusiveButton,
+  PinkGradientInversePlusButton,
   Heading,
   HorizontalRule,
   ImageButton,
