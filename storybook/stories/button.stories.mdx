@@ -5,6 +5,7 @@ import Centered from "../components/Centered";
 
 import * as stories from "./topic-sidebar.stories.js";
 import Button from "@rawpixel-public/react-components/dist/button";
+import { ExclusiveButton, LikesButton, PinkGradientInversePlusButton } from "@rawpixel-public/react-components";
 
 import "../.storybook/global.css";
 
@@ -65,5 +66,35 @@ Render `as` and `input` tag and add a `type="text"` prop. Note that the button t
 <Preview>
   <Story name="textfield">
     <Button as="input" type="text" placeholder={text("placeholder", "Type in here", "textfield")} onChange={action("on-text-input-change")} style={{width: "200px"}} />
+  </Story>
+</Preview>
+
+## Exclusive
+
+<Preview>
+  <Story name="exclusive">
+    <div style={{ width: "200px" }}>
+        <ExclusiveButton onClick={action("on-exclusive-click")} />
+    </div>
+  </Story>
+</Preview>
+
+## Likes
+
+<Preview>
+  <Story name="likes">
+    <div style={{ width: "200px" }}>
+      <LikesButton onClick={action("on-likes-click")} />
+    </div>
+  </Story>
+</Preview>
+
+## Plus Button
+
+<Preview>
+  <Story name="plus">
+    <div style={{ width: "200px" }}>
+      <PinkGradientInversePlusButton onClick={action("on-plus-click")} size={select("size", ["xsmall", "small", "medium", "large", "xlarge"], "medium")} />
+    </div>
   </Story>
 </Preview>
