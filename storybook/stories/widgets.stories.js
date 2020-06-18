@@ -1,6 +1,6 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, select } from "@storybook/addon-knobs";
+import {withKnobs, select, boolean} from "@storybook/addon-knobs";
 import { WidgetsBar } from "@rawpixel-public/react-components";
 
 import backgroundSvg from "../images/background.svg";
@@ -80,6 +80,8 @@ export const sidebar = () => (
     widgets={widgetsData}
     onFilterClick={action("filter-click")}
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
+    plusButton={boolean("plusButton", true)}
+    onPlusClick={action("plus-click")}
   />
 );
 
@@ -89,6 +91,8 @@ export const dam = () => (
     onFilterClick={action("filter-click")}
     direction="row"
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
+    plusButton={boolean("plusButton", false)}
+    onPlusClick={action("plus-click")}
   />
 );
 
