@@ -96,6 +96,20 @@ const WidgetsBar = ({
     </StyledListItem>
   );
 
+  const renderPlus = widget => (
+    <StyledListItem key={widget.title}>
+      <PinkGradientInversePlusButton
+        className={classnames("widget", "plus", {
+          [classes.widget]: classes.widget,
+          [classes.plus]: classes.plus,
+          [classes.activeWidget]:
+            widget.active || widgets.indexOf(widget) === activeIndex
+        })}
+        onClick={e => filterClickHandler(e, widget)}
+      />
+    </StyledListItem>
+  );
+
   const renderWidget = (...args) => {
     const [widget] = args;
 
@@ -105,6 +119,9 @@ const WidgetsBar = ({
 
       case "topic_group":
         return renderTopicGroup(...args);
+
+      case "plus":
+        return renderPlus(...args);
 
       default:
         throw new Error(`Invalid widget type: ${widget.type}`);

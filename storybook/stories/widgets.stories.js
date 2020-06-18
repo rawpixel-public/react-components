@@ -66,6 +66,11 @@ const widgetsData = [
     hearted: true
   },
   {
+    title: "Plus button",
+    type: "plus",
+    hearted: true
+  },
+  {
     title: "Fonts",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
     icon_url: fontSvg,
