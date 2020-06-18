@@ -12,6 +12,7 @@ import {
   StyledListItem
 } from "./StyledWidgets";
 import WidgetProps from "./WidgetProps";
+import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
 
 const WidgetPlaceholder = props => (
   <div
@@ -38,7 +39,9 @@ const WidgetsBar = ({
   addonComponent,
   classes = {},
   className,
-  grouping = "type"
+  grouping = "type",
+  plusButton = false,
+  onPlusClick
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(activeWidget);
 
@@ -93,6 +96,20 @@ const WidgetsBar = ({
     </StyledListItem>
   );
 
+  const renderPlus = widget => (
+    <StyledListItem key={widget.title}>
+      <PinkGradientInversePlusButton
+        className={classnames("widget", "plus", {
+          [classes.widget]: classes.widget,
+          [classes.plus]: classes.plus,
+          [classes.activeWidget]:
+            widget.active || widgets.indexOf(widget) === activeIndex
+        })}
+        onClick={e => filterClickHandler(e, widget)}
+      />
+    </StyledListItem>
+  );
+
   const renderWidget = (...args) => {
     const [widget] = args;
 
@@ -103,12 +120,15 @@ const WidgetsBar = ({
       case "topic_group":
         return renderTopicGroup(...args);
 
+      case "plus":
+        return renderPlus(...args);
+
       default:
         throw new Error(`Invalid widget type: ${widget.type}`);
     }
   };
 
-  const renderGroups = (grouping, widgets) => {
+  const renderGroups = (widgets = [], grouping = "") => {
     switch (grouping) {
       case "hearted":
         return [
@@ -139,7 +159,10 @@ const WidgetsBar = ({
     }
   };
 
-  const groups = renderGroups(grouping, widgets);
+  const isGrouped = widgets.every(item => Array.isArray(item));
+  const groups = isGrouped
+    ? widgets.map(items => renderGroups(items))
+    : renderGroups(widgets, grouping);
 
   return (
     <StyledWidgetsWrapper
@@ -158,6 +181,17 @@ const WidgetsBar = ({
           <React.Fragment key={index}>
             {group}
             {index !== arr.length - 1 && <StyledHR direction={direction} />}
+            {index === arr.length - 1 && plusButton && (
+              <StyledListItem
+                key={`${index}-plus`}
+                className="widgets-plus-wrapper"
+              >
+                <PinkGradientInversePlusButton
+                  onClick={onPlusClick}
+                  className="widgets-plus"
+                />
+              </StyledListItem>
+            )}
           </React.Fragment>
         ))}
       </StyledUnorderedList>
@@ -166,7 +200,10 @@ const WidgetsBar = ({
 };
 
 WidgetsBar.propTypes = {
-  widgets: PropTypes.arrayOf(PropTypes.shape(WidgetProps)).isRequired,
+  widgets: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape(WidgetProps)),
+    PropTypes.arrayOf(PropTypes.array)
+  ]).isRequired,
   onFilterClick: PropTypes.func,
   activeWidget: PropTypes.number,
   direction: PropTypes.oneOf(["column", "row"]),
@@ -187,7 +224,9 @@ WidgetsBar.propTypes = {
     addOn: PropTypes.string
   }),
   className: PropTypes.string,
-  grouping: PropTypes.oneOf(["none", "type", "hearted"])
+  grouping: PropTypes.oneOf(["none", "type", "hearted"]),
+  plusButton: PropTypes.bool,
+  onPlusClick: PropTypes.func
 };
 
 WidgetsBar.defaultProps = {

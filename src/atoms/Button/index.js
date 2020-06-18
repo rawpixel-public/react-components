@@ -27,7 +27,7 @@ const Button = ({
 }) => (
   <StyledButton
     active={active ? true : undefined}
-    disabled={isDisabled(props)}
+    disabled={isDisabled({ ...props, disabled })}
     {...props}
     size={size}
   >

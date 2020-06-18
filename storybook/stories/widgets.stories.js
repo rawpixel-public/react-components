@@ -1,7 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, select } from "@storybook/addon-knobs";
-import { WidgetsBar } from "@rawpixel-public/react-components";
+import { withKnobs, select, boolean } from "@storybook/addon-knobs";
+import {
+  HorizontalRule,
+  WidgetsBar,
+  useTopicWidgetsApi
+} from "@rawpixel-public/react-components";
 
 import backgroundSvg from "../images/background.svg";
 import fontSvg from "../images/font.svg";
@@ -61,6 +66,11 @@ const widgetsData = [
     hearted: true
   },
   {
+    title: "Plus button",
+    type: "plus",
+    hearted: true
+  },
+  {
     title: "Fonts",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
     icon_url: fontSvg,
@@ -80,6 +90,8 @@ export const sidebar = () => (
     widgets={widgetsData}
     onFilterClick={action("filter-click")}
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
+    plusButton={boolean("plusButton", true)}
+    onPlusClick={action("plus-click")}
   />
 );
 
@@ -89,8 +101,48 @@ export const dam = () => (
     onFilterClick={action("filter-click")}
     direction="row"
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
+    plusButton={boolean("plusButton", false)}
+    onPlusClick={action("plus-click")}
   />
 );
+
+const Wrapper = styled.div`
+  .widgets.topic-groups {
+    padding-bottom: 0;
+    li:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .widgets.add-ons {
+    padding-top: 0;
+  }
+  .divider {
+    max-width: 50px;
+  }
+`;
+
+export const website = () => {
+  const { widgets } = useTopicWidgetsApi();
+  return (
+    <Wrapper>
+      <WidgetsBar
+        widgets={widgets.filter(item => item.type === "topic_group")}
+        onFilterClick={action("filter-click")}
+        direction="column"
+        grouping={select("grouping", ["hearted", "type", "none"], "type")}
+        plusButton
+        onPlusClick={action("plus-click")}
+        className="topic-groups"
+      />
+      <HorizontalRule className="divider" />
+      <WidgetsBar
+        widgets={widgets.filter(item => item.type === "add_on")}
+        direction="column"
+        className="add-ons"
+      />
+    </Wrapper>
+  );
+};
 
 export default {
   title: "Topics/Widgets",
