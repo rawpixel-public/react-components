@@ -30,7 +30,8 @@ const ImageButtonGrid = ({
 }) => {
   const [height, setHeight] = React.useState(defaultHeight);
   const ContainerRef = React.useRef();
-  const childCount = Children.count(children);
+  const childrenArray = Children.toArray(children).filter(Boolean);
+  const childCount = childrenArray.length;
 
   React.useEffect(() => {
     const element = ContainerRef.current;
@@ -50,7 +51,7 @@ const ImageButtonGrid = ({
     }
   }, [children, viewable]);
 
-  const rows = chunk(Children.toArray(children), columns).map(row => {
+  const rows = chunk(childrenArray, columns).map(row => {
     if (row.length === columns) {
       return row;
     }
@@ -60,12 +61,16 @@ const ImageButtonGrid = ({
     return [...row, ...spacers];
   });
 
+  const renderView = props =>
+    childCount <= viewable ? <div /> : <div {...props} />;
+
   return (
     <Scrollbars
       className={className}
       style={{ height, width: defaultWidth, ...props.style }}
       hideTracksWhenNotNeeded
       renderThumbVertical={props => <StyledScrollbar {...props} />}
+      renderView={renderView}
       autoHide
       autoHeight={
         props.autoHeight !== undefined
