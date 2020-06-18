@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/rawpixel-public/react-components/compare/v1.0.6...v1.1.0) (2020-06-18)
+
+
+### Features
+
+* adds pink gradient button ([cdc6778](https://github.com/rawpixel-public/react-components/commit/cdc6778f2593567582468de897ad729a177c5df8))
+* updates widgets to allow array of arrays and adds a plus button ([bb42726](https://github.com/rawpixel-public/react-components/commit/bb42726cb0c73ab2cc5977827e49b2b4dc3a0116))
+
+
+### Bug Fixes
+
+* disabled prop check ([6973fc6](https://github.com/rawpixel-public/react-components/commit/6973fc6001284f4ba87c4992d13dfff5a89124b0))
+* prevent internal scroll when contents match wrapper size ([5471c34](https://github.com/rawpixel-public/react-components/commit/5471c34511de37603df4db38c638a604fc4d89a5))
+
 ### [1.0.6](https://github.com/rawpixel-public/react-components/compare/v1.0.5...v1.0.6) (2020-06-17)
 
 
