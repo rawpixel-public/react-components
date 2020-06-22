@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/rawpixel-public/react-components/compare/v1.1.0...v1.1.1) (2020-06-22)
+
+
+### Bug Fixes
+
+* set topic icon and text alignment left when spanning multiple lines ([cb28e04](https://github.com/rawpixel-public/react-components/commit/cb28e0488a1214ef9a27186ad06ee46b8b0757bb))
+
 ## [1.1.0](https://github.com/rawpixel-public/react-components/compare/v1.0.6...v1.1.0) (2020-06-18)
 
 
