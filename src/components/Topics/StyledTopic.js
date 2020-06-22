@@ -87,7 +87,18 @@ export const StyledTitle = styled.span`
         top: 0;
       }
     `
-  )}
+  )};
+
+  ${props =>
+    props.isMulti &&
+    props.hasIcon &&
+    css`
+      -webkit-box-orient: unset;
+      text-align: left;
+      > div {
+        display: block;
+        margin: 2px;
+      `};
 `;
 
 export const StyledIcon = styled.div`

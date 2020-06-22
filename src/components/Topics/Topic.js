@@ -16,7 +16,7 @@ const Topic = ({
   groupIcon,
   ...props
 }) => {
-  const [isHyphenated, setIsHyphenated] = React.useState(false);
+  const [lines, setLines] = React.useState({ hyphenated: false, multi: false });
   const TitleRef = React.useRef();
 
   const handleTopicClick = e => {
@@ -52,11 +52,14 @@ const Topic = ({
 
     // Apply hyphenated css if a word spans across lines.
     if (wordSpansLine) {
-      setIsHyphenated(true);
+      setLines({ hyphenated: true, multi: true });
     } else if (words.length === 1 && titleElement.clientHeight > LINE_HEIGHT) {
-      setIsHyphenated(true);
+      setLines({ hyphenated: true, multi: true });
     } else {
-      setIsHyphenated(false);
+      setLines({
+        hyphenated: false,
+        multi: titleElement.clientHeight > LINE_HEIGHT
+      });
     }
   }, [groupIcon, name]);
 
@@ -72,7 +75,12 @@ const Topic = ({
       {...props}
     >
       <Icon loading={isLoading} icon={icon} className="img-wrapper" />
-      <StyledTitle ref={TitleRef} isHyphenated={isHyphenated}>
+      <StyledTitle
+        ref={TitleRef}
+        isHyphenated={lines.hyphenated}
+        isMulti={lines.multi}
+        hasIcon={groupIcon}
+      >
         {groupIcon && <StyledIcon icon={groupIcon} />}
         {name}
       </StyledTitle>
