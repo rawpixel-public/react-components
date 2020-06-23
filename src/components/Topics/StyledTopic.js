@@ -90,6 +90,16 @@ export const StyledTitle = styled.span`
   )};
 
   ${props =>
+    props.isHyphenated &&
+    props.hasIcon &&
+    css`
+      padding-right: 16px;
+      &:after {
+        right: 3px;
+      }
+    `};
+
+  ${props =>
     props.isMulti &&
     props.hasIcon &&
     css`
