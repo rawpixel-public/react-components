@@ -4,6 +4,7 @@ import external from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
+import postcss from "rollup-plugin-postcss";
 
 export default {
   input: ["src/index.js", "src/button.js"],
@@ -22,6 +23,9 @@ export default {
       plugins: ["external-helpers"]
     }),
     resolve(),
-    commonjs()
+    commonjs(),
+    postcss({
+      plugins: []
+    })
   ]
 };

@@ -34,7 +34,8 @@ const TopicsGrid = ({
   viewable = 12,
   defaultHeight = 320,
   defaultWidth = 210,
-  style
+  style,
+  resizable = false
 }) => {
   const handleTopicClick = (e, topic) => {
     if (typeof onTopicClick === "function") {
@@ -49,6 +50,7 @@ const TopicsGrid = ({
       defaultHeight={defaultHeight}
       defaultWidth={defaultWidth}
       style={style}
+      resizable={!loading && resizable}
     >
       {loading && TopicsPlaceholder(viewable)}
       {!loading &&
@@ -81,7 +83,8 @@ TopicsGrid.propTypes = {
   viewable: PropTypes.number,
   defaultHeight: PropTypes.number,
   defaultWidth: PropTypes.number,
-  style: PropTypes.object
+  style: PropTypes.object,
+  resizable: PropTypes.bool
 };
 
 export default TopicsGrid;
