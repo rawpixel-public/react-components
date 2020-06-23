@@ -5,9 +5,12 @@ import { Scrollbars } from "react-custom-scrollbars";
 import {
   StyledImageButtonGridContainer,
   StyledScrollbar,
+  StyledResizable,
   StyledRow,
   Spacer
 } from "./StyledImageButtonGrid";
+
+const RESIZE_HANDLE_HEIGHT = 7;
 
 const chunk = (array, size) => {
   const chunked_arr = [];
@@ -26,9 +29,17 @@ const ImageButtonGrid = ({
   defaultHeight = 320,
   defaultWidth = 240,
   columns = 3,
+  resizable = true,
   ...props
 }) => {
-  const [height, setHeight] = React.useState(defaultHeight);
+  const [height, setHeight] = React.useState({
+    defaultHeight,
+    maxHeight: null,
+    minHeight: defaultHeight,
+    resizing: false,
+    scrolling: false
+  });
+  const ScrollbarRef = React.useRef();
   const ContainerRef = React.useRef();
   const childrenArray = Children.toArray(children).filter(Boolean);
   const childCount = childrenArray.length;
@@ -45,9 +56,21 @@ const ImageButtonGrid = ({
         (value, element) => value + element.offsetHeight + rowMargin,
         0
       );
-      setHeight(visibleHeight);
+      setHeight({
+        ...height,
+        minHeight: visibleHeight,
+        defaultHeight: visibleHeight,
+        maxHeight: resizable
+          ? RESIZE_HANDLE_HEIGHT + offsetHeight
+          : offsetHeight
+      });
     } else {
-      setHeight(offsetHeight);
+      setHeight({
+        ...height,
+        defaultHeight: offsetHeight,
+        maxHeight: offsetHeight,
+        minHeight: offsetHeight
+      });
     }
   }, [children, viewable]);
 
@@ -62,33 +85,77 @@ const ImageButtonGrid = ({
   });
 
   const renderView = props =>
-    childCount <= viewable ? <div /> : <div {...props} />;
+    childCount <= viewable ||
+    height.resizing ||
+    height.defaultHeight === height.maxHeight ? (
+      <div />
+    ) : (
+      <div {...props} />
+    );
+
+  const onResize = (event, { size }) => {
+    setHeight({ ...height, defaultHeight: size.height });
+  };
+
+  const onScroll = () => {
+    const scrollbars = ScrollbarRef.current;
+    const values = scrollbars.getValues();
+
+    if (values.top === 0 && height.scrolling) {
+      setHeight({ ...height, scrolling: false });
+    }
+
+    if (values.top !== 0 && !height.scrolling) {
+      setHeight({ ...height, scrolling: true });
+    }
+  };
 
   return (
-    <Scrollbars
-      className={className}
-      style={{ height, width: defaultWidth, ...props.style }}
-      hideTracksWhenNotNeeded
-      renderThumbVertical={props => <StyledScrollbar {...props} />}
-      renderView={renderView}
-      autoHide
-      autoHeight={
-        props.autoHeight !== undefined
-          ? props.autoHeight
-          : childCount <= viewable
-      }
-      autoHeightMax={
-        props.autoHeightMax !== undefined ? props.autoHeightMax : height
-      }
+    <StyledResizable
+      axis={resizable && !height.scrolling ? "y" : "none"}
+      width={defaultWidth}
+      height={height.defaultHeight}
+      minConstraints={[defaultWidth, height.minHeight]}
+      maxConstraints={[defaultWidth, height.maxHeight]}
+      resizeHandles={["s"]}
+      onResize={onResize}
+      onResizeStart={() => setHeight({ ...height, resizing: true })}
+      onResizeStop={() => setHeight({ ...height, resizing: false })}
     >
-      <StyledImageButtonGridContainer ref={ContainerRef} columns={columns}>
-        {rows.map((row, index) => (
-          <StyledRow columns={columns} key={index}>
-            {row}
-          </StyledRow>
-        ))}
-      </StyledImageButtonGridContainer>
-    </Scrollbars>
+      <Scrollbars
+        className={className}
+        style={{
+          height: height.defaultHeight,
+          width: defaultWidth,
+          ...props.style
+        }}
+        hideTracksWhenNotNeeded
+        renderThumbVertical={props => <StyledScrollbar {...props} />}
+        renderView={renderView}
+        autoHide
+        autoHeight={
+          props.autoHeight !== undefined
+            ? props.autoHeight
+            : childCount <= viewable
+        }
+        autoHeightMax={
+          props.autoHeightMax !== undefined
+            ? props.autoHeightMax
+            : height.defaultHeight
+        }
+        onScrollStart={onScroll}
+        onScrollStop={onScroll}
+        ref={ScrollbarRef}
+      >
+        <StyledImageButtonGridContainer ref={ContainerRef} columns={columns}>
+          {rows.map((row, index) => (
+            <StyledRow columns={columns} key={index}>
+              {row}
+            </StyledRow>
+          ))}
+        </StyledImageButtonGridContainer>
+      </Scrollbars>
+    </StyledResizable>
   );
 };
 
@@ -101,7 +168,8 @@ ImageButtonGrid.propTypes = {
   columns: PropTypes.number,
   style: PropTypes.object,
   autoHeight: PropTypes.bool,
-  autoHeightMax: PropTypes.number
+  autoHeightMax: PropTypes.number,
+  resizable: PropTypes.bool
 };
 
 export default ImageButtonGrid;
