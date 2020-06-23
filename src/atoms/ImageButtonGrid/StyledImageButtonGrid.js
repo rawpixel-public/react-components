@@ -67,7 +67,7 @@ export const StyledResizable = styled(Resizable)`
       content: "";
       display: block;
       width: 20px;
-      height: 5px;
+      height: 3px;
       border-top: 1px solid ${palette.topicButtonBackground};
       border-bottom: 1px solid ${palette.topicButtonBackground};
       position: absolute;
