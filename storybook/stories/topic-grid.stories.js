@@ -124,6 +124,7 @@ export const grid = () => {
         .slice(0, number("number of topics", topicsData.length))}
       onTopicClick={action("topic-grid-click")}
       loading={boolean("loading", false)}
+      resizable={boolean("resizable", true)}
     />
   );
 };
@@ -204,6 +205,7 @@ export const api = () => {
       onTopicClick={action("topic-grid-click")}
       loading={loading}
       viewable={select("viewable", [3, 6, 9, 12], 9, "api")}
+      resizable={boolean("resizable", true, "api")}
     />
   );
 };
