@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/rawpixel-public/react-components/compare/v1.1.1...v1.2.0) (2020-06-23)
+
+
+### Features
+
+* adds resizable prop to topics grid ([52bcdee](https://github.com/rawpixel-public/react-components/commit/52bcdeea32a47a452ad4dd2ec6ad8f90c5793834))
+
+
+### Bug Fixes
+
+* resize handler styling ([91ceae6](https://github.com/rawpixel-public/react-components/commit/91ceae6702cbb2ae34bfbc6242e1ae7743504c73))
+
 ### [1.1.1](https://github.com/rawpixel-public/react-components/compare/v1.1.0...v1.1.1) (2020-06-22)
 
 
