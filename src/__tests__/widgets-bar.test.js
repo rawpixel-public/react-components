@@ -109,4 +109,22 @@ describe("widgets bar", () => {
     expect(getByText("custom topic")).toBeInstanceOf(HTMLSpanElement);
     expect(getByText("custom addon")).toBeInstanceOf(HTMLAnchorElement);
   });
+
+  it("should render plus button", async () => {
+    const myFn = jest.fn();
+    const { getByTestId } = render(
+      <WidgetsBar widgets={[]} plusButton onPlusClick={myFn} />
+    );
+    expect(getByTestId("widgets-plus")).toBeInTheDocument();
+
+    fireEvent(
+      getByTestId("widgets-plus"),
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true
+      })
+    );
+
+    expect(myFn).toHaveBeenCalled();
+  });
 });

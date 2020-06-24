@@ -189,11 +189,21 @@ const WidgetsBar = ({
                 <PinkGradientInversePlusButton
                   onClick={onPlusClick}
                   className="widgets-plus"
+                  data-testid="widgets-plus"
                 />
               </StyledListItem>
             )}
           </React.Fragment>
         ))}
+        {groups.length === 0 && plusButton && (
+          <StyledListItem key="plus" className="widgets-plus-wrapper">
+            <PinkGradientInversePlusButton
+              onClick={onPlusClick}
+              className="widgets-plus"
+              data-testid="widgets-plus"
+            />
+          </StyledListItem>
+        )}
       </StyledUnorderedList>
     </StyledWidgetsWrapper>
   );
