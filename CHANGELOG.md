@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/rawpixel-public/react-components/compare/v1.2.0...v1.2.1) (2020-06-24)
+
+
+### Bug Fixes
+
+* allow displaying pink plus button in widgets bar when no widgets are present ([d2848e9](https://github.com/rawpixel-public/react-components/commit/d2848e9747ca3087a4da918a70157dd67094a29c))
+* hyphen styling when icon is displayed ([514f362](https://github.com/rawpixel-public/react-components/commit/514f36248100551e170e730237cfd2b9e01c163b))
+* topic title text hyphenation ([601a4ab](https://github.com/rawpixel-public/react-components/commit/601a4ab7821af60ea2fb16e0b0277a53b7f50674))
+
 ## [1.2.0](https://github.com/rawpixel-public/react-components/compare/v1.1.1...v1.2.0) (2020-06-23)
 
 
