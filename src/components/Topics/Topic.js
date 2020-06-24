@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Icon from "../../atoms/Icon";
-import { StyledTopicButton, StyledTitle, StyledIcon } from "./StyledTopic";
+import {
+  StyledTopicButton,
+  StyledTitle,
+  StyledIcon,
+  StyledTitleWrapper
+} from "./StyledTopic";
 
 const Topic = ({
   icon,
@@ -75,15 +80,17 @@ const Topic = ({
       {...props}
     >
       <Icon loading={isLoading} icon={icon} className="img-wrapper" />
-      <StyledTitle
-        ref={TitleRef}
-        isHyphenated={lines.hyphenated}
-        isMulti={lines.multi}
-        hasIcon={groupIcon}
-      >
+      <StyledTitleWrapper>
         {groupIcon && <StyledIcon icon={groupIcon} />}
-        {name}
-      </StyledTitle>
+        <StyledTitle
+          ref={TitleRef}
+          isHyphenated={lines.hyphenated}
+          isMulti={lines.multi}
+          hasIcon={groupIcon}
+        >
+          {name}
+        </StyledTitle>
+      </StyledTitleWrapper>
     </StyledTopicButton>
   );
 };

@@ -65,7 +65,6 @@ export const StyledTitle = styled.span`
   text-align: center;
   line-height: 1.2;
   margin-top: 3px;
-  width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -93,9 +92,8 @@ export const StyledTitle = styled.span`
     props.isHyphenated &&
     props.hasIcon &&
     css`
-      padding-right: 16px;
       &:after {
-        right: 3px;
+        right: 2px;
       }
     `};
 
@@ -120,4 +118,13 @@ export const StyledIcon = styled.div`
   mask: url(${prop("icon")}) no-repeat center;
   mask-size: contain;
   background: ${palette.grayMedium};
+`;
+
+export const StyledTitleWrapper = styled.div`
+  display: flex;
+  align-content: center;
+  align-items: baseline;
+  justify-content: center;
+  width: 55px;
+  margin: auto;
 `;
