@@ -103,10 +103,7 @@ export const StyledTitle = styled.span`
     css`
       -webkit-box-orient: unset;
       text-align: left;
-      > div {
-        display: block;
-        margin: 2px;
-      `};
+    `};
 `;
 
 export const StyledIcon = styled.div`
@@ -118,6 +115,7 @@ export const StyledIcon = styled.div`
   mask: url(${prop("icon")}) no-repeat center;
   mask-size: contain;
   background: ${palette.grayMedium};
+  flex-shrink: 0;
 `;
 
 export const StyledTitleWrapper = styled.div`
