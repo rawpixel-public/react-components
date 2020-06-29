@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/rawpixel-public/react-components/compare/v1.2.1...v1.2.2) (2020-06-29)
+
+
+### Bug Fixes
+
+* ensure icon doesn't flex shrink ([c2b488f](https://github.com/rawpixel-public/react-components/commit/c2b488fa3e44c8dacc4bb2c4d02abc5dd593f793))
+* plus button styling ([3e4a899](https://github.com/rawpixel-public/react-components/commit/3e4a899d52ba3b9827aa89715256823c8df99cd3))
+
 ### [1.2.1](https://github.com/rawpixel-public/react-components/compare/v1.2.0...v1.2.1) (2020-06-24)
 
 
