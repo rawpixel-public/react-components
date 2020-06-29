@@ -91,6 +91,7 @@ export const sidebar = () => (
     onFilterClick={action("filter-click")}
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
     plusButton={boolean("plusButton", true)}
+    plusActive={boolean("plusActive", false)}
     onPlusClick={action("plus-click")}
   />
 );
@@ -102,6 +103,7 @@ export const dam = () => (
     direction="row"
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
     plusButton={boolean("plusButton", false)}
+    plusActive={boolean("plusActive", false)}
     onPlusClick={action("plus-click")}
   />
 );
@@ -132,6 +134,7 @@ export const website = () => {
         grouping={select("grouping", ["hearted", "type", "none"], "type")}
         plusButton
         onPlusClick={action("plus-click")}
+        plusActive={boolean("plusActive", false)}
         className="topic-groups"
       />
       <HorizontalRule className="divider" />

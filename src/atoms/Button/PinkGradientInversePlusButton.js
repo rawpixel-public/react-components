@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { switchProp } from "styled-tools";
+import { ifProp, switchProp } from "styled-tools";
 import PropTypes from "prop-types";
 
-import plus from "../../icons/pinkgradient-plus-inverse.svg";
+import plus from "../../icons/plus-circle.svg";
+import pinkPlus from "../../icons/pinkgradient-plus-inverse.svg";
 
 const sizeCases = {
   xsmall: "12px",
@@ -30,14 +31,14 @@ const StyledButton = styled.button`
     display: inline-block;
     width: ${switchProp("size", sizeCases)};
     height: ${switchProp("size", sizeCases)};
-    background-image: url(${plus});
-    background-size: contain;
-    background-position: 50%;
-    background-repeat: no-repeat;
+    background-image: url(${plus}), url(${pinkPlus});
+    background-size: ${ifProp("active", "0, contain", "contain, 0")};
+    background-position: 50%, 50%;
+    background-repeat: no-repeat, no-repeat;
   }
 
   &:hover:after {
-    filter: brightness(120%);
+    background-size: 0, contain;
   }
 `;
 

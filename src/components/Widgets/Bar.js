@@ -40,7 +40,9 @@ const WidgetsBar = ({
   classes = {},
   className,
   grouping = "type",
+  plusActive = false,
   plusButton = false,
+  plusProps = {},
   onPlusClick
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(activeWidget);
@@ -188,8 +190,10 @@ const WidgetsBar = ({
               >
                 <PinkGradientInversePlusButton
                   onClick={onPlusClick}
-                  className="widgets-plus"
+                  className={classnames("widgets-plus", plusProps.className)}
                   data-testid="widgets-plus"
+                  active={plusActive}
+                  {...plusProps}
                 />
               </StyledListItem>
             )}
@@ -199,8 +203,10 @@ const WidgetsBar = ({
           <StyledListItem key="plus" className="widgets-plus-wrapper">
             <PinkGradientInversePlusButton
               onClick={onPlusClick}
-              className="widgets-plus"
+              className={classnames("widgets-plus", plusProps.className)}
               data-testid="widgets-plus"
+              active={plusActive}
+              {...plusProps}
             />
           </StyledListItem>
         )}
@@ -235,7 +241,9 @@ WidgetsBar.propTypes = {
   }),
   className: PropTypes.string,
   grouping: PropTypes.oneOf(["none", "type", "hearted"]),
+  plusActive: PropTypes.bool,
   plusButton: PropTypes.bool,
+  plusProps: PropTypes.object,
   onPlusClick: PropTypes.func
 };
 
