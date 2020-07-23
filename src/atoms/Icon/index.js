@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { prop } from "styled-tools";
-import { palette } from "../../utils/cssVars";
 import DotLoader from "../Loader/DotLoader";
 
 export const StyledImgWrapper = styled.div`
@@ -23,9 +22,8 @@ export const StyledIcon = styled.div`
   height: 35px;
   width: 35px;
   vertical-align: center;
-  mask: url(${prop("imgSrc")}) no-repeat center;
-  mask-size: contain;
-  background: ${palette.topicIconColor};
+  background: url(${prop("imgSrc")}) no-repeat center;
+  background-size: contain;
   margin: 7.5px auto;
 `;
 

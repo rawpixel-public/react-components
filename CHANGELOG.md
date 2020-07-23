@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/rawpixel-public/react-components/compare/v1.2.3...v1.2.4) (2020-07-23)
+
+### [1.2.3](https://github.com/rawpixel-public/react-components/compare/v1.2.2...v1.2.3) (2020-07-23)
+
+
+### Bug Fixes
+
+* show original topic icon instead of using as mask ([743e0e3](https://github.com/rawpixel-public/react-components/commit/743e0e3d7ec4b00097eeeabd8276b92b341e2088))
+
 ### [1.2.2](https://github.com/rawpixel-public/react-components/compare/v1.2.1...v1.2.2) (2020-06-29)
 
 
