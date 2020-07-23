@@ -112,8 +112,9 @@ export const StyledIcon = styled.div`
   width: 9px;
   margin-right: 2px;
   vertical-align: baseline;
-  background: url(${prop("icon")}) no-repeat center;
-  background-size: contain;
+  mask: url(${prop("icon")}) no-repeat center;
+  mask-size: contain;
+  background: ${palette.grayMedium};
   flex-shrink: 0;
 `;
 
