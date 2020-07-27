@@ -7,19 +7,44 @@ const defaultParams = {
 
 const defaultOptions = {
   baseUrl: "https://dev-labs.rawpixel.com",
+  basePath: "/_services/topics/sidebar/widgets",
   shouldFetch: true
+};
+
+const SET_LOADING = "set_widgets_loading";
+const SET_WIDGETS = "set_widgets";
+const SET_ERROR = "set_error";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case SET_LOADING:
+      return action.loading !== state.loading
+        ? { ...state, loading: action.loading }
+        : state;
+
+    case SET_WIDGETS:
+      return { ...state, widgets: action.widgets, loading: false };
+
+    case SET_ERROR:
+      return { ...state, loading: false, error: action.error };
+  }
+};
+
+const initialState = {
+  loading: true,
+  widgets: [],
+  error: undefined
 };
 
 export default (params = defaultParams, options = defaultOptions) => {
   const { target, catalog } = { ...defaultParams, ...params };
-  const { baseUrl, shouldFetch } = { ...defaultOptions, ...options };
+  const { baseUrl, basePath, shouldFetch } = { ...defaultOptions, ...options };
 
-  const [loading, setLoading] = React.useState(true);
-  const [widgets, setWidgets] = React.useState([]);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
     if (shouldFetch) {
-      setLoading(true);
+      dispatch({ type: SET_LOADING, loading: true });
 
       const queryParams = {
         ...(target && { target }),
@@ -29,26 +54,21 @@ export default (params = defaultParams, options = defaultOptions) => {
         .map(key => `${key}=${queryParams[key]}`)
         .join("&");
 
-      fetch(`${baseUrl}/_services/topics/sidebar/widgets?${queryString}`, {
+      fetch(`${baseUrl}${basePath}?${queryString}`, {
         method: "GET",
         credentials: "include",
         mode: "cors"
       })
         .then(response => response.json())
         .then(data => {
-          if (Array.isArray(data)) {
-            setLoading(false);
-            setWidgets(data);
-          } else {
-            console.log({ data });
-          }
+          dispatch({ type: SET_WIDGETS, widgets: data });
         })
         .catch(reason => {
           console.log({ reason });
-          setLoading(false);
+          dispatch({ type: SET_ERROR, error: reason });
         });
     }
-  }, [target, catalog, shouldFetch]);
+  }, [baseUrl, target, catalog, shouldFetch, basePath]);
 
-  return { loading, widgets };
+  return state;
 };
