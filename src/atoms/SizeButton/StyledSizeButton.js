@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { ifProp } from "styled-tools";
-import { fontFamily, palette } from "../../utils/cssVars";
+import { fontFamily } from "../../utils/cssVars";
 
 export const StyledSizeButton = styled.button`
   background: none;
@@ -35,10 +35,10 @@ export const StyledSizeButton = styled.button`
     "active",
     css`
       & > div > div {
-        background: ${palette.grayLight};
+        background: #4b4b4c;
       }
       & > span {
-        color: ${palette.grayLight};
+        color: #4b4b4c;
       }
     `
   )}
