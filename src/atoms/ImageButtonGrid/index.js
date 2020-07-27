@@ -5,9 +5,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import {
   StyledImageButtonGridContainer,
   StyledScrollbar,
-  StyledResizable,
-  StyledRow,
-  Spacer
+  StyledResizable
 } from "./StyledImageButtonGrid";
 
 const RESIZE_HANDLE_HEIGHT = 7;
@@ -30,6 +28,7 @@ const ImageButtonGrid = ({
   defaultWidth = 240,
   columns = 3,
   resizable = true,
+  itemWidth = "60px",
   ...props
 }) => {
   const [height, setHeight] = React.useState({
@@ -49,13 +48,20 @@ const ImageButtonGrid = ({
     const offsetHeight = element.offsetHeight;
 
     if (childCount > viewable) {
-      const rowElements = Array.from(element.childNodes);
-      const visibleRowElements = rowElements.slice(0, viewable / columns);
-      const rowMargin = 10;
-      const visibleHeight = visibleRowElements.reduce(
-        (value, element) => value + element.offsetHeight + rowMargin,
-        0
+      const itemElements = Array.from(element.childNodes);
+      const rows = chunk(itemElements, columns);
+      const visibleRows = rows.slice(0, Math.round(viewable / columns));
+      const visibleRowHeights = visibleRows.map(row =>
+        row.reduce(
+          (acc, cur) => (cur.offsetHeight > acc ? cur.offsetHeight : acc),
+          0
+        )
       );
+      const rowMargin = 10;
+      const visibleHeight =
+        visibleRowHeights.reduce((acc, cur) => acc + cur + rowMargin, 0) +
+        rowMargin;
+
       setHeight({
         ...height,
         minHeight: visibleHeight,
@@ -73,16 +79,6 @@ const ImageButtonGrid = ({
       });
     }
   }, [children, viewable]);
-
-  const rows = chunk(childrenArray, columns).map(row => {
-    if (row.length === columns) {
-      return row;
-    }
-    const spacers = [...Array(columns - row.length)].map((_, key) => (
-      <Spacer key={key} />
-    ));
-    return [...row, ...spacers];
-  });
 
   const renderView = props =>
     childCount <= viewable ||
@@ -147,12 +143,12 @@ const ImageButtonGrid = ({
         onScrollStop={onScroll}
         ref={ScrollbarRef}
       >
-        <StyledImageButtonGridContainer ref={ContainerRef} columns={columns}>
-          {rows.map((row, index) => (
-            <StyledRow columns={columns} key={index}>
-              {row}
-            </StyledRow>
-          ))}
+        <StyledImageButtonGridContainer
+          ref={ContainerRef}
+          columns={columns}
+          itemWidth={itemWidth}
+        >
+          {children}
         </StyledImageButtonGridContainer>
       </Scrollbars>
     </StyledResizable>
@@ -169,7 +165,8 @@ ImageButtonGrid.propTypes = {
   style: PropTypes.object,
   autoHeight: PropTypes.bool,
   autoHeightMax: PropTypes.number,
-  resizable: PropTypes.bool
+  resizable: PropTypes.bool,
+  itemWidth: PropTypes.string
 };
 
 export default ImageButtonGrid;

@@ -21,6 +21,7 @@ export const StyledTopicButton = styled.button`
   justify-self: start;
   padding: 0;
   overflow: visible;
+  align-self: baseline;
 
   &:hover {
     cursor: pointer;

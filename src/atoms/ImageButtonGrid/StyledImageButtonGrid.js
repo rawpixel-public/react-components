@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ifProp } from "styled-tools";
+import { ifProp, prop } from "styled-tools";
 import { Resizable } from "react-resizable";
 import "react-resizable/css/styles.css";
 import { palette } from "../../utils/cssVars";
@@ -24,28 +24,17 @@ const setCursorStyle = props => {
 };
 
 export const StyledImageButtonGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(${prop("itemWidth")}, 1fr));
+  column-gap: 5px;
+  row-gap: 10px;
   padding-right: 15px;
-`;
-
-export const StyledRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 10px;
 `;
 
 export const StyledScrollbar = styled.div`
   background-color: #e9e9e9;
   border-radius: 3px;
   width: 2px !important;
-`;
-
-export const Spacer = styled.div`
-  display: flex;
-  align-self: center;
-  height: 60px;
-  width: 60px;
 `;
 
 export const StyledResizable = styled(Resizable)`
