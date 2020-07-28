@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.6](https://github.com/rawpixel-public/react-components/compare/v1.2.5...v1.2.6) (2020-07-28)
+
+
+### Bug Fixes
+
+* detect hover for hover styles in Button component ([992104f](https://github.com/rawpixel-public/react-components/commit/992104f8eef0da053aa85e98ab6c7d441ff3e27e))
+* detect hover for hover styles in ImageButton component ([1560421](https://github.com/rawpixel-public/react-components/commit/1560421f3f1b4f215f702a36af2ffca12090bd9f))
+* detect hover for hover styles in SizeButton component ([1243fbf](https://github.com/rawpixel-public/react-components/commit/1243fbf89fd90d74a3b6f1b224117462aaff6f94))
+* detect hover for hover styles in topics components ([f735163](https://github.com/rawpixel-public/react-components/commit/f7351632b49d56564ad7e42c8a79c84a3caf6c2c))
+* refactor topics grid to use css grid for responsiveness ([8ebcde8](https://github.com/rawpixel-public/react-components/commit/8ebcde805cfdf9c04164520be69c19ad4ebd1024))
+* update size button active state to same as hover ([ae8719d](https://github.com/rawpixel-public/react-components/commit/ae8719d69b84412fe307c89540f43ec174326638))
+
 ### [1.2.5](https://github.com/rawpixel-public/react-components/compare/v1.2.4...v1.2.5) (2020-07-23)
 
 ### [1.2.4](https://github.com/rawpixel-public/react-components/compare/v1.2.3...v1.2.4) (2020-07-23)
