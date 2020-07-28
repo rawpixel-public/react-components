@@ -42,25 +42,29 @@ export const StyledButton = styled.button`
   white-space: nowrap;
   text-overflow: ellipsis;
 
-  &:hover {
-    cursor: pointer;
-    background: ${lightGray};
-    color: ${palette.white};
-  }
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      background: ${lightGray};
+      color: ${palette.white};
+    }
 
-  &[disabled]:hover {
-    cursor: not-allowed;
-    background: ${ifProp("active", lightGray, lighterGray)};
-    color: ${ifProp("active", activeText, lightGray)};
+    &[disabled]:hover {
+      cursor: not-allowed;
+      background: ${ifProp("active", lightGray, lighterGray)};
+      color: ${ifProp("active", activeText, lightGray)};
+    }
   }
 
   &[type="text"] {
     text-align: left;
     color: ${darkGray};
 
-    &:hover {
-      cursor: text;
-      background-color: ${lighterGray};
+    @media (hover: hover) {
+      &:hover {
+        cursor: text;
+        background-color: ${lighterGray};
+      }
     }
 
     &:focus {

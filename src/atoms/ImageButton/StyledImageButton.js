@@ -21,11 +21,13 @@ export const StyledImageButton = styled.button`
     transition: background-color linear 250ms;
   }
 
-  &:hover {
+  @media (hover: hover) {
+    &:hover {
     cursor: pointer;
 
     .img-wrapper {
       background: ${palette.grayLight}
+    }
   }
 
   // Showing the loader sets the disabled attr, so we can use this to style

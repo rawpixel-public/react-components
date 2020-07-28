@@ -23,16 +23,18 @@ export const StyledTopicButton = styled.button`
   overflow: visible;
   align-self: baseline;
 
-  &:hover {
-    cursor: pointer;
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
 
-    .img-wrapper {
-      background: ${props =>
-        props.isTagged
-          ? palette.grayLighter
-          : props.isTagMode
-          ? taggedGreen
-          : palette.grayLight};
+      .img-wrapper {
+        background: ${props =>
+          props.isTagged
+            ? palette.grayLighter
+            : props.isTagMode
+            ? taggedGreen
+            : palette.grayLight};
+      }
     }
   }
 

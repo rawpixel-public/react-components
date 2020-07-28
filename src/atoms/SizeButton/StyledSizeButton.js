@@ -15,20 +15,22 @@ export const StyledSizeButton = styled.button`
   text-decoration: none;
   color: #7d7c7c;
 
-  &:hover {
-    cursor: pointer;
-  }
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+    }
 
-  &:not([disabled]):hover > div > div {
-    background: #4b4b4c;
-  }
+    &:not([disabled]):hover > div > div {
+      background: #4b4b4c;
+    }
 
-  &:not([disabled]):hover > span {
-    color: #4b4b4c;
-  }
+    &:not([disabled]):hover > span {
+      color: #4b4b4c;
+    }
 
-  &[disabled]:hover {
-    cursor: not-allowed;
+    &[disabled]:hover {
+      cursor: not-allowed;
+    }
   }
 
   ${ifProp(

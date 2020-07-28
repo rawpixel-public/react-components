@@ -23,10 +23,12 @@ export const StyledButton = styled.button`
   white-space: normal;
   min-width: 50px;
 
-  &:hover {
-    cursor: pointer;
-    .widget-icon {
-      background: linear-gradient(to left, ${palette.pink}, ${palette.blue});
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      .widget-icon {
+        background: linear-gradient(to left, ${palette.pink}, ${palette.blue});
+      }
     }
   }
 

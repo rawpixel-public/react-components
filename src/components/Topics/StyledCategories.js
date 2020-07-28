@@ -83,19 +83,21 @@ export const StyledControlButton = styled.button`
   padding: 0;
   width: 10px;
 
-  &:hover {
-    cursor: pointer;
-    font-weight: bold;
-  }
-
   &[disabled] {
     color: ${palette.grayLighter};
   }
 
-  &[disabled]:hover {
-    background: none;
-    cursor: auto;
-    font-weight: normal;
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    &[disabled]:hover {
+      background: none;
+      cursor: auto;
+      font-weight: normal;
+    }
   }
 
   .next-button {
