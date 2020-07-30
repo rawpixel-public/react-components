@@ -1,14 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import filterAllowedProps from "filter-react-props";
 
 import Heading from "../../atoms/Heading";
 
-import {
-  StyledList,
-  StyledListItem,
-  StyledWrapper
-} from "./StyledFilterButtonGroup";
+import { StyledList, StyledListItem } from "./StyledFilterButtonGroup";
 
 const Title = styled(Heading)`
   font-size: 14px;
@@ -19,29 +16,32 @@ const ButtonGroupList = ({
   title,
   itemsPerRow = 2,
   headingLevel = 3,
+  flexGrow = false,
   ...props
 }) => (
-  <StyledWrapper {...props}>
+  <div {...filterAllowedProps(props)}>
     {title && <Title level={headingLevel}>{title}</Title>}
-    <StyledList>
+    <StyledList flexGrow={flexGrow}>
       {React.Children.toArray(children).map((element, index, arr) => (
         <StyledListItem
           key={index}
           itemsPerRow={itemsPerRow}
           itemsCount={arr.length}
+          flexGrow={flexGrow}
         >
           {element}
         </StyledListItem>
       ))}
     </StyledList>
-  </StyledWrapper>
+  </div>
 );
 
 ButtonGroupList.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
   itemsPerRow: PropTypes.number,
-  headingLevel: PropTypes.number
+  headingLevel: PropTypes.number,
+  flexGrow: PropTypes.bool
 };
 
 export default ButtonGroupList;
