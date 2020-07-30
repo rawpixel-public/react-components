@@ -72,6 +72,25 @@ export const StyledButton = styled.button`
       transition: box-shadow 0.2s;
     }
   }
+
+  .label {
+    margin-left: 5px;
+  }
+
+  &.exclusive-button {
+    padding: 6px 0;
+    min-height: 34px;
+  }
+
+  .exclusive-icon {
+    height: 20px;
+    width: 20px;
+  }
+
+  .exclusive-label {
+    line-height: 20px;
+    margin-left: 5px;
+  }
 `;
 
 export const StyledIcon = styled.div`
