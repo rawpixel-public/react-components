@@ -21,7 +21,6 @@ export const StyledIcon = styled.div`
   display: block;
   height: 35px;
   width: 35px;
-  vertical-align: center;
   background: url(${prop("imgSrc")}) no-repeat center;
   background-size: contain;
   margin: 7.5px auto;
