@@ -28,7 +28,7 @@ export const StyledImageButtonGridContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(${prop("itemWidth")}, 1fr));
   column-gap: 5px;
   row-gap: 10px;
-  padding-right: 15px;
+  padding-right: 10px;
 `;
 
 export const StyledScrollbar = styled.div`

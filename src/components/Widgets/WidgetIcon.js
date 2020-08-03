@@ -9,7 +9,6 @@ const StyledIcon = styled.div`
   height: 26px;
   width: 26px;
   margin: auto;
-  vertical-align: center;
   mask: url(${prop("imgSrc")}) no-repeat center center;
   background: ${palette.grayMedium};
 
