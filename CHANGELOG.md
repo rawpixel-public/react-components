@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/rawpixel-public/react-components/compare/v1.3.0...v1.3.1) (2020-08-03)
+
+
+### Bug Fixes
+
+* remove excess padding for scroller on grid component ([7ea824f](https://github.com/rawpixel-public/react-components/commit/7ea824f023d72e77638f9d044b4c34e3ecabae01))
+* remove invalid vertical align prop ([9a3cf9f](https://github.com/rawpixel-public/react-components/commit/9a3cf9fc8d22bd50ad401b692ce054c3303873a6))
+
 ## [1.3.0](https://github.com/rawpixel-public/react-components/compare/v1.2.6...v1.3.0) (2020-07-30)
 
 
