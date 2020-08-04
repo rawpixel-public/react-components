@@ -10,7 +10,7 @@ import {
 } from "./StyledTopic";
 
 const Topic = ({
-  icon,
+  icon = "",
   name,
   isTagMode = false,
   isLoading = false,
@@ -96,8 +96,8 @@ const Topic = ({
 };
 
 Topic.propTypes = {
-  id: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  id: PropTypes.any.isRequired,
+  icon: PropTypes.string,
   name: PropTypes.string.isRequired,
   isTagMode: PropTypes.bool,
   isLoading: PropTypes.bool,
@@ -106,7 +106,7 @@ Topic.propTypes = {
   topic: PropTypes.shape({
     name: PropTypes.string,
     tag: PropTypes.string,
-    dam_tam_tag: PropTypes.string
+    dam_team_tag: PropTypes.string
   }),
   to: PropTypes.string,
   groupIcon: PropTypes.string

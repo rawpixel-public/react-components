@@ -29,6 +29,9 @@ const ImageButtonGrid = ({
   columns = 3,
   resizable = true,
   itemWidth = "60px",
+  gridProps = {},
+  scrollbarProps = {},
+  resizableProps = {},
   ...props
 }) => {
   const [height, setHeight] = React.useState({
@@ -117,6 +120,7 @@ const ImageButtonGrid = ({
       onResize={onResize}
       onResizeStart={() => setHeight({ ...height, resizing: true })}
       onResizeStop={() => setHeight({ ...height, resizing: false })}
+      {...resizableProps}
     >
       <Scrollbars
         className={className}
@@ -142,11 +146,13 @@ const ImageButtonGrid = ({
         onScrollStart={onScroll}
         onScrollStop={onScroll}
         ref={ScrollbarRef}
+        {...scrollbarProps}
       >
         <StyledImageButtonGridContainer
           ref={ContainerRef}
           columns={columns}
           itemWidth={itemWidth}
+          {...gridProps}
         >
           {children}
         </StyledImageButtonGridContainer>
@@ -159,14 +165,23 @@ ImageButtonGrid.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   viewable: PropTypes.number,
-  defaultHeight: PropTypes.number,
-  defaultWidth: PropTypes.number,
+  defaultHeight: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(["auto"])
+  ]),
+  defaultWidth: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(["auto"])
+  ]),
   columns: PropTypes.number,
   style: PropTypes.object,
   autoHeight: PropTypes.bool,
   autoHeightMax: PropTypes.number,
   resizable: PropTypes.bool,
-  itemWidth: PropTypes.string
+  itemWidth: PropTypes.string,
+  gridProps: PropTypes.object,
+  scrollbarProps: PropTypes.object,
+  resizableProps: PropTypes.object
 };
 
 export default ImageButtonGrid;
