@@ -119,7 +119,7 @@ export const grid = () => {
       topics={topicsData
         .map(topic => ({
           ...topic,
-          groupIcon: boolean("show group icon", false) && topic.groupIcon
+          groupIcon: boolean("show group icon", false) ? topic.groupIcon : null
         }))
         .slice(0, number("number of topics", topicsData.length))}
       onTopicClick={action("topic-grid-click")}
@@ -128,7 +128,7 @@ export const grid = () => {
       defaultWidth={select(
         "width",
         { 1: 70, 2: 140, 3: 210, 4: 280, 5: 350 },
-        3
+        210
       )}
     />
   );
@@ -188,12 +188,7 @@ export const dam = () => {
 export const api = () => {
   const { loading, topics } = useTopicsApi(
     {
-      widget: select(
-        "widget",
-        { "61": 61, "62": 62, "63": 63, "64": 64, "65": 65 },
-        61,
-        "api"
-      ),
+      widget: select("widget", [3, 4, 5, 6, 7, 8, 9, 10], 3, "api"),
       trending: boolean("trending", false, "api"),
       published: boolean("published", true, "api")
     },
@@ -205,12 +200,20 @@ export const api = () => {
     <TopicsGrid
       topics={topics.map(topic => ({
         ...topic,
+        id: `${topic.type}-${topic.id}`,
         groupIcon: boolean("groupIcon", true, "api") ? topic.icon_url : null
       }))}
       onTopicClick={action("topic-grid-click")}
       loading={loading}
       viewable={select("viewable", [3, 6, 9, 12], 9, "api")}
       resizable={boolean("resizable", false, "api")}
+      defaultWidth={select("defaultWidth", [150, 210, 280, "auto"], 210, "api")}
+      defaultHeight={select(
+        "defaultHeight",
+        [210, 280, 350, "auto"],
+        280,
+        "api"
+      )}
     />
   );
 };
