@@ -112,8 +112,8 @@ const ImageButtonGrid = ({
   return (
     <StyledResizable
       axis={resizable && !height.scrolling ? "y" : "none"}
-      width={defaultWidth !== "auto" ? defaultWidth : null}
-      height={height.defaultHeight !== "auto" ? height.defaultHeight : null}
+      width={defaultWidth}
+      height={height.defaultHeight}
       minConstraints={[defaultWidth, height.minHeight]}
       maxConstraints={[defaultWidth, height.maxHeight]}
       resizeHandles={["s"]}
