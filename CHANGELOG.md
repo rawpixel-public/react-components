@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/rawpixel-public/react-components/compare/v1.3.1...v1.3.2) (2020-08-04)
+
+
+### Bug Fixes
+
+* invalid props passed resizable component ([9fa094b](https://github.com/rawpixel-public/react-components/commit/9fa094bf30847fad39ea0d00bf56c7feba41add8))
+* make icon not required on topics, clean up prop types ([27a8f78](https://github.com/rawpixel-public/react-components/commit/27a8f788e9247f21f4c41f103186251e53b7174b))
+
 ### [1.3.1](https://github.com/rawpixel-public/react-components/compare/v1.3.0...v1.3.1) (2020-08-03)
 
 
