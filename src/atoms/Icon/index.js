@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { prop } from "styled-tools";
+import styled, { css } from "styled-components";
+
 import DotLoader from "../Loader/DotLoader";
 
 export const StyledImgWrapper = styled.div`
@@ -21,8 +21,14 @@ export const StyledIcon = styled.div`
   display: block;
   height: 35px;
   width: 35px;
-  background: url(${prop("imgSrc")}) no-repeat center;
-  background-size: contain;
+
+  ${props =>
+    props.imgSrc &&
+    css`
+      background: url(${props.imgSrc}) no-repeat center;
+      background-size: contain;
+    `};
+
   margin: 7.5px auto;
 `;
 
