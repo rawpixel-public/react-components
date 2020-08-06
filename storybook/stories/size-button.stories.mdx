@@ -4,7 +4,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import Centered from "../components/Centered";
 
 import * as stories from "./topic-sidebar.stories.js";
-import { SizeButton } from "@rawpixel-public/react-components";
+import { ButtonGroupList, SizeButton } from "@rawpixel-public/react-components";
 
 import "../.storybook/global.css";
 
@@ -53,5 +53,22 @@ The `Link` component from `react-router` can also be used. In this case, use the
       title={text("title", "Portrait (link)", "link")}
       target={text("target", "_blank", "link")}
     />
+  </Story>
+</Preview>
+
+## List
+
+Using the `ButtonGroupList` component.
+
+<Preview>
+  <Story name="list">
+    <Centered style={{background: "#FFF"}}>
+        <ButtonGroupList itemsPerRow="2">
+          <SizeButton title="Portrait" height="40" width="30" href="https://www.rawpixel.com" />
+          <SizeButton title="Landscape" height="30" width="40" href="https://www.rawpixel.com" />
+          <SizeButton title="Social" height="35" width="35" href="https://www.rawpixel.com" />
+          <SizeButton title="Square" height="35" width="35" href="https://www.rawpixel.com" />
+        </ButtonGroupList>
+    </Centered>
   </Story>
 </Preview>
