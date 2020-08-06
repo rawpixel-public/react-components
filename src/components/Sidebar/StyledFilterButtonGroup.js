@@ -1,11 +1,10 @@
 import styled, { css } from "styled-components";
 import { ifProp } from "styled-tools";
 
-const itemWidth = ({ itemsCount, itemsPerRow, flexGrow }) => {
-  const margin = flexGrow ? "10px" : "5px";
+const itemWidth = ({ itemsCount, itemsPerRow, itemSpan = 1 }) => {
   if (itemsCount > 1) {
     return itemsPerRow > 1
-      ? `calc(${Math.floor(100 / itemsPerRow)}% - ${margin})`
+      ? `calc(${Math.round((100 / itemsPerRow) * itemSpan)}% - 5px)`
       : "100%";
   }
   return "100%";
@@ -19,21 +18,20 @@ export const StyledList = styled.ul`
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  row-gap: 10px;
-  ${ifProp(
-    "flexGrow",
-    css`
-      column-gap: 10px;
-    `
-  )};
 `;
 
 export const StyledListItem = styled.li`
   width: ${itemWidth};
+  margin-bottom: 10px;
+  align-self: baseline;
+  display: flex;
+  justify-content: center;
   ${ifProp(
     "flexGrow",
     css`
-      flex-grow: 1;
+      &:last-child {
+        flex-grow: 1;
+      }
     `
   )};
 `;
