@@ -22,16 +22,23 @@ const ButtonGroupList = ({
   <div {...filterAllowedProps(props)}>
     {title && <Title level={headingLevel}>{title}</Title>}
     <StyledList flexGrow={flexGrow}>
-      {React.Children.toArray(children).map((element, index, arr) => (
-        <StyledListItem
-          key={index}
-          itemsPerRow={itemsPerRow}
-          itemsCount={arr.length}
-          flexGrow={flexGrow}
-        >
-          {element}
-        </StyledListItem>
-      ))}
+      {React.Children.toArray(children).map((element, index, arr) => {
+        const itemSpan =
+          index + 1 < arr.length || arr.length % itemsPerRow === 0
+            ? 1
+            : (index + 1) % itemsPerRow;
+        return (
+          <StyledListItem
+            key={index}
+            itemsPerRow={itemsPerRow}
+            itemsCount={arr.length}
+            itemSpan={itemSpan}
+            flexGrow={flexGrow}
+          >
+            {element}
+          </StyledListItem>
+        );
+      })}
     </StyledList>
   </div>
 );

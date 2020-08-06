@@ -41,6 +41,7 @@ export const StyledButton = styled.button`
   word-wrap: break-word;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin: 0;
 
   @media (hover: hover) {
     &:hover {
