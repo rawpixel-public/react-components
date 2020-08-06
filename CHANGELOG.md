@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.4](https://github.com/rawpixel-public/react-components/compare/v1.3.3...v1.3.4) (2020-08-06)
+
+
+### Bug Fixes
+
+* refactor styling where flex gap styles aren't supported in safari ([b2d4b95](https://github.com/rawpixel-public/react-components/commit/b2d4b9500a1b3eae7979381543e3edd66adfd890))
+
 ### [1.3.3](https://github.com/rawpixel-public/react-components/compare/v1.3.2...v1.3.3) (2020-08-06)
 
 
