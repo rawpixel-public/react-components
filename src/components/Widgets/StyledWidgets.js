@@ -22,6 +22,7 @@ export const StyledButton = styled.button`
   text-decoration: none;
   white-space: normal;
   min-width: 50px;
+  transform: translateZ(0);
 
   &:hover {
     cursor: pointer;
