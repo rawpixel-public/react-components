@@ -40,7 +40,7 @@ const widgetsData = [
     type: "topic_group"
   },
   {
-    title: "Photos",
+    title: "",
     url: "https://www.rawpixel.com/search/photos?sort=curated&page=1",
     icon_url: backgroundSvg,
     type: "topic_group"
@@ -71,7 +71,7 @@ const widgetsData = [
     hearted: true
   },
   {
-    title: "Fonts",
+    title: "",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
     icon_url: fontSvg,
     type: "add_on"
