@@ -69,6 +69,14 @@ export const StyledWidgetsWrapper = styled.div`
         margin: 0 0 16px;
       }
     `};
+
+  ${props =>
+    props.direction === "row" &&
+    css`
+      .widgets-plus {
+        margin: 5px 10px;
+      }
+    `}
 `;
 
 export const StyledUnorderedList = styled.ul`
