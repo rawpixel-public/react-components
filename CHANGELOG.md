@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.5](https://github.com/rawpixel-public/react-components/compare/v1.3.4...v1.3.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* allow widget title to be optional ([aae01a5](https://github.com/rawpixel-public/react-components/commit/aae01a53929084b6719743cab3800104ba6588f4))
+* tweak plus button when display in row ([9aba16c](https://github.com/rawpixel-public/react-components/commit/9aba16cb493463d0410c741c690d485ab466c6b0))
+
 ### [1.3.4](https://github.com/rawpixel-public/react-components/compare/v1.3.3...v1.3.4) (2020-08-06)
 
 
