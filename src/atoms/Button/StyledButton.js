@@ -11,10 +11,14 @@ const activeText = "#f9f9f9";
 const textColor = "#4a4a4a";
 
 export const StyledButton = styled.button`
-  background: ${ifProp("active", darkGray, lighterGray)};
+  background: ${ifProp(
+    "active",
+    prop("theme.active.background", darkGray),
+    lighterGray
+  )};
+  color: ${ifProp("active", prop("theme.active.color", activeText), textColor)};
   border: 1px solid transparent;
   border-radius: 0.25rem;
-  color: ${ifProp("active", activeText, textColor)};
   display: block;
   flex: 0 1 auto;
   font-family: ${fontFamily.base};
@@ -46,8 +50,8 @@ export const StyledButton = styled.button`
   @media (hover: hover) {
     &:hover {
       cursor: pointer;
-      background: ${lightGray};
-      color: ${palette.white};
+      background: ${prop("theme.hover.background", lightGray)};
+      color: ${prop("theme.hover.color", palette.white)};
     }
 
     &[disabled]:hover {

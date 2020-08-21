@@ -44,7 +44,17 @@ Button.propTypes = {
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   onChange: PropTypes.func,
-  size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge"])
+  size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge"]),
+  theme: PropTypes.shape({
+    active: PropTypes.shape({
+      background: PropTypes.string,
+      color: PropTypes.string
+    }),
+    hover: PropTypes.shape({
+      background: PropTypes.string,
+      color: PropTypes.string
+    })
+  })
 };
 
 export default Button;
