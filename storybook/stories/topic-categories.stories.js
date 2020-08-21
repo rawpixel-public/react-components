@@ -62,7 +62,7 @@ export const noControls = () => {
   const [active, setActive] = React.useState();
 
   return (
-    <Centered style={{ background: "#F4F4F4" }}>
+    <Centered style={{ background: "#FFF" }}>
       <div style={{ width: "300px" }}>
         <Categories
           categories={object(
@@ -71,17 +71,26 @@ export const noControls = () => {
               {
                 id: 1,
                 name: "All",
-                visible: true
+                theme: {
+                  background: "#95ABD4",
+                  color: "#FFFFFF"
+                }
               },
               {
                 id: 2,
                 name: "Elements",
-                visible: true
+                theme: {
+                  background: "#C88484",
+                  color: "#FFFFFF"
+                }
               },
               {
                 id: 3,
                 name: "Stickers",
-                visible: true
+                theme: {
+                  background: "#A1CCB6",
+                  color: "#FFFFFF"
+                }
               }
             ],
             "clear"

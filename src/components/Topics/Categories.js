@@ -122,6 +122,11 @@ const Categories = ({
                     size="xsmall"
                     onClick={e => categoryClickHandler(e, category)}
                     active={isActive(category, activeCategory)}
+                    theme={
+                      category.theme
+                        ? { active: category.theme, hover: category.theme }
+                        : null
+                    }
                   >
                     {category.name}
                   </Button>
@@ -154,7 +159,11 @@ const Categories = ({
 };
 
 const CategoryShape = PropTypes.shape({
-  name: PropTypes.string
+  name: PropTypes.string,
+  theme: PropTypes.shape({
+    background: PropTypes.string,
+    color: PropTypes.string
+  })
 });
 
 Categories.propTypes = {
