@@ -32,7 +32,25 @@ const CategoryButtonsPlaceholder = props => (
   </StyledListWrapper>
 );
 
+const useCarouselPosition = categories => {
+  const [carouselPosition, setCarouselPosition] = React.useState(0);
+
+  React.useEffect(() => {
+    setCarouselPosition(0);
+  }, [categories]);
+
+  return [carouselPosition, setCarouselPosition];
+};
+
+const isActive = (category, active) => {
+  if (Array.isArray(active)) {
+    return active.includes(category);
+  }
+  return category === active;
+};
+
 const Categories = ({
+  activeCategory = null,
   categories = [],
   title,
   onCategoryClick,
@@ -42,7 +60,9 @@ const Categories = ({
   displayedItems = 3,
   ...props
 }) => {
-  const [carouselPosition, setCarouselPosition] = React.useState(0);
+  const [carouselPosition, setCarouselPosition] = useCarouselPosition(
+    categories
+  );
 
   const categoryClickHandler = (event, category) => {
     if (typeof onCategoryClick === "function") {
@@ -101,7 +121,7 @@ const Categories = ({
                   <Button
                     size="xsmall"
                     onClick={e => categoryClickHandler(e, category)}
-                    active={category.active}
+                    active={isActive(category, activeCategory)}
                   >
                     {category.name}
                   </Button>
@@ -133,14 +153,22 @@ const Categories = ({
   );
 };
 
+const CategoryShape = PropTypes.shape({
+  name: PropTypes.string
+});
+
 Categories.propTypes = {
-  categories: PropTypes.array,
+  categories: PropTypes.arrayOf(CategoryShape),
   title: PropTypes.node,
   onCategoryClick: PropTypes.func,
   onClearClick: PropTypes.func,
   showClear: PropTypes.bool,
   loading: PropTypes.bool,
-  displayedItems: PropTypes.number
+  displayedItems: PropTypes.number,
+  activeCategory: PropTypes.oneOfType([
+    CategoryShape,
+    PropTypes.arrayOf(CategoryShape)
+  ])
 };
 
 export default Categories;
