@@ -31,6 +31,7 @@ export const StyledListItem = styled.li`
     css`
       &:last-child {
         flex-grow: 1;
+        margin-bottom: 0;
       }
     `
   )};

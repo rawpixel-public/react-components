@@ -81,6 +81,7 @@ export const StyledButton = styled.button`
   &.exclusive-button {
     padding: 6px 0;
     min-height: 34px;
+    max-height: 34px;
   }
 
   .exclusive-icon {
@@ -92,6 +93,26 @@ export const StyledButton = styled.button`
     line-height: 20px;
     margin-left: 5px;
   }
+
+  &.logo-button {
+    padding: 6px 0;
+    min-height: 34px;
+    max-height: 34px;
+  }
+
+  .logo-icon {
+    height: 18px;
+    width: 66px;
+  }
+  @media (hover: hover) {
+    &:hover .logo-icon {
+      background: ${palette.white};
+    }
+  }
+
+  .logo-label {
+    margin-left: 2px;
+  }
 `;
 
 export const StyledIcon = styled.div`
@@ -101,4 +122,5 @@ export const StyledIcon = styled.div`
   vertical-align: top;
   mask: url(${prop("imgSrc")}) no-repeat center;
   background: ${prop("background")};
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
 `;
