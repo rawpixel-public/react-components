@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions";
 import { withKnobs, text, object, select, boolean } from "@storybook/addon-knobs";
 import Centered from "../components/Centered";
 
-import { Button, ButtonGroupList, ExclusiveButton, LikesButton } from "@rawpixel-public/react-components";
+import { Button, ButtonGroupList, ExclusiveButton, LikesButton, LogoButton, HorizontalRule } from "@rawpixel-public/react-components";
 
 import "../.storybook/global.css";
 
@@ -38,12 +38,17 @@ Use `itemsPerRow` to control the number of buttons per row.
 
 ## Main
 
-With custom buttons for Likes and Exclusive.
+With custom buttons for Likes, Exclusive and rawpixel collection.
 
 <Preview>
   <Story name="main">
-    <Centered style={{width: "270px"}}>
+    <Centered style={{width: "270px", display: "flex", flexDirection: "column"}}>
+      <ButtonGroupList key="0" flexGrow itemsPerRow={1}>
+        <LogoButton onClick={action("$rawpixelcollection")}>rawpixel collection</LogoButton>
+      </ButtonGroupList>
+      <HorizontalRule />
       <ButtonGroupList
+        key="1"
         itemsPerRow={select("itemsPerRow", [1, 2, 3], 2)}
         flexGrow={boolean("flexGrow", true)}
       >
