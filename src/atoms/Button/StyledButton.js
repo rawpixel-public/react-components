@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ifProp, prop, switchProp } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
@@ -103,6 +103,12 @@ export const StyledButton = styled.button`
   .logo-icon {
     height: 18px;
     width: 66px;
+    ${ifProp(
+      "active",
+      css`
+        background: ${palette.white};
+      `
+    )};
   }
   @media (hover: hover) {
     &:hover .logo-icon {
