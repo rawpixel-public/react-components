@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/rawpixel-public/react-components/compare/v1.3.5...v1.4.0) (2020-08-27)
+
+
+### Features
+
+* adds logo button component ([fd19cdc](https://github.com/rawpixel-public/react-components/commit/fd19cdcf71ab08f6c55048b9c79c98a0fe672028))
+
 ### [1.3.5](https://github.com/rawpixel-public/react-components/compare/v1.3.4...v1.3.5) (2020-08-17)
 
 
