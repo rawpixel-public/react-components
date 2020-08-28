@@ -14,7 +14,12 @@ import Centered from "../components/Centered";
 export const controls = () => {
   return (
     <Centered style={{ background: "#F4F4F4" }}>
-      <div style={{ width: "300px" }}>
+      <div
+        style={{
+          width: select("width", ["200px", "300px"], "200px"),
+          overflow: "hidden"
+        }}
+      >
         <Categories
           categories={object(
             "categories",
@@ -42,6 +47,16 @@ export const controls = () => {
               {
                 id: 5,
                 name: "Wallpaper",
+                visible: true
+              },
+              {
+                id: 6,
+                name: "Graphic Design",
+                visible: true
+              },
+              {
+                id: 7,
+                name: "Photography",
                 visible: true
               }
             ],
