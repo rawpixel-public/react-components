@@ -17,7 +17,8 @@ const fetchTopics = async function({
   heartFilter = false,
   favouriteBy,
   trending = false,
-  published = true
+  published = true,
+  internal = false
 }) {
   const queryParams = {
     ...(typeof widget === "number" && { widget }),
@@ -26,7 +27,8 @@ const fetchTopics = async function({
     ...(trending && { trending: 1 }),
     page,
     pagesize,
-    published: published ? 1 : 0
+    published: published ? 1 : 0,
+    internal: internal ? 1 : 0
   };
   const queryString = Object.keys(queryParams)
     .map(key => `${key}=${queryParams[key]}`)
@@ -46,9 +48,10 @@ function fetchTopicsByWidget({
   pagesize = 100,
   baseUrl,
   basePath,
-  published
+  published,
+  internal
 }) {
-  return fetchTopics({ widget, page, baseUrl, basePath, pagesize, published });
+  return fetchTopics({ widget, page, baseUrl, basePath, pagesize, published, internal });
 }
 
 function fetchTopicsByHeartFilter({
@@ -56,7 +59,8 @@ function fetchTopicsByHeartFilter({
   pagesize = 100,
   baseUrl,
   basePath,
-  published
+  published,
+  internal
 }) {
   return fetchTopics({
     page,
@@ -64,7 +68,8 @@ function fetchTopicsByHeartFilter({
     baseUrl,
     basePath,
     heartFilter: true,
-    published
+    published,
+    internal
   });
 }
 
@@ -74,7 +79,8 @@ function fetchTopicsByFavouriteBy({
   baseUrl,
   basePath,
   favouriteBy,
-  published
+  published,
+  internal
 }) {
   return fetchTopics({
     page,
@@ -82,7 +88,8 @@ function fetchTopicsByFavouriteBy({
     baseUrl,
     basePath,
     favouriteBy,
-    published
+    published,
+    internal
   });
 }
 
@@ -91,7 +98,8 @@ function fetchTrendingTopics({
   pagesize = 100,
   baseUrl,
   basePath,
-  published
+  published,
+  internal
 }) {
   return fetchTopics({
     page,
@@ -99,7 +107,8 @@ function fetchTrendingTopics({
     baseUrl,
     basePath,
     trending: true,
-    published
+    published,
+    internal
   });
 }
 
@@ -108,9 +117,10 @@ function fetchAllTopics({
   pagesize = 100,
   baseUrl,
   basePath,
-  published
+  published,
+  internal
 }) {
-  return fetchTopics({ page, baseUrl, basePath, pagesize, published });
+  return fetchTopics({ page, baseUrl, basePath, pagesize, published, internal });
 }
 
 function topicsApiReducer(state, action) {
@@ -236,7 +246,8 @@ export default (params = defaultParams, options = defaultOptions) => {
             heartFilter,
             favouriteBy,
             trending,
-            published
+            published,
+            internal
           });
           loadedTopics = loadedTopics.concat(results);
           allTopicsLoaded = loadedTopics.length === total;
@@ -264,6 +275,7 @@ export default (params = defaultParams, options = defaultOptions) => {
     favouriteBy,
     trending,
     published,
+    internal,
     key,
     type,
     shouldFetch,
