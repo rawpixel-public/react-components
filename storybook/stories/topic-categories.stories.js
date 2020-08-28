@@ -13,7 +13,7 @@ import Centered from "../components/Centered";
 
 export const controls = () => {
   return (
-    <Centered style={{ background: "#F4F4F4" }}>
+    <Centered style={{ background: "#F9F9F9" }}>
       <div
         style={{
           width: select("width", ["200px", "300px"], "200px"),

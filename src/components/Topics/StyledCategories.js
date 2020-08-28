@@ -74,10 +74,10 @@ export const StyledHeadingWrapper = styled.div`
 `;
 
 export const StyledControlButton = styled.button`
-  background: none;
+  background: ${palette.topicFilterBackground};
   border: none;
   border-radius: 0.25rem;
-  fill: ${palette.grayLight};
+  fill: ${palette.topicActive};
   font-family: ${fontFamily.base};
   font-size: 10px;
   padding: 0;
@@ -100,7 +100,7 @@ export const StyledControlButton = styled.button`
     }
   }
 
-  .next-button {
+  &.next-button {
     margin-left: 3px;
   }
 
@@ -108,7 +108,7 @@ export const StyledControlButton = styled.button`
     transform: rotate(-90deg);
   }
 
-  .previous-button {
+  &.previous-button {
     margin-right: 3px;
   }
 
