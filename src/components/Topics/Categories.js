@@ -123,8 +123,17 @@ const Categories = ({
                     onClick={e => categoryClickHandler(e, category)}
                     active={isActive(category, activeCategory)}
                     theme={
-                      category.theme
-                        ? { active: category.theme, hover: category.theme }
+                      category.color_value
+                        ? {
+                            active: {
+                              color: "#FFF",
+                              background: category.color_value
+                            },
+                            hover: {
+                              color: "#FFF",
+                              background: category.color_value
+                            }
+                          }
                         : null
                     }
                   >
@@ -160,10 +169,8 @@ const Categories = ({
 
 const CategoryShape = PropTypes.shape({
   name: PropTypes.string,
-  theme: PropTypes.shape({
-    background: PropTypes.string,
-    color: PropTypes.string
-  })
+  color_id: PropTypes.string,
+  color_value: PropTypes.string
 });
 
 Categories.propTypes = {

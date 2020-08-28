@@ -71,26 +71,17 @@ export const noControls = () => {
               {
                 id: 1,
                 name: "All",
-                theme: {
-                  background: "#95ABD4",
-                  color: "#FFFFFF"
-                }
+                color_value: "#95ABD4"
               },
               {
                 id: 2,
                 name: "Elements",
-                theme: {
-                  background: "#C88484",
-                  color: "#FFFFFF"
-                }
+                color_value: "#C88484"
               },
               {
                 id: 3,
                 name: "Stickers",
-                theme: {
-                  background: "#A1CCB6",
-                  color: "#FFFFFF"
-                }
+                color_value: "#A1CCB6"
               }
             ],
             "clear"
