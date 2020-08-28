@@ -51,7 +51,15 @@ function fetchTopicsByWidget({
   published,
   internal
 }) {
-  return fetchTopics({ widget, page, baseUrl, basePath, pagesize, published, internal });
+  return fetchTopics({
+    widget,
+    page,
+    baseUrl,
+    basePath,
+    pagesize,
+    published,
+    internal
+  });
 }
 
 function fetchTopicsByHeartFilter({
@@ -120,7 +128,14 @@ function fetchAllTopics({
   published,
   internal
 }) {
-  return fetchTopics({ page, baseUrl, basePath, pagesize, published, internal });
+  return fetchTopics({
+    page,
+    baseUrl,
+    basePath,
+    pagesize,
+    published,
+    internal
+  });
 }
 
 function topicsApiReducer(state, action) {
@@ -207,7 +222,7 @@ const defaultOptions = {
 export default (params = defaultParams, options = defaultOptions) => {
   const [state, dispatch] = React.useReducer(topicsApiReducer, initialState);
 
-  const { heartFilter, favouriteBy, trending, widget, published } = {
+  const { heartFilter, favouriteBy, trending, widget, published, internal } = {
     ...defaultParams,
     ...params
   };
