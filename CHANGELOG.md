@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/rawpixel-public/react-components/compare/v1.4.1...v2.0.0) (2020-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* deletes category hook
+* reset categories position when categories change
+
+### Features
+
+* adds theme prop to button for active and hover state colours ([159ea49](https://github.com/rawpixel-public/react-components/commit/159ea49ef9cb9d0c7aec0c1f8c91b3462c3ceb22))
+* categories can add theme prop on buttons for custom active/hover state ([606017e](https://github.com/rawpixel-public/react-components/commit/606017e5135b2cf3361d95b8d29306f5670e682d))
+
+
+### Bug Fixes
+
+* refactor categories to be based on scroll ([ca90b5c](https://github.com/rawpixel-public/react-components/commit/ca90b5c886816196f47f05459f4411e0a93c3ca4))
+* reset categories position when categories change ([b881c4b](https://github.com/rawpixel-public/react-components/commit/b881c4b25adcb107180d0176bf5843deb9ec7b3d))
+* update category color prop ([43efb9d](https://github.com/rawpixel-public/react-components/commit/43efb9d82a10db51afd563396e7bc2ef54c46a24))
+* update category control styles ([be736b3](https://github.com/rawpixel-public/react-components/commit/be736b30828af09e75de7139c5c4f77bd16d1fd3))
+
+
+* deletes category hook ([c47b858](https://github.com/rawpixel-public/react-components/commit/c47b85856275ed09bacb3eef72454ae769bcb7a8))
+
 ### [1.4.1](https://github.com/rawpixel-public/react-components/compare/v1.4.0...v1.4.1) (2020-09-01)
 
 
