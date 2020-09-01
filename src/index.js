@@ -21,7 +21,6 @@ import WidgetsBar from "./components/Widgets/Bar";
 
 import useTopicsApi from "./hooks/useTopicsApi";
 import useTopicsFiltersApi from "./hooks/useTopicsFiltersApi";
-import useTopicWidgetCategories from "./hooks/useTopicWidgetCategories";
 import useTopicWidgetsApi from "./hooks/useTopicWidgetsApi";
 import useTopicWidgetSettings from "./hooks/useTopicWidgetSettings";
 
@@ -47,7 +46,6 @@ export {
   WidgetTopicGroup,
   useTopicsApi,
   useTopicsFiltersApi,
-  useTopicWidgetCategories,
   useTopicWidgetsApi,
   useTopicWidgetSettings
 };
@@ -74,7 +72,6 @@ export default {
   WidgetTopicGroup,
   useTopicsApi,
   useTopicsFiltersApi,
-  useTopicWidgetCategories,
   useTopicWidgetsApi,
   useTopicWidgetSettings
 };

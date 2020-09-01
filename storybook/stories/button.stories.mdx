@@ -33,7 +33,20 @@ The `disabled` prop can be set to `true` to disable the button (e.g. for loading
 
 <Preview>
   <Story name="button">
-    <Button active={boolean("active", false, "button")} onClick={action("button-click")} disabled={boolean("disabled", false, "button")} loading={boolean("loading", false, "button")} size={select("size", ["xsmall", "small", "medium", "large", "xlarge"], "medium", "button")} style={{width: "200px"}}>{text("children", "Click me!", "button")}</Button>
+    <Button
+        active={boolean("active", false, "button")}
+        onClick={action("button-click")}
+        disabled={boolean("disabled", false, "button")}
+        loading={boolean("loading", false, "button")}
+        size={select("size", ["xsmall", "small", "medium", "large", "xlarge"], "medium", "button")}
+        style={{width: "200px"}}
+        theme={{
+            active: { background: text("active background", "#A1CCB6", "button"), color: text("active color", "#FFFFFF", "button") },
+            hover: { background: text("hover background", "#A3C3D2", "button"), color: text("hover color", "#FFFFFF", "button") }
+        }}
+    >
+        {text("children", "Click me!", "button")}
+    </Button>
   </Story>
 </Preview>
 

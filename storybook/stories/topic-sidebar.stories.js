@@ -16,7 +16,6 @@ import {
   Categories,
   ButtonGroupPlaceholder,
   useTopicsApi,
-  useTopicWidgetCategories,
   useTopicWidgetsApi,
   useTopicWidgetSettings
 } from "@rawpixel-public/react-components";
@@ -30,11 +29,12 @@ const StyledSidebar = styled.div`
   display: flex;
   flex-direction: row;
   padding: 10px 0;
-  width: 280px;
+  width: 290px;
 
   .content {
     width: 200px;
     margin-left: 10px;
+    margin-right: 10px;
   }
 
   .size-button-group ul {
@@ -112,10 +112,10 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [score, setScore] = React.useState(0);
   const [displayScore, setDisplayScore] = React.useState(false);
   const [tagMode, setTagMode] = React.useState(false);
+  const [activeCategory, setActiveCategory] = React.useState();
   const activeWidget = !!widgets.length && widgets[activeFilter];
-  const { categories, setActiveCategory } = useTopicWidgetCategories(
-    activeWidget
-  );
+  const categories = activeWidget ? activeWidget.subCategories : [];
+
   const { topics, loading: topics_loading } = useTopicsApi({
     widget: activeWidget ? activeWidget.id : null
   });
@@ -204,9 +204,17 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         <Categories
           title={activeWidget.title}
           categories={categories}
-          onCategoryClick={(e, category) => setActiveCategory(category)}
+          onCategoryClick={(e, category) =>
+            setActiveCategory(
+              category !== activeCategory ? category : undefined
+            )
+          }
           showClear={!isTeam && activeFilters.length > 0}
-          onClearClick={() => resetActiveFilters()}
+          onClearClick={() => {
+            setActiveCategory(undefined);
+            resetActiveFilters();
+          }}
+          activeCategory={activeCategory}
           loading={loading}
         />
         <TopicsGrid

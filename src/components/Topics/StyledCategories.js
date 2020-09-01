@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ifProp, prop } from "styled-tools";
+import { ifProp } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -50,12 +50,23 @@ export const StyledCategoryList = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   width: 100%;
 
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   li {
-    margin: 0 3px;
-    flex-basis: calc(100% / ${prop("displayedItems", 3)});
+    margin: 0 2px;
+    flex-basis: ${props => {
+      return css`calc(100% / ${props.displayedItems || 3} - 4px);`;
+    }};
+    flex-grow: 1;
+    flex-shrink: 0;
+
     &:first-child {
       margin-left: 0;
     }
@@ -74,10 +85,10 @@ export const StyledHeadingWrapper = styled.div`
 `;
 
 export const StyledControlButton = styled.button`
-  background: none;
+  background: ${palette.topicFilterBackground};
   border: none;
   border-radius: 0.25rem;
-  fill: ${palette.grayLight};
+  fill: ${palette.topicActive};
   font-family: ${fontFamily.base};
   font-size: 10px;
   padding: 0;
@@ -100,7 +111,7 @@ export const StyledControlButton = styled.button`
     }
   }
 
-  .next-button {
+  &.next-button {
     margin-left: 3px;
   }
 
@@ -108,7 +119,7 @@ export const StyledControlButton = styled.button`
     transform: rotate(-90deg);
   }
 
-  .previous-button {
+  &.previous-button {
     margin-right: 3px;
   }
 
