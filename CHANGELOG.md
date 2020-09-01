@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/rawpixel-public/react-components/compare/v1.4.0...v1.4.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* Adds 'internal' topics parameter. Merge pull request [#23](https://github.com/rawpixel-public/react-components/issues/23) from rawpixel-public/internal-topics ([94c302d](https://github.com/rawpixel-public/react-components/commit/94c302defc1b1cbdf88d8ad576d5b083c75cc8d3))
+
 ## [1.4.0](https://github.com/rawpixel-public/react-components/compare/v1.3.5...v1.4.0) (2020-08-27)
 
 
