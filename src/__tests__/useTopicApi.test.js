@@ -28,7 +28,7 @@ describe("useTopicsApi", () => {
     await waitForNextUpdate();
 
     expect(fetchMocks).toHaveBeenCalledWith(
-      `https://api.example.com/api/v1/topics?widget=1&page=1&pagesize=100&published=1`,
+      `https://api.example.com/api/v1/topics?widget=1&page=1&pagesize=100&published=1&internal=0`,
       {
         method: "GET",
         credentials: "include",
