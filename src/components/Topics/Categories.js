@@ -32,12 +32,18 @@ const CategoryButtonsPlaceholder = props => (
   </StyledListWrapper>
 );
 
-const useCarouselPosition = categories => {
-  const [carouselPosition, setCarouselPosition] = React.useState(0);
+const useCarouselPosition = (categories, ref) => {
+  const [carouselPosition, setCarouselPosition] = React.useState({
+    left: 0,
+    max: 0
+  });
 
   React.useEffect(() => {
-    setCarouselPosition(0);
-  }, [categories]);
+    if (ref.current) {
+      ref.current.scrollLeft = 0;
+      setCarouselPosition({ left: 0, max: ref.current.scrollLeftMax });
+    }
+  }, [categories, ref]);
 
   return [carouselPosition, setCarouselPosition];
 };
@@ -60,8 +66,10 @@ const Categories = ({
   displayedItems = 3,
   ...props
 }) => {
+  const carouselRef = React.useRef();
   const [carouselPosition, setCarouselPosition] = useCarouselPosition(
-    categories
+    categories,
+    carouselRef
   );
 
   const categoryClickHandler = (event, category) => {
@@ -70,10 +78,54 @@ const Categories = ({
     }
   };
 
+  const handlePreviousClick = () => {
+    const itemElement = carouselRef.current.children[0];
+    if (itemElement) {
+      const rect = itemElement.getBoundingClientRect();
+      const newLeft = carouselRef.current.scrollLeft - rect.width - 6;
+      if (newLeft > carouselRef.current.scrollLeftMax) {
+        carouselRef.current.scrollLeft = carouselRef.current.scrollLeftMax;
+      } else {
+        carouselRef.current.scrollLeft = newLeft;
+      }
+      setCarouselPosition({
+        left: carouselRef.current.scrollLeft,
+        max: carouselRef.current.scrollLeftMax
+      });
+    }
+  };
+
+  const handleNextClick = () => {
+    const itemElement = carouselRef.current.children[0];
+    if (itemElement) {
+      const rect = itemElement.getBoundingClientRect();
+      const newLeft = carouselRef.current.scrollLeft + rect.width + 6;
+      if (newLeft > carouselRef.current.scrollLeftMax) {
+        carouselRef.current.scrollLeft = carouselRef.current.scrollLeftMax;
+      } else {
+        carouselRef.current.scrollLeft = newLeft;
+      }
+
+      setCarouselPosition({
+        left: carouselRef.current.scrollLeft,
+        max: carouselRef.current.scrollLeftMax
+      });
+    }
+  };
+
+  const handleScroll = e => {
+    setCarouselPosition({
+      ...carouselPosition,
+      left: e.currentTarget.scrollLeft
+    });
+  };
+
   // Number of categories required before previous/next controls are disabled.
   const minimumNumberOfCarouselItems = displayedItems + 1;
   const showControls = categories.length >= minimumNumberOfCarouselItems;
   const hasCategories = !!categories.length;
+  const showPrevious = showControls && carouselPosition.left > 0;
+  const showNext = showControls && carouselPosition.left < carouselPosition.max;
 
   return (
     <StyledCategoriesWrapper
@@ -102,65 +154,65 @@ const Categories = ({
       )}
       {hasCategories && (
         <StyledListWrapper>
-          {showControls && carouselPosition > 0 && (
+          {showPrevious && (
             <StyledControlButton
               className="previous-button"
               data-testid="previous"
               aria-label="Previous"
-              onClick={() => setCarouselPosition(carouselPosition - 1)}
+              onClick={handlePreviousClick}
               disabled={carouselPosition === 0 && "disabled"}
             >
               <Chevron className="previous-icon" />
             </StyledControlButton>
           )}
-          <StyledCategoryList displayedItems={displayedItems}>
-            {categories
-              .slice(carouselPosition, carouselPosition + displayedItems)
-              .map((category, index) => (
-                <li key={index}>
-                  <Button
-                    size="xsmall"
-                    onClick={e => categoryClickHandler(e, category)}
-                    active={isActive(category, activeCategory)}
-                    theme={
-                      category.color_value
-                        ? {
-                            active: {
-                              color: "#FFF",
-                              background: category.color_value
-                            },
-                            hover: {
-                              color: "#FFF",
-                              background: category.color_value
-                            }
+          <StyledCategoryList
+            displayedItems={displayedItems}
+            ref={carouselRef}
+            onScroll={handleScroll}
+            showPrevious={showPrevious}
+            showNext={showNext}
+          >
+            {categories.map((category, index) => (
+              <li key={index}>
+                <Button
+                  size="xsmall"
+                  onClick={e => categoryClickHandler(e, category)}
+                  active={isActive(category, activeCategory)}
+                  theme={
+                    category.color_value
+                      ? {
+                          active: {
+                            color: "#FFF",
+                            background: category.color_value
+                          },
+                          hover: {
+                            color: "#FFF",
+                            background: category.color_value
                           }
-                        : null
-                    }
-                  >
-                    {category.name}
-                  </Button>
-                </li>
-              ))}
+                        }
+                      : null
+                  }
+                >
+                  {category.name}
+                </Button>
+              </li>
+            ))}
           </StyledCategoryList>
-          {showControls &&
-            !(
-              categories.length < minimumNumberOfCarouselItems ||
-              carouselPosition === categories.length - displayedItems
-            ) && (
-              <StyledControlButton
-                className="next-button"
-                data-testid="next"
-                aria-label="Next"
-                onClick={() => setCarouselPosition(carouselPosition + 1)}
-                disabled={
-                  (categories.length < minimumNumberOfCarouselItems ||
-                    carouselPosition === categories.length - displayedItems) &&
-                  "disabled"
-                }
-              >
-                <Chevron className="next-icon" />
-              </StyledControlButton>
-            )}
+          {showNext && (
+            <StyledControlButton
+              className="next-button"
+              data-testid="next"
+              aria-label="Next"
+              onClick={handleNextClick}
+              disabled={
+                (categories.length < minimumNumberOfCarouselItems ||
+                  carouselPosition.left === carouselPosition.max) &&
+                "disabled"
+              }
+            >
+              <Chevron className="next-icon" />
+            </StyledControlButton>
+          )}
         </StyledListWrapper>
       )}
     </StyledCategoriesWrapper>

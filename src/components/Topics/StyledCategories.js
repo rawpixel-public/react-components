@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ifProp, prop } from "styled-tools";
+import { ifProp } from "styled-tools";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
@@ -50,12 +50,23 @@ export const StyledCategoryList = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   width: 100%;
 
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   li {
-    margin: 0 3px;
-    flex-basis: calc(100% / ${prop("displayedItems", 3)});
+    margin: 0 2px;
+    flex-basis: ${props => {
+      return css`calc(100% / ${props.displayedItems || 3} - 4px);`;
+    }};
+    flex-grow: 1;
+    flex-shrink: 0;
+
     &:first-child {
       margin-left: 0;
     }

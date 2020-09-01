@@ -16,7 +16,7 @@ export const controls = () => {
     <Centered style={{ background: "#F9F9F9" }}>
       <div
         style={{
-          width: select("width", ["200px", "300px"], "200px"),
+          width: select("width", ["190px", "235px", "300px"], "190px"),
           overflow: "hidden"
         }}
       >

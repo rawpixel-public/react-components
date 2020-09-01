@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  render,
-  fireEvent,
-  queryByTestId,
-  queryByText
-} from "@testing-library/react";
+import { render, fireEvent, queryByTestId } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { Categories as TopicCategories } from "../index";
@@ -84,48 +79,6 @@ describe("topic categories", () => {
     );
 
     expect(myFn).toHaveBeenCalled();
-  });
-
-  it("should show 'next' control when there are more categories than visible space", async () => {
-    const categories = [
-      {
-        name: "All",
-        visible: true
-      },
-      {
-        name: "Elements",
-        visible: true
-      },
-      {
-        name: "Stickers",
-        visible: true
-      },
-      {
-        name: "Graphics",
-        visible: true
-      }
-    ].map((category, index) => ({ ...category, id: index }));
-    const { container, getByTestId } = render(
-      <TopicCategories categories={categories} />
-    );
-
-    expect(queryByTestId(container, "previous")).not.toBeInTheDocument();
-    expect(getByTestId("next")).not.toHaveAttribute("disabled");
-    expect(queryByText(container, "Stickers")).toBeInTheDocument();
-    expect(queryByText(container, "Graphics")).not.toBeInTheDocument();
-
-    fireEvent(
-      getByTestId("next"),
-      new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true
-      })
-    );
-
-    expect(getByTestId("previous")).not.toHaveAttribute("disabled");
-    expect(queryByTestId(container, "next")).not.toBeInTheDocument();
-    expect(queryByText(container, "Graphics")).toBeInTheDocument();
-    expect(queryByText(container, "All")).not.toBeInTheDocument();
   });
 
   it("should not show controls when not enough visible categories", async () => {
