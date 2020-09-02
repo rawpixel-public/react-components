@@ -127,6 +127,14 @@ const Categories = ({
   const showPrevious = showControls && carouselPosition.left > 0;
   const showNext = showControls && carouselPosition.left < carouselPosition.max;
 
+  // Position scroll at the end when the 'next' control disappears.
+  React.useEffect(() => {
+    const el = carouselRef.current;
+    if (el && showPrevious && !showNext && el.scrollLeft < el.scrollLeftMax) {
+      el.scrollLeft = el.scrollLeftMax;
+    }
+  }, [showPrevious, showNext]);
+
   return (
     <StyledCategoriesWrapper
       hasCategories={hasCategories}
