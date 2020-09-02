@@ -72,6 +72,13 @@ const Categories = ({
     carouselRef
   );
 
+  // Number of categories required before previous/next controls are disabled.
+  const minimumNumberOfCarouselItems = displayedItems + 1;
+  const showControls = categories.length >= minimumNumberOfCarouselItems;
+  const hasCategories = !!categories.length;
+  const showPrevious = showControls && carouselPosition.left > 0;
+  const showNext = showControls && carouselPosition.left < carouselPosition.max;
+
   const categoryClickHandler = (event, category) => {
     if (typeof onCategoryClick === "function") {
       onCategoryClick(event, category);
@@ -79,10 +86,15 @@ const Categories = ({
   };
 
   const handlePreviousClick = () => {
-    const itemElement = carouselRef.current.children[0];
+    const children = carouselRef.current.children || [];
+    const index = showPrevious && showNext ? 1 : 0;
+    const itemElement = children[index];
     if (itemElement) {
       const rect = itemElement.getBoundingClientRect();
-      const newLeft = carouselRef.current.scrollLeft - rect.width - 6;
+      const style = window.getComputedStyle(itemElement);
+      const margin =
+        parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+      const newLeft = carouselRef.current.scrollLeft - rect.width - margin;
       if (newLeft > carouselRef.current.scrollLeftMax) {
         carouselRef.current.scrollLeft = carouselRef.current.scrollLeftMax;
       } else {
@@ -96,10 +108,15 @@ const Categories = ({
   };
 
   const handleNextClick = () => {
-    const itemElement = carouselRef.current.children[0];
+    const children = carouselRef.current.children || [];
+    const index = showPrevious && showNext ? 1 : 0;
+    const itemElement = children[index];
     if (itemElement) {
       const rect = itemElement.getBoundingClientRect();
-      const newLeft = carouselRef.current.scrollLeft + rect.width + 6;
+      const style = window.getComputedStyle(itemElement);
+      const margin =
+        parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+      const newLeft = carouselRef.current.scrollLeft + rect.width + margin;
       if (newLeft > carouselRef.current.scrollLeftMax) {
         carouselRef.current.scrollLeft = carouselRef.current.scrollLeftMax;
       } else {
@@ -120,12 +137,13 @@ const Categories = ({
     });
   };
 
-  // Number of categories required before previous/next controls are disabled.
-  const minimumNumberOfCarouselItems = displayedItems + 1;
-  const showControls = categories.length >= minimumNumberOfCarouselItems;
-  const hasCategories = !!categories.length;
-  const showPrevious = showControls && carouselPosition.left > 0;
-  const showNext = showControls && carouselPosition.left < carouselPosition.max;
+  // Position scroll at the end when the 'next' control disappears.
+  React.useEffect(() => {
+    const el = carouselRef.current;
+    if (el && showPrevious && !showNext && el.scrollLeft < el.scrollLeftMax) {
+      el.scrollLeft = el.scrollLeftMax;
+    }
+  }, [showPrevious, showNext]);
 
   return (
     <StyledCategoriesWrapper
@@ -153,7 +171,7 @@ const Categories = ({
         <CategoryButtonsPlaceholder data-testid="category-buttons-placeholder" />
       )}
       {hasCategories && (
-        <StyledListWrapper>
+        <StyledListWrapper showPrevious={showPrevious} showNext={showNext}>
           {showPrevious && (
             <StyledControlButton
               className="previous-button"
@@ -162,7 +180,7 @@ const Categories = ({
               onClick={handlePreviousClick}
               disabled={carouselPosition === 0 && "disabled"}
             >
-              <Chevron className="previous-icon" />
+              <Chevron className="previous-icon" strokeWidth={64} />
             </StyledControlButton>
           )}
           <StyledCategoryList
@@ -210,7 +228,7 @@ const Categories = ({
                 "disabled"
               }
             >
-              <Chevron className="next-icon" />
+              <Chevron className="next-icon" strokeWidth={64} />
             </StyledControlButton>
           )}
         </StyledListWrapper>
