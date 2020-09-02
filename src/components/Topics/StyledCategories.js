@@ -34,10 +34,15 @@ export const StyledCategoriesWrapper = styled.div`
 `;
 
 export const StyledListWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
+  display: grid;
+  grid-template-columns: ${ifProp("showPrevious", "10px", 0)} auto ${ifProp(
+      "showNext",
+      "10px",
+      0
+    )};
+  grid-template-rows: auto;
+  grid-template-areas: "previous categories next";
+  grid-column-gap: 2px;
 
   &.loading {
     margin-bottom: 10px;
@@ -45,11 +50,13 @@ export const StyledListWrapper = styled.div`
 `;
 
 export const StyledCategoryList = styled.ul`
+  grid-area: categories;
   display: flex;
   flex-direction: row;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  place-self: center;
   overflow-x: scroll;
   overflow-y: hidden;
   width: 100%;
@@ -62,7 +69,7 @@ export const StyledCategoryList = styled.ul`
   li {
     margin: 0 2px;
     flex-basis: ${props => {
-      return css`calc(100% / ${props.displayedItems || 3} - 4px);`;
+      return css`calc(100% / ${props.displayedItems || 3} - 3px);`;
     }};
     flex-grow: 1;
     flex-shrink: 0;
@@ -112,18 +119,20 @@ export const StyledControlButton = styled.button`
   }
 
   &.next-button {
-    margin-left: 3px;
+    grid-area: next;
   }
 
   .next-icon {
     transform: rotate(-90deg);
+    height: 8px;
   }
 
   &.previous-button {
-    margin-right: 3px;
+    grid-area: previous;
   }
 
   .previous-icon {
     transform: rotate(90deg);
+    height: 8px;
   }
 `;
