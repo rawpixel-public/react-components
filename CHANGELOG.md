@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/rawpixel-public/react-components/compare/v2.0.0...v2.0.1) (2020-09-02)
+
+
+### Bug Fixes
+
+* reposition categories when reaching the end of the scrolled list ([7680c8f](https://github.com/rawpixel-public/react-components/commit/7680c8f4cc3b037ae8ea947398c7543f1c89a064))
+* tweak categories spacing ([4357207](https://github.com/rawpixel-public/react-components/commit/43572078461a1ca61ffe51119f9880fb8d7c036f))
+
 ## [2.0.0](https://github.com/rawpixel-public/react-components/compare/v1.4.1...v2.0.0) (2020-09-01)
 
 
