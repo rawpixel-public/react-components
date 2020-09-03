@@ -32,6 +32,8 @@ const CategoryButtonsPlaceholder = props => (
   </StyledListWrapper>
 );
 
+const getLeftMax = el => el.scrollLeftMax || el.scrollWidth - el.clientWidth;
+
 const useCarouselPosition = (categories, ref) => {
   const [carouselPosition, setCarouselPosition] = React.useState({
     left: 0,
@@ -41,7 +43,7 @@ const useCarouselPosition = (categories, ref) => {
   React.useEffect(() => {
     if (ref.current) {
       ref.current.scrollLeft = 0;
-      setCarouselPosition({ left: 0, max: ref.current.scrollLeftMax });
+      setCarouselPosition({ left: 0, max: getLeftMax(ref.current) });
     }
   }, [categories, ref]);
 
@@ -95,14 +97,15 @@ const Categories = ({
       const margin =
         parseFloat(style.marginLeft) + parseFloat(style.marginRight);
       const newLeft = carouselRef.current.scrollLeft - rect.width - margin;
-      if (newLeft > carouselRef.current.scrollLeftMax) {
-        carouselRef.current.scrollLeft = carouselRef.current.scrollLeftMax;
+      const leftMax = getLeftMax(carouselRef.current);
+      if (newLeft > leftMax) {
+        carouselRef.current.scrollLeft = leftMax;
       } else {
         carouselRef.current.scrollLeft = newLeft;
       }
       setCarouselPosition({
         left: carouselRef.current.scrollLeft,
-        max: carouselRef.current.scrollLeftMax
+        max: leftMax
       });
     }
   };
@@ -117,15 +120,16 @@ const Categories = ({
       const margin =
         parseFloat(style.marginLeft) + parseFloat(style.marginRight);
       const newLeft = carouselRef.current.scrollLeft + rect.width + margin;
-      if (newLeft > carouselRef.current.scrollLeftMax) {
-        carouselRef.current.scrollLeft = carouselRef.current.scrollLeftMax;
+      const leftMax = getLeftMax(carouselRef.current);
+      if (newLeft > leftMax) {
+        carouselRef.current.scrollLeft = leftMax;
       } else {
         carouselRef.current.scrollLeft = newLeft;
       }
 
       setCarouselPosition({
         left: carouselRef.current.scrollLeft,
-        max: carouselRef.current.scrollLeftMax
+        max: leftMax
       });
     }
   };
@@ -140,8 +144,11 @@ const Categories = ({
   // Position scroll at the end when the 'next' control disappears.
   React.useEffect(() => {
     const el = carouselRef.current;
-    if (el && showPrevious && !showNext && el.scrollLeft < el.scrollLeftMax) {
-      el.scrollLeft = el.scrollLeftMax;
+    if (!el) return;
+
+    const leftMax = getLeftMax(el);
+    if (showPrevious && !showNext && el.scrollLeft < leftMax) {
+      el.scrollLeft = leftMax;
     }
   }, [showPrevious, showNext]);
 
