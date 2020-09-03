@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/rawpixel-public/react-components/compare/v2.0.1...v2.0.2) (2020-09-03)
+
+
+### Bug Fixes
+
+* add fallback for Element.scrollLeftMax prop in categories component ([5b6ad0b](https://github.com/rawpixel-public/react-components/commit/5b6ad0b3291dc99f921321b2f6cde720125416f7))
+
 ### [2.0.1](https://github.com/rawpixel-public/react-components/compare/v2.0.0...v2.0.1) (2020-09-02)
 
 
