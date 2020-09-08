@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/rawpixel-public/react-components/compare/v2.0.2...v2.0.3) (2020-09-08)
+
+
+### Bug Fixes
+
+* remove extra margin causing overlapping button ([3af8b9b](https://github.com/rawpixel-public/react-components/commit/3af8b9bb6ce6abde71b4c88fab4cfbfe5d60e848))
+
 ### [2.0.2](https://github.com/rawpixel-public/react-components/compare/v2.0.1...v2.0.2) (2020-09-03)
 
 
