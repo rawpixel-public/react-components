@@ -61,9 +61,10 @@ const ImageButtonGrid = ({
         )
       );
       const rowMargin = 10;
-      const visibleHeight =
-        visibleRowHeights.reduce((acc, cur) => acc + cur + rowMargin, 0) +
-        rowMargin;
+      const visibleHeight = visibleRowHeights.reduce(
+        (acc, cur) => acc + cur + rowMargin,
+        0
+      );
 
       setHeight({
         ...height,
