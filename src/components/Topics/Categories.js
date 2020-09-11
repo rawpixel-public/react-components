@@ -108,15 +108,21 @@ const Categories = ({
   const showNext = showControls && carouselPosition.left < carouselPosition.max;
 
   const categoryClickHandler = (event, category) => {
+    if (typeof onCategoryClick === "function") {
+      const res = onCategoryClick(event, category);
+      if (res === false) {
+        return;
+      }
+    }
+
     const listElement = event.currentTarget.parentElement;
     categoryRef.current = listElement;
 
-    if (typeof listElement.scrollIntoView === "function") {
-      listElement.scrollIntoView();
-    }
-
-    if (typeof onCategoryClick === "function") {
-      onCategoryClick(event, category);
+    const items = calculateChildrenPositions(carouselRef.current);
+    const item = items.find(i => i.el === listElement);
+    if (item && item.isPartlyVisible && !item.isFullyVisible) {
+      carouselRef.current.scrollLeft = item.start;
+      setCarouselPosition({ ...carouselPosition, left: item.start });
     }
   };
 
@@ -199,8 +205,6 @@ const Categories = ({
       const item = items.find(i => i.el === itemEl);
       if (item) {
         wrapperEl.scrollLeft = item.start;
-      } else {
-        itemEl.scrollIntoView();
       }
     }
   }, [showPrevious, showNext]);
