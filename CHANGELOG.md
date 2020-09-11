@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.4](https://github.com/rawpixel-public/react-components/compare/v2.0.3...v2.0.4) (2020-09-11)
+
+
+### Bug Fixes
+
+* scroll clicked category into view ([d9d1b3e](https://github.com/rawpixel-public/react-components/commit/d9d1b3e65d8f55df541ad2fee104d81f01c945e6))
+* update categories controls to try and ensure whole buttons are visible when navigating/scrolling ([5434a0f](https://github.com/rawpixel-public/react-components/commit/5434a0f6b2eb443ac4a39aa98b55766aab7fcfa4))
+
 ### [2.0.3](https://github.com/rawpixel-public/react-components/compare/v2.0.2...v2.0.3) (2020-09-08)
 
 
