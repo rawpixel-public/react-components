@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://github.com/rawpixel-public/react-components/compare/v2.0.4...v2.0.5) (2020-09-11)
+
+
+### Bug Fixes
+
+* refactor to remove use of Element.scrollIntoView ([ee43cff](https://github.com/rawpixel-public/react-components/commit/ee43cff53d8a20fc28aff0faca86e19961608642))
+
 ### [2.0.4](https://github.com/rawpixel-public/react-components/compare/v2.0.3...v2.0.4) (2020-09-11)
 
 
