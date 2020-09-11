@@ -57,6 +57,31 @@ const isActive = (category, active) => {
   return category === active;
 };
 
+const getElementTotalWidth = el => {
+  const rect = el.getBoundingClientRect();
+  const style = window.getComputedStyle(el);
+  const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+  return Math.floor(rect.width + margin);
+};
+
+const calculateChildrenPositions = wrapperEl => {
+  const scrollLeft = wrapperEl.scrollLeft;
+  const scrollLeftEnd = scrollLeft + wrapperEl.getBoundingClientRect().width;
+
+  return Array.from(wrapperEl.children).map((el, index, arr) => {
+    const slice = arr
+      .slice(0, index + 1)
+      .reduce((total, cur) => total + getElementTotalWidth(cur), 0);
+    const totalWidth = getElementTotalWidth(el);
+    const end = slice;
+    const start = slice - totalWidth;
+    const isFullyVisible = start >= scrollLeft && end <= scrollLeftEnd;
+    const isPartlyVisible =
+      (start >= scrollLeft && start <= scrollLeftEnd) || end >= scrollLeft;
+    return { el, totalWidth, end, start, isFullyVisible, isPartlyVisible };
+  });
+};
+
 const Categories = ({
   activeCategory = null,
   categories = [],
@@ -97,15 +122,22 @@ const Categories = ({
 
   const handlePreviousClick = () => {
     categoryRef.current = undefined;
-    const children = carouselRef.current.children || [];
-    const index = showPrevious && showNext ? 1 : 0;
-    const itemElement = children[index];
+
+    const items = calculateChildrenPositions(carouselRef.current);
+    const itemElement =
+      items.find(
+        ({ isPartlyVisible, isFullyVisible }) =>
+          isPartlyVisible && !isFullyVisible
+      ) || items.find(({ isFullyVisible }) => isFullyVisible);
+
+    if (itemElement.isPartlyVisible) {
+      categoryRef.current = itemElement.el;
+    }
+
     if (itemElement) {
-      const rect = itemElement.getBoundingClientRect();
-      const style = window.getComputedStyle(itemElement);
-      const margin =
-        parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-      const newLeft = carouselRef.current.scrollLeft - rect.width - margin;
+      const newLeft = itemElement.isPartlyVisible
+        ? itemElement.start
+        : carouselRef.current.scrollLeft - itemElement.totalWidth;
       const leftMax = getLeftMax(carouselRef.current);
       if (newLeft > leftMax) {
         carouselRef.current.scrollLeft = leftMax;
@@ -121,16 +153,14 @@ const Categories = ({
 
   const handleNextClick = () => {
     categoryRef.current = undefined;
-    const children = carouselRef.current.children || [];
-    const index = showPrevious && showNext ? 1 : 0;
-    const itemElement = children[index];
+
+    const items = calculateChildrenPositions(carouselRef.current);
+    const itemElement = items.find(({ isFullyVisible }) => isFullyVisible);
+
     if (itemElement) {
-      const rect = itemElement.getBoundingClientRect();
-      const style = window.getComputedStyle(itemElement);
-      const margin =
-        parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-      const newLeft = carouselRef.current.scrollLeft + rect.width + margin;
+      const newLeft = carouselRef.current.scrollLeft + itemElement.totalWidth;
       const leftMax = getLeftMax(carouselRef.current);
+
       if (newLeft > leftMax) {
         carouselRef.current.scrollLeft = leftMax;
       } else {
@@ -163,8 +193,15 @@ const Categories = ({
       }
     }
 
+    // If a previous/next control appeared, recalculate the item position.
     if (itemEl) {
-      itemEl.scrollIntoView();
+      const items = calculateChildrenPositions(wrapperEl);
+      const item = items.find(i => i.el === itemEl);
+      if (item) {
+        wrapperEl.scrollLeft = item.start;
+      } else {
+        itemEl.scrollIntoView();
+      }
     }
   }, [showPrevious, showNext]);
 
