@@ -69,6 +69,7 @@ const Categories = ({
   ...props
 }) => {
   const carouselRef = React.useRef();
+  const categoryRef = React.useRef();
   const [carouselPosition, setCarouselPosition] = useCarouselPosition(
     categories,
     carouselRef
@@ -82,12 +83,20 @@ const Categories = ({
   const showNext = showControls && carouselPosition.left < carouselPosition.max;
 
   const categoryClickHandler = (event, category) => {
+    const listElement = event.currentTarget.parentElement;
+    categoryRef.current = listElement;
+
+    if (typeof listElement.scrollIntoView === "function") {
+      listElement.scrollIntoView();
+    }
+
     if (typeof onCategoryClick === "function") {
       onCategoryClick(event, category);
     }
   };
 
   const handlePreviousClick = () => {
+    categoryRef.current = undefined;
     const children = carouselRef.current.children || [];
     const index = showPrevious && showNext ? 1 : 0;
     const itemElement = children[index];
@@ -111,6 +120,7 @@ const Categories = ({
   };
 
   const handleNextClick = () => {
+    categoryRef.current = undefined;
     const children = carouselRef.current.children || [];
     const index = showPrevious && showNext ? 1 : 0;
     const itemElement = children[index];
@@ -143,12 +153,18 @@ const Categories = ({
 
   // Position scroll at the end when the 'next' control disappears.
   React.useEffect(() => {
-    const el = carouselRef.current;
-    if (!el) return;
+    const wrapperEl = carouselRef.current;
+    const itemEl = categoryRef.current;
 
-    const leftMax = getLeftMax(el);
-    if (showPrevious && !showNext && el.scrollLeft < leftMax) {
-      el.scrollLeft = leftMax;
+    if (wrapperEl) {
+      const leftMax = getLeftMax(wrapperEl);
+      if (showPrevious && !showNext && wrapperEl.scrollLeft < leftMax) {
+        wrapperEl.scrollLeft = leftMax;
+      }
+    }
+
+    if (itemEl) {
+      itemEl.scrollIntoView();
     }
   }, [showPrevious, showNext]);
 
