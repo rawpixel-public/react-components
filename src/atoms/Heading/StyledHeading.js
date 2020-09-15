@@ -10,7 +10,7 @@ export const StyledHeading = styled.h1`
   color: ${darkGray};
   font-family: ${fontFamily.base};
   font-weight: normal;
-  font-size: ${switchProp("as", { h1: "32px", h2: "24px", h3: "16px" })};
+  font-size: ${switchProp("as", { h1: "32px", h2: "24px", h3: "18px" })};
   margin: 0.5em 0;
   padding: 0;
 `;
