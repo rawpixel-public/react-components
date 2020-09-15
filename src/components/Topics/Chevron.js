@@ -4,8 +4,8 @@ import { palette } from "../../utils/cssVars";
 
 const Chevron = ({
   className,
-  fill = palette.topicActive,
-  stroke = palette.topicActive,
+  fill = palette.grayDarkest,
+  stroke = palette.grayDarkest,
   strokeWidth = 64
 }) => (
   <svg
