@@ -4,17 +4,11 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import {
   Button,
-  LikesButton,
-  ExclusiveButton,
   HorizontalRule,
-  ImageButton,
-  ImageButtonGrid,
-  SizeButton,
   WidgetsBar,
   TopicsGrid,
   ButtonGroupList,
   Categories,
-  ButtonGroupPlaceholder,
   useTopicsApi,
   useTopicWidgetsApi
 } from "@rawpixel-public/react-components";
@@ -27,7 +21,7 @@ const StyledSidebar = styled.div`
   border-radius: 0.25em;
   display: flex;
   flex-direction: row;
-  padding: 10px 0;
+  padding: 0;
   width: 290px;
 
   .content {
@@ -38,6 +32,10 @@ const StyledSidebar = styled.div`
 
   .size-button-group ul {
     align-items: flex-start;
+  }
+
+  .side {
+    background: #EBEBEB;
   }
 `;
 
@@ -62,40 +60,6 @@ const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
     ))}
   </ButtonGroupList>
 );
-
-const ButtonComponents = {
-  $exclusive: ExclusiveButton,
-  $likes: LikesButton
-};
-
-const FilterButtonGroupMain = ({
-  filters = [],
-  onFilterClick,
-  itemsPerRow = 2
-}) => {
-  const published = filters.filter(filter => filter.published);
-  const rowSize = published.length > 1 ? itemsPerRow : 1;
-
-  return (
-    <ButtonGroupList itemsPerRow={rowSize}>
-      {published.map((filter, index) => {
-        const Component = ButtonComponents[filter.tag] || Button;
-        return (
-          <Component
-            key={index}
-            as={filter.to ? Link : filter.href ? "a" : "button"}
-            active={filter.active}
-            disabled={filter.disabled}
-            onClick={e => onFilterClick && onFilterClick(e, filter)}
-            to={filter.to}
-          >
-            {filter.name}
-          </Component>
-        );
-      })}
-    </ButtonGroupList>
-  );
-};
 
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
@@ -127,6 +91,12 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const handleFilterClick = (e, filter) => {
     setActiveFilter(widgets.indexOf(filter));
   };
+
+  const { websiteFilters = {}, damFilters = {} } = activeWidget || {};
+  const filterGroups =
+    target === "website"
+      ? websiteFilters.filterGroups || []
+      : damFilters[catalog].filterGroups || [];
 
   return (
     <StyledSidebar isDAM={isTeam}>
@@ -225,9 +195,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <SidebarHorizontalRule />
+        {filterGroups.map(group => (
+          <React.Fragment>
+            <FilterButtonGroup filters={group.filters} />
+          </React.Fragment>
+        ))}
       </div>
 
-      <div>
+      <div className="side">
         <WidgetsBar
           widgets={widgets}
           onFilterClick={handleFilterClick}
