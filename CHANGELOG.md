@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.6](https://github.com/rawpixel-public/react-components/compare/v2.0.5...v2.0.6) (2020-09-16)
+
+
+### Bug Fixes
+
+* adds checks for wrapper element before accessing property ([607cfdd](https://github.com/rawpixel-public/react-components/commit/607cfdd808418c16ec702231093e8a8db5b2ea0e))
+* update category control style ([7fd4e7f](https://github.com/rawpixel-public/react-components/commit/7fd4e7fcafa5bf5dfa1c8f5238faff3f0594f53d))
+* update h3 font size ([c731c21](https://github.com/rawpixel-public/react-components/commit/c731c216f0a765ca7217025bbad4fdec83ca218a))
+* update horizontal rule style ([271ff54](https://github.com/rawpixel-public/react-components/commit/271ff5482bb53742f59f88f4b5e069aca9719cb9))
+* update plus button styling ([94c127b](https://github.com/rawpixel-public/react-components/commit/94c127bc560f717704141f85bc0fbe4e6184d63e))
+* update topic icon styles to use gradient style on active and hover state ([0e6b15c](https://github.com/rawpixel-public/react-components/commit/0e6b15cd5fc1e2c481fd7d24f6f4435cac84bcd6))
+* update widget colours ([ded8732](https://github.com/rawpixel-public/react-components/commit/ded87325ed5456a9f43365f8f80eef4ccdccfad4))
+
 ### [2.0.5](https://github.com/rawpixel-public/react-components/compare/v2.0.4...v2.0.5) (2020-09-11)
 
 
