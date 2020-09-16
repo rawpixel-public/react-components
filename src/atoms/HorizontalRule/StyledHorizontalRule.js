@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHorizontalRule = styled.hr`
-  background: #cfcfcf;
+  background: #ccc;
   border: none;
   box-sizing: content-box;
   height: 1px;
