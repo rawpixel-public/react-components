@@ -8,10 +8,7 @@ import { palette } from "../../utils/cssVars";
 
 const LikesButton = ({ children, ...props }) => (
   <Button {...props}>
-    <StyledIcon
-      imgSrc={heartSvg}
-      background={`linear-gradient(to left, ${palette.pink}, ${palette.blue})`}
-    />
+    <StyledIcon imgSrc={heartSvg} background={palette.topicGradient} />
     {children && <span className="label">{children}</span>}
   </Button>
 );
