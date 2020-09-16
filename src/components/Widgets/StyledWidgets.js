@@ -39,7 +39,7 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledText = styled.span`
-  color: ${palette.grayMedium};
+  color: ${palette.grayDarkest};
   font-family: ${fontFamily.base};
   font-size: 12px;
   font-weight: ${ifProp("active", "700", "400")};
