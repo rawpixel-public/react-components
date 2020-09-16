@@ -29,8 +29,10 @@ export const palette = {
 
   topicActive: "#5C5C5C",
   topicIconColor: "#F9F9F9",
-  topicButtonBackground: "#CFCFCF",
-  topicFilterBackground: "#EEE"
+  topicButtonBackground: "transparent",
+  topicFilterBackground: "#EEE",
+  topicGradient: "linear-gradient(to right, #8C91F8, #FF35C9)",
+  topicBorderColor: "#4A4A4A"
 };
 
 export const fontFamily = {
