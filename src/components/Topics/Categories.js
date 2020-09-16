@@ -65,6 +65,10 @@ const getElementTotalWidth = el => {
 };
 
 const calculateChildrenPositions = wrapperEl => {
+  if (!wrapperEl) {
+    return [];
+  }
+
   const scrollLeft = wrapperEl.scrollLeft;
   const scrollLeftEnd = scrollLeft + wrapperEl.getBoundingClientRect().width;
 
@@ -200,7 +204,7 @@ const Categories = ({
     }
 
     // If a previous/next control appeared, recalculate the item position.
-    if (itemEl) {
+    if (itemEl && wrapperEl) {
       const items = calculateChildrenPositions(wrapperEl);
       const item = items.find(i => i.el === itemEl);
       if (item) {
