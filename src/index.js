@@ -22,7 +22,6 @@ import WidgetsBar from "./components/Widgets/Bar";
 import useTopicsApi from "./hooks/useTopicsApi";
 import useTopicsFiltersApi from "./hooks/useTopicsFiltersApi";
 import useTopicWidgetsApi from "./hooks/useTopicWidgetsApi";
-import useTopicWidgetSettings from "./hooks/useTopicWidgetSettings";
 
 export {
   Button,
@@ -46,8 +45,7 @@ export {
   WidgetTopicGroup,
   useTopicsApi,
   useTopicsFiltersApi,
-  useTopicWidgetsApi,
-  useTopicWidgetSettings
+  useTopicWidgetsApi
 };
 
 export default {
@@ -72,6 +70,5 @@ export default {
   WidgetTopicGroup,
   useTopicsApi,
   useTopicsFiltersApi,
-  useTopicWidgetsApi,
-  useTopicWidgetSettings
+  useTopicWidgetsApi
 };
