@@ -1,15 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 import Icon from "../../atoms/Icon";
 import {
   StyledTopicButton,
   StyledTitle,
   StyledIcon,
-  StyledTitleWrapper
+  StyledIconWrapper,
+  StyledTitleWrapper,
+  Mask
 } from "./StyledTopic";
 
+const TopicIcon = ({ className, icon, name = "" }) => (
+  <StyledIconWrapper
+    className={classnames("img-wrapper", className)}
+    data-testid={`topic-icon:${name.replace(/\W/gi, "").toLowerCase()}`}
+  >
+    <Mask className="mask" url={icon} />
+  </StyledIconWrapper>
+);
+
+TopicIcon.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.string,
+  name: PropTypes.string
+};
+
 const Topic = ({
+  active,
   icon = "",
   name,
   isTagMode = false,
@@ -70,6 +89,7 @@ const Topic = ({
 
   return (
     <StyledTopicButton
+      active={active ? true : undefined}
       onClick={handleTopicClick}
       disabled={isLoading && "disabled"}
       isTagMode={isTagMode ? true : undefined}
@@ -79,10 +99,15 @@ const Topic = ({
       icon={icon}
       {...props}
     >
-      <Icon loading={isLoading} icon={icon} className="img-wrapper" />
+      {isLoading ? (
+        <Icon loading={isLoading} icon={icon} className="img-wrapper" />
+      ) : (
+        <TopicIcon icon={icon} name={name} />
+      )}
       <StyledTitleWrapper>
         {groupIcon && <StyledIcon icon={groupIcon} />}
         <StyledTitle
+          className={classnames("topic-title", { active })}
           ref={TitleRef}
           isHyphenated={lines.hyphenated}
           isMulti={lines.multi}
@@ -109,7 +134,8 @@ Topic.propTypes = {
     dam_team_tag: PropTypes.string
   }),
   to: PropTypes.string,
-  groupIcon: PropTypes.string
+  groupIcon: PropTypes.string,
+  active: PropTypes.bool
 };
 
 export default Topic;

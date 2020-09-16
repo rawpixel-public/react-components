@@ -92,10 +92,10 @@ export const StyledHeadingWrapper = styled.div`
 `;
 
 export const StyledControlButton = styled.button`
-  background: ${palette.topicFilterBackground};
+  background: none;
   border: none;
   border-radius: 0.25rem;
-  fill: ${palette.topicActive};
+  fill: ${palette.grayDarkest};
   font-family: ${fontFamily.base};
   font-size: 10px;
   padding: 0;
@@ -124,7 +124,9 @@ export const StyledControlButton = styled.button`
 
   .next-icon {
     transform: rotate(-90deg);
-    height: 8px;
+    height: 10px;
+    position: relative;
+    top: 1px;
   }
 
   &.previous-button {
@@ -133,6 +135,6 @@ export const StyledControlButton = styled.button`
 
   .previous-icon {
     transform: rotate(90deg);
-    height: 8px;
+    height: 10px;
   }
 `;

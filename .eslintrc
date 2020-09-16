@@ -26,6 +26,9 @@
     "react/jsx-boolean-value": 0,
 
     // disable to prevent clash with prettier
-    "react/jsx-indent": 0
+    "react/jsx-indent": 0,
+
+    // only warn to allow import of react-inlinesvg
+    "react/jsx-pascal-case": 1
   }
 }

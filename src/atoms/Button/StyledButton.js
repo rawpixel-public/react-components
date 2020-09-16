@@ -4,11 +4,11 @@ import { ifProp, prop, switchProp } from "styled-tools";
 import { fontFamily, palette } from "../../utils/cssVars";
 
 // todo: consolidate website and DAM palette.
-const lighterGray = "#eee";
+const lighterGray = palette.grayLight;
 const lightGray = "#7d7c7c";
 const darkGray = palette.topicActive;
 const activeText = "#f9f9f9";
-const textColor = "#4a4a4a";
+const textColor = palette.grayDarkest;
 
 export const StyledButton = styled.button`
   background: ${ifProp(

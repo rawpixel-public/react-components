@@ -12,11 +12,11 @@ export const palette = {
   grayClouds: "#ecf0f1" /* Lighter Gray that is not dull */,
   grayLighter: "#c8c8c8" /* View mode switcher on normal state */,
   dust: "#A0A0A0" /* Text color when background is white */,
-  grayLight: "#9B9B9B" /* Text color when background is white */,
+  grayLight: "#E8E8E8" /* Button background with dark text */,
   gray: "#545454" /* Headings & bold text */,
   grayDark: "#2B383A" /* Headings & bold text on some cases */,
   grayDarker: "#222" /* Page header bg, referral section bg */,
-  grayDarkest: "#1D2628" /* '#1A1A1A', /* Site Header */,
+  grayDarkest: "#1D1D1D" /* Dark text e.g. with grayLight background */,
   grayMedium: "#4A4A4A",
   grayFullscreenBackground: "#1B1B1B",
   grayAppBars: "#070707",
@@ -29,8 +29,10 @@ export const palette = {
 
   topicActive: "#5C5C5C",
   topicIconColor: "#F9F9F9",
-  topicButtonBackground: "#CFCFCF",
-  topicFilterBackground: "#EEE"
+  topicButtonBackground: "transparent",
+  topicFilterBackground: "#EEE",
+  topicGradient: "linear-gradient(to right, #8C91F8, #FF35C9)",
+  topicBorderColor: "#4A4A4A"
 };
 
 export const fontFamily = {

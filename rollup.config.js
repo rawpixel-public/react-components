@@ -23,7 +23,11 @@ export default {
       plugins: ["external-helpers"]
     }),
     resolve(),
-    commonjs(),
+    commonjs({
+      namedExports: {
+        exenv: ["canUseDOM"]
+      }
+    }),
     postcss({
       plugins: []
     })

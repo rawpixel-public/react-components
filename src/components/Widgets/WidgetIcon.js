@@ -10,12 +10,12 @@ const StyledIcon = styled.div`
   width: 26px;
   margin: auto;
   mask: url(${prop("imgSrc")}) no-repeat center center;
-  background: ${palette.grayMedium};
+  background: ${palette.topicActive};
 
   ${ifProp(
     "active",
     css`
-      background: linear-gradient(to left, ${palette.pink}, ${palette.blue});
+      background: ${palette.topicGradient};
     `
   )};
 `;

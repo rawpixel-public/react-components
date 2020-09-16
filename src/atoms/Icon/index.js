@@ -19,8 +19,8 @@ export const StyledImgWrapper = styled.div`
 
 export const StyledIcon = styled.div`
   display: block;
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
 
   ${props =>
     props.imgSrc &&
@@ -29,12 +29,12 @@ export const StyledIcon = styled.div`
       background-size: contain;
     `};
 
-  margin: 7.5px auto;
+  margin: 5px auto;
 `;
 
 const Icon = ({ loading, icon, className }) => (
   <StyledImgWrapper className={className}>
-    {loading && <DotLoader className="loader" loaderWidth={60} dotSize={10} />}
+    {loading && <DotLoader className="loader" loaderWidth={50} dotSize={8} />}
     <StyledIcon imgSrc={icon} />
   </StyledImgWrapper>
 );

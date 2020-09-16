@@ -4,20 +4,13 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import {
   Button,
-  LikesButton,
-  ExclusiveButton,
   HorizontalRule,
-  ImageButton,
-  ImageButtonGrid,
-  SizeButton,
   WidgetsBar,
   TopicsGrid,
   ButtonGroupList,
   Categories,
-  ButtonGroupPlaceholder,
   useTopicsApi,
-  useTopicWidgetsApi,
-  useTopicWidgetSettings
+  useTopicWidgetsApi
 } from "@rawpixel-public/react-components";
 
 import useTopicWidgetSettingsActiveState from "../hooks/useTopicWidgetSettingsActiveState";
@@ -28,7 +21,7 @@ const StyledSidebar = styled.div`
   border-radius: 0.25em;
   display: flex;
   flex-direction: row;
-  padding: 10px 0;
+  padding: 0;
   width: 290px;
 
   .content {
@@ -39,6 +32,10 @@ const StyledSidebar = styled.div`
 
   .size-button-group ul {
     align-items: flex-start;
+  }
+
+  .side {
+    background: #EBEBEB;
   }
 `;
 
@@ -64,40 +61,6 @@ const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
   </ButtonGroupList>
 );
 
-const ButtonComponents = {
-  $exclusive: ExclusiveButton,
-  $likes: LikesButton
-};
-
-const FilterButtonGroupMain = ({
-  filters = [],
-  onFilterClick,
-  itemsPerRow = 2
-}) => {
-  const published = filters.filter(filter => filter.published);
-  const rowSize = published.length > 1 ? itemsPerRow : 1;
-
-  return (
-    <ButtonGroupList itemsPerRow={rowSize}>
-      {published.map((filter, index) => {
-        const Component = ButtonComponents[filter.tag] || Button;
-        return (
-          <Component
-            key={index}
-            as={filter.to ? Link : filter.href ? "a" : "button"}
-            active={filter.active}
-            disabled={filter.disabled}
-            onClick={e => onFilterClick && onFilterClick(e, filter)}
-            to={filter.to}
-          >
-            {filter.name}
-          </Component>
-        );
-      })}
-    </ButtonGroupList>
-  );
-};
-
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
   const catalog = isTeam
@@ -119,21 +82,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const { topics, loading: topics_loading } = useTopicsApi({
     widget: activeWidget ? activeWidget.id : null
   });
-  const site = isTeam
-    ? isWebsiteCatalog
-      ? "dam-website"
-      : "dam-team"
-    : "website";
-
-  const { main, fileTypes, filters, secondaryFilters } = useTopicWidgetSettings(
-    site,
-    activeWidget
-  );
 
   const {
     activeFilters,
-    setActiveFilters,
-    isFilterActiveMapper,
     resetActiveFilters
   } = useTopicWidgetSettingsActiveState();
 
@@ -141,7 +92,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
     setActiveFilter(widgets.indexOf(filter));
   };
 
-  const handleFilterGroupButtonClick = (e, filter) => setActiveFilters(filter);
+  const { websiteFilters = {}, damFilters = {} } = activeWidget || {};
+  const filterGroups =
+    target === "website"
+      ? websiteFilters.filterGroups || []
+      : damFilters[catalog].filterGroups || [];
 
   return (
     <StyledSidebar isDAM={isTeam}>
@@ -240,95 +195,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <SidebarHorizontalRule />
-        {loading && (
-          <>
-            <ButtonGroupPlaceholder />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {main && !!main.filter(i => i.published).length && (
-          <>
-            <FilterButtonGroupMain
-              filters={main.map(isFilterActiveMapper)}
-              onFilterClick={handleFilterGroupButtonClick}
-            />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {loading && (
-          <>
-            <ButtonGroupPlaceholder hasTitle numberOfItems={5} />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {fileTypes && !!fileTypes.filter(i => i.published).length && (
-          <>
-            <FilterButtonGroup
-              title="File types"
-              filters={fileTypes.map(isFilterActiveMapper)}
-              onFilterClick={handleFilterGroupButtonClick}
-            />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {loading && (
-          <>
-            <ButtonGroupPlaceholder numberOfItems={5} />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {filters && !!filters.filter(i => i.published).length && (
-          <>
-            <FilterButtonGroup
-              filters={filters.map(isFilterActiveMapper)}
-              onFilterClick={handleFilterGroupButtonClick}
-            />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {isTeam &&
-          secondaryFilters &&
-          !!secondaryFilters.filter(i => i.published).length && (
-            <>
-              <ImageButtonGrid
-                viewable={
-                  secondaryFilters.length < 9 ? secondaryFilters.length : 9
-                }
-                defaultWidth={225}
-              >
-                {secondaryFilters
-                  .map(isFilterActiveMapper)
-                  .map((filter, index) => (
-                    <ImageButton
-                      key={index}
-                      icon={filter.icon_url}
-                      title={filter.name}
-                      onClick={e => handleFilterGroupButtonClick(e, filter)}
-                      active={filter.active}
-                    />
-                  ))}
-              </ImageButtonGrid>
-              <SidebarHorizontalRule />
-            </>
-          )}
-        {!isTeam && (
-          <>
-            <ButtonGroupList title="Sizes" className="size-button-group">
-              <SizeButton title="Portrait" height={40} width={30} />
-              <SizeButton title="Landscape" height={30} width={40} />
-              <SizeButton title="Social" height={40} width={40} />
-              <SizeButton title="Banner 2:1" height={20} width={40} />
-              <SizeButton title="Pinterest 2:3" height={45} width={30} />
-              <SizeButton title="Landscape 16:9" height={27} width={48} />
-              <SizeButton title="Story 9:16" height={48} width={27} />
-              <SizeButton title="Banner 3:1" height={15} width={45} />
-              <SizeButton title="Banner 5:7" height={40} width={30} />
-            </ButtonGroupList>
-          </>
-        )}
+        {filterGroups.map(group => (
+          <React.Fragment>
+            <FilterButtonGroup filters={group.filters} />
+          </React.Fragment>
+        ))}
       </div>
 
-      <div>
+      <div className="side">
         <WidgetsBar
           widgets={widgets}
           onFilterClick={handleFilterClick}

@@ -1,10 +1,60 @@
 import styled, { css } from "styled-components";
 
 import { fontFamily, palette } from "../../utils/cssVars";
-import { ifProp, prop } from "styled-tools";
+import { ifNotProp, ifProp, prop } from "styled-tools";
 
 const taggedGreen = "#A1D1B7";
 const taggingGreen = "#95BDAA";
+
+const imgHoverStyles = ({ isTagged, isTagMode, isLoading }) => {
+  if (isLoading) {
+    return;
+  }
+
+  let background = palette.topicGradient;
+  let border = "none";
+  let invert = true;
+
+  if (isTagMode && isTagged) {
+    background = "transparent";
+    border = `1px solid ${palette.topicBorderColor}`;
+    invert = false;
+  } else if (isTagMode) {
+    background = taggedGreen;
+  }
+
+  return css`
+    background: ${background};
+    border: ${border};
+    .mask {
+      background: ${invert ? palette.white : palette.topicBorderColor};
+    }
+  `;
+};
+
+const imgBackgroundStyles = ({ active, isTagged, isTagMode }) => {
+  let background = palette.topicButtonBackground;
+  let border = `1px solid ${palette.topicBorderColor}`;
+  let invert = false;
+
+  if (isTagged && isTagMode) {
+    background = taggedGreen;
+    border = "none";
+    invert = true;
+  } else if (active) {
+    background = palette.topicGradient;
+    border = "none";
+    invert = true;
+  }
+
+  return css`
+    background: ${background};
+    border: ${border};
+    .mask {
+      background: ${invert ? palette.white : palette.topicBorderColor};
+    }
+  `;
+};
 
 export const StyledTopicButton = styled.button`
   background: none;
@@ -28,30 +78,21 @@ export const StyledTopicButton = styled.button`
       cursor: pointer;
 
       .img-wrapper {
-        background: ${props =>
-          props.isTagged
-            ? palette.grayLighter
-            : props.isTagMode
-            ? taggedGreen
-            : palette.grayLight};
+        ${imgHoverStyles};
       }
     }
   }
 
   .img-wrapper {
-    height: 45px;
-    width: 55px;
-    background: ${props =>
-      props.isTagged && props.isTagMode
-        ? taggedGreen
-        : props.active
-        ? palette.topicActive
-        : palette.topicButtonBackground};
-    transition: background-color linear 250ms;
-    > div {
-      height: 30px;
-      width: 30px;
-    }
+    height: 42px;
+    width: 52px;
+    ${ifNotProp(
+      "active",
+      css`
+        border: 1px solid ${palette.topicBorderColor};
+      `
+    )};
+    ${imgBackgroundStyles};
   }
 
   // Showing the loader sets the disabled attr, so we can use this to style
@@ -63,6 +104,7 @@ export const StyledTopicButton = styled.button`
 `;
 
 export const StyledTitle = styled.span`
+  color: ${palette.grayDarkest};
   font-family: ${fontFamily.base};
   font-size: 11px;
   text-align: center;
@@ -107,6 +149,10 @@ export const StyledTitle = styled.span`
       -webkit-box-orient: unset;
       text-align: left;
     `};
+
+  &.active {
+    font-weight: 700;
+  }
 `;
 
 export const StyledIcon = styled.div`
@@ -126,6 +172,36 @@ export const StyledTitleWrapper = styled.div`
   align-content: center;
   align-items: baseline;
   justify-content: center;
-  width: 55px;
+  width: 52px;
   margin: auto;
+`;
+
+export const StyledIconWrapper = styled.div`
+  height: 42px;
+  width: 52px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  svg,
+  img {
+    height: 30px;
+    width: 30px;
+  }
+
+  img[alt] {
+    color: transparent;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+`;
+
+export const Mask = styled.div`
+  mask: url(${prop("url")});
+  height: 30px;
+  width: 30px;
+  background: ${palette.topicBorderColor};
 `;
