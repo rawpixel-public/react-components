@@ -16,8 +16,7 @@ import {
   Categories,
   ButtonGroupPlaceholder,
   useTopicsApi,
-  useTopicWidgetsApi,
-  useTopicWidgetSettings
+  useTopicWidgetsApi
 } from "@rawpixel-public/react-components";
 
 import useTopicWidgetSettingsActiveState from "../hooks/useTopicWidgetSettingsActiveState";
@@ -119,29 +118,15 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const { topics, loading: topics_loading } = useTopicsApi({
     widget: activeWidget ? activeWidget.id : null
   });
-  const site = isTeam
-    ? isWebsiteCatalog
-      ? "dam-website"
-      : "dam-team"
-    : "website";
-
-  const { main, fileTypes, filters, secondaryFilters } = useTopicWidgetSettings(
-    site,
-    activeWidget
-  );
 
   const {
     activeFilters,
-    setActiveFilters,
-    isFilterActiveMapper,
     resetActiveFilters
   } = useTopicWidgetSettingsActiveState();
 
   const handleFilterClick = (e, filter) => {
     setActiveFilter(widgets.indexOf(filter));
   };
-
-  const handleFilterGroupButtonClick = (e, filter) => setActiveFilters(filter);
 
   return (
     <StyledSidebar isDAM={isTeam}>
@@ -240,92 +225,6 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <SidebarHorizontalRule />
-        {loading && (
-          <>
-            <ButtonGroupPlaceholder />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {main && !!main.filter(i => i.published).length && (
-          <>
-            <FilterButtonGroupMain
-              filters={main.map(isFilterActiveMapper)}
-              onFilterClick={handleFilterGroupButtonClick}
-            />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {loading && (
-          <>
-            <ButtonGroupPlaceholder hasTitle numberOfItems={5} />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {fileTypes && !!fileTypes.filter(i => i.published).length && (
-          <>
-            <FilterButtonGroup
-              title="File types"
-              filters={fileTypes.map(isFilterActiveMapper)}
-              onFilterClick={handleFilterGroupButtonClick}
-            />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {loading && (
-          <>
-            <ButtonGroupPlaceholder numberOfItems={5} />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {filters && !!filters.filter(i => i.published).length && (
-          <>
-            <FilterButtonGroup
-              filters={filters.map(isFilterActiveMapper)}
-              onFilterClick={handleFilterGroupButtonClick}
-            />
-            <SidebarHorizontalRule />
-          </>
-        )}
-        {isTeam &&
-          secondaryFilters &&
-          !!secondaryFilters.filter(i => i.published).length && (
-            <>
-              <ImageButtonGrid
-                viewable={
-                  secondaryFilters.length < 9 ? secondaryFilters.length : 9
-                }
-                defaultWidth={225}
-              >
-                {secondaryFilters
-                  .map(isFilterActiveMapper)
-                  .map((filter, index) => (
-                    <ImageButton
-                      key={index}
-                      icon={filter.icon_url}
-                      title={filter.name}
-                      onClick={e => handleFilterGroupButtonClick(e, filter)}
-                      active={filter.active}
-                    />
-                  ))}
-              </ImageButtonGrid>
-              <SidebarHorizontalRule />
-            </>
-          )}
-        {!isTeam && (
-          <>
-            <ButtonGroupList title="Sizes" className="size-button-group">
-              <SizeButton title="Portrait" height={40} width={30} />
-              <SizeButton title="Landscape" height={30} width={40} />
-              <SizeButton title="Social" height={40} width={40} />
-              <SizeButton title="Banner 2:1" height={20} width={40} />
-              <SizeButton title="Pinterest 2:3" height={45} width={30} />
-              <SizeButton title="Landscape 16:9" height={27} width={48} />
-              <SizeButton title="Story 9:16" height={48} width={27} />
-              <SizeButton title="Banner 3:1" height={15} width={45} />
-              <SizeButton title="Banner 5:7" height={40} width={30} />
-            </ButtonGroupList>
-          </>
-        )}
       </div>
 
       <div>
