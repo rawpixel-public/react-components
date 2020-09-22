@@ -35,7 +35,7 @@ const StyledSidebar = styled.div`
   }
 
   .side {
-    background: #EBEBEB;
+    background: #ebebeb;
   }
 `;
 
@@ -68,7 +68,13 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       ? "website_content"
       : "team"
     : false;
-  const { loading, widgets } = useTopicWidgetsApi({ target, catalog });
+  const { loading, widgets } = useTopicWidgetsApi(
+    { target, catalog },
+    {
+      baseUrl: "http://local.rawpixel-preview.com:8084",
+      includeCustom: !isTeam
+    }
+  );
 
   const [activeFilter, setActiveFilter] = React.useState(0);
   const [live, setLive] = React.useState(false);
