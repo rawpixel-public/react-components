@@ -39,8 +39,6 @@ describe("useTopicWidgets", () => {
   });
 
   test("should handle errors", async () => {
-    const logSpy = jest.spyOn(console, "log").mockImplementation(() => true);
-
     fetchMocks.mockResponseOnce(async () =>
       Promise.reject(JSON.stringify({ code: 500, message: "Server error" }))
     );
@@ -53,8 +51,6 @@ describe("useTopicWidgets", () => {
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
-    expect(logSpy).toHaveBeenCalledWith({
-      reason: JSON.stringify({ code: 500, message: "Server error" })
-    });
+    expect(result.current.error).toBeTruthy();
   });
 });

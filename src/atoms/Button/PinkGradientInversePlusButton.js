@@ -3,6 +3,7 @@ import { ifProp, switchProp } from "styled-tools";
 import PropTypes from "prop-types";
 
 import plus from "../../icons/plus-circle.svg";
+import plus44 from "../../icons/plus-circle-44px.svg";
 import pinkPlus from "../../icons/pinkgradient-plus-inverse.svg";
 
 const sizeCases = {
@@ -11,6 +12,11 @@ const sizeCases = {
   medium: "25px",
   large: "32px",
   xlarge: "40px"
+};
+
+const iconCases = {
+  light: plus,
+  normal: plus44
 };
 
 const StyledButton = styled.button`
@@ -31,7 +37,8 @@ const StyledButton = styled.button`
     display: inline-block;
     width: ${switchProp("size", sizeCases)};
     height: ${switchProp("size", sizeCases)};
-    background-image: url(${plus}), url(${pinkPlus});
+    background-image: url(${switchProp("iconThickness", iconCases)}),
+      url(${pinkPlus});
     background-size: ${ifProp("active", "0, contain", "contain, 0")};
     background-position: 50%, 50%;
     background-repeat: no-repeat, no-repeat;
@@ -43,11 +50,13 @@ const StyledButton = styled.button`
 `;
 
 StyledButton.propTypes = {
-  size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge"])
+  size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge"]),
+  iconThickness: PropTypes.oneOf(["light", "normal"])
 };
 
 StyledButton.defaultProps = {
-  size: "medium"
+  size: "medium",
+  iconThickness: "normal"
 };
 
 export default StyledButton;

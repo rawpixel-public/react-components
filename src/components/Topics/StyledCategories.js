@@ -81,6 +81,10 @@ export const StyledCategoryList = styled.ul`
     &:last-child {
       margin-right: 0;
     }
+
+    button {
+      font-size: 11px;
+    }
   }
 `;
 
