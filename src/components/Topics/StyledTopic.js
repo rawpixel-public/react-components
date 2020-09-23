@@ -71,7 +71,7 @@ export const StyledTopicButton = styled.button`
   justify-self: start;
   padding: 0;
   overflow: visible;
-  align-self: baseline;
+  align-self: start;
 
   @media (hover: hover) {
     &:hover {
@@ -184,6 +184,7 @@ export const StyledIconWrapper = styled.div`
   justify-content: center;
   align-content: center;
   align-items: center;
+  flex-shrink: 0;
 
   svg,
   img {
