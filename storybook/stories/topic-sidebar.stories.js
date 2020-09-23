@@ -99,10 +99,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   };
 
   const { websiteFilters = {}, damFilters = {} } = activeWidget || {};
+  const catalogFilters = damFilters[catalog] || {};
   const filterGroups =
     target === "website"
       ? websiteFilters.filterGroups || []
-      : damFilters[catalog].filterGroups || [];
+      : catalogFilters.filterGroups || [];
 
   return (
     <StyledSidebar isDAM={isTeam}>
