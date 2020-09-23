@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import filterAllowedProps from "filter-react-props";
+import classnames from "classnames";
 
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
@@ -87,6 +88,7 @@ const calculateChildrenPositions = wrapperEl => {
 };
 
 const Categories = ({
+  className,
   activeCategory = null,
   categories = [],
   title,
@@ -95,6 +97,7 @@ const Categories = ({
   showClear = false,
   loading = false,
   displayedItems = 3,
+  iconStrokeWidth = 20,
   ...props
 }) => {
   const carouselRef = React.useRef();
@@ -215,6 +218,7 @@ const Categories = ({
 
   return (
     <StyledCategoriesWrapper
+      classNames={classnames("categories", className)}
       hasCategories={hasCategories}
       {...filterAllowedProps(props)}
     >
@@ -248,7 +252,10 @@ const Categories = ({
               onClick={handlePreviousClick}
               disabled={carouselPosition === 0 && "disabled"}
             >
-              <Chevron className="previous-icon" strokeWidth={64} />
+              <Chevron
+                className="previous-icon"
+                strokeWidth={iconStrokeWidth}
+              />
             </StyledControlButton>
           )}
           <StyledCategoryList
@@ -296,7 +303,7 @@ const Categories = ({
                 "disabled"
               }
             >
-              <Chevron className="next-icon" strokeWidth={64} />
+              <Chevron className="next-icon" strokeWidth={iconStrokeWidth} />
             </StyledControlButton>
           )}
         </StyledListWrapper>
@@ -312,6 +319,7 @@ const CategoryShape = PropTypes.shape({
 });
 
 Categories.propTypes = {
+  className: PropTypes.string,
   categories: PropTypes.arrayOf(CategoryShape),
   title: PropTypes.node,
   onCategoryClick: PropTypes.func,
@@ -322,7 +330,8 @@ Categories.propTypes = {
   activeCategory: PropTypes.oneOfType([
     CategoryShape,
     PropTypes.arrayOf(CategoryShape)
-  ])
+  ]),
+  iconStrokeWidth: PropTypes.number
 };
 
 export default Categories;
