@@ -215,6 +215,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           onFilterClick={handleFilterClick}
           activeWidget={activeFilter}
           loading={loading}
+          plusButton
         />
       </div>
     </StyledSidebar>
