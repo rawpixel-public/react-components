@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/rawpixel-public/react-components/compare/v2.0.6...v2.1.0) (2020-09-23)
+
+
+### Features
+
+* adds custom widgets api call to useTopicWidgetsApi ([5ba1a24](https://github.com/rawpixel-public/react-components/commit/5ba1a24e9d7e352aac110606d4ad08cf2c4b63b4))
+
+
+### Bug Fixes
+
+* adds new icon for plus button ([c8c5759](https://github.com/rawpixel-public/react-components/commit/c8c57593ef4603bc57b8479671eeeda33afcb06e))
+* decrease icon stroke width ([bb0af10](https://github.com/rawpixel-public/react-components/commit/bb0af104c1765c04ae2f66046d0e2fb8bc002f40))
+* fix topic positioning ([5762fe7](https://github.com/rawpixel-public/react-components/commit/5762fe7cd29c0ab9c4056ed7aa9b6cab6181d817))
+* increase category font size ([c1aceb6](https://github.com/rawpixel-public/react-components/commit/c1aceb6cb83d87a1f730827df27834f48d909da1))
+* increase topic button height ([ae8664a](https://github.com/rawpixel-public/react-components/commit/ae8664a35f223a9ab0f6a6b9d536b9dbb418d701))
+
 ### [2.0.6](https://github.com/rawpixel-public/react-components/compare/v2.0.5...v2.0.6) (2020-09-16)
 
 
