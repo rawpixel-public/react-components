@@ -177,7 +177,7 @@ export const StyledTitleWrapper = styled.div`
 `;
 
 export const StyledIconWrapper = styled.div`
-  height: 42px;
+  height: 44px;
   width: 52px;
   border-radius: 4px;
   display: flex;
