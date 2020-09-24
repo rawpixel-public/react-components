@@ -35,7 +35,8 @@ const TopicsGrid = ({
   defaultHeight = 320,
   defaultWidth = 210,
   style,
-  resizable = false
+  resizable = false,
+  activeTopics = []
 }) => {
   const handleTopicClick = (e, topic) => {
     if (typeof onTopicClick === "function") {
@@ -56,6 +57,7 @@ const TopicsGrid = ({
       {!loading &&
         topics.map(topic => (
           <Topic
+            active={activeTopics.includes(topic)}
             icon={topic.icon_url}
             id={topic.id}
             name={topic.title_short || topic.title_filter || topic.title}
@@ -84,7 +86,8 @@ TopicsGrid.propTypes = {
   defaultHeight: PropTypes.number,
   defaultWidth: PropTypes.number,
   style: PropTypes.object,
-  resizable: PropTypes.bool
+  resizable: PropTypes.bool,
+  activeTopics: PropTypes.array
 };
 
 export default TopicsGrid;

@@ -83,7 +83,21 @@ const calculateChildrenPositions = wrapperEl => {
     const isFullyVisible = start >= scrollLeft && end <= scrollLeftEnd;
     const isPartlyVisible =
       (start >= scrollLeft && start <= scrollLeftEnd) || end >= scrollLeft;
-    return { el, totalWidth, end, start, isFullyVisible, isPartlyVisible };
+    const overlapEnd = end > scrollLeftEnd;
+    const overlapStart = start < scrollLeft;
+    const offsetEnd = end - scrollLeftEnd;
+    const offsetStart = start - scrollLeft;
+    const offset =
+      (overlapEnd && offsetEnd) || (overlapStart && offsetStart) || 0;
+    return {
+      el,
+      totalWidth,
+      end,
+      start,
+      isFullyVisible,
+      isPartlyVisible,
+      offset
+    };
   });
 };
 
@@ -128,8 +142,15 @@ const Categories = ({
     const items = calculateChildrenPositions(carouselRef.current);
     const item = items.find(i => i.el === listElement);
     if (item && item.isPartlyVisible && !item.isFullyVisible) {
-      carouselRef.current.scrollLeft = item.start;
-      setCarouselPosition({ ...carouselPosition, left: item.start });
+      const isFirstOrLast =
+        items.indexOf(item) === 0 || items.indexOf(item) === items.length - 1;
+      carouselRef.current.scrollLeft = isFirstOrLast
+        ? item.start
+        : carouselRef.current.scrollLeft + item.offset;
+      setCarouselPosition({
+        ...carouselPosition,
+        left: carouselRef.current.scrollLeft
+      });
     }
   };
 

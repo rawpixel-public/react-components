@@ -28,7 +28,7 @@ export const StyledCategoriesWrapper = styled.div`
   ${ifProp(
     "hasCategories",
     css`
-      padding-bottom: 10px;
+      padding-bottom: 12px;
     `
   )}
 `;
@@ -91,6 +91,7 @@ export const StyledCategoryList = styled.ul`
 export const StyledHeadingWrapper = styled.div`
   position: relative;
   h3 {
+    color: ${palette.grayDarkest};
     min-height: 19px;
   }
 `;

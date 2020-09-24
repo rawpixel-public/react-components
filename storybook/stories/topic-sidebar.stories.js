@@ -77,6 +77,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   );
 
   const [activeFilter, setActiveFilter] = React.useState(0);
+  const [activeTopics, setActiveTopics] = React.useState([]);
   const [live, setLive] = React.useState(false);
   const [score, setScore] = React.useState(0);
   const [displayScore, setDisplayScore] = React.useState(false);
@@ -96,6 +97,18 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
 
   const handleFilterClick = (e, filter) => {
     setActiveFilter(widgets.indexOf(filter));
+    if (filter.type === 'topic_group') {
+      setActiveTopics([]);
+    }
+  };
+
+  const handleTopicClick = (e, topic) => {
+    if (activeTopics.includes(topic)) {
+      setActiveTopics(activeTopics.filter(t => t !== topic));
+    }
+    else {
+      setActiveTopics([...activeTopics, topic]);
+    }
   };
 
   const { websiteFilters = {}, damFilters = {} } = activeWidget || {};
@@ -180,8 +193,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           loading={loading}
         />
         <TopicsGrid
+          activeTopics={activeTopics}
           topics={topics}
-          onTopicClick={action("topic clicked")}
+          onTopicClick={handleTopicClick}
           isTagMode={isTeam && tagMode}
           loading={topics_loading}
           viewable={12}

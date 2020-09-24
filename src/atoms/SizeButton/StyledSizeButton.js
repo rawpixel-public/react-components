@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { ifProp } from "styled-tools";
-import { fontFamily } from "../../utils/cssVars";
+import { fontFamily, palette } from "../../utils/cssVars";
 
 export const StyledSizeButton = styled.button`
   background: none;
@@ -47,7 +47,7 @@ export const StyledSizeButton = styled.button`
 `;
 
 export const StyledBlock = styled.div`
-  background: #eeeeee;
+  background: ${palette.grayLight};
   border-radius: 3px;
   transition: background-color linear 250ms;
 `;

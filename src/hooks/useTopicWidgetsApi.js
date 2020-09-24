@@ -50,8 +50,21 @@ const sortCustom = (a, b) => {
   return a.custom && !b.custom ? -1 : 1;
 };
 
+const filterUnique = (target, catalog) => (value, index, self) => {
+  if (target && !value.custom && value.target !== target) {
+    return false;
+  }
+
+  if (catalog && !value.custom && value.catalog_id !== catalog) {
+    return false;
+  }
+
+  const w = self.find(i => value.id === i.id);
+  return self.indexOf(w) === index;
+};
+
 const setWidgets = (state, action) => {
-  const { widgets, isCustom, includeCustom } = action;
+  const { widgets, isCustom, includeCustom, target, catalog } = action;
 
   if (isCustom) {
     const customWidgets = widgets.map(widget => {
@@ -60,16 +73,18 @@ const setWidgets = (state, action) => {
     });
     return {
       ...state,
-      widgets: [...state.widgets, ...customWidgets].sort(sortCustom),
+      widgets: [...state.widgets, ...customWidgets]
+        .sort(sortCustom)
+        .filter(filterUnique(target, catalog)),
       loading: state.widgets.length <= 0
     };
   }
 
   return {
     ...state,
-    widgets: [...state.widgets, ...action.widgets].sort(
-      includeCustom ? sortCustom : () => 0
-    ),
+    widgets: [...state.widgets, ...action.widgets]
+      .sort(includeCustom ? sortCustom : () => 0)
+      .filter(filterUnique(target, catalog)),
     loading: includeCustom ? !state.widgets.some(w => w.custom) : false
   };
 };
@@ -129,7 +144,9 @@ export default (params = defaultParams, options = defaultOptions) => {
             type: SET_WIDGETS,
             widgets: data,
             includeCustom,
-            isCustom: false
+            isCustom: false,
+            target,
+            catalog
           });
         })
         .catch(reason => {
