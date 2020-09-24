@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/rawpixel-public/react-components/compare/v2.1.0...v2.1.1) (2020-09-24)
+
+
+### Bug Fixes
+
+* fix issue with duplicate widgets returned from hook ([5e0531b](https://github.com/rawpixel-public/react-components/commit/5e0531b53a685657089303461d48ab6fae4c7ca6))
+* increase padding on categories ([7a52a44](https://github.com/rawpixel-public/react-components/commit/7a52a44f3d5a7521e5db1e71ee1590ce60c90fcd))
+* increase topic height ([082c6fe](https://github.com/rawpixel-public/react-components/commit/082c6fe92c210577d94be77eaf5f46f363223a85))
+* scroll in partially visible categories only by the amount they are overlapping ([18b39ef](https://github.com/rawpixel-public/react-components/commit/18b39effca6d2c6514ccf09d8e29358836c94c60))
+* update size button colour ([97d4c4a](https://github.com/rawpixel-public/react-components/commit/97d4c4a0ab6f9ba1312d0fffcc8b3042006ca857))
+* update title colour ([07dadef](https://github.com/rawpixel-public/react-components/commit/07dadefe95c9fd1df3dcc1174e4ca2f20fdcdb79))
+
 ## [2.1.0](https://github.com/rawpixel-public/react-components/compare/v2.0.6...v2.1.0) (2020-09-23)
 
 
