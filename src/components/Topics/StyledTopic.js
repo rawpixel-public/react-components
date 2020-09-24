@@ -84,7 +84,7 @@ export const StyledTopicButton = styled.button`
   }
 
   .img-wrapper {
-    height: 42px;
+    height: 44px;
     width: 52px;
     ${ifNotProp(
       "active",
