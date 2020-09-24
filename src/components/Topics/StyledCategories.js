@@ -28,7 +28,7 @@ export const StyledCategoriesWrapper = styled.div`
   ${ifProp(
     "hasCategories",
     css`
-      padding-bottom: 10px;
+      padding-bottom: 12px;
     `
   )}
 `;
