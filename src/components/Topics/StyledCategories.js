@@ -91,6 +91,7 @@ export const StyledCategoryList = styled.ul`
 export const StyledHeadingWrapper = styled.div`
   position: relative;
   h3 {
+    color: ${palette.grayDarkest};
     min-height: 19px;
   }
 `;
