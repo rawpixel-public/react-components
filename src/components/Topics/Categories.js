@@ -217,25 +217,34 @@ const Categories = ({
 
   // Position scroll at the end when the 'next' control disappears.
   React.useEffect(() => {
+    if (!showPrevious && !showNext) {
+      return;
+    }
+
+    let updatedScrollLeft;
     const wrapperEl = carouselRef.current;
     const itemEl = categoryRef.current;
 
-    if (wrapperEl) {
-      const leftMax = getLeftMax(wrapperEl);
-      if (showPrevious && !showNext && wrapperEl.scrollLeft < leftMax) {
-        wrapperEl.scrollLeft = leftMax;
-      }
+    const items = calculateChildrenPositions(wrapperEl);
+    const item = items.find(i => i.el === itemEl);
+    const isFirstOrLast =
+      items.indexOf(item) === 0 || items.indexOf(item) === items.length - 1;
+
+    if (item && !showPrevious && showNext) {
+      updatedScrollLeft = 0;
+    } else if (item && showPrevious && !showNext) {
+      updatedScrollLeft = item.start;
+    }
+    // If a previous/next control appeared, recalculate the item position.
+    else if (item && showPrevious && showNext && !isFirstOrLast) {
+      updatedScrollLeft = wrapperEl.scrollLeft + item.offset;
     }
 
-    // If a previous/next control appeared, recalculate the item position.
-    if (itemEl && wrapperEl) {
-      const items = calculateChildrenPositions(wrapperEl);
-      const item = items.find(i => i.el === itemEl);
-      if (item) {
-        wrapperEl.scrollLeft = item.start;
-      }
+    if (updatedScrollLeft && updatedScrollLeft !== carouselPosition.left) {
+      wrapperEl.scrollLeft = updatedScrollLeft;
+      setCarouselPosition({ ...carouselPosition, left: updatedScrollLeft });
     }
-  }, [showPrevious, showNext]);
+  }, [showPrevious, showNext, setCarouselPosition, carouselPosition]);
 
   return (
     <StyledCategoriesWrapper
