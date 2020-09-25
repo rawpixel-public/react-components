@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/rawpixel-public/react-components/compare/v2.1.1...v2.1.2) (2020-09-25)
+
+
+### Bug Fixes
+
+* ensure partially visible categories only scroll in by the necessary amount ([db27928](https://github.com/rawpixel-public/react-components/commit/db27928127ae505aa44d1321482210fad0a6fc74))
+
 ### [2.1.1](https://github.com/rawpixel-public/react-components/compare/v2.1.0...v2.1.1) (2020-09-24)
 
 
