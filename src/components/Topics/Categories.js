@@ -81,10 +81,11 @@ const calculateChildrenPositions = wrapperEl => {
     const end = slice;
     const start = slice - totalWidth;
     const isFullyVisible = start >= scrollLeft && end <= scrollLeftEnd;
-    const isPartlyVisible =
-      (start >= scrollLeft && start <= scrollLeftEnd) || end >= scrollLeft;
-    const overlapEnd = end > scrollLeftEnd;
-    const overlapStart = start < scrollLeft;
+    const overlapEnd =
+      start >= scrollLeft && start <= scrollLeftEnd && end > scrollLeftEnd;
+    const overlapStart =
+      start < scrollLeft && end >= scrollLeft && end < scrollLeftEnd;
+    const isPartlyVisible = overlapEnd || overlapStart;
     const offsetEnd = end - scrollLeftEnd;
     const offsetStart = start - scrollLeft;
     const offset =
