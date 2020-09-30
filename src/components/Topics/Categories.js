@@ -189,11 +189,16 @@ const Categories = ({
   const handleNextClick = () => {
     categoryRef.current = undefined;
 
+    const wrapperEnd =
+      carouselRef.current.scrollLeft +
+      carouselRef.current.getBoundingClientRect().width;
     const items = calculateChildrenPositions(carouselRef.current);
-    const itemElement = items.find(({ isFullyVisible }) => isFullyVisible);
-
-    if (itemElement) {
-      const newLeft = carouselRef.current.scrollLeft + itemElement.totalWidth;
+    const item = items.find(
+      ({ isFullyVisible, end }) => !isFullyVisible && end > wrapperEnd
+    );
+    if (item) {
+      categoryRef.current = item.el;
+      const newLeft = carouselRef.current.scrollLeft + item.totalWidth;
       const leftMax = getLeftMax(carouselRef.current);
 
       if (newLeft > leftMax) {
@@ -228,8 +233,9 @@ const Categories = ({
 
     const items = calculateChildrenPositions(wrapperEl);
     const item = items.find(i => i.el === itemEl);
-    const isFirstOrLast =
-      items.indexOf(item) === 0 || items.indexOf(item) === items.length - 1;
+    const isFirst = items.indexOf(item) === 0;
+    const isLast = items.indexOf(item) === items.length - 1;
+    const isFirstOrLast = isFirst || isLast;
 
     if (item && !showPrevious && showNext) {
       updatedScrollLeft = 0;
@@ -239,6 +245,10 @@ const Categories = ({
     // If a previous/next control appeared, recalculate the item position.
     else if (item && showPrevious && showNext && !isFirstOrLast) {
       updatedScrollLeft = wrapperEl.scrollLeft + item.offset;
+    }
+    // Recalculate if we reached the start or end of list.
+    else if (item && isFirstOrLast) {
+      updatedScrollLeft = isFirst ? 0 : item.start;
     }
 
     if (updatedScrollLeft && updatedScrollLeft !== carouselPosition.left) {
