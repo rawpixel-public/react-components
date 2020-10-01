@@ -105,6 +105,7 @@ export const StyledControlButton = styled.button`
   font-size: 10px;
   padding: 0;
   width: 10px;
+  outline: none;
 
   &[disabled] {
     color: ${palette.grayLighter};

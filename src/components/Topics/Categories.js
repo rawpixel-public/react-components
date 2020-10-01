@@ -81,10 +81,11 @@ const calculateChildrenPositions = wrapperEl => {
     const end = slice;
     const start = slice - totalWidth;
     const isFullyVisible = start >= scrollLeft && end <= scrollLeftEnd;
-    const isPartlyVisible =
-      (start >= scrollLeft && start <= scrollLeftEnd) || end >= scrollLeft;
-    const overlapEnd = end > scrollLeftEnd;
-    const overlapStart = start < scrollLeft;
+    const overlapEnd =
+      start >= scrollLeft && start <= scrollLeftEnd && end > scrollLeftEnd;
+    const overlapStart =
+      start < scrollLeft && end >= scrollLeft && end < scrollLeftEnd;
+    const isPartlyVisible = overlapEnd || overlapStart;
     const offsetEnd = end - scrollLeftEnd;
     const offsetStart = start - scrollLeft;
     const offset =
@@ -112,6 +113,7 @@ const Categories = ({
   loading = false,
   displayedItems = 3,
   iconStrokeWidth = 20,
+  onPositionUpdate,
   ...props
 }) => {
   const carouselRef = React.useRef();
@@ -188,11 +190,16 @@ const Categories = ({
   const handleNextClick = () => {
     categoryRef.current = undefined;
 
+    const wrapperEnd =
+      carouselRef.current.scrollLeft +
+      carouselRef.current.getBoundingClientRect().width;
     const items = calculateChildrenPositions(carouselRef.current);
-    const itemElement = items.find(({ isFullyVisible }) => isFullyVisible);
-
-    if (itemElement) {
-      const newLeft = carouselRef.current.scrollLeft + itemElement.totalWidth;
+    const item =
+      items.find(({ start, end }) => start >= wrapperEnd && end > wrapperEnd) ||
+      items.find(({ end }) => end > wrapperEnd);
+    if (item) {
+      categoryRef.current = item.el;
+      const newLeft = carouselRef.current.scrollLeft + item.totalWidth;
       const leftMax = getLeftMax(carouselRef.current);
 
       if (newLeft > leftMax) {
@@ -227,8 +234,16 @@ const Categories = ({
 
     const items = calculateChildrenPositions(wrapperEl);
     const item = items.find(i => i.el === itemEl);
-    const isFirstOrLast =
-      items.indexOf(item) === 0 || items.indexOf(item) === items.length - 1;
+    const isFirst = items.indexOf(item) === 0;
+    const isLast = items.indexOf(item) === items.length - 1;
+    const isFirstOrLast = isFirst || isLast;
+
+    if (
+      typeof onPositionUpdate === "function" &&
+      !onPositionUpdate(wrapperEl, items, item, showPrevious, showNext)
+    ) {
+      return;
+    }
 
     if (item && !showPrevious && showNext) {
       updatedScrollLeft = 0;
@@ -239,12 +254,22 @@ const Categories = ({
     else if (item && showPrevious && showNext && !isFirstOrLast) {
       updatedScrollLeft = wrapperEl.scrollLeft + item.offset;
     }
+    // Recalculate if we reached the start or end of list.
+    else if (item && isFirstOrLast) {
+      updatedScrollLeft = isFirst ? 0 : item.start;
+    }
 
     if (updatedScrollLeft && updatedScrollLeft !== carouselPosition.left) {
       wrapperEl.scrollLeft = updatedScrollLeft;
       setCarouselPosition({ ...carouselPosition, left: updatedScrollLeft });
     }
-  }, [showPrevious, showNext, setCarouselPosition, carouselPosition]);
+  }, [
+    showPrevious,
+    showNext,
+    setCarouselPosition,
+    carouselPosition,
+    onPositionUpdate
+  ]);
 
   return (
     <StyledCategoriesWrapper
@@ -361,7 +386,8 @@ Categories.propTypes = {
     CategoryShape,
     PropTypes.arrayOf(CategoryShape)
   ]),
-  iconStrokeWidth: PropTypes.number
+  iconStrokeWidth: PropTypes.number,
+  onPositionUpdate: PropTypes.func
 };
 
 export default Categories;
