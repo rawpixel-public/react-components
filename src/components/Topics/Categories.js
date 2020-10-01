@@ -193,9 +193,9 @@ const Categories = ({
       carouselRef.current.scrollLeft +
       carouselRef.current.getBoundingClientRect().width;
     const items = calculateChildrenPositions(carouselRef.current);
-    const item = items.find(
-      ({ isFullyVisible, end }) => !isFullyVisible && end > wrapperEnd
-    );
+    const item =
+      items.find(({ start, end }) => start >= wrapperEnd && end > wrapperEnd) ||
+      items.find(({ end }) => end > wrapperEnd);
     if (item) {
       categoryRef.current = item.el;
       const newLeft = carouselRef.current.scrollLeft + item.totalWidth;
