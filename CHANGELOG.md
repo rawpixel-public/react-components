@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/rawpixel-public/react-components/compare/v2.1.2...v2.1.3) (2020-10-01)
+
+
+### Bug Fixes
+
+* calculate scroll amount by the next offscreen category label ([b1e0468](https://github.com/rawpixel-public/react-components/commit/b1e0468aaa848335d94bce62527b77c1110adf16))
+* enable consumers to act in useEffect hook ([7266579](https://github.com/rawpixel-public/react-components/commit/72665799dbe9fb7225fb4d24e37415f6b3f58241))
+* fix visibility checks on category elements ([ebae537](https://github.com/rawpixel-public/react-components/commit/ebae5374d09bcaf417bf83ff2785dbe0c31e338c))
+* update default button hover background to match active colour ([3391ee8](https://github.com/rawpixel-public/react-components/commit/3391ee8041a81200a1f997d75f7b3150ffc09ae9))
+* use next fully or partially visible category when calculating new scroll position ([0d0546f](https://github.com/rawpixel-public/react-components/commit/0d0546f9aa61fba1c217775023bc23e6bbfd9f60))
+
 ### [2.1.2](https://github.com/rawpixel-public/react-components/compare/v2.1.1...v2.1.2) (2020-09-25)
 
 
