@@ -113,6 +113,7 @@ const Categories = ({
   loading = false,
   displayedItems = 3,
   iconStrokeWidth = 20,
+  onPositionUpdate,
   ...props
 }) => {
   const carouselRef = React.useRef();
@@ -237,6 +238,13 @@ const Categories = ({
     const isLast = items.indexOf(item) === items.length - 1;
     const isFirstOrLast = isFirst || isLast;
 
+    if (
+      typeof onPositionUpdate === "function" &&
+      !onPositionUpdate(wrapperEl, items, item, showPrevious, showNext)
+    ) {
+      return;
+    }
+
     if (item && !showPrevious && showNext) {
       updatedScrollLeft = 0;
     } else if (item && showPrevious && !showNext) {
@@ -255,7 +263,13 @@ const Categories = ({
       wrapperEl.scrollLeft = updatedScrollLeft;
       setCarouselPosition({ ...carouselPosition, left: updatedScrollLeft });
     }
-  }, [showPrevious, showNext, setCarouselPosition, carouselPosition]);
+  }, [
+    showPrevious,
+    showNext,
+    setCarouselPosition,
+    carouselPosition,
+    onPositionUpdate
+  ]);
 
   return (
     <StyledCategoriesWrapper
@@ -372,7 +386,8 @@ Categories.propTypes = {
     CategoryShape,
     PropTypes.arrayOf(CategoryShape)
   ]),
-  iconStrokeWidth: PropTypes.number
+  iconStrokeWidth: PropTypes.number,
+  onPositionUpdate: PropTypes.func
 };
 
 export default Categories;
