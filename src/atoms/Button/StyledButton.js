@@ -50,7 +50,7 @@ export const StyledButton = styled.button`
   @media (hover: hover) {
     &:hover {
       cursor: pointer;
-      background: ${prop("theme.hover.background", lightGray)};
+      background: ${prop("theme.hover.background", darkGray)};
       color: ${prop("theme.hover.color", palette.white)};
     }
 
