@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.4](https://github.com/rawpixel-public/react-components/compare/v2.1.3...v2.1.4) (2020-10-02)
+
+
+### Bug Fixes
+
+* adds useImperativeHandle to grid to allow parent components to recalculate height ([2fe823d](https://github.com/rawpixel-public/react-components/commit/2fe823de3a705c22be8c036f95099aeea2098817))
+* use getBoundingClientRect instead of offsetHeight to fix rounding error ([a7f22fe](https://github.com/rawpixel-public/react-components/commit/a7f22febd14b020af918168579cc350f7790f5a3))
+
 ### [2.1.3](https://github.com/rawpixel-public/react-components/compare/v2.1.2...v2.1.3) (2020-10-01)
 
 
