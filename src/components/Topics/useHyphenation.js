@@ -1,7 +1,9 @@
 import React from "react";
 
-export default (groupIcon, name, active) => {
-  const [lines, setLines] = React.useState({ hyphenated: false, multi: false });
+const initialState = { hyphenated: false, multi: false };
+
+export default (groupIcon, name, active, onHyphenation) => {
+  const [lines, setLines] = React.useState(initialState);
   const ref = React.useRef();
 
   React.useEffect(() => {
@@ -41,6 +43,12 @@ export default (groupIcon, name, active) => {
       });
     }
   }, [groupIcon, name, active]);
+
+  React.useEffect(() => {
+    if (lines !== initialState && typeof onHyphenation === "function") {
+      onHyphenation(ref.current, lines);
+    }
+  }, [lines, onHyphenation, ref]);
 
   return [ref, lines];
 };

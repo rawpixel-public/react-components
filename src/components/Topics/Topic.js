@@ -39,9 +39,15 @@ const Topic = ({
   to,
   topic,
   groupIcon,
+  onHyphenation,
   ...props
 }) => {
-  const [TitleRef, lines] = useHyphenation(groupIcon, name, active);
+  const [TitleRef, lines] = useHyphenation(
+    groupIcon,
+    name,
+    active,
+    onHyphenation
+  );
 
   const handleTopicClick = e => {
     if (typeof onTopicClick === "function") {
@@ -97,7 +103,8 @@ Topic.propTypes = {
   }),
   to: PropTypes.string,
   groupIcon: PropTypes.string,
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  onHyphenation: PropTypes.func
 };
 
 export default Topic;
