@@ -51,13 +51,15 @@ const useGridHeight = (
       const visibleRows = rows.slice(0, Math.round(viewable / columns));
       const visibleRowHeights = visibleRows.map(row =>
         row.reduce(
-          (acc, cur) => (cur.offsetHeight > acc ? cur.offsetHeight : acc),
+          (acc, cur) => Math.max(acc, cur.getBoundingClientRect().height),
           0
         )
       );
       const rowMargin = 10;
-      const visibleHeight =
-        visibleRowHeights.reduce((acc, cur) => acc + cur + rowMargin, 0) - 10;
+      const visibleHeight = visibleRowHeights.reduce(
+        (acc, cur) => acc + cur + rowMargin,
+        0
+      );
 
       update = {
         ...height,
@@ -83,7 +85,7 @@ const useGridHeight = (
 
   React.useEffect(() => {
     recalculateHeight();
-  }, [children, viewable]);
+  }, [children, viewable, resizable]);
 
   return { height, setHeight, containerRef, recalculateHeight };
 };
@@ -120,7 +122,7 @@ const ImageButtonGrid = React.forwardRef(
     React.useImperativeHandle(
       ref,
       () => ({
-        recalculateHeight
+        recalculateHeight: () => setTimeout(() => recalculateHeight(), 1)
       }),
       [recalculateHeight]
     );
