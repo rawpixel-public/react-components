@@ -38,9 +38,17 @@ const TopicsGrid = ({
   resizable = false,
   activeTopics = []
 }) => {
+  const gridRef = React.useRef();
+
   const handleTopicClick = (e, topic) => {
     if (typeof onTopicClick === "function") {
       onTopicClick(e, topic);
+    }
+  };
+
+  const handleHyphenation = (el, { hyphenated }) => {
+    if (hyphenated) {
+      gridRef.current.recalculateHeight();
     }
   };
 
@@ -52,6 +60,7 @@ const TopicsGrid = ({
       defaultWidth={defaultWidth}
       style={style}
       resizable={!loading && resizable}
+      ref={gridRef}
     >
       {loading && TopicsPlaceholder(viewable)}
       {!loading &&
@@ -70,6 +79,7 @@ const TopicsGrid = ({
             to={topic.to}
             data-testid={topic.id}
             groupIcon={topic.groupIcon}
+            onHyphenation={handleHyphenation}
           />
         ))}
     </ImageButtonGrid>
