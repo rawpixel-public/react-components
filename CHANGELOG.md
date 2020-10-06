@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.5](https://github.com/rawpixel-public/react-components/compare/v2.1.4...v2.1.5) (2020-10-06)
+
+
+### Bug Fixes
+
+* add margin to next category scroll calculation ([92d7502](https://github.com/rawpixel-public/react-components/commit/92d7502d7f407c6470babc777ac566ab794f38a1))
+
 ### [2.1.4](https://github.com/rawpixel-public/react-components/compare/v2.1.3...v2.1.4) (2020-10-02)
 
 
