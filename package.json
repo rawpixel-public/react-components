@@ -35,7 +35,10 @@
     "test"
   ],
   "resolutions": {
-    "lodash": "^4.17.19"
+    "dot-prop": "^4.2.1",
+    "lodash": "^4.17.19",
+    "node-forge": "^0.10.0",
+    "serialize-javascript": "^3.1.0"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
