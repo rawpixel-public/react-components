@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { withKnobs } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
 import {
   Button,
   HorizontalRule,
@@ -111,7 +110,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   };
 
   const handleTopicClick = (e, topic) => {
-    if (activeTopics.includes(topic)) {
+    if (topic.entity_type === 'widget') {
+      setActiveFilter(widgets.indexOf(widgets.find(w => w.id === topic.id)));
+      setActiveTopics([]);
+    }
+    else if (activeTopics.includes(topic)) {
       setActiveTopics(activeTopics.filter(t => t !== topic));
     } else {
       setActiveTopics([...activeTopics, topic]);
@@ -124,6 +127,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
     target === "website"
       ? websiteFilters.filterGroups || []
       : catalogFilters.filterGroups || [];
+
+  const sidebarWidgets = widgets.filter(w => {
+    if (w.type === 'add_on') {
+      return false;
+    }
+
+    return true;
+  });
 
   return (
     <StyledSidebar isDAM={isTeam}>
@@ -232,11 +243,10 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
 
       <div className="side">
         <WidgetsBar
-          widgets={widgets}
+          widgets={sidebarWidgets}
           onFilterClick={handleFilterClick}
           activeWidget={activeFilter}
           loading={loading}
-          plusButton
         />
       </div>
     </StyledSidebar>
