@@ -87,7 +87,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const categories = activeWidget ? activeWidget.subCategories : [];
 
   const { topics, loading: topics_loading } = useTopicsApi({
-    widget: activeWidget ? activeWidget.id : null
+    widget: activeWidget
+      ? typeof activeWidget.id === "number" && activeWidget.id
+      : null,
+    heartFilter:
+      (activeWidget && activeWidget.id === "my_filters") || !activeWidget,
+    trending: activeWidget && activeWidget.id === "trending",
+    entityType:
+      activeWidget && activeWidget.id === "themes" ? "widget" : ""
   });
 
   const {
@@ -97,7 +104,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
 
   const handleFilterClick = (e, filter) => {
     setActiveFilter(widgets.indexOf(filter));
-    if (filter.type === 'topic_group') {
+    if (filter.type === "topic_group") {
       setActiveTopics([]);
     }
   };
@@ -105,8 +112,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const handleTopicClick = (e, topic) => {
     if (activeTopics.includes(topic)) {
       setActiveTopics(activeTopics.filter(t => t !== topic));
-    }
-    else {
+    } else {
       setActiveTopics([...activeTopics, topic]);
     }
   };
