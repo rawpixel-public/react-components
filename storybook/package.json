@@ -5,6 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "resolutions": {
+    "node-fetch": "^2.6.1"
+  },
   "dependencies": {
     "@rawpixel-public/react-components": "link:..",
     "prop-types": "^15.6.2",
