@@ -47,8 +47,9 @@ const SidebarHorizontalRule = () => (
 
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
   <ButtonGroupList title={title}>
-    {filters.map(filter => (
+    {filters.map((filter, index) => (
       <Button
+        key={`${index}:${filter.name}`}
         as={filter.to ? Link : filter.href ? "a" : "button"}
         active={filter.active}
         disabled={filter.disabled}
@@ -222,8 +223,8 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <SidebarHorizontalRule />
-        {filterGroups.map(group => (
-          <React.Fragment>
+        {filterGroups.map((group, index) => (
+          <React.Fragment key={index}>
             <FilterButtonGroup filters={group.filters} />
           </React.Fragment>
         ))}

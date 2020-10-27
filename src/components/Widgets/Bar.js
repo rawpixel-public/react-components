@@ -60,8 +60,8 @@ const WidgetsBar = ({
     }
   };
 
-  const renderTopicGroup = widget => (
-    <StyledListItem key={widget.title}>
+  const renderTopicGroup = (widget, index) => (
+    <StyledListItem key={`${index}:${widget.title}`}>
       <TopicGroup
         className={classnames("widget", "topic-group", {
           [classes.widget]: classes.widget,
@@ -80,8 +80,8 @@ const WidgetsBar = ({
     </StyledListItem>
   );
 
-  const renderAddOn = widget => (
-    <StyledListItem key={widget.title}>
+  const renderAddOn = (widget, index) => (
+    <StyledListItem key={`${index}:${widget.title}`}>
       <Addon
         className={classnames("widget", "add-on", {
           [classes.widget]: classes.widget,

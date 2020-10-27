@@ -152,6 +152,6 @@ export default (params = defaultParams, options = defaultOptions) => {
       loading: state.loading || (!(key in state) && !state.error),
       error: state.error
     }),
-    [topics, state.loading, state.error]
+    [topics, key, state.loading, state.error]
   );
 };

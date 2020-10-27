@@ -64,13 +64,13 @@ const TopicsGrid = ({
     >
       {loading && TopicsPlaceholder(viewable)}
       {!loading &&
-        topics.map(topic => (
+        topics.map((topic, index) => (
           <Topic
             active={activeTopics.includes(topic)}
             icon={topic.icon_url}
             id={topic.id}
             name={topic.title_short || topic.title_filter || topic.title}
-            key={topic.id}
+            key={`${index}:${topic.id}:${topic.tag}`}
             isTagMode={isTagMode}
             isLoading={topic.isLoading}
             isTagged={topic.isTagged}
