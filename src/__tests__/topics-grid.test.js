@@ -5,6 +5,18 @@ import "@testing-library/jest-dom/extend-expect";
 import { TopicsGrid } from "../index";
 
 describe("topic grid", () => {
+  beforeAll(() => {
+    global.document.createRange = () => ({
+      setStart: () => {},
+      setEnd: () => {},
+      commonAncestorContainer: {
+        nodeName: "BODY",
+        ownerDocument: document
+      },
+      getBoundingClientRect: () => ({ height: 0 })
+    });
+  });
+
   const generateTopics = length =>
     [...Array(length)].map((_, index) => ({
       title: `Topic ${index}`,
