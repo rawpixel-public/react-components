@@ -149,9 +149,9 @@ export default (params = defaultParams, options = defaultOptions) => {
   return React.useMemo(
     () => ({
       topics,
-      loading: state.loading || (!(key in state) && !state.error),
+      loading: state.loading,
       error: state.error
     }),
-    [topics, key, state.loading, state.error]
+    [topics, state.loading, state.error]
   );
 };

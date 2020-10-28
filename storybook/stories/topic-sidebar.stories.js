@@ -93,8 +93,8 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
     heartFilter:
       (activeWidget && activeWidget.id === "my_filters") || !activeWidget,
     trending: activeWidget && activeWidget.id === "trending",
-    entityType:
-      activeWidget && activeWidget.id === "themes" ? "widget" : ""
+    entityType: activeWidget && activeWidget.id === "themes" ? "widget" : "",
+    target
   });
 
   const {
@@ -110,11 +110,10 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   };
 
   const handleTopicClick = (e, topic) => {
-    if (topic.entity_type === 'widget') {
+    if (topic.entity_type === "widget") {
       setActiveFilter(widgets.indexOf(widgets.find(w => w.id === topic.id)));
       setActiveTopics([]);
-    }
-    else if (activeTopics.includes(topic)) {
+    } else if (activeTopics.includes(topic)) {
       setActiveTopics(activeTopics.filter(t => t !== topic));
     } else {
       setActiveTopics([...activeTopics, topic]);
@@ -129,7 +128,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       : catalogFilters.filterGroups || [];
 
   const sidebarWidgets = widgets.filter(w => {
-    if (w.type === 'add_on') {
+    if (w.type === "add_on") {
       return false;
     }
 
