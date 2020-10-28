@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/rawpixel-public/react-components/compare/v2.1.5...v2.2.0) (2020-10-28)
+
+
+### Features
+
+* adds additional params to useTopicsApi hook ([a6db921](https://github.com/rawpixel-public/react-components/commit/a6db921432575d99d307680e536f3efce182f7d1))
+* adds themes custom widget config ([378a88b](https://github.com/rawpixel-public/react-components/commit/378a88b51600fac0f4f136b9515a60c34c5d41c4))
+
+
+### Bug Fixes
+
+* add object-path to resolutions ([016a855](https://github.com/rawpixel-public/react-components/commit/016a85596f6ec473c5ad8cfa52c321d0ccb3fe55))
+* update $cc0 tag ([d03ddb5](https://github.com/rawpixel-public/react-components/commit/d03ddb545c25516a5e52a51801f32825778f2783))
+* update dependencies flagged high in yarn audit ([4bf0584](https://github.com/rawpixel-public/react-components/commit/4bf05842df08c65e1d8edee1fa2ec4a88bd0cb75))
+* update react-scripts and lodash dependencies ([ac91150](https://github.com/rawpixel-public/react-components/commit/ac91150373863bb17b1c66c116e352266d0e7e1d))
+* update yarn audit flagged dependency in storybook ([820c945](https://github.com/rawpixel-public/react-components/commit/820c945ba96be26a8d06193b1c6a7a0b99297b07))
+* upgrade to babel 7 ([3216953](https://github.com/rawpixel-public/react-components/commit/321695387a544938b0aa871b76ff97fe486cc8d0))
+
 ### [2.1.5](https://github.com/rawpixel-public/react-components/compare/v2.1.4...v2.1.5) (2020-10-06)
 
 
