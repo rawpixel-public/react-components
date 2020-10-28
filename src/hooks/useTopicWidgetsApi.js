@@ -15,6 +15,7 @@ const defaultOptions = {
 
 const MY_TOPICS_FILTER_ID = "my_filters";
 const TRENDING_TOPICS_FILTER_ID = "trending";
+const THEMES_FILTER_ID = "themes";
 
 const customWidgetsConfig = {
   [MY_TOPICS_FILTER_ID]: {
@@ -35,6 +36,16 @@ const customWidgetsConfig = {
     tag: "_trending",
     published: true,
     filter_id: TRENDING_TOPICS_FILTER_ID,
+    custom: true
+  },
+  [THEMES_FILTER_ID]: {
+    title: "Themes",
+    type: "topic_group",
+    target: "website",
+    weight: -997,
+    tag: "_themes",
+    published: true,
+    filter_id: THEMES_FILTER_ID,
     custom: true
   }
 };

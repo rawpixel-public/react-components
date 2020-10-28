@@ -28,7 +28,7 @@ describe("useTopicsApi", () => {
     await waitForNextUpdate();
 
     expect(fetchMocks).toHaveBeenCalledWith(
-      `https://api.example.com/api/v1/topics?widget=1&page=1&pagesize=100&published=1&internal=0`,
+      `https://api.example.com/api/v1/topics?widget=1&target=website&page=1&pagesize=100&published=1&internal=0`,
       {
         method: "GET",
         credentials: "include",
@@ -41,8 +41,6 @@ describe("useTopicsApi", () => {
   });
 
   test("should handle errors", async () => {
-    const logSpy = jest.spyOn(console, "log").mockImplementation(() => true);
-
     fetchMocks.mockResponseOnce(async () =>
       Promise.reject(JSON.stringify({ code: 500, message: "Server error" }))
     );
@@ -56,9 +54,6 @@ describe("useTopicsApi", () => {
 
     expect(result.current.loading).toBe(false);
     expect(result.current.error).toBe(true);
-    expect(logSpy).toHaveBeenCalledWith({
-      reason: JSON.stringify({ code: 500, message: "Server error" })
-    });
   });
 
   test("should not call the api when fetch is false", async () => {

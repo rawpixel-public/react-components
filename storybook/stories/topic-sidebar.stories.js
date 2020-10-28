@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { withKnobs } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
 import {
   Button,
   HorizontalRule,
@@ -47,8 +46,9 @@ const SidebarHorizontalRule = () => (
 
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
   <ButtonGroupList title={title}>
-    {filters.map(filter => (
+    {filters.map((filter, index) => (
       <Button
+        key={`${index}:${filter.name}`}
         as={filter.to ? Link : filter.href ? "a" : "button"}
         active={filter.active}
         disabled={filter.disabled}
@@ -87,7 +87,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const categories = activeWidget ? activeWidget.subCategories : [];
 
   const { topics, loading: topics_loading } = useTopicsApi({
-    widget: activeWidget ? activeWidget.id : null
+    widget: activeWidget
+      ? typeof activeWidget.id === "number" && activeWidget.id
+      : null,
+    heartFilter:
+      (activeWidget && activeWidget.id === "my_filters") || !activeWidget,
+    trending: activeWidget && activeWidget.id === "trending",
+    entityType: activeWidget && activeWidget.id === "themes" ? "widget" : "",
+    target
   });
 
   const {
@@ -97,16 +104,18 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
 
   const handleFilterClick = (e, filter) => {
     setActiveFilter(widgets.indexOf(filter));
-    if (filter.type === 'topic_group') {
+    if (filter.type === "topic_group") {
       setActiveTopics([]);
     }
   };
 
   const handleTopicClick = (e, topic) => {
-    if (activeTopics.includes(topic)) {
+    if (topic.entity_type === "widget") {
+      setActiveFilter(widgets.indexOf(widgets.find(w => w.id === topic.id)));
+      setActiveTopics([]);
+    } else if (activeTopics.includes(topic)) {
       setActiveTopics(activeTopics.filter(t => t !== topic));
-    }
-    else {
+    } else {
       setActiveTopics([...activeTopics, topic]);
     }
   };
@@ -117,6 +126,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
     target === "website"
       ? websiteFilters.filterGroups || []
       : catalogFilters.filterGroups || [];
+
+  const sidebarWidgets = widgets.filter(w => {
+    if (w.type === "add_on") {
+      return false;
+    }
+
+    return true;
+  });
 
   return (
     <StyledSidebar isDAM={isTeam}>
@@ -216,8 +233,8 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           </>
         )}
         <SidebarHorizontalRule />
-        {filterGroups.map(group => (
-          <React.Fragment>
+        {filterGroups.map((group, index) => (
+          <React.Fragment key={index}>
             <FilterButtonGroup filters={group.filters} />
           </React.Fragment>
         ))}
@@ -225,11 +242,10 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
 
       <div className="side">
         <WidgetsBar
-          widgets={widgets}
+          widgets={sidebarWidgets}
           onFilterClick={handleFilterClick}
           activeWidget={activeFilter}
           loading={loading}
-          plusButton
         />
       </div>
     </StyledSidebar>
