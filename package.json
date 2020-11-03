@@ -94,6 +94,7 @@
     "eslint-plugin-node": "11.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-standard": "4.0.1",
     "filter-react-props": "^0.0.4",
     "gh-pages": "^2.2.0",

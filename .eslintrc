@@ -3,6 +3,7 @@
   "extends": [
     "standard",
     "standard-react",
+    "plugin:react-hooks/recommended",
     "prettier"
   ],
   "env": {

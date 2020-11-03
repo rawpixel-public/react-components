@@ -53,7 +53,7 @@ function topicsApiReducer(state, action) {
       return { ...state, loading, fetching };
 
     case TOPICS_ERROR:
-      return { ...state, error };
+      return { ...state, error, loading: false, fetching: false, [key]: [] };
 
     case SET_TOPICS:
       return { ...state, [key]: topics, loading: false, fetching: false };
@@ -134,8 +134,7 @@ export default (params = defaultParams, options = defaultOptions) => {
 
         dispatch({ type: SET_TOPICS, topics: loadedTopics, key });
       } catch (error) {
-        dispatch({ type: TOPICS_LOADING, loading: false });
-        dispatch({ type: TOPICS_ERROR, error: true });
+        dispatch({ type: TOPICS_ERROR, error: true, key });
       }
     }
 
@@ -144,7 +143,7 @@ export default (params = defaultParams, options = defaultOptions) => {
         loadTopics().finally();
       }
     }
-  }, [key, baseUrl, basePath, shouldFetch, revalidate]);
+  }, [key, baseUrl, basePath, shouldFetch, revalidate, state.fetching]);
 
   return React.useMemo(
     () => ({
