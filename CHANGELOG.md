@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/rawpixel-public/react-components/compare/v2.2.0...v2.2.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* fix missing hook dependency in topics api ([b506fdf](https://github.com/rawpixel-public/react-components/commit/b506fdfe9d1e5e3da58c293d0d7bf73f4cf5b70c))
+
 ## [2.2.0](https://github.com/rawpixel-public/react-components/compare/v2.1.5...v2.2.0) (2020-10-28)
 
 
