@@ -193,7 +193,7 @@ export const api = () => {
       published: boolean("published", true, "api")
     },
     {
-      revalidate: boolean("revalidate", true, "api")
+      revalidate: boolean("revalidate", false, "api")
     }
   );
   return (
