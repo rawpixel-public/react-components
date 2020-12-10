@@ -5,6 +5,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
 import postcss from "rollup-plugin-postcss";
+import visualizer from "rollup-plugin-visualizer";
 
 export default {
   input: ["src/index.js", "src/button.js"],
@@ -20,7 +21,7 @@ export default {
     svgr(),
     babel({
       babelHelpers: "bundled",
-      exclude: "node_modules/**",
+      exclude: "node_modules/**"
     }),
     resolve(),
     commonjs({
@@ -30,6 +31,7 @@ export default {
     }),
     postcss({
       plugins: []
-    })
+    }),
+    visualizer()
   ]
 };
