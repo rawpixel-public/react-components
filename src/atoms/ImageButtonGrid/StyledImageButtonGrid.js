@@ -24,11 +24,13 @@ const setCursorStyle = props => {
 };
 
 export const StyledImageButtonGridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(${prop("itemWidth")}, 1fr));
-  column-gap: 5px;
-  row-gap: 10px;
-  padding-right: 10px;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(${prop("itemWidth")}, 1fr));
+    column-gap: 5px;
+    row-gap: 10px;
+    padding-right: 10px;
+  }
 `;
 
 export const StyledScrollbar = styled.div`

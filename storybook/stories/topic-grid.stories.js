@@ -9,6 +9,7 @@ import {
 import { action } from "@storybook/addon-actions";
 
 import {
+  Button,
   Topic,
   TopicsGrid,
   useTopicsApi
@@ -113,6 +114,12 @@ const topicsData = [
   }
 ].map((topic, index) => ({ ...topic, id: index, groupIcon: topic.icon_url }));
 
+const TopicsFooter = () => (
+  <div style={{ padding: "5px 0 0 0", display: "flex", justifyContent: "center" }}>
+    <Button as="a" size="small" style={{ width: "120px" }} href="https://www.rawpixel.com/themes/topics">All topics</Button>
+  </div>
+);
+
 export const grid = () => {
   return (
     <TopicsGrid
@@ -130,6 +137,7 @@ export const grid = () => {
         { 1: 70, 2: 140, 3: 210, 4: 280, 5: 350 },
         210
       )}
+      footer={<TopicsFooter />}
     />
   );
 };
@@ -142,6 +150,7 @@ export const noScroll = () => {
       defaultHeight={320}
       loading={boolean("loading", false)}
       viewable={9}
+      footer={<TopicsFooter />}
     />
   );
 };

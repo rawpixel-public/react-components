@@ -61,6 +61,12 @@ const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
   </ButtonGroupList>
 );
 
+const TopicsFooter = () => (
+  <div style={{ padding: "5px 0 0 0", display: "flex", justifyContent: "center" }}>
+    <Button as="a" size="small" style={{ width: "120px" }} href="https://www.rawpixel.com/themes/topics">All topics</Button>
+  </div>
+);
+
 const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const target = isTeam ? "team" : "website";
   const catalog = isTeam
@@ -218,6 +224,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
           viewable={12}
           defaultHeight={330}
           defaultWidth={205}
+          footer={<TopicsFooter />}
         />
         {isTeam && (
           <>
