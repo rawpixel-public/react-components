@@ -36,7 +36,9 @@ const TopicsGrid = ({
   defaultWidth = 210,
   style,
   resizable = false,
-  activeTopics = []
+  activeTopics = [],
+  header,
+  footer
 }) => {
   const gridRef = React.useRef();
 
@@ -61,6 +63,8 @@ const TopicsGrid = ({
       style={style}
       resizable={!loading && resizable}
       ref={gridRef}
+      header={!loading && header}
+      footer={!loading && footer}
     >
       {loading && TopicsPlaceholder(viewable)}
       {!loading &&
@@ -97,7 +101,9 @@ TopicsGrid.propTypes = {
   defaultWidth: PropTypes.number,
   style: PropTypes.object,
   resizable: PropTypes.bool,
-  activeTopics: PropTypes.array
+  activeTopics: PropTypes.array,
+  header: PropTypes.node,
+  footer: PropTypes.node
 };
 
 export default TopicsGrid;

@@ -9,6 +9,7 @@ build
 coverage
 dist
 .rpt2_cache
+stats.html
 
 # misc
 .DS_Store

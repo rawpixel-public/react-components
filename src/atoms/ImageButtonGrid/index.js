@@ -26,7 +26,9 @@ const useGridHeight = (
   viewable,
   defaultHeight,
   columns,
-  resizable
+  resizable,
+  header,
+  footer
 ) => {
   const [height, setHeight] = React.useState({
     defaultHeight,
@@ -37,16 +39,24 @@ const useGridHeight = (
   });
 
   const containerRef = React.useRef();
+  const headerRef = React.useRef();
+  const footerRef = React.useRef();
+  const gridRef = React.useRef();
   const childrenArray = Children.toArray(children).filter(Boolean);
   const childCount = childrenArray.length;
 
   const recalculateHeight = () => {
-    const element = containerRef.current;
-    const offsetHeight = element.offsetHeight;
+    const headerElement = headerRef.current;
+    const footerElement = footerRef.current;
+    const gridElement = gridRef.current;
+    const offsetHeight = gridElement.offsetHeight;
+    const headerHeight = headerElement ? headerElement.offsetHeight : 0;
+    const footerHeight = footerElement ? footerElement.offsetHeight : 0;
+
     let update;
 
     if (childCount > viewable) {
-      const itemElements = Array.from(element.childNodes);
+      const itemElements = Array.from(gridElement.childNodes);
       const rows = chunk(itemElements, columns);
       const visibleRows = rows.slice(0, Math.round(viewable / columns));
       const visibleRowHeights = visibleRows.map(row =>
@@ -58,7 +68,7 @@ const useGridHeight = (
       const rowMargin = 10;
       const visibleHeight = visibleRowHeights.reduce(
         (acc, cur) => acc + cur + rowMargin,
-        0
+        headerHeight
       );
 
       update = {
@@ -66,15 +76,15 @@ const useGridHeight = (
         minHeight: visibleHeight,
         defaultHeight: visibleHeight,
         maxHeight: resizable
-          ? RESIZE_HANDLE_HEIGHT + offsetHeight
-          : offsetHeight
+          ? RESIZE_HANDLE_HEIGHT + offsetHeight + headerHeight + footerHeight
+          : offsetHeight + headerHeight + footerHeight
       };
     } else {
       update = {
         ...height,
-        defaultHeight: offsetHeight,
-        maxHeight: offsetHeight,
-        minHeight: offsetHeight
+        defaultHeight: offsetHeight + headerHeight + footerHeight,
+        maxHeight: offsetHeight + headerHeight + footerHeight,
+        minHeight: offsetHeight + headerHeight + footerHeight
       };
     }
 
@@ -85,9 +95,17 @@ const useGridHeight = (
 
   React.useEffect(() => {
     recalculateHeight();
-  }, [children, viewable, resizable]);
+  }, [children, viewable, resizable, header, footer]);
 
-  return { height, setHeight, containerRef, recalculateHeight };
+  return {
+    height,
+    setHeight,
+    containerRef,
+    headerRef,
+    footerRef,
+    gridRef,
+    recalculateHeight
+  };
 };
 
 const ImageButtonGrid = React.forwardRef(
@@ -104,16 +122,29 @@ const ImageButtonGrid = React.forwardRef(
       gridProps = {},
       scrollbarProps = {},
       resizableProps = {},
+      header,
+      footer,
       ...props
     },
     ref
   ) => {
     const {
       containerRef,
+      headerRef,
+      footerRef,
+      gridRef,
       height,
       setHeight,
       recalculateHeight
-    } = useGridHeight(children, viewable, defaultHeight, columns, resizable);
+    } = useGridHeight(
+      children,
+      viewable,
+      defaultHeight,
+      columns,
+      resizable,
+      header,
+      footer
+    );
 
     const ScrollbarRef = React.useRef();
     const childrenArray = Children.toArray(children).filter(Boolean);
@@ -198,7 +229,19 @@ const ImageButtonGrid = React.forwardRef(
             itemWidth={itemWidth}
             {...gridProps}
           >
-            {children}
+            {header && (
+              <div className="header" ref={headerRef}>
+                {header}
+              </div>
+            )}
+            <div className="grid" ref={gridRef}>
+              {children}
+            </div>
+            {footer && (
+              <div className="footer" ref={footerRef}>
+                {footer}
+              </div>
+            )}
           </StyledImageButtonGridContainer>
         </Scrollbars>
       </StyledResizable>
@@ -226,7 +269,9 @@ ImageButtonGrid.propTypes = {
   itemWidth: PropTypes.string,
   gridProps: PropTypes.object,
   scrollbarProps: PropTypes.object,
-  resizableProps: PropTypes.object
+  resizableProps: PropTypes.object,
+  header: PropTypes.node,
+  footer: PropTypes.node
 };
 
 ImageButtonGrid.displayName = "ImageButtonGrid";

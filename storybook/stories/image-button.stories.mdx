@@ -37,7 +37,10 @@ Renders a group of buttons inside a scrollable area.
 
 <Preview>
   <Story name="grid">
-    <ImageButtonGrid>
+    <ImageButtonGrid
+      header={<span style={{ fontSize: "10px" }}>Header content</span>}
+      footer={<span style={{ fontSize: "10px" }}>Footer content</span>}
+    >
       <ImageButton icon={starSvg} title="Button 1" onClick={action("image-button-grid-click")} />
       <ImageButton icon={starSvg} title="Button 2" onClick={action("image-button-grid-click")} />
       <ImageButton icon={starSvg} title="Button 3" onClick={action("image-button-grid-click")} />
