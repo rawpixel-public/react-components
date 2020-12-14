@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/rawpixel-public/react-components/compare/v2.2.1...v2.3.0) (2020-12-14)
+
+
+### Features
+
+* update topics grid to allow additional child elements ([cb2afad](https://github.com/rawpixel-public/react-components/commit/cb2afadab52b34d6a634f650cf7e3f9db27b40f5))
+
 ### [2.2.1](https://github.com/rawpixel-public/react-components/compare/v2.2.0...v2.2.1) (2020-11-03)
 
 
