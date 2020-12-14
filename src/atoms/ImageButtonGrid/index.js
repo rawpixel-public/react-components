@@ -1,7 +1,6 @@
 import React, { Children } from "react";
 import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars";
-import isEqual from "lodash.isequal";
 
 import {
   StyledImageButtonGridContainer,
@@ -88,7 +87,11 @@ const useGridHeight = (
       };
     }
 
-    if (update && !isEqual(height, update)) {
+    const isEqual =
+      Object.keys(update).filter(key => update[key] === height[key]).length ===
+      Object.keys(height).length;
+
+    if (update && !isEqual) {
       setHeight(update);
     }
   };
