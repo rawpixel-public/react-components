@@ -37,7 +37,7 @@ const Topic = ({
   isTagged = false,
   onTopicClick,
   to,
-  topic,
+  topic = { tag: null, dam_team_tag: null, field_flag_count: null },
   groupIcon,
   onHyphenation,
   ...props
@@ -65,6 +65,9 @@ const Topic = ({
       isLoading={isLoading ? true : undefined}
       to={to}
       icon={icon}
+      data-website-tag={topic.tag}
+      data-dam-tag={topic.dam_team_tag}
+      data-fav-count={topic.field_flag_count}
       {...props}
     >
       {isLoading ? (
@@ -99,7 +102,8 @@ Topic.propTypes = {
   topic: PropTypes.shape({
     name: PropTypes.string,
     tag: PropTypes.string,
-    dam_team_tag: PropTypes.string
+    dam_team_tag: PropTypes.string,
+    field_flag_count: PropTypes.number
   }),
   to: PropTypes.string,
   groupIcon: PropTypes.string,
