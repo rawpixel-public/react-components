@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/rawpixel-public/react-components/compare/v2.3.0...v2.4.0) (2020-12-17)
+
+
+### Features
+
+* Add website tag, dam tag, and fav count data attrs ([#47](https://github.com/rawpixel-public/react-components/issues/47)) ([4230d1a](https://github.com/rawpixel-public/react-components/commit/4230d1ac667113dfbb6a1e5f02cf2af2ce27f245))
+
 ## [2.3.0](https://github.com/rawpixel-public/react-components/compare/v2.2.1...v2.3.0) (2020-12-14)
 
 
