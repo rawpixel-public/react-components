@@ -76,6 +76,7 @@ const WidgetsBar = ({
         onClick={e => filterClickHandler(e, widget)}
         active={widget.active || widgets.indexOf(widget) === activeIndex}
         type={widget.type}
+        widget={widget}
       />
     </StyledListItem>
   );

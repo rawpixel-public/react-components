@@ -12,6 +12,7 @@ const WidgetTopicGroup = ({
   onClick,
   active = false,
   href,
+  widget = { tag: null, dam_team_tag: null, field_flag_count: null },
   ...props
 }) => (
   <StyledButton
@@ -20,6 +21,9 @@ const WidgetTopicGroup = ({
     active={active ? true : undefined}
     to={to}
     href={href}
+    data-website-tag={widget.tag}
+    data-dam-tag={widget.dam_team_tag}
+    data-fav-count={widget.field_flag_count}
     {...props}
   >
     <WidgetIcon className="widget-icon" href={icon_url} active={active} />
