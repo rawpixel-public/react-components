@@ -159,11 +159,15 @@ const WidgetsBar = ({
 
       case "grouped":
         return widgets.reduce((groups, widget, index) => {
-          if (index === 0 || widget.dam_toolbar_grouping !== widgets[index-1].dam_toolbar_grouping) {
+          if (
+            index === 0 ||
+            widget.dam_toolbar_grouping !==
+              widgets[index - 1].dam_toolbar_grouping
+          ) {
             groups.push([]);
           }
-          const currentGroup = groups[groups.length-1];
-          if (widget.type === 'topic_group') {
+          const currentGroup = groups[groups.length - 1];
+          if (widget.type === "topic_group") {
             currentGroup.push(renderWidget(widget));
           } else {
             currentGroup.push(renderTopicGroup(widget));
