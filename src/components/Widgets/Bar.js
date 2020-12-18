@@ -157,6 +157,24 @@ const WidgetsBar = ({
           widgets.filter(widget => widget.type === "add_on").map(renderAddOn)
         ].filter(group => group.length > 0);
 
+      case "grouped":
+        return widgets.reduce((groups, widget, index) => {
+          if (
+            index === 0 ||
+            widget.dam_toolbar_grouping !==
+              widgets[index - 1].dam_toolbar_grouping
+          ) {
+            groups.push([]);
+          }
+          const currentGroup = groups[groups.length - 1];
+          if (widget.type === "topic_group") {
+            currentGroup.push(renderWidget(widget));
+          } else {
+            currentGroup.push(renderTopicGroup(widget));
+          }
+          return groups;
+        }, []);
+
       default:
         return [widgets.map(renderWidget)].filter(value => value.length > 0);
     }
@@ -241,7 +259,7 @@ WidgetsBar.propTypes = {
     addOn: PropTypes.string
   }),
   className: PropTypes.string,
-  grouping: PropTypes.oneOf(["none", "type", "hearted"]),
+  grouping: PropTypes.oneOf(["none", "type", "hearted", "grouped"]),
   plusActive: PropTypes.bool,
   plusButton: PropTypes.bool,
   plusProps: PropTypes.object,
