@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.2](https://github.com/rawpixel-public/react-components/compare/v2.4.1...v2.4.2) (2021-01-04)
+
+
+### Bug Fixes
+
+* reduce button opacity on hover ([748510b](https://github.com/rawpixel-public/react-components/commit/748510bd6b9b558955e0d1b8a49fa9b8ea55d1ea))
+
 ### [2.4.1](https://github.com/rawpixel-public/react-components/compare/v2.4.0...v2.4.1) (2020-12-18)
 
 ## [2.4.0](https://github.com/rawpixel-public/react-components/compare/v2.3.0...v2.4.0) (2020-12-17)
