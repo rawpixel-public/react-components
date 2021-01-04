@@ -29,6 +29,7 @@ const imgHoverStyles = ({ isTagged, isTagMode, isLoading }) => {
     .mask {
       background: ${invert ? palette.white : palette.topicBorderColor};
     }
+    opacity: 0.8;
   `;
 };
 

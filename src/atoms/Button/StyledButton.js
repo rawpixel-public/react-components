@@ -39,7 +39,8 @@ export const StyledButton = styled.button`
   })};
   text-align: center;
   text-decoration: none;
-  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
   width: 100%;
   overflow: hidden;
   word-wrap: break-word;
@@ -52,6 +53,7 @@ export const StyledButton = styled.button`
       cursor: pointer;
       background: ${prop("theme.hover.background", darkGray)};
       color: ${prop("theme.hover.color", palette.white)};
+      opacity: 0.8;
     }
 
     &[disabled]:hover {
