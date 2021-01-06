@@ -30,7 +30,7 @@ const SizeButton = ({
     to={to}
     {...props}
   >
-    <BlockWrapper>
+    <BlockWrapper className="block">
       <StyledBlock style={{ height: `${height}px`, width: `${width}px` }} />
     </BlockWrapper>
     <StyledTitle>{title}</StyledTitle>
