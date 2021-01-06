@@ -20,6 +20,10 @@ export const StyledSizeButton = styled.button`
       cursor: pointer;
     }
 
+    &:hover .block {
+      opacity: 0.8;
+    }
+
     &:not([disabled]):hover > div > div {
       background: #4b4b4c;
     }
