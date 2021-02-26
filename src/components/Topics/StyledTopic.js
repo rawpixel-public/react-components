@@ -88,7 +88,7 @@ export const StyledTopicButton = styled.button`
     height: 44px;
     width: 52px;
     ${ifNotProp(
-      "active",
+      "$active",
       css`
         border: 1px solid ${palette.topicBorderColor};
       `

@@ -57,7 +57,7 @@ const Topic = ({
 
   return (
     <StyledTopicButton
-      active={active ? true : undefined}
+      $active={active}
       onClick={handleTopicClick}
       disabled={isLoading && "disabled"}
       isTagMode={isTagMode ? true : undefined}

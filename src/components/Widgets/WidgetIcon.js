@@ -13,7 +13,7 @@ const StyledIcon = styled.div`
   background: ${palette.topicActive};
 
   ${ifProp(
-    "active",
+    "$active",
     css`
       background: ${palette.topicGradient};
     `
@@ -21,11 +21,7 @@ const StyledIcon = styled.div`
 `;
 
 const WidgetIcon = ({ className, href, active = false }) => (
-  <StyledIcon
-    className={className}
-    active={active ? true : undefined}
-    imgSrc={href}
-  />
+  <StyledIcon className={className} $active={active} imgSrc={href} />
 );
 
 WidgetIcon.propTypes = {
