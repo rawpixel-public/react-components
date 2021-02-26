@@ -28,7 +28,7 @@ const WidgetTopicGroup = ({
   >
     <WidgetIcon className="widget-icon" href={icon_url} active={active} />
     {title && (
-      <StyledText className="widget-label" active={active}>
+      <StyledText className="widget-label" $active={active}>
         {title}
       </StyledText>
     )}
