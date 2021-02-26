@@ -8,7 +8,7 @@ import postcss from "rollup-plugin-postcss";
 import visualizer from "rollup-plugin-visualizer";
 
 export default {
-  input: ["src/index.js", "src/button.js"],
+  input: ["src/index.js", "src/button.js", "src/widgets.js"],
   output: {
     dir: "dist",
     format: "cjs",
