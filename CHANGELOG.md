@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/rawpixel-public/react-components/compare/v2.4.3...v3.0.0) (2021-03-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade styled-components
+* upgrade react
+
+### Features
+
+* split widgets components into separate bundle ([bae5935](https://github.com/rawpixel-public/react-components/commit/bae5935db311520c092abf4f4802e59d1f153ecf))
+
+
+### Bug Fixes
+
+* set loading state in topics hook ([12d250a](https://github.com/rawpixel-public/react-components/commit/12d250aae22337a4c5b2ba011375c69424371130))
+* use styled components transient prop for active prop ([ab55505](https://github.com/rawpixel-public/react-components/commit/ab555052076346114797a3e3b2ac94f5b5960a28))
+
+
+* upgrade react ([025705c](https://github.com/rawpixel-public/react-components/commit/025705cb21f35712a8ba29054267a6bd405faec4))
+* upgrade styled-components ([33cc7e5](https://github.com/rawpixel-public/react-components/commit/33cc7e5bd81336bb9f3f2db6248121b691e8d594))
+
 ### [2.4.3](https://github.com/rawpixel-public/react-components/compare/v2.4.2...v2.4.3) (2021-01-06)
 
 
