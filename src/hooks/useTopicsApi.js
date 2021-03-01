@@ -148,7 +148,7 @@ export default (params = defaultParams, options = defaultOptions) => {
   return React.useMemo(
     () => ({
       topics,
-      loading: state.loading,
+      loading: topics === initialState.topics || state.loading,
       error: state.error
     }),
     [topics, state.loading, state.error]
