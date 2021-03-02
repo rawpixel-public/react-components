@@ -1,14 +1,16 @@
 import styled, { css } from "styled-components";
 import { prop, switchProp, ifProp } from "styled-tools";
 import HorizontalRule from "../../atoms/HorizontalRule";
+import WidgetIcon from "./WidgetIcon";
+import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
 
 import { fontFamily, palette } from "../../utils/cssVars";
 
 const verticalCentreCss = css`
   display: flex;
-  flex-direction: ${prop("direction")};
+  flex-direction: ${prop("$direction")};
   justify-content: center;
-  align-items: ${switchProp("direction", { column: "center", row: "start" })};
+  align-items: ${switchProp("$direction", { column: "center", row: "start" })};
 `;
 
 export const StyledButton = styled.button`
@@ -27,7 +29,7 @@ export const StyledButton = styled.button`
   @media (hover: hover) {
     &:hover {
       cursor: pointer;
-      .widget-icon {
+      ${WidgetIcon} {
         background: linear-gradient(to left, ${palette.pink}, ${palette.blue});
       }
     }
@@ -61,22 +63,24 @@ export const StyledWidgetsWrapper = styled.div`
   padding: 10px 0;
   width: 70px;
 
-  ${props =>
-    props.direction === "column" &&
+  ${ifProp(
+    { $direction: "column" },
     css`
       max-width: 70px;
       hr {
         margin: 0 0 16px;
       }
-    `};
+    `
+  )};
 
-  ${props =>
-    props.direction === "row" &&
+  ${ifProp(
+    { $direction: "row" },
     css`
-      .widgets-plus {
+      ${PinkGradientInversePlusButton} {
         margin: 5px 10px;
       }
-    `}
+    `
+  )};
 `;
 
 export const StyledUnorderedList = styled.ul`
@@ -85,13 +89,14 @@ export const StyledUnorderedList = styled.ul`
   padding: 0;
   ${verticalCentreCss};
 
-  ${props =>
-    props.direction === "column" &&
+  ${ifProp(
+    { $direction: "column" },
     css`
       li:first-child {
         margin-top: 4px;
       }
-    `}
+    `
+  )};
 `;
 
 export const StyledListItem = styled.li`
@@ -101,11 +106,12 @@ export const StyledListItem = styled.li`
 export const StyledHR = styled(HorizontalRule)`
   width: 50px;
 
-  ${props =>
-    props.direction === "row" &&
+  ${ifProp(
+    { $direction: "row" },
     css`
       margin: 0 10px;
       height: 50px;
       width: 1px;
-    `};
+    `
+  )};
 `;

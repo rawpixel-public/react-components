@@ -26,7 +26,7 @@ const WidgetTopicGroup = ({
     data-fav-count={widget.field_flag_count}
     {...props}
   >
-    <WidgetIcon className="widget-icon" href={icon_url} active={active} />
+    <WidgetIcon className="widget-icon" $src={icon_url} $active={active} />
     {title && (
       <StyledText className="widget-label" $active={active}>
         {title}
