@@ -187,10 +187,10 @@ const WidgetsBar = ({
 
   return (
     <StyledWidgetsWrapper
-      direction={direction}
+      $direction={direction}
       className={classnames("widgets", classes.wrapper, className)}
     >
-      <StyledUnorderedList direction={direction}>
+      <StyledUnorderedList $direction={direction}>
         {loading &&
           [...Array(10)].map((_, index) => (
             <WidgetPlaceholder
@@ -201,7 +201,7 @@ const WidgetsBar = ({
         {groups.map((group, index, arr) => (
           <React.Fragment key={index}>
             {group}
-            {index !== arr.length - 1 && <StyledHR direction={direction} />}
+            {index !== arr.length - 1 && <StyledHR $direction={direction} />}
             {index === arr.length - 1 && plusButton && (
               <StyledListItem
                 key={`${index}-plus`}
@@ -211,7 +211,7 @@ const WidgetsBar = ({
                   onClick={onPlusClick}
                   className={classnames("widgets-plus", plusProps.className)}
                   data-testid="widgets-plus"
-                  active={plusActive}
+                  $active={plusActive}
                   {...plusProps}
                 />
               </StyledListItem>
@@ -224,7 +224,7 @@ const WidgetsBar = ({
               onClick={onPlusClick}
               className={classnames("widgets-plus", plusProps.className)}
               data-testid="widgets-plus"
-              active={plusActive}
+              $active={plusActive}
               {...plusProps}
             />
           </StyledListItem>

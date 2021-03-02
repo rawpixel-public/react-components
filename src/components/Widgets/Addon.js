@@ -6,7 +6,7 @@ import WidgetProps from "./WidgetProps";
 
 const WidgetAddon = ({ as, title, icon_url, href, ...props }) => (
   <StyledButton as={as || "a"} href={href} {...props}>
-    <WidgetIcon className="widget-icon" href={icon_url} />
+    <WidgetIcon className="widget-icon" $src={icon_url} />
     <StyledText className="widget-label">{title}</StyledText>
   </StyledButton>
 );

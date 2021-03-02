@@ -35,11 +35,11 @@ const StyledButton = styled.button`
   &:after {
     content: "";
     display: inline-block;
-    width: ${switchProp("size", sizeCases)};
-    height: ${switchProp("size", sizeCases)};
-    background-image: url(${switchProp("iconThickness", iconCases)}),
+    width: ${switchProp("$size", sizeCases)};
+    height: ${switchProp("$size", sizeCases)};
+    background-image: url(${switchProp("$iconThickness", iconCases)}),
       url(${pinkPlus});
-    background-size: ${ifProp("active", "0, contain", "contain, 0")};
+    background-size: ${ifProp("$active", "0, contain", "contain, 0")};
     background-position: 50%, 50%;
     background-repeat: no-repeat, no-repeat;
   }
@@ -50,13 +50,15 @@ const StyledButton = styled.button`
 `;
 
 StyledButton.propTypes = {
-  size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge"]),
-  iconThickness: PropTypes.oneOf(["light", "normal"])
+  $active: PropTypes.bool,
+  $size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge"]),
+  $iconThickness: PropTypes.oneOf(["light", "normal"])
 };
 
 StyledButton.defaultProps = {
-  size: "medium",
-  iconThickness: "normal"
+  $active: false,
+  $size: "medium",
+  $iconThickness: "normal"
 };
 
 export default StyledButton;
