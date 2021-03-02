@@ -33,7 +33,7 @@ const imgHoverStyles = ({ isTagged, isTagMode, isLoading }) => {
   `;
 };
 
-const imgBackgroundStyles = ({ active, isTagged, isTagMode }) => {
+const imgBackgroundStyles = ({ $active, isTagged, isTagMode }) => {
   let background = palette.topicButtonBackground;
   let border = `1px solid ${palette.topicBorderColor}`;
   let invert = false;
@@ -42,7 +42,7 @@ const imgBackgroundStyles = ({ active, isTagged, isTagMode }) => {
     background = taggedGreen;
     border = "none";
     invert = true;
-  } else if (active) {
+  } else if ($active) {
     background = palette.topicGradient;
     border = "none";
     invert = true;
