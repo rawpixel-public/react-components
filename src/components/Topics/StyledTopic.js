@@ -106,7 +106,7 @@ export const StyledTopicButton = styled.button`
 
 export const StyledTitle = styled.span`
   color: ${palette.grayDarkest};
-  font-family: ${fontFamily.base};
+  font-family: ${ifProp("$active", fontFamily.medium, fontFamily.base)};
   font-size: 11px;
   text-align: center;
   line-height: 1.2;
@@ -120,7 +120,7 @@ export const StyledTitle = styled.span`
   position: relative;
 
   ${ifProp(
-    "isHyphenated",
+    "$isHyphenated",
     css`
       word-break: break-all;
       padding-right: 4px;
@@ -135,8 +135,8 @@ export const StyledTitle = styled.span`
   )};
 
   ${props =>
-    props.isHyphenated &&
-    props.hasIcon &&
+    props.$isHyphenated &&
+    props.$hasIcon &&
     css`
       &:after {
         right: 2px;
@@ -144,16 +144,12 @@ export const StyledTitle = styled.span`
     `};
 
   ${props =>
-    props.isMulti &&
-    props.hasIcon &&
+    props.$isMulti &&
+    props.$hasIcon &&
     css`
       -webkit-box-orient: unset;
       text-align: left;
     `};
-
-  &.active {
-    font-weight: 700;
-  }
 `;
 
 export const StyledIcon = styled.div`
@@ -162,7 +158,7 @@ export const StyledIcon = styled.div`
   width: 9px;
   margin-right: 2px;
   vertical-align: baseline;
-  mask: url(${prop("icon")}) no-repeat center;
+  mask: url(${prop("$url")}) no-repeat center;
   mask-size: contain;
   background: ${palette.grayMedium};
   flex-shrink: 0;
@@ -202,7 +198,7 @@ export const StyledIconWrapper = styled.div`
 `;
 
 export const Mask = styled.div`
-  mask: url(${prop("url")});
+  mask: url(${prop("$url")});
   height: 30px;
   width: 30px;
   background: ${palette.topicBorderColor};
