@@ -4,13 +4,15 @@ import styled, { css } from "styled-components";
 
 import DotLoader from "../Loader/DotLoader";
 
+const Loader = styled(DotLoader)``;
+
 export const StyledImgWrapper = styled.div`
   position: relative;
   height: 50px;
   width: 60px;
   border-radius: 6px;
 
-  .loader {
+  ${Loader} {
     position: absolute;
     top: 20px;
     left: 2px;
@@ -23,9 +25,9 @@ export const StyledIcon = styled.div`
   width: 30px;
 
   ${props =>
-    props.imgSrc &&
+    props.$url &&
     css`
-      background: url(${props.imgSrc}) no-repeat center;
+      background: url(${props.$url}) no-repeat center;
       background-size: contain;
     `};
 
@@ -34,8 +36,8 @@ export const StyledIcon = styled.div`
 
 const Icon = ({ loading, icon, className }) => (
   <StyledImgWrapper className={className}>
-    {loading && <DotLoader className="loader" loaderWidth={50} dotSize={8} />}
-    <StyledIcon imgSrc={icon} />
+    {loading && <Loader loaderWidth={50} dotSize={8} />}
+    <StyledIcon $url={icon} />
   </StyledImgWrapper>
 );
 

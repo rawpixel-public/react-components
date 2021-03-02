@@ -13,36 +13,36 @@ const transitionSize = width => endPosition(width) - middlePosition(width);
 const StyledDotLoader = styled.div`
   display: inline-block;
   position: relative;
-  width: ${prop("loaderWidth")}px;
-  height: ${prop("dotSize")}px;
+  width: ${prop("$loaderWidth")}px;
+  height: ${prop("$dotSize")}px;
 
   div {
     position: absolute;
     top: 0;
-    width: ${prop("dotSize")}px;
-    height: ${prop("dotSize")}px;
+    width: ${prop("$dotSize")}px;
+    height: ${prop("$dotSize")}px;
     border-radius: 50%;
-    background: ${prop("color", palette.white)};
+    background: ${prop("$color", palette.white)};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
 
   div:nth-child(1) {
-    left: ${props => initialPosition(props.loaderWidth)}px;
+    left: ${props => initialPosition(props.$loaderWidth)}px;
     animation: lds-ellipsis1 0.6s infinite;
   }
 
   div:nth-child(2) {
-    left: ${props => initialPosition(props.loaderWidth)}px;
+    left: ${props => initialPosition(props.$loaderWidth)}px;
     animation: lds-ellipsis2 0.6s infinite;
   }
 
   div:nth-child(3) {
-    left: ${props => middlePosition(props.loaderWidth)}px;
+    left: ${props => middlePosition(props.$loaderWidth)}px;
     animation: lds-ellipsis2 0.6s infinite;
   }
 
   div:nth-child(4) {
-    left: ${props => endPosition(props.loaderWidth)}px;
+    left: ${props => endPosition(props.$loaderWidth)}px;
     animation: lds-ellipsis3 0.6s infinite;
   }
 
@@ -67,7 +67,7 @@ const StyledDotLoader = styled.div`
       transform: translate(0, 0);
     }
     100% {
-      transform: translate(${props => transitionSize(props.loaderWidth)}px, 0);
+      transform: translate(${props => transitionSize(props.$loaderWidth)}px, 0);
     }
   }
 `;
@@ -75,10 +75,10 @@ const StyledDotLoader = styled.div`
 const DotLoader = ({ className, color, dotSize = 13, loaderWidth = 80 }) => (
   <StyledDotLoader
     className={className}
-    color={color}
+    $color={color}
     data-testid="dot-loader"
-    dotSize={dotSize}
-    loaderWidth={loaderWidth}
+    $dotSize={dotSize}
+    $loaderWidth={loaderWidth}
   >
     <div />
     <div />

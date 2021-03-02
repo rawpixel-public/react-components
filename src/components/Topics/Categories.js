@@ -276,7 +276,7 @@ const Categories = ({
   return (
     <StyledCategoriesWrapper
       classNames={classnames("categories", className)}
-      hasCategories={hasCategories}
+      $hasCategories={hasCategories}
       {...filterAllowedProps(props)}
     >
       <StyledHeadingWrapper>
@@ -300,7 +300,7 @@ const Categories = ({
         <CategoryButtonsPlaceholder data-testid="category-buttons-placeholder" />
       )}
       {hasCategories && (
-        <StyledListWrapper showPrevious={showPrevious} showNext={showNext}>
+        <StyledListWrapper $showPrevious={showPrevious} $showNext={showNext}>
           {showPrevious && (
             <StyledControlButton
               className="previous-button"

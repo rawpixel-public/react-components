@@ -18,7 +18,7 @@ const TopicIcon = ({ className, icon, name = "" }) => (
     className={classnames("img-wrapper", className)}
     data-testid={`topic-icon:${name.replace(/\W/gi, "").toLowerCase()}`}
   >
-    <Mask className="mask" url={icon} />
+    <Mask className="mask" $url={icon} />
   </StyledIconWrapper>
 );
 
@@ -76,13 +76,14 @@ const Topic = ({
         <TopicIcon icon={icon} name={name} />
       )}
       <StyledTitleWrapper>
-        {groupIcon && <StyledIcon icon={groupIcon} />}
+        {groupIcon && <StyledIcon $url={groupIcon} />}
         <StyledTitle
           className={classnames("topic-title", { active })}
+          $active={active}
           ref={TitleRef}
-          isHyphenated={lines.hyphenated}
-          isMulti={lines.multi}
-          hasIcon={groupIcon}
+          $isHyphenated={lines.hyphenated}
+          $isMulti={lines.multi}
+          $hasIcon={groupIcon}
         >
           {name}
         </StyledTitle>
