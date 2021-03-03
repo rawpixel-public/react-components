@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 
 import { StyledButton, StyledText } from "./StyledWidgets";
 import WidgetIcon from "./WidgetIcon";
@@ -26,9 +27,16 @@ const WidgetTopicGroup = ({
     data-fav-count={widget.field_flag_count}
     {...props}
   >
-    <WidgetIcon className="widget-icon" $src={icon_url} $active={active} />
+    <WidgetIcon
+      className={classnames("widget-icon", { active })}
+      $src={icon_url}
+      $active={active}
+    />
     {title && (
-      <StyledText className="widget-label" $active={active}>
+      <StyledText
+        className={classnames("widget-label", { active })}
+        $active={active}
+      >
         {title}
       </StyledText>
     )}

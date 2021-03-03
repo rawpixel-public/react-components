@@ -36,5 +36,17 @@ export const palette = {
 };
 
 export const fontFamily = {
-  base: '"Helvetica Neue LT W01_41488878", "Helvetica Neue", Arial, sans-serif'
+  base:
+    '"Helvetica Neue LT W01_41488878", "Helvetica Neue Light", Arial, sans-serif',
+  thin:
+    '"Helvetica Neue LT W01_35 Thin", "Helvetica Neue Thin", Arial, sans-serif',
+  light:
+    '"Helvetica Neue LT W01_41488878", "Helvetica Neue Light", Arial, sans-serif',
+  medium:
+    '"Helvetica Neue LT W01_65 Md", "Helvetica Neue Medium", Arial, sans-serif',
+  bold:
+    '"Helvetica Neue LT W01_71488914", "Helvetica Neue Bold", Arial, sans-serif',
+  playfair: '"Playfair Display", serif',
+  bangers: '"Bangers", serif',
+  lobster: '"Lobster", serif'
 };
