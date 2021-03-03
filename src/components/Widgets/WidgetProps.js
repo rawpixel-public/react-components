@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 export default {
   as: PropTypes.any,
-  to: PropTypes.string,
+  to: PropTypes.any,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   icon_url: PropTypes.string.isRequired,
   href: PropTypes.string,

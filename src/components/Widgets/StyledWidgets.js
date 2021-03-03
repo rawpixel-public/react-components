@@ -42,9 +42,8 @@ export const StyledButton = styled.button`
 
 export const StyledText = styled.span`
   color: ${palette.grayDarkest};
-  font-family: ${fontFamily.base};
+  font-family: ${ifProp("$active", fontFamily.medium, fontFamily.base)};
   font-size: 12px;
-  font-weight: ${ifProp("$active", "700", "400")};
   line-height: 1.25;
   text-align: center;
   margin: 3px 0;
