@@ -55,21 +55,23 @@ const ButtonComponents = {
 
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
   <ButtonGroupList title={title}>
-    {filters.map((filter, index) => {
-      const Component = ButtonComponents[filter.tag] || Button;
-      return (
-        <Component
-          key={`${index}:${filter.name}`}
-          as={filter.to ? Link : filter.href ? "a" : "button"}
-          active={filter.active}
-          disabled={filter.disabled}
-          onClick={e => onFilterClick && onFilterClick(e, filter)}
-          to={filter.to}
-        >
-          {filter.name}
-        </Component>
-      );
-    })}
+    {filters
+      .filter(f => f.published)
+      .map((filter, index) => {
+        const Component = ButtonComponents[filter.tag] || Button;
+        return (
+          <Component
+            key={`${index}:${filter.name}`}
+            as={filter.to ? Link : filter.href ? "a" : "button"}
+            active={filter.active}
+            disabled={filter.disabled}
+            onClick={e => onFilterClick && onFilterClick(e, filter)}
+            to={filter.to}
+          >
+            {filter.name}
+          </Component>
+        );
+      })}
   </ButtonGroupList>
 );
 
