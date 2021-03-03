@@ -27,7 +27,7 @@ export const StyledListItem = styled.li`
   display: flex;
   justify-content: center;
   ${ifProp(
-    "flexGrow",
+    "$flexGrow",
     css`
       &:last-child {
         flex-grow: 1;
