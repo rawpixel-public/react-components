@@ -21,7 +21,7 @@ const ButtonGroupList = ({
 }) => (
   <div {...filterAllowedProps(props)}>
     {title && <Title level={headingLevel}>{title}</Title>}
-    <StyledList flexGrow={flexGrow}>
+    <StyledList>
       {React.Children.toArray(children).map((element, index, arr) => {
         const itemSpan =
           index + 1 < arr.length || arr.length % itemsPerRow === 0
@@ -33,7 +33,7 @@ const ButtonGroupList = ({
             itemsPerRow={itemsPerRow}
             itemsCount={arr.length}
             itemSpan={itemSpan}
-            flexGrow={flexGrow}
+            $flexGrow={flexGrow}
           >
             {element}
           </StyledListItem>
