@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { withKnobs } from "@storybook/addon-knobs";
 import {
   Button,
+  ExclusiveButton,
+  LikesButton,
+  LogoButton,
   HorizontalRule,
   WidgetsBar,
   TopicsGrid,
@@ -44,26 +47,44 @@ const SidebarHorizontalRule = () => (
   />
 );
 
+const ButtonComponents = {
+  $exclusive: ExclusiveButton,
+  $likes: LikesButton,
+  $rawpixelcc0: LogoButton
+};
+
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
   <ButtonGroupList title={title}>
-    {filters.map((filter, index) => (
-      <Button
-        key={`${index}:${filter.name}`}
-        as={filter.to ? Link : filter.href ? "a" : "button"}
-        active={filter.active}
-        disabled={filter.disabled}
-        onClick={e => onFilterClick && onFilterClick(e, filter)}
-        to={filter.to}
-      >
-        {filter.name}
-      </Button>
-    ))}
+    {filters.map((filter, index) => {
+      const Component = ButtonComponents[filter.tag] || Button;
+      return (
+        <Component
+          key={`${index}:${filter.name}`}
+          as={filter.to ? Link : filter.href ? "a" : "button"}
+          active={filter.active}
+          disabled={filter.disabled}
+          onClick={e => onFilterClick && onFilterClick(e, filter)}
+          to={filter.to}
+        >
+          {filter.name}
+        </Component>
+      );
+    })}
   </ButtonGroupList>
 );
 
 const TopicsFooter = () => (
-  <div style={{ padding: "5px 0 0 0", display: "flex", justifyContent: "center" }}>
-    <Button as="a" size="small" style={{ width: "120px" }} href="https://www.rawpixel.com/themes/topics">All topics</Button>
+  <div
+    style={{ padding: "5px 0 0 0", display: "flex", justifyContent: "center" }}
+  >
+    <Button
+      as="a"
+      size="small"
+      style={{ width: "120px" }}
+      href="https://www.rawpixel.com/themes/topics"
+    >
+      All topics
+    </Button>
   </div>
 );
 
