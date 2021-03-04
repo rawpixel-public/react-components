@@ -13,6 +13,7 @@ export default {
     "src/atoms.js",
     "src/button.js",
     "src/hooks.js",
+    "src/theme.js",
     "src/topics.js",
     "src/widgets.js"
   ],
