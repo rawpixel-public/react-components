@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/rawpixel-public/react-components/compare/v3.0.1...v3.0.2) (2021-03-04)
+
+
+### Bug Fixes
+
+* enable to align button list items ([46e164b](https://github.com/rawpixel-public/react-components/commit/46e164b038cec38017e0d1469fd4dde56b9f898b))
+* set widget label font family ([baf589c](https://github.com/rawpixel-public/react-components/commit/baf589ce1b0acf4a580fcf64329eb4358cc284dc))
+
 ### [3.0.1](https://github.com/rawpixel-public/react-components/compare/v3.0.0...v3.0.1) (2021-03-02)
 
 ## [3.0.0](https://github.com/rawpixel-public/react-components/compare/v2.4.3...v3.0.0) (2021-03-01)
