@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { prop, switchProp, ifProp } from "styled-tools";
+import { prop, switchProp, ifProp, theme } from "styled-tools";
 import HorizontalRule from "../../atoms/HorizontalRule";
 import WidgetIcon from "./WidgetIcon";
 import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
@@ -14,9 +14,9 @@ const verticalCentreCss = css`
 `;
 
 export const StyledButton = styled.button`
-  background: none;
+  background: ${theme("palette.widget.background", "none")};
   border: none;
-  color: ${palette.grayMedium};
+  color: ${theme("palette.widget.color", palette.grayDarkest)};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +30,10 @@ export const StyledButton = styled.button`
     &:hover {
       cursor: pointer;
       ${WidgetIcon} {
-        background: linear-gradient(to left, ${palette.pink}, ${palette.blue});
+        background: ${theme(
+          "palette.widgetIcon.hoverBackground",
+          `linear-gradient(to left, ${palette.pink}, ${palette.blue})`
+        )};
       }
     }
   }
@@ -41,9 +44,13 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledText = styled.span`
-  color: ${palette.grayDarkest};
-  font-family: ${ifProp("$active", fontFamily.medium, fontFamily.base)};
-  font-size: 12px;
+  color: ${theme("palette.widget.color", palette.grayDarkest)};
+  font-family: ${ifProp(
+    "$active",
+    theme("font.widget.active", fontFamily.medium),
+    theme("font.widget.base", fontFamily.base)
+  )};
+  font-size: ${theme("fontSize.widget", "12px")};
   line-height: 1.25;
   text-align: center;
   margin: 3px 0;

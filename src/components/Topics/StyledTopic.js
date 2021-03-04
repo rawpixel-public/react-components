@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 import { fontFamily, palette } from "../../utils/cssVars";
-import { ifNotProp, ifProp, prop } from "styled-tools";
+import { ifNotProp, ifProp, prop, theme } from "styled-tools";
 
 const taggedGreen = "#A1D1B7";
 const taggingGreen = "#95BDAA";
@@ -58,9 +58,9 @@ const imgBackgroundStyles = ({ $active, isTagged, isTagMode }) => {
 };
 
 export const StyledTopicButton = styled.button`
-  background: none;
+  background: ${theme("palette.topic.background", "none")};
   border: none;
-  color: #4a4a4a;
+  color: ${theme("palette.topic.color", palette.grayDarkest)};
   width: 60px;
   min-height: 60px;
   display: flex;
@@ -105,9 +105,13 @@ export const StyledTopicButton = styled.button`
 `;
 
 export const StyledTitle = styled.span`
-  color: ${palette.grayDarkest};
-  font-family: ${ifProp("$active", fontFamily.medium, fontFamily.base)};
-  font-size: 11px;
+  color: ${theme("palette.topic.color", palette.grayDarkest)};
+  font-family: ${ifProp(
+    "$active",
+    theme("font.topic.active", fontFamily.medium),
+    theme("font.topic.base", fontFamily.base)
+  )};
+  font-size: ${theme("fontSize.topic", "11px")};
   text-align: center;
   line-height: 1.2;
   margin-top: 3px;
@@ -160,7 +164,7 @@ export const StyledIcon = styled.div`
   vertical-align: baseline;
   mask: url(${prop("$url")}) no-repeat center;
   mask-size: contain;
-  background: ${palette.grayMedium};
+  background: ${theme("palette.topic.titleIcon", palette.grayMedium)};
   flex-shrink: 0;
 `;
 

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { ifProp, prop } from "styled-tools";
+import { ifProp, prop, theme } from "styled-tools";
 
 import { palette } from "../../utils/cssVars";
 
@@ -9,12 +9,15 @@ const WidgetIcon = styled.div`
   width: 26px;
   margin: auto;
   mask: url(${prop("$src")}) no-repeat center center;
-  background: ${palette.topicActive};
+  background: ${theme("palette.widgetIcon.background", palette.topicActive)};
 
   ${ifProp(
     "$active",
     css`
-      background: ${palette.topicGradient};
+      background: ${theme(
+        "palette.widget_icon.activeBackground",
+        palette.topicGradient
+      )};
     `
   )};
 `;
