@@ -54,7 +54,7 @@ const ButtonComponents = {
 };
 
 const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
-  <ButtonGroupList title={title}>
+  <ButtonGroupList title={title} alignSelf="center">
     {filters
       .filter(f => f.published)
       .map((filter, index) => {

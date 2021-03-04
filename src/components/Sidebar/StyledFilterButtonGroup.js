@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ifProp } from "styled-tools";
+import { ifProp, prop } from "styled-tools";
 
 const itemWidth = ({ itemsCount, itemsPerRow, itemSpan = 1 }) => {
   if (itemsCount > 1) {
@@ -23,7 +23,7 @@ export const StyledList = styled.ul`
 export const StyledListItem = styled.li`
   width: ${itemWidth};
   margin-bottom: 10px;
-  align-self: baseline;
+  align-self: ${prop("$alignSelf", "baseline")};
   display: flex;
   justify-content: center;
   ${ifProp(

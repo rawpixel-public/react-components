@@ -17,6 +17,7 @@ const ButtonGroupList = ({
   itemsPerRow = 2,
   headingLevel = 3,
   flexGrow = false,
+  alignSelf,
   ...props
 }) => (
   <div {...filterAllowedProps(props)}>
@@ -34,6 +35,7 @@ const ButtonGroupList = ({
             itemsCount={arr.length}
             itemSpan={itemSpan}
             $flexGrow={flexGrow}
+            $alignSelf={alignSelf}
           >
             {element}
           </StyledListItem>
@@ -48,7 +50,8 @@ ButtonGroupList.propTypes = {
   title: PropTypes.string,
   itemsPerRow: PropTypes.number,
   headingLevel: PropTypes.number,
-  flexGrow: PropTypes.bool
+  flexGrow: PropTypes.bool,
+  alignSelf: PropTypes.string
 };
 
 export default ButtonGroupList;
