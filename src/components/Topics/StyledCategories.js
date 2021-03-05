@@ -83,7 +83,7 @@ export const StyledCategoryList = styled.ul`
     }
 
     button {
-      font-size: 11px;
+      font-size: 12px;
     }
   }
 `;

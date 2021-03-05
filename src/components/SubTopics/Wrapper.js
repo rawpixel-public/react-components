@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 
   ${Button} {
     color: ${theme("subtopics.color.default", palette.grayDarkest)};
-    font-size: 11px;
+    font-size: ${theme("subtopics.font.size", "12px")};
     &:hover {
       color: ${theme("subtopics.color.hover", palette.topicIconColor)};
       background: ${theme("subtopics.background.hover", palette.havelock)};
