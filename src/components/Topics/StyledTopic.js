@@ -11,7 +11,7 @@ const imgHoverStyles = ({ isTagged, isTagMode, isLoading }) => {
     return;
   }
 
-  let background = palette.topicGradient;
+  let background = palette.blueGradient;
   let border = "none";
   let invert = true;
 
@@ -43,7 +43,7 @@ const imgBackgroundStyles = ({ $active, isTagged, isTagMode }) => {
     border = "none";
     invert = true;
   } else if ($active) {
-    background = palette.topicGradient;
+    background = palette.blueGradient;
     border = "none";
     invert = true;
   }
@@ -186,24 +186,4 @@ export const StyledIconWrapper = styled.div`
   align-content: center;
   align-items: center;
   flex-shrink: 0;
-
-  svg,
-  img {
-    height: 30px;
-    width: 30px;
-  }
-
-  img[alt] {
-    color: transparent;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-`;
-
-export const Mask = styled.div`
-  mask: url(${prop("$url")});
-  height: 30px;
-  width: 30px;
-  background: ${palette.topicBorderColor};
 `;

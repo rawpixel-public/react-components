@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 import Icon from "../../atoms/Icon";
+import MaskImage from "../../atoms/MaskImage";
 import {
   StyledTopicButton,
   StyledTitle,
   StyledIcon,
   StyledIconWrapper,
-  StyledTitleWrapper,
-  Mask
+  StyledTitleWrapper
 } from "./StyledTopic";
 import useHyphenation from "./useHyphenation";
 
@@ -18,7 +18,7 @@ const TopicIcon = ({ className, icon, name = "" }) => (
     className={classnames("img-wrapper", className)}
     data-testid={`topic-icon:${name.replace(/\W/gi, "").toLowerCase()}`}
   >
-    <Mask className="mask" $url={icon} />
+    <MaskImage $src={icon} className="mask" $height="30px" $width="30px" />
   </StyledIconWrapper>
 );
 
