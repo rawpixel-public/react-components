@@ -2,45 +2,22 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, text, boolean, object, select } from "@storybook/addon-knobs";
 
-import * as stories from "./topic-categories.stories.js";
+import * as stories from "./subtopics.stories.js";
 
 import "../.storybook/global.css";
 
-<Meta title="Topics/Categories" decorators={[withKnobs]} />
+<Meta title="Topics/SubTopics" decorators={[withKnobs]} />
 
-# Topic Categories
+# Topic SubTopics
 
 Displays at the top of the topics sidebar.
 
 Wrapping element determines the width of the component.
 
-## With controls
-
-When there are more topic categories than the number allowed to display at once (defaults to 3).
+## Default
 
 <Preview>
-  <Story name="controls">
+  <Story name="default">
     {stories.controls()}
   </Story>
 </Preview>
-
-## Clear
-
-Optional "Clear" button.
-
-<Preview>
-  <Story name="no-controls">
-    {stories.noControls()}
-  </Story>
-</Preview>
-
-## Select multiple categories
-
-Optionally set multiple active buttons.
-
-<Preview>
-  <Story name="select-multiple">
-    {stories.selectMultiple()}
-  </Story>
-</Preview>
-
