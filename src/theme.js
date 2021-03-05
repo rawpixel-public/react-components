@@ -7,16 +7,18 @@ export default {
       color: palette.grayDarkest,
       titleIcon: palette.grayMedium
     },
-    widget: {
+    widgets: {
       activeBackground: "rgba(0, 0, 0, 0.1)",
-      hoverBackground: "rgba(0, 0, 0, 0.1)",
+      hoverBackground: "rgba(0, 0, 0, 0.1)"
+    },
+    widget: {
       background: "none",
       color: palette.grayDarkest
     },
     widgetIcon: {
-      background: palette.topicActive,
-      activeBackground: `linear-gradient(to left, ${palette.pink}, ${palette.blue})`,
-      hoverBackground: `linear-gradient(to left, ${palette.pink}, ${palette.blue})`
+      background: palette.fuscous,
+      activeBackground: palette.blueGradient,
+      hoverBackground: palette.blueGradient
     }
   },
   font: {

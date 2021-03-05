@@ -1,5 +1,9 @@
-import WidgetTopicGroup from "./components/Widgets/TopicGroup";
-import WidgetAddon from "./components/Widgets/Addon";
 import WidgetsBar from "./components/Widgets/Bar";
+import Widget from "./components/Widget";
 
-export { WidgetsBar, WidgetAddon, WidgetTopicGroup };
+export {
+  WidgetsBar,
+  Widget as WidgetAddon,
+  Widget as WidgetTopicGroup,
+  Widget
+};

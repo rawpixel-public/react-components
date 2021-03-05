@@ -8,6 +8,7 @@ import HorizontalRule from "./atoms/HorizontalRule";
 import ImageButton from "./atoms/ImageButton";
 import ImageButtonGrid from "./atoms/ImageButtonGrid";
 import LoadingPlaceholder from "./atoms/LoadingPlaceholder";
+import MaskImage from "./atoms/MaskImage";
 import SizeButton from "./atoms/SizeButton";
 
 export {
@@ -20,6 +21,7 @@ export {
   ImageButton,
   ImageButtonGrid,
   LoadingPlaceholder,
+  MaskImage,
   SizeButton,
   LogoButton
 };

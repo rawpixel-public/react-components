@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
-import Addon from "./Addon";
-import TopicGroup from "./TopicGroup";
 import {
   StyledHR,
   StyledWidgetsWrapper,
@@ -13,6 +11,7 @@ import {
 } from "./StyledWidgets";
 import WidgetProps from "./WidgetProps";
 import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
+import Widget from "../Widget";
 
 const WidgetPlaceholder = props => (
   <div
@@ -61,8 +60,12 @@ const WidgetsBar = ({
   };
 
   const renderTopicGroup = (widget, index) => (
-    <StyledListItem key={`${index}:${widget.title}`}>
-      <TopicGroup
+    <StyledListItem
+      key={`${index}:${widget.title}`}
+      $active={widget.active || widgets.indexOf(widget) === activeIndex}
+      className={classnames("widget-wrapper", widget.type, widget.tag)}
+    >
+      <Widget
         className={classnames("widget", "topic-group", {
           [classes.widget]: classes.widget,
           [classes.topicGroup]: classes.topicGroup,
@@ -82,8 +85,12 @@ const WidgetsBar = ({
   );
 
   const renderAddOn = (widget, index) => (
-    <StyledListItem key={`${index}:${widget.title}`}>
-      <Addon
+    <StyledListItem
+      key={`${index}:${widget.title}`}
+      $active={widget.active || widgets.indexOf(widget) === activeIndex}
+      className={classnames("widget-wrapper", widget.type, widget.tag)}
+    >
+      <Widget
         className={classnames("widget", "add-on", {
           [classes.widget]: classes.widget,
           [classes.addOn]: classes.addOn,
@@ -95,6 +102,7 @@ const WidgetsBar = ({
         href={widget.url}
         title={widget.title}
         type={widget.type}
+        widget={widget}
       />
     </StyledListItem>
   );
@@ -180,13 +188,9 @@ const WidgetsBar = ({
     }
   };
 
-  const groups = React.useMemo(
-    () =>
-      widgets.every(item => Array.isArray(item))
-        ? widgets.map(items => renderGroups(items))
-        : renderGroups(widgets, grouping),
-    [widgets, grouping]
-  );
+  const groups = widgets.every(item => Array.isArray(item))
+    ? widgets.map(items => renderGroups(items))
+    : renderGroups(widgets, grouping);
 
   return (
     <StyledWidgetsWrapper

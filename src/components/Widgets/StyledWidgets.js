@@ -1,79 +1,13 @@
 import styled, { css } from "styled-components";
 import { prop, switchProp, ifProp, theme } from "styled-tools";
 import HorizontalRule from "../../atoms/HorizontalRule";
-import WidgetIcon from "./WidgetIcon";
 import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
-
-import { fontFamily, palette } from "../../utils/cssVars";
 
 const verticalCentreCss = css`
   display: flex;
   flex-direction: ${prop("$direction")};
   justify-content: center;
   align-items: ${switchProp("$direction", { column: "center", row: "start" })};
-`;
-
-export const StyledButton = styled.button`
-  background: ${ifProp(
-    "$active",
-    theme("palette.widget.activeBackground", "rgba(0, 0, 0, 0.1)"),
-    theme("palette.widget.background", "none")
-  )};
-  border: none;
-  border-radius: 4px;
-  color: ${theme("palette.widget.color", palette.grayDarkest)};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  white-space: normal;
-  min-width: 50px;
-  transform: translateZ(0);
-  padding: 7px 0 5px;
-  width: 100%;
-
-  @media (hover: hover) {
-    &:hover {
-      background: ${theme(
-        "palette.widget.hoverBackground",
-        "rgba(0, 0, 0, 0.1)"
-      )};
-      cursor: pointer;
-      ${WidgetIcon} {
-        background: ${theme(
-          "palette.widgetIcon.hoverBackground",
-          palette.blueGradient
-        )};
-      }
-    }
-  }
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const StyledText = styled.span`
-  color: ${theme("palette.widget.color", palette.grayDarkest)};
-  font-family: ${ifProp(
-    "$active",
-    theme("font.widget.active", fontFamily.medium),
-    theme("font.widget.base", fontFamily.base)
-  )};
-  font-size: ${theme("fontSize.widget", "12px")};
-  line-height: 1.25;
-  text-align: center;
-  margin: 3px 0;
-  min-width: 40px;
-  max-width: 70px;
-  word-wrap: normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow-x: visible;
-  overflow-y: hidden;
-  scrollbar-width: none;
 `;
 
 export const StyledWidgetsWrapper = styled.div`
@@ -140,6 +74,27 @@ export const StyledListItem = styled.li`
       margin: 10px 0;
     `
   )};
+
+  &:hover:not(.widgets-plus-wrapper) {
+    border-radius: 4px;
+    background: ${theme(
+      "palette.widgets.hoverBackground",
+      "rgba(0, 0, 0, 0.1)"
+    )};
+  }
+
+  ${ifProp(
+    "$active",
+    css`
+      &:not(.widgets-plus-wrapper) {
+        border-radius: 4px;
+        background: ${theme(
+          "palette.widgets.activeBackground",
+          "rgba(0, 0, 0, 0.1)"
+        )};
+      }
+    `
+  )}
 `;
 
 export const StyledHR = styled(HorizontalRule)`
