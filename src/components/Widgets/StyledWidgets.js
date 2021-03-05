@@ -65,6 +65,7 @@ export const StyledListItem = styled.li`
   margin-bottom: 7px;
   flex-grow: 1;
   width: 100%;
+  min-width: 70px;
 
   ${ifProp(
     "$plus",
