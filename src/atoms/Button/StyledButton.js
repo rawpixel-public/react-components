@@ -10,7 +10,10 @@ const darkGray = palette.topicActive;
 const activeText = "#f9f9f9";
 const textColor = palette.grayDarkest;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !["active", "size"].includes(prop) && defaultValidatorFn(prop)
+})`
   background: ${ifProp(
     "active",
     prop("theme.active.background", darkGray),
