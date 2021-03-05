@@ -22,7 +22,6 @@ const Wrapper = styled.div`
     list-style: none;
     margin: 0 2px 3px;
     &.expand {
-      flex-grow: 2;
       min-width: 24px;
       display: flex;
       justify-content: flex-end;

@@ -16,6 +16,8 @@ const SubTopics = ({
 }) => {
   const [expanded, setExpanded] = React.useState(false);
 
+  React.useEffect(() => setExpanded(false), [subtopics, expandable]);
+
   const handleClick = val => e => onClick(e, val);
 
   const canExpand = expandable && subtopics.length > displayed;
