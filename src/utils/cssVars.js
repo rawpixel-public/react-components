@@ -34,7 +34,8 @@ export const palette = {
   topicGradient: "linear-gradient(to right, #8C91F8, #FF35C9)",
   topicBorderColor: "#4A4A4A",
 
-  havelock: "#4E92DF"
+  havelock: "#4E92DF",
+  fuscous: "#3B3B3B"
 };
 
 export const fontFamily = {
