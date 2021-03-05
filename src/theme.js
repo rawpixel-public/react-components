@@ -8,6 +8,8 @@ export default {
       titleIcon: palette.grayMedium
     },
     widget: {
+      activeBackground: "rgba(0, 0, 0, 0.1)",
+      hoverBackground: "rgba(0, 0, 0, 0.1)",
       background: "none",
       color: palette.grayDarkest
     },

@@ -16,7 +16,7 @@ const WidgetIcon = styled.div`
     css`
       background: ${theme(
         "palette.widget_icon.activeBackground",
-        palette.topicGradient
+        palette.blueGradient
       )};
     `
   )};

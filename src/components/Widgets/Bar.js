@@ -180,10 +180,13 @@ const WidgetsBar = ({
     }
   };
 
-  const isGrouped = widgets.every(item => Array.isArray(item));
-  const groups = isGrouped
-    ? widgets.map(items => renderGroups(items))
-    : renderGroups(widgets, grouping);
+  const groups = React.useMemo(
+    () =>
+      widgets.every(item => Array.isArray(item))
+        ? widgets.map(items => renderGroups(items))
+        : renderGroups(widgets, grouping),
+    [widgets, grouping]
+  );
 
   return (
     <StyledWidgetsWrapper
@@ -206,6 +209,7 @@ const WidgetsBar = ({
               <StyledListItem
                 key={`${index}-plus`}
                 className="widgets-plus-wrapper"
+                $plus
               >
                 <PinkGradientInversePlusButton
                   onClick={onPlusClick}
@@ -219,7 +223,7 @@ const WidgetsBar = ({
           </React.Fragment>
         ))}
         {groups.length === 0 && plusButton && (
-          <StyledListItem key="plus" className="widgets-plus-wrapper">
+          <StyledListItem key="plus" className="widgets-plus-wrapper" $plus>
             <PinkGradientInversePlusButton
               onClick={onPlusClick}
               className={classnames("widgets-plus", plusProps.className)}
