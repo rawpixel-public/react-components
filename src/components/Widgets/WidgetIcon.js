@@ -9,7 +9,7 @@ const WidgetIcon = styled.div`
   width: 26px;
   margin: auto;
   mask: url(${prop("$src")}) no-repeat center center;
-  background: ${theme("palette.widgetIcon.background", palette.topicActive)};
+  background: ${theme("palette.widgetIcon.background", palette.fuscous)};
 
   ${ifProp(
     "$active",
