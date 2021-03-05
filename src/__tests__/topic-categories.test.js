@@ -67,7 +67,7 @@ describe("topic categories", () => {
   it("should call my fn on clear click", async () => {
     const myFn = jest.fn();
     const { getByText } = render(
-      <TopicCategories showClear onClearClick={myFn} />
+      <TopicCategories showClear onClearClick={myFn} title="Test" />
     );
 
     fireEvent(
