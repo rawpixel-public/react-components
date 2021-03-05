@@ -279,23 +279,25 @@ const Categories = ({
       $hasCategories={hasCategories}
       {...filterAllowedProps(props)}
     >
-      <StyledHeadingWrapper>
-        <Heading level={3}>
-          {loading ? (
-            <LoadingPlaceholder
-              width="100px"
-              height="19px"
-              borderRadius="none"
-              data-testid="category-title-placeholder"
-            />
-          ) : (
-            title
+      {(loading || title) && (
+        <StyledHeadingWrapper>
+          <Heading level={3}>
+            {loading ? (
+              <LoadingPlaceholder
+                width="100px"
+                height="19px"
+                borderRadius="none"
+                data-testid="category-title-placeholder"
+              />
+            ) : (
+              title
+            )}
+          </Heading>
+          {showClear && (
+            <StyledClearButton onClick={onClearClick}>Clear</StyledClearButton>
           )}
-        </Heading>
-        {showClear && (
-          <StyledClearButton onClick={onClearClick}>Clear</StyledClearButton>
-        )}
-      </StyledHeadingWrapper>
+        </StyledHeadingWrapper>
+      )}
       {loading && (
         <CategoryButtonsPlaceholder data-testid="category-buttons-placeholder" />
       )}
