@@ -16,9 +16,8 @@ import Categories from "./components/Topics/Categories";
 import SubTopics from "./components/SubTopics";
 import Topic from "./components/Topics/Topic";
 import TopicsGrid from "./components/Topics/TopicsGrid";
-import WidgetTopicGroup from "./components/Widgets/TopicGroup";
-import WidgetAddon from "./components/Widgets/Addon";
 import WidgetsBar from "./components/Widgets/Bar";
+import Widget from "./components/Widget";
 
 import useTopicsApi from "./hooks/useTopicsApi";
 import useTopicsFiltersApi from "./hooks/useTopicsFiltersApi";
@@ -43,8 +42,9 @@ export {
   Topic,
   TopicsGrid,
   WidgetsBar,
-  WidgetAddon,
-  WidgetTopicGroup,
+  Widget,
+  Widget as WidgetAddon,
+  Widget as WidgetTopicGroup,
   useTopicsApi,
   useTopicsFiltersApi,
   useTopicWidgetsApi
@@ -69,8 +69,9 @@ export default {
   Topic,
   TopicsGrid,
   WidgetsBar,
-  WidgetAddon,
-  WidgetTopicGroup,
+  Widget,
+  WidgetAddon: Widget,
+  WidgetTopicGroup: Widget,
   useTopicsApi,
   useTopicsFiltersApi,
   useTopicWidgetsApi
