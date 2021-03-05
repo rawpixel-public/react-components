@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/rawpixel-public/react-components/compare/v3.0.2...v3.1.0) (2021-03-05)
+
+
+### Features
+
+* adds SubTopics component ([a79dbdc](https://github.com/rawpixel-public/react-components/commit/a79dbdcfb73b34fdbaf566cc57f93f22334283a9))
+
+
+### Bug Fixes
+
+* add theme vars to subtopics ([f7a91f6](https://github.com/rawpixel-public/react-components/commit/f7a91f63181073b8b50f1b8d557a61bc3c67db82))
+* enable categories to render without title ([4031f6d](https://github.com/rawpixel-public/react-components/commit/4031f6da502f7a6ed29874916c2da2ac59acf659))
+* increase font size ([e110845](https://github.com/rawpixel-public/react-components/commit/e110845dbd451e3b13c9bd83508a32b7ffb77634))
+* reposition categories arrows ([13a6289](https://github.com/rawpixel-public/react-components/commit/13a6289fc578f340749ed4e8df696cc0fe4eafa8))
+* reset expanded status when subtopics change ([6f158c8](https://github.com/rawpixel-public/react-components/commit/6f158c80b221e7bb6ee91a95ec951a6d97584205))
+* set min width on widgets items ([cb10100](https://github.com/rawpixel-public/react-components/commit/cb10100d0d2e1ff9b439d7b63b92e541ac7b9ff1))
+* update active subtopic colour ([99b573b](https://github.com/rawpixel-public/react-components/commit/99b573b0c3ef12fa4f195b912e4ad267b42b0238))
+* update default button active background colour ([32ea2a3](https://github.com/rawpixel-public/react-components/commit/32ea2a37c4e44a142d747440915e297f0478c42a))
+* update size button background ([9b94c77](https://github.com/rawpixel-public/react-components/commit/9b94c77ec58bdf97ab4c9751854924cf164ed8f3))
+* update topics gradient ([ea54dcb](https://github.com/rawpixel-public/react-components/commit/ea54dcbf38cec7089e10f6f5c6fc1f6641ffcd42))
+* update widget colour ([8348788](https://github.com/rawpixel-public/react-components/commit/8348788187ab0002010c380f3caeafabd92c39f1))
+* update widget styling ([61fc221](https://github.com/rawpixel-public/react-components/commit/61fc221732c09d96b6db91a82c433747410b0d6f))
+
 ### [3.0.2](https://github.com/rawpixel-public/react-components/compare/v3.0.1...v3.0.2) (2021-03-04)
 
 
