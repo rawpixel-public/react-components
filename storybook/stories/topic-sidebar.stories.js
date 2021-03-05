@@ -6,11 +6,12 @@ import {
   ExclusiveButton,
   LikesButton,
   LogoButton,
+  Heading,
   HorizontalRule,
   WidgetsBar,
+  SubTopics,
   TopicsGrid,
   ButtonGroupList,
-  Categories,
   useTopicsApi,
   useTopicWidgetsApi
 } from "@rawpixel-public/react-components";
@@ -111,7 +112,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [score, setScore] = React.useState(0);
   const [displayScore, setDisplayScore] = React.useState(false);
   const [tagMode, setTagMode] = React.useState(false);
-  const [activeCategory, setActiveCategory] = React.useState();
+  const [activeCategory, setActiveCategory] = React.useState([]);
   const activeWidget = !!widgets.length && widgets[activeFilter];
   const categories = activeWidget ? activeWidget.subCategories : [];
 
@@ -222,21 +223,18 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             <SidebarHorizontalRule />
           </>
         )}
-        <Categories
-          title={activeWidget.title}
-          categories={categories}
-          onCategoryClick={(e, category) =>
-            setActiveCategory(
-              category !== activeCategory ? category : undefined
-            )
-          }
-          showClear={!isTeam && activeFilters.length > 0}
-          onClearClick={() => {
-            setActiveCategory(undefined);
-            resetActiveFilters();
+        <Heading level={3}>{activeWidget ? activeWidget.title : 'My Topics'}</Heading>
+        <SubTopics
+          displayed={5}
+          selected={activeCategory}
+          subtopics={categories}
+          onClick={(e, category) => {
+            if (activeCategory.includes(category)) {
+              setActiveCategory([]);
+            } else {
+              setActiveCategory([category]);
+            }
           }}
-          activeCategory={activeCategory}
-          loading={loading}
         />
         <TopicsGrid
           activeTopics={activeTopics}
