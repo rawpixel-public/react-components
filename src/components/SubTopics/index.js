@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 import Button from "../../atoms/Button";
 import ExpandButton from "./ExpandButton";
@@ -31,6 +32,7 @@ const SubTopics = ({
           .map((value, index) => (
             <li key={`${index}:${value.name}`}>
               <Button
+                className={classnames({ active: selected.includes(value) })}
                 active={selected.includes(value)}
                 size="xsmall"
                 onClick={onClick && handleClick(value)}

@@ -32,7 +32,9 @@ export const palette = {
   topicButtonBackground: "transparent",
   topicFilterBackground: "#EEE",
   topicGradient: "linear-gradient(to right, #8C91F8, #FF35C9)",
-  topicBorderColor: "#4A4A4A"
+  topicBorderColor: "#4A4A4A",
+
+  havelock: "#4E92DF"
 };
 
 export const fontFamily = {

@@ -1,6 +1,5 @@
 import React from "react";
 import { withKnobs, select, number, boolean } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
 import { SubTopics } from "@rawpixel-public/react-components";
 
 import Centered from "../components/Centered";
@@ -69,6 +68,14 @@ const subtopics = [
 ];
 
 export const controls = () => {
+  const [selected, setSelected] = React.useState([]);
+  const handleClick = (e, val) => {
+    if (selected.includes(val)) {
+      setSelected([]);
+    } else {
+      setSelected([val]);
+    }
+  };
   return (
     <Centered style={{ background: "#F9F9F9" }}>
       <div
@@ -78,9 +85,10 @@ export const controls = () => {
         }}
       >
         <SubTopics
-          expandable={boolean('expandable', true)}
+          selected={selected}
+          expandable={boolean("expandable", true)}
           subtopics={subtopics}
-          onClick={action("clicked")}
+          onClick={handleClick}
           displayed={number("displayed", 5, {
             max: subtopics.length,
             min: 3

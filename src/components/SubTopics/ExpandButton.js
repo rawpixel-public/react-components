@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "styled-tools";
 
 import Button from "../../atoms/Button";
 import Plus from "../../icons/plus.svg";
@@ -14,7 +15,7 @@ const ExpandButton = styled(Button).attrs({ size: "xsmall" })`
 
   &:before {
     content: "";
-    background: ${palette.gray};
+    background: ${theme("subtopics.color.default", palette.grayDarkest)};
     display: block;
     width: 11px;
     height: 11px;
@@ -22,6 +23,9 @@ const ExpandButton = styled(Button).attrs({ size: "xsmall" })`
     position: absolute;
     left: 4px;
     top: 4px;
+  }
+  &:hover:before {
+    background: ${theme("subtopics.color.hover", palette.topicIconColor)};
   }
 `;
 

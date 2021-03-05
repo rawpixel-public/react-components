@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { theme } from "styled-tools";
 
 import Button from "../../atoms/Button";
 import ExpandButton from "./ExpandButton";
+
+import { palette } from "../../utils/cssVars";
 
 const Wrapper = styled.div`
   position: relative;
@@ -29,7 +32,16 @@ const Wrapper = styled.div`
   }
 
   ${Button} {
+    color: ${theme("subtopics.color.default", palette.grayDarkest)};
     font-size: 11px;
+    &:hover {
+      color: ${theme("subtopics.color.hover", palette.topicIconColor)};
+      background: ${theme("subtopics.background.hover", palette.havelock)};
+    }
+    &.active {
+      color: ${theme("subtopics.color.active", palette.topicIconColor)};
+      background: ${theme("subtopics.background.active", palette.havelock)};
+    }
   }
 
   ${ExpandButton} {
