@@ -109,9 +109,13 @@ export const dam = () => (
 );
 
 const Wrapper = styled.div`
+  background: white;
+  & > div {
+    border-left: 1px solid #ddd;
+  }
   .widgets.topic-groups {
     padding-bottom: 0;
-    li:last-child {
+    li:last-child:not(.widgets-plus-wrapper) {
       margin-bottom: 0;
     }
   }
@@ -124,25 +128,31 @@ const Wrapper = styled.div`
 `;
 
 export const website = () => {
-  const { widgets } = useTopicWidgetsApi();
+  const { widgets: data } = useTopicWidgetsApi();
+  const widgets = React.useMemo(
+    () => data.map(w => ({ ...w, icon_url: w.icon_secondary_url })),
+    [data]
+  );
   return (
     <Wrapper>
-      <WidgetsBar
-        widgets={widgets.filter(item => item.type === "topic_group")}
-        onFilterClick={action("filter-click")}
-        direction="column"
-        grouping={select("grouping", ["hearted", "type", "none"], "type")}
-        plusButton
-        onPlusClick={action("plus-click")}
-        plusActive={boolean("plusActive", false)}
-        className="topic-groups"
-      />
-      <HorizontalRule className="divider" />
-      <WidgetsBar
-        widgets={widgets.filter(item => item.type === "add_on")}
-        direction="column"
-        className="add-ons"
-      />
+      <div>
+        <WidgetsBar
+          widgets={widgets.filter(item => item.type === "topic_group").slice(0, 5)}
+          onFilterClick={action("filter-click")}
+          direction="column"
+          grouping={select("grouping", ["hearted", "type", "none"], "type")}
+          plusButton
+          onPlusClick={action("plus-click")}
+          plusActive={boolean("plusActive", false)}
+          className="topic-groups"
+        />
+        <HorizontalRule className="divider" />
+        <WidgetsBar
+          widgets={widgets.filter(item => item.type === "add_on")}
+          direction="column"
+          className="add-ons"
+        />
+      </div>
     </Wrapper>
   );
 };

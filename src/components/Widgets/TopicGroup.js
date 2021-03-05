@@ -19,7 +19,7 @@ const WidgetTopicGroup = ({
   <StyledButton
     as={as}
     onClick={onClick}
-    active={active ? true : undefined}
+    $active={active ? true : undefined}
     to={to}
     href={href}
     data-website-tag={widget.tag}

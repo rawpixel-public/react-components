@@ -14,8 +14,13 @@ const verticalCentreCss = css`
 `;
 
 export const StyledButton = styled.button`
-  background: ${theme("palette.widget.background", "none")};
+  background: ${ifProp(
+    "$active",
+    theme("palette.widget.activeBackground", "rgba(0, 0, 0, 0.1)"),
+    theme("palette.widget.background", "none")
+  )};
   border: none;
+  border-radius: 4px;
   color: ${theme("palette.widget.color", palette.grayDarkest)};
   display: flex;
   flex-direction: column;
@@ -25,14 +30,20 @@ export const StyledButton = styled.button`
   white-space: normal;
   min-width: 50px;
   transform: translateZ(0);
+  padding: 7px 0 5px;
+  width: 100%;
 
   @media (hover: hover) {
     &:hover {
+      background: ${theme(
+        "palette.widget.hoverBackground",
+        "rgba(0, 0, 0, 0.1)"
+      )};
       cursor: pointer;
       ${WidgetIcon} {
         background: ${theme(
           "palette.widgetIcon.hoverBackground",
-          `linear-gradient(to left, ${palette.pink}, ${palette.blue})`
+          palette.blueGradient
         )};
       }
     }
@@ -62,6 +73,7 @@ export const StyledText = styled.span`
   -webkit-box-orient: vertical;
   overflow-x: visible;
   overflow-y: hidden;
+  scrollbar-width: none;
 `;
 
 export const StyledWidgetsWrapper = styled.div`
@@ -103,10 +115,31 @@ export const StyledUnorderedList = styled.ul`
       }
     `
   )};
+
+  ${ifProp(
+    { $direction: "row" },
+    css`
+      li {
+        width: 70px;
+        height: 70px;
+      }
+    `
+  )}
 `;
 
 export const StyledListItem = styled.li`
-  margin-bottom: 14px;
+  margin-bottom: 7px;
+  flex-grow: 1;
+  width: 100%;
+
+  ${ifProp(
+    "$plus",
+    css`
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    `
+  )};
 `;
 
 export const StyledHR = styled(HorizontalRule)`
@@ -116,7 +149,7 @@ export const StyledHR = styled(HorizontalRule)`
     { $direction: "row" },
     css`
       margin: 0 10px;
-      height: 50px;
+      height: 60px;
       width: 1px;
     `
   )};
