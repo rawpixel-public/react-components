@@ -6,7 +6,7 @@ import { fontFamily, palette } from "../../utils/cssVars";
 // todo: consolidate website and DAM palette.
 const lighterGray = palette.grayLight;
 const lightGray = "#7d7c7c";
-const darkGray = palette.topicActive;
+const darkGray = palette.fuscous;
 const activeText = "#f9f9f9";
 const textColor = palette.grayDarkest;
 
