@@ -25,6 +25,7 @@ export const StyledClearButton = styled.button`
 
 export const StyledCategoriesWrapper = styled.div`
   overflow: hidden;
+  padding: 0 10px;
   ${ifProp(
     "$hasCategories",
     css`
@@ -35,14 +36,11 @@ export const StyledCategoriesWrapper = styled.div`
 
 export const StyledListWrapper = styled.div`
   display: grid;
-  grid-template-columns: ${ifProp("$showPrevious", "10px", 0)} auto ${ifProp(
-      "$showNext",
-      "10px",
-      0
-    )};
+  grid-template-columns: 10px auto 10px;
   grid-template-rows: auto;
   grid-template-areas: "previous categories next";
   grid-column-gap: 2px;
+  margin: 0 -10px;
 
   &.loading {
     margin-bottom: 10px;

@@ -112,7 +112,7 @@ const Categories = ({
   showClear = false,
   loading = false,
   displayedItems = 3,
-  iconStrokeWidth = 20,
+  iconStrokeWidth = 54,
   onPositionUpdate,
   ...props
 }) => {
