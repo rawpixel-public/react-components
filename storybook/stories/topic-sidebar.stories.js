@@ -54,7 +54,7 @@ const ButtonComponents = {
   $rawpixelcc0: LogoButton
 };
 
-const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
+const FilterButtonGroup = ({ title, filters, onFilterClick, tags = [] }) => (
   <ButtonGroupList title={title} alignSelf="center">
     {filters
       .filter(f => f.published)
@@ -64,7 +64,7 @@ const FilterButtonGroup = ({ title, filters, onFilterClick }) => (
           <Component
             key={`${index}:${filter.name}`}
             as={filter.to ? Link : filter.href ? "a" : "button"}
-            active={filter.active}
+            active={tags.includes(filter.tag)}
             disabled={filter.disabled}
             onClick={e => onFilterClick && onFilterClick(e, filter)}
             to={filter.to}
@@ -115,6 +115,7 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
   const [activeCategory, setActiveCategory] = React.useState([]);
   const activeWidget = !!widgets.length && widgets[activeFilter];
   const categories = activeWidget ? activeWidget.subCategories : [];
+  const [tags, setTags] = React.useState([]);
 
   const { topics, loading: topics_loading } = useTopicsApi({
     widget: activeWidget
@@ -147,6 +148,14 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
       setActiveTopics(activeTopics.filter(t => t !== topic));
     } else {
       setActiveTopics([...activeTopics, topic]);
+    }
+  };
+
+  const handleFilterButtonClick = (e, { tag }) => {
+    if (tags.includes(tag)) {
+      setTags(tags.filter(t => t !== tag));
+    } else {
+      setTags([...tags, tag]);
     }
   };
 
@@ -223,7 +232,9 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
             <SidebarHorizontalRule />
           </>
         )}
-        <Heading level={3}>{activeWidget ? activeWidget.title : 'My Topics'}</Heading>
+        <Heading level={3}>
+          {activeWidget ? activeWidget.title : "My Topics"}
+        </Heading>
         <SubTopics
           displayed={5}
           selected={activeCategory}
@@ -263,7 +274,11 @@ const ExampleSidebar = ({ isTeam, isWebsiteCatalog }) => {
         <SidebarHorizontalRule />
         {filterGroups.map((group, index) => (
           <React.Fragment key={index}>
-            <FilterButtonGroup filters={group.filters} />
+            <FilterButtonGroup
+              filters={group.filters}
+              onFilterClick={handleFilterButtonClick}
+              tags={tags}
+            />
           </React.Fragment>
         ))}
       </div>
