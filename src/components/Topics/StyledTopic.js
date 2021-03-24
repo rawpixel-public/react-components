@@ -43,7 +43,7 @@ const imgBackgroundStyles = ({ $active, isTagged, isTagMode }) => {
     border = "none";
     invert = true;
   } else if ($active) {
-    background = palette.blueGradient;
+    background = palette.royalblue;
     border = "none";
     invert = true;
   }

@@ -39,7 +39,7 @@ const Wrapper = styled.div`
     }
     &.active {
       color: ${theme("subtopics.color.active", palette.topicIconColor)};
-      background: ${theme("subtopics.background.active", palette.fuscous)};
+      background: ${theme("subtopics.background.active", palette.royalblue)};
       &:hover {
         background: ${theme("subtopics.background.hover", palette.havelock)};
       }

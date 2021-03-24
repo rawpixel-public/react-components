@@ -29,7 +29,7 @@ export const Button = styled.button`
     &.active {
       background: ${theme(
         "palette.widgetIcon.activeBackground",
-        palette.blueGradient
+        palette.royalblue
       )};
     }
   }
