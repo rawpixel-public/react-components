@@ -6,53 +6,72 @@ import { ifNotProp, ifProp, prop, theme } from "styled-tools";
 const taggedGreen = "#A1D1B7";
 const taggingGreen = "#95BDAA";
 
-const imgHoverStyles = ({ isTagged, isTagMode, isLoading }) => {
+const imgHoverStyles = (
+  background,
+  border,
+  taggedBackground,
+  tagModeBackground,
+  taggedBorder,
+  iconMask,
+  iconMaskInvert
+) => ({ isTagged, isTagMode, isLoading, ...props }) => {
   if (isLoading) {
     return;
   }
 
-  let background = palette.blueGradient;
-  let border = "none";
+  let backgroundVal = background(props);
+  let borderVal = border(props);
   let invert = true;
 
   if (isTagMode && isTagged) {
-    background = "transparent";
-    border = `1px solid ${palette.topicBorderColor}`;
+    backgroundVal = taggedBackground(props);
+    borderVal = `1px solid ${taggedBorder(props)}`;
     invert = false;
   } else if (isTagMode) {
-    background = taggedGreen;
+    backgroundVal = tagModeBackground(props);
   }
 
   return css`
-    background: ${background};
-    border: ${border};
-    .mask {
-      background: ${invert ? palette.white : palette.topicBorderColor};
+    .img-wrapper {
+      background: ${backgroundVal};
+      border: ${borderVal};
+
+      .mask {
+        background: ${invert ? iconMaskInvert(props) : iconMask(props)};
+      }
+
+      opacity: 0.8;
     }
-    opacity: 0.8;
   `;
 };
 
-const imgBackgroundStyles = ({ $active, isTagged, isTagMode }) => {
-  let background = palette.topicButtonBackground;
-  let border = `1px solid ${palette.topicBorderColor}`;
+const imgBackgroundStyles = (
+  background,
+  border,
+  activeBackground,
+  taggedBackground,
+  iconMask,
+  iconMaskInvert
+) => ({ $active, isTagged, isTagMode, ...props }) => {
+  let backgroundVal = background(props);
+  let borderVal = `1px solid ${border(props)}`;
   let invert = false;
 
   if (isTagged && isTagMode) {
-    background = taggedGreen;
-    border = "none";
+    backgroundVal = taggedBackground(props);
+    borderVal = "none";
     invert = true;
   } else if ($active) {
-    background = palette.royalblue;
-    border = "none";
+    backgroundVal = activeBackground(props);
+    borderVal = "none";
     invert = true;
   }
 
   return css`
-    background: ${background};
-    border: ${border};
+    background: ${backgroundVal};
+    border: ${borderVal};
     .mask {
-      background: ${invert ? palette.white : palette.topicBorderColor};
+      background: ${invert ? iconMaskInvert(props) : iconMask(props)};
     }
   `;
 };
@@ -78,9 +97,18 @@ export const StyledTopicButton = styled.button`
     &:hover {
       cursor: pointer;
 
-      .img-wrapper {
-        ${imgHoverStyles};
-      }
+      ${imgHoverStyles(
+        theme("palette.topicButton.hoverBackground", palette.blueGradient),
+        theme("palette.topicButton.hoverBorder", "none"),
+        theme("palette.topicButton.hoverTaggedBackground", "transparent"),
+        theme("palette.topicButton.hoverTagModeBackground", taggedGreen),
+        theme(
+          "palette.topicButton.hoverTaggedBorder",
+          palette.topicBorderColor
+        ),
+        theme("palette.topicButton.hoverMaskInvert", palette.topicBorderColor),
+        theme("palette.topicButton.hoverMask", palette.white)
+      )};
     }
   }
 
@@ -90,10 +118,18 @@ export const StyledTopicButton = styled.button`
     ${ifNotProp(
       "$active",
       css`
-        border: 1px solid ${palette.topicBorderColor};
+        border: 1px solid
+          ${theme("palette.topicButton.activeBorder", palette.topicBorderColor)};
       `
     )};
-    ${imgBackgroundStyles};
+    ${imgBackgroundStyles(
+      theme("palette.topicButton.background", palette.topicButtonBackground),
+      theme("palette.topicButton.border", palette.topicBorderColor),
+      theme("palette.topicButton.activeBackground", palette.royalblue),
+      theme("palette.topicButton.taggedBackground", taggedGreen),
+      theme("palette.topicButton.maskInvert", palette.topicBorderColor),
+      theme("palette.topicButton.mask", palette.white)
+    )};
   }
 
   // Showing the loader sets the disabled attr, so we can use this to style
@@ -105,13 +141,13 @@ export const StyledTopicButton = styled.button`
 `;
 
 export const StyledTitle = styled.span`
-  color: ${theme("palette.topic.color", palette.grayDarkest)};
+  color: ${theme("palette.topic.text", palette.grayDarkest)};
   font-family: ${ifProp(
     "$active",
     theme("font.topic.active", fontFamily.medium),
     theme("font.topic.base", fontFamily.base)
   )};
-  font-size: ${theme("fontSize.topic", "11px")};
+  font-size: ${theme("font.topic.size", "11px")};
   text-align: center;
   line-height: 1.2;
   margin-top: 3px;
