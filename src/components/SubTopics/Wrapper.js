@@ -31,17 +31,26 @@ const Wrapper = styled.div`
   }
 
   ${Button} {
-    color: ${theme("subtopics.color.default", palette.grayDarkest)};
+    color: ${theme("palette.subtopics.color", palette.grayDarkest)};
     font-size: ${theme("subtopics.font.size", "12px")};
     &:hover {
-      color: ${theme("subtopics.color.hover", palette.topicIconColor)};
-      background: ${theme("subtopics.background.hover", palette.havelock)};
+      color: ${theme("palette.subtopics.hoverColor", palette.topicIconColor)};
+      background: ${theme(
+        "palette.subtopics.hoverBackground",
+        palette.havelock
+      )};
     }
     &.active {
-      color: ${theme("subtopics.color.active", palette.topicIconColor)};
-      background: ${theme("subtopics.background.active", palette.royalblue)};
+      color: ${theme("palette.subtopics.activeColor", palette.topicIconColor)};
+      background: ${theme(
+        "palette.subtopics.activeBackground",
+        palette.royalblue
+      )};
       &:hover {
-        background: ${theme("subtopics.background.hover", palette.havelock)};
+        background: ${theme(
+          "palette.subtopics.activeHoverBackground",
+          palette.havelock
+        )};
       }
     }
   }
