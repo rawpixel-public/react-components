@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/rawpixel-public/react-components/compare/v3.1.0...v3.1.1) (2021-03-24)
+
+
+### Bug Fixes
+
+* decrease icon size ([7bdb7dd](https://github.com/rawpixel-public/react-components/commit/7bdb7ddef9847cd6462ef15742abc8fdda94ea6b))
+* update subtopic theme prop names ([a9b9d2c](https://github.com/rawpixel-public/react-components/commit/a9b9d2c56946f9d13a9746c181688d90f6d7a249))
+* update topic, subtopic, widget active state styling ([858da27](https://github.com/rawpixel-public/react-components/commit/858da2772708d1af03bd12b954a2b18dae7320c2))
+* use theme props for topic styling ([75b6e48](https://github.com/rawpixel-public/react-components/commit/75b6e482c65ca21511064df51386c384efa15473))
+
 ## [3.1.0](https://github.com/rawpixel-public/react-components/compare/v3.0.2...v3.1.0) (2021-03-05)
 
 
