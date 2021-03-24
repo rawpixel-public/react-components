@@ -15,17 +15,20 @@ const ExpandButton = styled(Button).attrs({ size: "xsmall" })`
 
   &:before {
     content: "";
-    background: ${theme("subtopics.color.default", palette.grayDarkest)};
+    background: ${theme("palette.subtopics.color", palette.grayDarkest)};
     display: block;
-    width: 11px;
-    height: 11px;
+    width: 10px;
+    height: 10px;
     mask: url(${Plus});
     position: absolute;
     left: 4px;
     top: 4px;
   }
   &:hover:before {
-    background: ${theme("subtopics.color.hover", palette.topicIconColor)};
+    background: ${theme(
+      "palette.subtopics.hoverColor",
+      palette.topicIconColor
+    )};
   }
 `;
 
