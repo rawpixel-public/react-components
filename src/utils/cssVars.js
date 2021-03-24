@@ -36,7 +36,8 @@ export const palette = {
 
   blueGradient: "linear-gradient(#58ACF8, #3B61C4)",
   havelock: "#4E92DF",
-  fuscous: "#3B3B3B"
+  fuscous: "#3B3B3B",
+  royalblue: "#1A73E8"
 };
 
 export const fontFamily = {
