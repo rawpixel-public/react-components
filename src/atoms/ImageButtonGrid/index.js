@@ -48,13 +48,13 @@ const useGridHeight = (
     const headerElement = headerRef.current;
     const footerElement = footerRef.current;
     const gridElement = gridRef.current;
-    const offsetHeight = gridElement.offsetHeight;
+    const offsetHeight = gridElement ? gridElement.offsetHeight : 0;
     const headerHeight = headerElement ? headerElement.offsetHeight : 0;
     const footerHeight = footerElement ? footerElement.offsetHeight : 0;
 
     let update;
 
-    if (childCount > viewable) {
+    if (childCount > viewable && gridElement) {
       const itemElements = Array.from(gridElement.childNodes);
       const rows = chunk(itemElements, columns);
       const visibleRows = rows.slice(0, Math.round(viewable / columns));
