@@ -156,7 +156,11 @@ const ImageButtonGrid = React.forwardRef(
     React.useImperativeHandle(
       ref,
       () => ({
-        recalculateHeight: () => setTimeout(() => recalculateHeight(), 1)
+        recalculateHeight: () => setTimeout(() => recalculateHeight(), 1),
+        containerElement: containerRef.current,
+        headerElement: headerRef.current,
+        footerElement: footerRef.current,
+        gridElement: gridRef.current
       }),
       [recalculateHeight]
     );
