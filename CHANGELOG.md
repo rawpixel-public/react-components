@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/rawpixel-public/react-components/compare/v3.1.1...v3.1.2) (2021-04-01)
+
+
+### Bug Fixes
+
+* expose inner refs ([1ba114d](https://github.com/rawpixel-public/react-components/commit/1ba114dd20b894ad357d4c1b03703eff528862c7))
+* fix gridElement undefined ([dc8e39a](https://github.com/rawpixel-public/react-components/commit/dc8e39a1095bf45d4eb732951cc8f3355c3187fb))
+
 ### [3.1.1](https://github.com/rawpixel-public/react-components/compare/v3.1.0...v3.1.1) (2021-03-24)
 
 
