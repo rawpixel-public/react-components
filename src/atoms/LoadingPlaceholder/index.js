@@ -1,25 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
 
-import { StyledLoadingPlaceholder } from "./StyledLoadingPlaceholder";
-
-const LoadingPlaceholder = ({
-  className,
-  width,
-  height,
-  background,
-  borderRadius,
-  ...props
-}) => (
-  <StyledLoadingPlaceholder
-    className={className}
-    widthValue={width}
-    heightValue={height}
-    backgroundValue={background}
-    borderRadiusValue={borderRadius}
-    {...props}
-  />
-);
+const LoadingPlaceholder = () => null;
 
 LoadingPlaceholder.propTypes = {
   className: PropTypes.string,

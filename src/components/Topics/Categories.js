@@ -5,7 +5,6 @@ import classnames from "classnames";
 
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
-import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 import Chevron from "./Chevron";
 
 import {
@@ -16,22 +15,6 @@ import {
   StyledHeadingWrapper,
   StyledListWrapper
 } from "./StyledCategories";
-
-const CategoryButtonsPlaceholder = props => (
-  <StyledListWrapper className="loading" {...props}>
-    <StyledCategoryList>
-      <li>
-        <LoadingPlaceholder width="60px" height="20px" />
-      </li>
-      <li>
-        <LoadingPlaceholder width="60px" height="20px" />
-      </li>
-      <li>
-        <LoadingPlaceholder width="60px" height="20px" />
-      </li>
-    </StyledCategoryList>
-  </StyledListWrapper>
-);
 
 const getLeftMax = el => el.scrollLeftMax || el.scrollWidth - el.clientWidth;
 
@@ -110,7 +93,6 @@ const Categories = ({
   onCategoryClick,
   onClearClick,
   showClear = false,
-  loading = false,
   displayedItems = 3,
   iconStrokeWidth = 54,
   onPositionUpdate,
@@ -279,27 +261,13 @@ const Categories = ({
       $hasCategories={hasCategories}
       {...filterAllowedProps(props)}
     >
-      {(loading || title) && (
+      {title && (
         <StyledHeadingWrapper>
-          <Heading level={3}>
-            {loading ? (
-              <LoadingPlaceholder
-                width="100px"
-                height="19px"
-                borderRadius="none"
-                data-testid="category-title-placeholder"
-              />
-            ) : (
-              title
-            )}
-          </Heading>
+          <Heading level={3}>{title}</Heading>
           {showClear && (
             <StyledClearButton onClick={onClearClick}>Clear</StyledClearButton>
           )}
         </StyledHeadingWrapper>
-      )}
-      {loading && (
-        <CategoryButtonsPlaceholder data-testid="category-buttons-placeholder" />
       )}
       {hasCategories && (
         <StyledListWrapper $showPrevious={showPrevious} $showNext={showNext}>
@@ -384,7 +352,6 @@ Categories.propTypes = {
   onCategoryClick: PropTypes.func,
   onClearClick: PropTypes.func,
   showClear: PropTypes.bool,
-  loading: PropTypes.bool,
   displayedItems: PropTypes.number,
   activeCategory: PropTypes.oneOfType([
     CategoryShape,

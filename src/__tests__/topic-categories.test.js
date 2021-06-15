@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, queryByTestId } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import { Categories as TopicCategories } from "../index";
@@ -17,20 +17,11 @@ describe("topic categories", () => {
         name: "Stickers"
       }
     ].map((category, index) => ({ ...category, id: index }));
-    const { getByText, container } = render(
-      <TopicCategories categories={categories} />
-    );
+    const { getByText } = render(<TopicCategories categories={categories} />);
 
     expect(getByText("All")).toBeInTheDocument();
     expect(getByText("Elements")).toBeInTheDocument();
     expect(getByText("Stickers")).toBeInTheDocument();
-
-    expect(
-      queryByTestId(container, "category-title-placeholder")
-    ).not.toBeInTheDocument();
-    expect(
-      queryByTestId(container, "category-buttons-placeholder")
-    ).not.toBeInTheDocument();
   });
 
   it("should call my fn on category click", async () => {
@@ -98,11 +89,5 @@ describe("topic categories", () => {
 
     expect(queryByTestId(container, "previous")).not.toBeInTheDocument();
     expect(queryByTestId(container, "next")).not.toBeInTheDocument();
-  });
-
-  it("should show placeholders while loading", async () => {
-    const { getByTestId } = render(<TopicCategories loading categories={[]} />);
-    expect(getByTestId("category-title-placeholder")).toBeVisible();
-    expect(getByTestId("category-buttons-placeholder")).toBeVisible();
   });
 });
