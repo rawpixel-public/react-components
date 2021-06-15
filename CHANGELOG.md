@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.3](https://github.com/rawpixel-public/react-components/compare/v3.1.2...v3.1.3) (2021-06-15)
+
+
+### Bug Fixes
+
+* Move icon styles to attributes to fix styled-components warning ([142c561](https://github.com/rawpixel-public/react-components/commit/142c561d486427eee38b99eb9f87b4c6d4cbc9ce))
+
 ### [3.1.2](https://github.com/rawpixel-public/react-components/compare/v3.1.1...v3.1.2) (2021-04-01)
 
 
