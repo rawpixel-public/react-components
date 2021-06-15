@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { prop, switchProp, ifProp, theme } from "styled-tools";
 import HorizontalRule from "../../atoms/HorizontalRule";
-import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
 
 const verticalCentreCss = css`
   display: flex;
@@ -21,15 +20,6 @@ export const StyledWidgetsWrapper = styled.div`
       max-width: 70px;
       hr {
         margin: 0 0 16px;
-      }
-    `
-  )};
-
-  ${ifProp(
-    { $direction: "row" },
-    css`
-      ${PinkGradientInversePlusButton} {
-        margin: 5px 10px;
       }
     `
   )};

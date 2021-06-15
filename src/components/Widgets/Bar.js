@@ -9,7 +9,6 @@ import {
   StyledListItem
 } from "./StyledWidgets";
 import WidgetProps from "./WidgetProps";
-import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
 import Widget from "../Widget";
 
 const WidgetsBar = ({
@@ -21,11 +20,7 @@ const WidgetsBar = ({
   addonComponent,
   classes = {},
   className,
-  grouping = "type",
-  plusActive = false,
-  plusButton = false,
-  plusProps = {},
-  onPlusClick
+  grouping = "type"
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(activeWidget);
 
@@ -90,20 +85,6 @@ const WidgetsBar = ({
     </StyledListItem>
   );
 
-  const renderPlus = widget => (
-    <StyledListItem key={widget.title}>
-      <PinkGradientInversePlusButton
-        className={classnames("widget", "plus", {
-          [classes.widget]: classes.widget,
-          [classes.plus]: classes.plus,
-          [classes.activeWidget]:
-            widget.active || widgets.indexOf(widget) === activeIndex
-        })}
-        onClick={e => filterClickHandler(e, widget)}
-      />
-    </StyledListItem>
-  );
-
   const renderWidget = (...args) => {
     const [widget] = args;
 
@@ -113,9 +94,6 @@ const WidgetsBar = ({
 
       case "topic_group":
         return renderTopicGroup(...args);
-
-      case "plus":
-        return renderPlus(...args);
 
       default:
         throw new Error(`Invalid widget type: ${widget.type}`);
@@ -185,34 +163,8 @@ const WidgetsBar = ({
           <React.Fragment key={index}>
             {group}
             {index !== arr.length - 1 && <StyledHR $direction={direction} />}
-            {index === arr.length - 1 && plusButton && (
-              <StyledListItem
-                key={`${index}-plus`}
-                className="widgets-plus-wrapper"
-                $plus
-              >
-                <PinkGradientInversePlusButton
-                  onClick={onPlusClick}
-                  className={classnames("widgets-plus", plusProps.className)}
-                  data-testid="widgets-plus"
-                  $active={plusActive}
-                  {...plusProps}
-                />
-              </StyledListItem>
-            )}
           </React.Fragment>
         ))}
-        {groups.length === 0 && plusButton && (
-          <StyledListItem key="plus" className="widgets-plus-wrapper" $plus>
-            <PinkGradientInversePlusButton
-              onClick={onPlusClick}
-              className={classnames("widgets-plus", plusProps.className)}
-              data-testid="widgets-plus"
-              $active={plusActive}
-              {...plusProps}
-            />
-          </StyledListItem>
-        )}
       </StyledUnorderedList>
     </StyledWidgetsWrapper>
   );
@@ -242,11 +194,7 @@ WidgetsBar.propTypes = {
     addOn: PropTypes.string
   }),
   className: PropTypes.string,
-  grouping: PropTypes.oneOf(["none", "type", "hearted", "grouped"]),
-  plusActive: PropTypes.bool,
-  plusButton: PropTypes.bool,
-  plusProps: PropTypes.object,
-  onPlusClick: PropTypes.func
+  grouping: PropTypes.oneOf(["none", "type", "hearted", "grouped"])
 };
 
 WidgetsBar.defaultProps = {

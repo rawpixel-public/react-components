@@ -66,11 +66,6 @@ const widgetsData = [
     hearted: true
   },
   {
-    title: "Plus button",
-    type: "plus",
-    hearted: true
-  },
-  {
     title: "",
     url: "https://www.rawpixel.com/search/fonts?sort=curated&page=1",
     icon_url: fontSvg,
@@ -90,9 +85,6 @@ export const sidebar = () => (
     widgets={widgetsData}
     onFilterClick={action("filter-click")}
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
-    plusButton={boolean("plusButton", true)}
-    plusActive={boolean("plusActive", false)}
-    onPlusClick={action("plus-click")}
   />
 );
 
@@ -102,9 +94,6 @@ export const dam = () => (
     onFilterClick={action("filter-click")}
     direction="row"
     grouping={select("grouping", ["hearted", "type", "none"], "type")}
-    plusButton={boolean("plusButton", false)}
-    plusActive={boolean("plusActive", false)}
-    onPlusClick={action("plus-click")}
   />
 );
 
@@ -115,9 +104,6 @@ const Wrapper = styled.div`
   }
   .widgets.topic-groups {
     padding-bottom: 0;
-    li:last-child:not(.widgets-plus-wrapper) {
-      margin-bottom: 0;
-    }
   }
   .widgets.add-ons {
     padding-top: 0;
@@ -141,9 +127,6 @@ export const website = () => {
           onFilterClick={action("filter-click")}
           direction="column"
           grouping={select("grouping", ["hearted", "type", "none"], "type")}
-          plusButton
-          onPlusClick={action("plus-click")}
-          plusActive={boolean("plusActive", false)}
           className="topic-groups"
         />
         <HorizontalRule className="divider" />
