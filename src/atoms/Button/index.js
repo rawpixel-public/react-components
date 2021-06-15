@@ -11,7 +11,6 @@ Button.propTypes = {
   children: PropTypes.node,
   disabled: PropTypes.bool,
   href: PropTypes.string,
-  loading: PropTypes.bool,
   onClick: PropTypes.func,
   onChange: PropTypes.func,
   size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge"]),

@@ -130,7 +130,6 @@ export const grid = () => {
         }))
         .slice(0, number("number of topics", topicsData.length))}
       onTopicClick={action("topic-grid-click")}
-      loading={boolean("loading", false)}
       resizable={boolean("resizable", false)}
       defaultWidth={select(
         "width",
@@ -148,7 +147,6 @@ export const noScroll = () => {
       topics={topicsData.slice(0, 9)}
       onTopicClick={action("topic-grid-click")}
       defaultHeight={320}
-      loading={boolean("loading", false)}
       viewable={9}
       footer={<TopicsFooter />}
     />
@@ -195,7 +193,7 @@ export const dam = () => {
 };
 
 export const api = () => {
-  const { loading, topics } = useTopicsApi(
+  const { topics } = useTopicsApi(
     {
       widget: select("widget", [3, 4, 5, 6, 7, 8, 9, 10], 3, "api"),
       trending: boolean("trending", false, "api"),
@@ -213,7 +211,6 @@ export const api = () => {
         groupIcon: boolean("groupIcon", true, "api") ? topic.icon_url : null
       }))}
       onTopicClick={action("topic-grid-click")}
-      loading={loading}
       viewable={select("viewable", [3, 6, 9, 12, 15], 9, "api")}
       resizable={boolean("resizable", false, "api")}
       defaultWidth={select("defaultWidth", [150, 210, 280, "auto"], 210, "api")}

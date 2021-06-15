@@ -1,27 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
-import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 
-import { StyledList, StyledListItem } from "./StyledFilterButtonGroup";
-
-const ButtonGroupPlaceholder = ({
-  hasTitle = false,
-  numberOfItems = 4,
-  itemsPerRow = 2
-}) => (
-  <div>
-    {hasTitle && (
-      <LoadingPlaceholder width="125px" height="19px" borderRadius="none" />
-    )}
-    <StyledList>
-      {[...Array(numberOfItems)].map((_, index) => (
-        <StyledListItem key={index} itemsPerRow={itemsPerRow}>
-          <LoadingPlaceholder width="100px" height="32px" />
-        </StyledListItem>
-      ))}
-    </StyledList>
-  </div>
-);
+const ButtonGroupPlaceholder = () => null;
 
 ButtonGroupPlaceholder.propTypes = {
   hasTitle: PropTypes.bool,

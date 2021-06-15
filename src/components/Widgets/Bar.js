@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-import LoadingPlaceholder from "../../atoms/LoadingPlaceholder";
 import {
   StyledHR,
   StyledWidgetsWrapper,
@@ -13,27 +12,11 @@ import WidgetProps from "./WidgetProps";
 import PinkGradientInversePlusButton from "../../atoms/Button/PinkGradientInversePlusButton";
 import Widget from "../Widget";
 
-const WidgetPlaceholder = props => (
-  <div
-    style={{ display: "flex", flexDirection: "column", margin: "3px" }}
-    {...props}
-  >
-    <LoadingPlaceholder width="40px" height="30px" borderRadius="none" />
-    <LoadingPlaceholder
-      width="40px"
-      height="10px"
-      borderRadius="none"
-      style={{ margin: "3px 0" }}
-    />
-  </div>
-);
-
 const WidgetsBar = ({
   widgets,
   onFilterClick,
   activeWidget,
   direction = "column",
-  loading = false,
   topicGroupComponent,
   addonComponent,
   classes = {},
@@ -198,13 +181,6 @@ const WidgetsBar = ({
       className={classnames("widgets", classes.wrapper, className)}
     >
       <StyledUnorderedList $direction={direction}>
-        {loading &&
-          [...Array(10)].map((_, index) => (
-            <WidgetPlaceholder
-              key={index}
-              data-testid={`widget-placeholder-${index}`}
-            />
-          ))}
         {groups.map((group, index, arr) => (
           <React.Fragment key={index}>
             {group}
@@ -250,7 +226,6 @@ WidgetsBar.propTypes = {
   onFilterClick: PropTypes.func,
   activeWidget: PropTypes.number,
   direction: PropTypes.oneOf(["column", "row"]),
-  loading: PropTypes.bool,
   topicGroupComponent: PropTypes.oneOfType([
     PropTypes.elementType,
     PropTypes.string
