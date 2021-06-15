@@ -130,7 +130,6 @@ export const grid = () => {
         }))
         .slice(0, number("number of topics", topicsData.length))}
       onTopicClick={action("topic-grid-click")}
-      resizable={boolean("resizable", false)}
       defaultWidth={select(
         "width",
         { 1: 70, 2: 140, 3: 210, 4: 280, 5: 350 },
@@ -212,7 +211,6 @@ export const api = () => {
       }))}
       onTopicClick={action("topic-grid-click")}
       viewable={select("viewable", [3, 6, 9, 12, 15], 9, "api")}
-      resizable={boolean("resizable", false, "api")}
       defaultWidth={select("defaultWidth", [150, 210, 280, "auto"], 210, "api")}
       defaultHeight={select(
         "defaultHeight",

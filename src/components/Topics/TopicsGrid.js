@@ -12,7 +12,6 @@ const TopicsGrid = ({
   defaultHeight = 320,
   defaultWidth = 210,
   style,
-  resizable = false,
   activeTopics = [],
   header,
   footer
@@ -38,7 +37,6 @@ const TopicsGrid = ({
       defaultHeight={defaultHeight}
       defaultWidth={defaultWidth}
       style={style}
-      resizable={resizable}
       ref={gridRef}
       header={header}
       footer={footer}
@@ -74,7 +72,6 @@ TopicsGrid.propTypes = {
   defaultHeight: PropTypes.number,
   defaultWidth: PropTypes.number,
   style: PropTypes.object,
-  resizable: PropTypes.bool,
   activeTopics: PropTypes.array,
   header: PropTypes.node,
   footer: PropTypes.node
