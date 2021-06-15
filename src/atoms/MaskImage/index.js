@@ -4,11 +4,14 @@ import { ifProp, prop, theme } from "styled-tools";
 
 import { palette } from "../../utils/cssVars";
 
-const MaskImage = styled.div`
-  height: ${prop("$height")};
-  width: ${prop("$width")};
+const MaskImage = styled.div.attrs(props => ({
+  style: {
+    height: props.$height,
+    width: props.$width,
+    mask: `url(${props.$src}) no-repeat center center`
+  }
+}))`
   margin: auto;
-  mask: url(${prop("$src")}) no-repeat center center;
   background: ${prop(
     "$background",
     theme("palette.maskImage.background", palette.fuscous)
