@@ -6,6 +6,7 @@ import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
 import postcss from "rollup-plugin-postcss";
 import visualizer from "rollup-plugin-visualizer";
+import { uglify } from "rollup-plugin-uglify";
 
 export default {
   input: [
@@ -40,6 +41,7 @@ export default {
     postcss({
       plugins: []
     }),
+    uglify(),
     visualizer()
   ]
 };
