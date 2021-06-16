@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.4](https://github.com/rawpixel-public/react-components/compare/v3.1.3...v3.1.4) (2021-06-16)
+
+
+### Bug Fixes
+
+* add webkit mask prefix ([d0485d8](https://github.com/rawpixel-public/react-components/commit/d0485d89b0683a383d56843fb3660565a8654930))
+* fix unsupported prefix warning ([c359722](https://github.com/rawpixel-public/react-components/commit/c359722f805678623a92a6c12525697a6a2ed5a8))
+
 ### [3.1.3](https://github.com/rawpixel-public/react-components/compare/v3.1.2...v3.1.3) (2021-06-15)
 
 
