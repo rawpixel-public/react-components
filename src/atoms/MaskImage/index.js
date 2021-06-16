@@ -9,7 +9,7 @@ const MaskImage = styled.div.attrs(props => ({
     height: props.$height,
     width: props.$width,
     mask: `url(${props.$src}) no-repeat center center`,
-    webkitMask: `url(${props.$src}) no-repeat center center`
+    WebkitMask: `url(${props.$src}) no-repeat center center`
   }
 }))`
   margin: auto;
