@@ -4,14 +4,20 @@ import { ifProp, prop, theme } from "styled-tools";
 
 import { palette } from "../../utils/cssVars";
 
-const MaskImage = styled.div.attrs(props => ({
-  style: {
+const MaskImage = styled.div.attrs(props => {
+  const style = {
     height: props.$height,
-    width: props.$width,
-    mask: `url(${props.$src}) no-repeat center center`,
-    WebkitMask: `url(${props.$src}) no-repeat center center`
+    width: props.$width
+  };
+  if (props.$src) {
+    style.mask = `url(${props.$src}) no-repeat center center`;
+    style.WebkitMask = style.mask;
+  } else {
+    style.mask = "none";
+    style.background = "none";
   }
-}))`
+  return { style };
+})`
   margin: auto;
   background: ${prop(
     "$background",
