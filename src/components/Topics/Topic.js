@@ -13,19 +13,26 @@ import {
 } from "./StyledTopic";
 import useHyphenation from "./useHyphenation";
 
-const TopicIcon = ({ className, icon, name = "" }) => (
+const TopicIcon = ({ className, icon, name = "", iconStyle }) => (
   <StyledIconWrapper
     className={classnames("img-wrapper", className)}
     data-testid={`topic-icon:${name.replace(/\W/gi, "").toLowerCase()}`}
   >
-    <MaskImage $src={icon} className="mask" $height="30px" $width="30px" />
+    <MaskImage
+      $src={icon}
+      className="mask"
+      $height="30px"
+      $width="30px"
+      $iconStyle={iconStyle}
+    />
   </StyledIconWrapper>
 );
 
 TopicIcon.propTypes = {
   className: PropTypes.string,
   icon: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+  iconStyle: PropTypes.string
 };
 
 const Topic = ({
@@ -73,7 +80,7 @@ const Topic = ({
       {isLoading ? (
         <Icon loading={isLoading} icon={icon} className="img-wrapper" />
       ) : (
-        <TopicIcon icon={icon} name={name} />
+        <TopicIcon icon={icon} name={name} iconStyle={props.iconStyle} />
       )}
       <StyledTitleWrapper>
         {groupIcon && <StyledIcon $url={groupIcon} />}
@@ -109,7 +116,8 @@ Topic.propTypes = {
   to: PropTypes.string,
   groupIcon: PropTypes.string,
   active: PropTypes.bool,
-  onHyphenation: PropTypes.func
+  onHyphenation: PropTypes.func,
+  iconStyle: PropTypes.string
 };
 
 export default Topic;
