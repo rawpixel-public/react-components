@@ -10,8 +10,13 @@ const MaskImage = styled.div.attrs(props => {
     width: props.$width
   };
   if (props.$src) {
-    style.mask = `url(${props.$src}) no-repeat center center`;
-    style.WebkitMask = style.mask;
+    if (props.$iconStyle === "background") {
+      style.background = `url(${props.$src}) no-repeat center center`;
+      style.mask = "none";
+    } else {
+      style.mask = `url(${props.$src}) no-repeat center center`;
+      style.WebkitMask = style.mask;
+    }
   } else {
     style.mask = "none";
     style.background = "none";
