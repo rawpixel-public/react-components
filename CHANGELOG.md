@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.6](https://github.com/rawpixel-public/react-components/compare/v3.1.5...v3.1.6) (2021-06-22)
+
+
+### Bug Fixes
+
+* enable background image use in topic icons ([b30d343](https://github.com/rawpixel-public/react-components/commit/b30d3430100ae4e1a9990ecb9e79dc2f005c844e))
+
 ### [3.1.5](https://github.com/rawpixel-public/react-components/compare/v3.1.4...v3.1.5) (2021-06-17)
 
 ### [3.1.4](https://github.com/rawpixel-public/react-components/compare/v3.1.3...v3.1.4) (2021-06-16)
